@@ -1,3 +1,4 @@
 
 .vscode/settings.json
 ws.json
+worldstate_cache.sqlite
