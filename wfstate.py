@@ -28,6 +28,12 @@ with open(os.path.dirname(os.path.abspath(__file__)) + '\\languages.json', 'r', 
 with open(os.path.dirname(os.path.abspath(__file__)) + '\\missionTypes.json', 'r', encoding='utf-8') as E:
     M = json.loads(E.read())
 
+with open(os.path.dirname(os.path.abspath(__file__)) + '\\sortieBoss.json', 'r', encoding='utf-8') as E:
+    B = json.loads(E.read())
+
+with open(os.path.dirname(os.path.abspath(__file__)) + '\\sortieModifier.json', 'r', encoding='utf-8') as E:
+    SM = json.loads(E.read())
+
 # Useful functions
 def s2h(seconds):
     if seconds >= 86400:
@@ -60,8 +66,8 @@ def get_alerts():
         + ' x ' + str(L[alert['MissionInfo']['missionReward']['countedItems'][0]['ItemType'].lower()]['value']) \
         if 'countedItems' in alert['MissionInfo']['missionReward'] else ''
 
-        alert_text += '\n\n地点：' + S[alert["MissionInfo"]["location"]]["value"] + " | " + req_archwing + M[alert["MissionInfo"]["missionType"]]["value"] \
-        + '\n等级：' + str(alert["MissionInfo"]["minEnemyLevel"]) + "-" + str(alert["MissionInfo"]["maxEnemyLevel"]) \
+        alert_text += '\n\n地点：' + S[alert['MissionInfo']['location']]['value'] + ' | ' + req_archwing + M[alert['MissionInfo']['missionType']]['value'] \
+        + '\n等级：' + str(alert['MissionInfo']['minEnemyLevel']) + '-' + str(alert['MissionInfo']['maxEnemyLevel']) \
         + '\n奖励：' + str(rew_credits) + ' CR' + rew_items + rew_counteditems\
         + '\n时限：' + s2h(expiry)
     return alert_text
@@ -71,6 +77,24 @@ def get_alerts():
 # Fissures
 
 # Sorties
+# Usage: get_sorties()
+# Return: a formatted string which contains today's sorties
+
+def get_sorties():
+    try:
+        ws = get_worldstate()
+    except:
+        return '[ERROR] 获取世界状态失败' 
+    sorties = ws['Sorties'][0]['Variants']
+    sortie_level = ['50-60', '65-80', '80-100']
+    sorties_text = '突击BOSS：' + B[ws['Sorties'][0]['Boss']]
+    for i in range(3):
+        sorties_text += '\n\n等级：' + sortie_level[i] \
+        + '\n地点：' + S[sorties[i]['node']]['value'] \
+        + '\n任务：' + M[sorties[i]['missionType']]['value'] \
+        + '\n限制：' + SM[sorties[i]['modifierType']]
+    return sorties_text
+
 
 # Cetus
 # Usage: get_cetus_time()
@@ -113,8 +137,8 @@ def get_new_alerts():
             + ' x ' + str(L[alert['MissionInfo']['missionReward']['countedItems'][0]['ItemType'].lower()]['value']) \
             if 'countedItems' in alert['MissionInfo']['missionReward'] else ''
 
-            alert_text += '\n\n地点：' + S[alert["MissionInfo"]["location"]]["value"] + " | " + req_archwing + M[alert["MissionInfo"]["missionType"]]["value"] \
-            + '\n等级：' + str(alert["MissionInfo"]["minEnemyLevel"]) + "-" + str(alert["MissionInfo"]["maxEnemyLevel"]) \
+            alert_text += '\n\n地点：' + S[alert['MissionInfo']['location']]['value'] + ' | ' + req_archwing + M[alert['MissionInfo']['missionType']]['value'] \
+            + '\n等级：' + str(alert['MissionInfo']['minEnemyLevel']) + '-' + str(alert['MissionInfo']['maxEnemyLevel']) \
             + '\n奖励：' + str(rew_credits) + ' CR' + rew_items + rew_counteditems\
             + '\n时限：' + s2h(expiry)
     return alert_text
