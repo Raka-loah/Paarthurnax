@@ -6,6 +6,7 @@ import json
 import time
 import math
 
+# TODO: cache this!
 wsurl = 'http://content.warframe.com/dynamic/worldState.php'
 ws = json.loads(urlopen(wsurl).read().decode('utf-8'))
 
@@ -61,5 +62,14 @@ def get_alerts():
 
 # Cetus
 def get_cetus_time():
-
-    return ''
+    activation = 0
+    for syndicate in ws['SyndicateMissions']:
+        if syndicate['Tag'] == 'CetusSyndicate':
+            activation = syndicate['Activation']['$date']['$numberLong']
+    sec_remain = (150 * 60) - (time.time() - float(activation) / 1000)
+    if sec_remain > 50 * 60: # not night
+        return '希图斯当前是白天，剩余时间' + s2h(sec_remain - 3000) + '。'
+    elif sec_remain > 0:
+        return '希图斯当前是夜晚，剩余时间' + s2h(sec_remain) + '。'
+    else:
+        return '[ERROR] 无法获取平原时间。'

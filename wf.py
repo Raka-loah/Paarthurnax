@@ -7,3 +7,6 @@ def onQQMessage(bot, contact, member, content):
         return
     if content == '警报':
         bot.SendTo(contact, wf.get_alerts())
+    elif content == '平原时间':
+        bot.SendTo(contact, wf.get_cetus_time())
+    # TODO: dictionary for custom responses
