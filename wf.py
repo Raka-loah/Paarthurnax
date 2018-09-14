@@ -2,6 +2,11 @@
 
 from qqbot import qqbotsched
 import wfstate as wf
+import os
+import json
+
+with open(os.path.dirname(os.path.abspath(__file__)) + '\\customReplies.json', 'r', encoding='utf-8') as E:
+    R = json.loads(E.read())
 
 def onQQMessage(bot, contact, member, content):
     if bot.isMe(contact, member):
@@ -14,7 +19,8 @@ def onQQMessage(bot, contact, member, content):
         bot.SendTo(contact, wf.get_sorties())        
     elif content == '帮助':
         bot.SendTo(contact, '目前可用命令：\n帮助、警报、平原时间、突击')
-    # TODO: dictionary for custom responses
+    elif content.lower().replace(' ','') in R:
+        bot.SendTo(contact, R[content.lower().replace(' ','')])
 
 # Reserved for new alerts
 #@qqbotsched(second='00,30')
