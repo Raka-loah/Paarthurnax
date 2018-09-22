@@ -73,8 +73,39 @@ def get_alerts():
     return alert_text
 
 # Invasions
+def get_invasions():
+    return '[ERROR] 功能开发中，敬请期待'
+
 
 # Fissures
+def get_fissures():
+    try:
+        ws = get_worldstate()
+    except:
+        return '[ERROR] 获取世界状态失败'
+    fissure_text = ''
+    fissure_sorted = {
+        'VoidT1': [],
+        'VoidT2': [],
+        'VoidT3': [],
+        'VoidT4': []
+    }
+    fissures = ws['ActiveMissions']
+    for fissure in fissures:
+        fissure_sorted[fissure['Modifier']].append(fissure)
+    for fissure in fissure_sorted['VoidT1']:
+        fissure_text += '古纪(T1)：' + S[fissure['Node']]['value'] + ' | ' + M[fissure['MissionType']]['value'] \
+        + '\n时限：' + s2h(float(fissure['Expiry']['$date']['$numberLong']) / 1000 - time.time()) + '\n\n'
+    for fissure in fissure_sorted['VoidT2']:
+        fissure_text += '前纪(T2)：' + S[fissure['Node']]['value'] + ' | ' + M[fissure['MissionType']]['value'] \
+        + '\n时限：' + s2h(float(fissure['Expiry']['$date']['$numberLong']) / 1000 - time.time()) + '\n\n'
+    for fissure in fissure_sorted['VoidT3']:
+        fissure_text += '中纪(T3)：' + S[fissure['Node']]['value'] + ' | ' + M[fissure['MissionType']]['value'] \
+        + '\n时限：' + s2h(float(fissure['Expiry']['$date']['$numberLong']) / 1000 - time.time()) + '\n\n'
+    for fissure in fissure_sorted['VoidT4']:
+        fissure_text += '后纪(T4)：' + S[fissure['Node']]['value'] + ' | ' + M[fissure['MissionType']]['value'] \
+        + '\n时限：' + s2h(float(fissure['Expiry']['$date']['$numberLong']) / 1000 - time.time()) + '\n\n'
+    return fissure_text[:-2]
 
 # Sorties
 # Usage: get_sorties()

@@ -9,16 +9,21 @@ with open(os.path.dirname(os.path.abspath(__file__)) + '\\customReplies.json', '
     R = json.loads(E.read())
 
 def onQQMessage(bot, contact, member, content):
+    suffix = '\n更多命令请输入"帮助"。'
     if bot.isMe(contact, member):
         return
     if content == '警报':
-        bot.SendTo(contact, wf.get_alerts())
+        bot.SendTo(contact, wf.get_alerts() + suffix)
     elif content == '平原时间':
-        bot.SendTo(contact, wf.get_cetus_time())
+        bot.SendTo(contact, wf.get_cetus_time() + suffix)
     elif content == '突击':
-        bot.SendTo(contact, wf.get_sorties())        
+        bot.SendTo(contact, wf.get_sorties() + suffix)
+    elif content == '裂缝':
+        bot.SendTo(contact, wf.get_fissures() + suffix)        
+    elif content == '入侵':
+        bot.SendTo(contact, wf.get_invasions() + suffix)        
     elif content == '帮助':
-        bot.SendTo(contact, '目前可用命令：\n帮助、警报、平原时间、突击')
+        bot.SendTo(contact, '目前可用命令：\n帮助、警报、平原时间、突击、裂缝')
     elif content.lower().replace(' ','') in R:
         bot.SendTo(contact, R[content.lower().replace(' ','')])
 
