@@ -27,12 +27,21 @@ def onQQMessage(bot, contact, member, content):
     elif content.lower().replace(' ','') in R:
         bot.SendTo(contact, R[content.lower().replace(' ','')])
 
-# Reserved for new alerts
+# Reserved
+# It should work but is it good to pull data from web every minute?
 #@qqbotsched(second='00,30')
-#def mytask(bot):
-#    gl = bot.List('group', '')
+#def task_new_alert(bot):
+#    gl = bot.List('group', 'TEST')
 #    if gl is not None:
 #        for group in gl:
 #            msg = wf.get_new_alerts()
+#            if msg != '':
+#                bot.SendTo(group, msg)
+#@qqbotsched(second='05,35')
+#def task_cetus_transition(bot):
+#    gl = bot.List('group', 'TEST')
+#    if gl is not None:
+#        for group in gl:
+#            msg = wf.get_cetus_transition()
 #            if msg != '':
 #                bot.SendTo(group, msg)

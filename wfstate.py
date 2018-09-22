@@ -45,6 +45,8 @@ def s2h(seconds):
     else:
         return '%02d:%02d' % (m, s)
 
+# User queries:
+
 # Alerts
 # Usage: get_alerts()
 # Return: a formatted string which contains current alerts
@@ -148,8 +150,28 @@ def get_cetus_time():
     else:
         return '[ERROR] 无法获取平原时间。'
 
-# New alerts
+# Automatic broadcasting:
 
+# Cetus day/night transition within 60 seconds
+def get_cetus_transition():
+    try:
+        ws = get_worldstate()
+    except:
+        return ''
+    activation = 0
+    for syndicate in ws['SyndicateMissions']:
+        if syndicate['Tag'] == 'CetusSyndicate':
+            activation = syndicate['Activation']['$date']['$numberLong']
+    sec_remain = (150 * 60) - (time.time() - float(activation) / 1000)
+    if sec_remain > 50 * 60 and sec_remain < 51 * 60: # 1 min before night
+        return '希图斯将于1分钟后进入夜晚' + s2h(sec_remain - 3000) + '。'
+    elif sec_remain > 0 and sec_remain < 60: # 1 min before day
+        return '希图斯将于1分钟后进入白天' + s2h(sec_remain) + '。'
+    else:
+        return ''    
+    return ''
+
+# Alerts appeared within 60 seconds
 def get_new_alerts():
     try:
         ws = get_worldstate()
@@ -159,7 +181,7 @@ def get_new_alerts():
     alerts = ws['Alerts']
     for alert in alerts:
         activation = time.time() - float(alert['Activation']['$date']['$numberLong']) / 1000 
-        if activation < 60:
+        if activation < 60 and activation > 0:
             expiry = float(alert['Expiry']['$date']['$numberLong']) / 1000 - time.time()
             req_archwing = 'Archwing' if 'archwingRequired' in alert['MissionInfo'] else ''
             rew_credits = alert['MissionInfo']['missionReward']['credits']
