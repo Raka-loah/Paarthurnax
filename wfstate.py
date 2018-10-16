@@ -164,9 +164,9 @@ def get_cetus_transition():
             activation = syndicate['Activation']['$date']['$numberLong']
     sec_remain = (150 * 60) - (time.time() - float(activation) / 1000)
     if sec_remain > 50 * 60 and sec_remain < 51 * 60: # 1 min before night
-        return '希图斯将于1分钟后进入夜晚' + s2h(sec_remain - 3000) + '。'
+        return '希图斯将于1分钟后进入夜晚。'
     elif sec_remain > 0 and sec_remain < 60: # 1 min before day
-        return '希图斯将于1分钟后进入白天' + s2h(sec_remain) + '。'
+        return '希图斯将于1分钟后进入白天。'
     else:
         return ''    
     return ''
@@ -190,7 +190,7 @@ def get_new_alerts():
             + ' x ' + str(L[alert['MissionInfo']['missionReward']['countedItems'][0]['ItemType'].lower()]['value']) \
             if 'countedItems' in alert['MissionInfo']['missionReward'] else ''
 
-            alert_text += '\n\n地点：' + S[alert['MissionInfo']['location']]['value'] + ' | ' + req_archwing + M[alert['MissionInfo']['missionType']]['value'] \
+            alert_text += '新警报任务！\n\n地点：' + S[alert['MissionInfo']['location']]['value'] + ' | ' + req_archwing + M[alert['MissionInfo']['missionType']]['value'] \
             + '\n等级：' + str(alert['MissionInfo']['minEnemyLevel']) + '-' + str(alert['MissionInfo']['maxEnemyLevel']) \
             + '\n奖励：' + str(rew_credits) + ' CR' + rew_items + rew_counteditems\
             + '\n时限：' + s2h(expiry)

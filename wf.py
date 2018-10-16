@@ -29,19 +29,19 @@ def onQQMessage(bot, contact, member, content):
 
 # Reserved
 # It should work but is it good to pull data from web every minute?
-#@qqbotsched(second='00,30')
-#def task_new_alert(bot):
-#    gl = bot.List('group', 'TEST')
-#    if gl is not None:
-#        for group in gl:
-#            msg = wf.get_new_alerts()
-#            if msg != '':
-#                bot.SendTo(group, msg)
-#@qqbotsched(second='05,35')
-#def task_cetus_transition(bot):
-#    gl = bot.List('group', 'TEST')
-#    if gl is not None:
-#        for group in gl:
-#            msg = wf.get_cetus_transition()
-#            if msg != '':
-#                bot.SendTo(group, msg)
+@qqbotsched(second='00')
+def task_new_alert(bot):
+   gl = bot.List('group', 'NGA-warframe交流群')
+   if gl is not None:
+       for group in gl:
+           msg = wf.get_new_alerts()
+           if msg != '':
+               bot.SendTo(group, msg)
+@qqbotsched(second='05')
+def task_cetus_transition(bot):
+   gl = bot.List('group', 'NGA-warframe交流群')
+   if gl is not None:
+       for group in gl:
+           msg = wf.get_cetus_transition()
+           if msg != '':
+               bot.SendTo(group, msg)
