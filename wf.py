@@ -29,7 +29,7 @@ def onQQMessage(bot, contact, member, content):
     elif content.startswith('/roll'):
         msg = wf.misc_roll(content)
         if msg != '':
-            bot.SentTo(contact, msg)
+            bot.SendTo(contact, msg)
 
 # It works but is it good to pull data from web every minute?
 @qqbotsched(second='00')
