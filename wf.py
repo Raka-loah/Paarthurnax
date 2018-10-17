@@ -26,9 +26,12 @@ def onQQMessage(bot, contact, member, content):
         bot.SendTo(contact, '目前可用命令：\n帮助、警报、平原时间、突击、裂缝')
     elif content.lower().replace(' ','') in R:
         bot.SendTo(contact, R[content.lower().replace(' ','')])
+    elif content.startswith('/roll'):
+        msg = wf.misc_roll(content)
+        if msg != '':
+            bot.SentTo(contact, msg)
 
-# Reserved
-# It should work but is it good to pull data from web every minute?
+# It works but is it good to pull data from web every minute?
 @qqbotsched(second='00')
 def task_new_alert(bot):
    gl = bot.List('group', 'NGA-warframe交流群')

@@ -3,3 +3,4 @@
 ws.json
 worldstate_cache.sqlite
 *.pyc
+test.py

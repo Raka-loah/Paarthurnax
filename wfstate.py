@@ -6,6 +6,7 @@ import os
 import json
 import time
 import math
+import random
 
 # Get world state json
 # Usage: get_worldstate()
@@ -190,8 +191,22 @@ def get_new_alerts():
             + ' x ' + str(L[alert['MissionInfo']['missionReward']['countedItems'][0]['ItemType'].lower()]['value']) \
             if 'countedItems' in alert['MissionInfo']['missionReward'] else ''
 
+            if rew_items == '':
+                break
+
             alert_text += '新警报任务！\n\n地点：' + S[alert['MissionInfo']['location']]['value'] + ' | ' + req_archwing + M[alert['MissionInfo']['missionType']]['value'] \
             + '\n等级：' + str(alert['MissionInfo']['minEnemyLevel']) + '-' + str(alert['MissionInfo']['maxEnemyLevel']) \
             + '\n奖励：' + str(rew_credits) + ' CR' + rew_items + rew_counteditems\
             + '\n时限：' + s2h(expiry)
     return alert_text
+
+# Miscellaneous:
+# Roll
+def misc_roll(content):
+    try:
+        roll_range = int(content.replace('/roll', ''))
+    except:
+        roll_range = 100
+    if roll_range > 1:
+        return 'Roll(' + str(roll_range) + '): ' + str(random.randint(1, roll_range))
+    return ''
