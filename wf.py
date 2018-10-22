@@ -4,9 +4,13 @@ from qqbot import qqbotsched
 import wfstate as wf
 import os
 import json
+import time
 
 with open(os.path.dirname(os.path.abspath(__file__)) + '\\customReplies.json', 'r', encoding='utf-8') as E:
     R = json.loads(E.read())
+
+stats = {}
+stats['last_sent'] = time.time()
 
 def onQQMessage(bot, contact, member, content):
     suffix = '\n更多命令请输入"帮助"。'
@@ -21,7 +25,11 @@ def onQQMessage(bot, contact, member, content):
     elif content == '裂缝':
         bot.SendTo(contact, wf.get_fissures() + suffix)        
     elif content == '入侵':
-        bot.SendTo(contact, wf.get_invasions() + suffix)        
+        bot.SendTo(contact, wf.get_invasions() + suffix)  
+    elif content == '模拟开卡':
+        if time.time() - stats['last_sent'] > 10:
+            bot.SendTo(contact, '[' + member.name + ']' + wf.get_riven_info(content.replace('模拟开卡', '')))
+            stats['last_sent'] = time.time()
     elif content == '帮助':
         bot.SendTo(contact, '目前可用命令：\n帮助、警报、平原时间、突击、裂缝')
     elif content.lower().replace(' ','') in R:
@@ -29,7 +37,12 @@ def onQQMessage(bot, contact, member, content):
     elif content.startswith('/roll'):
         msg = wf.misc_roll(content)
         if msg != '':
-            bot.SendTo(contact, msg)
+            if contact.ctype == 'group':
+                bot.SendTo(contact, '[' + member.name + ']' + msg)
+            else:
+                bot.SendTo(contact, msg)
+    elif content.startswith('/ask'):
+        bot.SendTo(contact, wf.ask_8ball(content))
 
 # It works but is it good to pull data from web every minute?
 @qqbotsched(second='00')

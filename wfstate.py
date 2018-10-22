@@ -35,6 +35,56 @@ with open(os.path.dirname(os.path.abspath(__file__)) + '\\sortieBoss.json', 'r',
 with open(os.path.dirname(os.path.abspath(__file__)) + '\\sortieModifier.json', 'r', encoding='utf-8') as E:
     SM = json.loads(E.read())
 
+with open(os.path.dirname(os.path.abspath(__file__)) + '\\riven.json', 'r', encoding='utf-8') as E:
+    R = json.loads(E.read())
+
+with open(os.path.dirname(os.path.abspath(__file__)) + '\\customReplies.json', 'r', encoding='utf-8') as E:
+    CR = json.loads(E.read())
+
+melee_dispo = {}
+melee_buff = {}
+melee_curse = {}
+for melee in R['Melee']['Rivens']:
+    melee_dispo[melee['name']] = melee['disposition']
+for buff in R['Melee']['Buffs']:
+    melee_buff[buff['text']] = buff['value']
+for curse in R['Melee']['Buffs']:
+    if 'curse' in curse:
+        melee_curse[curse['text']] = curse['value']
+
+rifle_dispo = {}
+rifle_buff = {}
+rifle_curse = {}
+for rifle in R['Rifle']['Rivens']:
+    rifle_dispo[rifle['name']] = rifle['disposition']
+for buff in R['Rifle']['Buffs']:
+    rifle_buff[buff['text']] = buff['value']
+for curse in R['Rifle']['Buffs']:
+    if 'curse' in curse:
+        rifle_curse[curse['text']] = curse['value']
+
+shotgun_dispo = {}
+shotgun_buff = {}
+shotgun_curse = {}
+for shotgun in R['Shotgun']['Rivens']:
+    shotgun_dispo[shotgun['name']] = shotgun['disposition']
+for buff in R['Shotgun']['Buffs']:
+    shotgun_buff[buff['text']] = buff['value']
+for curse in R['Shotgun']['Buffs']:
+    if 'curse' in curse:
+        shotgun_curse[curse['text']] = curse['value']
+
+pistol_dispo = {}
+pistol_buff = {}
+pistol_curse = {}
+for pistol in R['Pistol']['Rivens']:
+    pistol_dispo[pistol['name']] = pistol['disposition']
+for buff in R['Pistol']['Buffs']:
+    pistol_buff[buff['text']] = buff['value']
+for curse in R['Pistol']['Buffs']:
+    if 'curse' in curse:
+        pistol_curse[curse['text']] = curse['value']
+
 # Useful functions
 def s2h(seconds):
     if seconds >= 86400:
@@ -151,6 +201,105 @@ def get_cetus_time():
     else:
         return '[ERROR] 无法获取平原时间。'
 
+# Riven
+# Usage: get_riven_info()
+# Return: Various
+# Riven info copied from: https://semlar.com/rivencalc
+
+def get_riven_info(weapon, simulate=0):
+    riven_info = ''
+    prefix = ''
+    roll = random.random()
+    if weapon in melee_dispo or weapon in rifle_dispo or weapon in shotgun_dispo or weapon in pistol_dispo:
+        riven_info = riven_details(weapon,random.randint(2,3),random.randint(0,1))
+    elif roll < 0.3915:
+        prefix = '你从虚空中获得了一张近战裂罅Mod并开出了：\n'
+        riven_info = riven_details(random.sample(list(melee_dispo),1)[0],random.randint(2,3),random.randint(0,1))
+    elif roll >= 0.3915 and roll < 0.6853:
+        prefix = '你从虚空中获得了一张手枪裂罅Mod并开出了：\n'
+        riven_info = riven_details(random.sample(list(pistol_dispo),1)[0],random.randint(2,3),random.randint(0,1))
+    elif roll >= 0.6853 and roll < 0.9475:
+        prefix = '你从虚空中获得了一张步枪裂罅Mod并开出了：\n'
+        riven_info = riven_details(random.sample(list(rifle_dispo),1)[0],random.randint(2,3),random.randint(0,1))
+    elif roll >= 0.9475:
+        prefix = '你从虚空中获得了一张霰弹枪裂罅Mod并开出了：\n'
+        riven_info = riven_details(random.sample(list(shotgun_dispo),1)[0],random.randint(2,3),random.randint(0,1))
+    else: #how???
+        pass
+    return prefix + riven_info
+
+def riven_details(weapon, buffs, has_curse, simulate=0):
+    if weapon in melee_dispo:
+        curr_dispo = melee_dispo
+        curr_buff = melee_buff
+        curr_curse = melee_curse
+    elif weapon in rifle_dispo:
+        curr_dispo = rifle_dispo
+        curr_buff = rifle_buff
+        curr_curse = rifle_curse
+    elif weapon in shotgun_dispo:
+        curr_dispo = shotgun_dispo
+        curr_buff = shotgun_buff
+        curr_curse = shotgun_curse
+    elif weapon in pistol_dispo:
+        curr_dispo = pistol_dispo
+        curr_buff = pistol_buff
+        curr_curse = pistol_curse
+    else:
+        return ''
+    
+    riven_info = ''
+    if buffs == 2:
+        if has_curse:
+            dispo = curr_dispo[weapon] * 1.25
+            dispo = dispo * 0.66 * 1.5
+            buffs = random.sample(list(curr_buff), 2)
+            temp_curr_curse = list(curr_curse)
+            for buff in buffs:
+                try:
+                    temp_curr_curse.remove(buff)
+                except:
+                    pass
+            curse = random.sample(temp_curr_curse, 1)
+            riven_info = CR['翻译'+weapon.lower().replace(' ','')] + '\n' \
+            + buffs[0].replace('|val|', str(round((random.random()*0.2+0.9)*curr_buff[buffs[0]]*dispo,2))) \
+            + '\n' + buffs[1].replace('|val|', str(round((random.random()*0.2+0.9)*curr_buff[buffs[1]]*dispo,2))) \
+            + '\n' + curse[0].replace('|val|', str(-1*round((random.random()*0.2+0.9)*curr_curse[curse[0]]*curr_dispo[weapon]*1.5*0.33,2)))           
+        else:
+            dispo = curr_dispo[weapon] #裂罅倾向
+            dispo = dispo * 0.66 * 1.5 #2buff，无负，按照0.66，1.5紫卡系数
+            buffs = random.sample(list(curr_buff),2) #下限系数0.9，上限系数1.1
+            riven_info = CR['翻译'+weapon.lower().replace(' ','')] + '\n' \
+            + buffs[0].replace('|val|', str(round((random.random()*0.2+0.9)*curr_buff[buffs[0]]*dispo,2))) \
+            + '\n' + buffs[1].replace('|val|', str(round((random.random()*0.2+0.9)*curr_buff[buffs[1]]*dispo,2)))
+    elif buffs == 3:
+        if has_curse:
+            dispo = curr_dispo[weapon] * 1.25
+            dispo = dispo * 0.5 * 1.5
+            buffs = random.sample(list(curr_buff), 3)
+            temp_curr_curse = list(curr_curse)
+            for buff in buffs:
+                try:
+                    temp_curr_curse.remove(buff)
+                except:
+                    pass
+            curse = random.sample(temp_curr_curse, 1)
+            riven_info = CR['翻译'+weapon.lower().replace(' ','')] + '\n' \
+            + buffs[0].replace('|val|', str(round((random.random()*0.2+0.9)*curr_buff[buffs[0]]*dispo,2))) \
+            + '\n' + buffs[1].replace('|val|', str(round((random.random()*0.2+0.9)*curr_buff[buffs[1]]*dispo,2))) \
+            + '\n' + buffs[2].replace('|val|', str(round((random.random()*0.2+0.9)*curr_buff[buffs[2]]*dispo,2))) \
+            + '\n' + curse[0].replace('|val|', str(-1*round((random.random()*0.2+0.9)*curr_curse[curse[0]]*curr_dispo[weapon]*1.5*0.5,2)))           
+        else:
+            dispo = curr_dispo[weapon]
+            dispo = dispo * 0.5 * 1.5
+            buffs = random.sample(list(curr_buff),3)
+            riven_info = CR['翻译'+weapon.lower().replace(' ','')] + '\n' \
+            + buffs[0].replace('|val|', str(round((random.random()*0.2+0.9)*curr_buff[buffs[0]]*dispo,2))) \
+            + '\n' + buffs[1].replace('|val|', str(round((random.random()*0.2+0.9)*curr_buff[buffs[1]]*dispo,2))) \
+            + '\n' + buffs[2].replace('|val|', str(round((random.random()*0.2+0.9)*curr_buff[buffs[2]]*dispo,2)))
+    return riven_info
+
+
 # Automatic broadcasting:
 
 # Cetus day/night transition within 60 seconds
@@ -210,3 +359,7 @@ def misc_roll(content):
     if roll_range > 1:
         return 'Roll(' + str(roll_range) + '): ' + str(random.randint(1, roll_range))
     return ''
+
+def ask_8ball(content):
+    replies = ['当然YES咯','我觉得OK','毫无疑问','妥妥儿的','你就放心吧','让我说的话，YES','基本上没跑了','看起来没问题','YES','我听卡德加说YES，那就YES吧','有点复杂，再试一次','过会儿再问我','我觉得还是别剧透了','放飞自我中，过会儿再问','你心不够诚，再试一次','我觉得不行','我必须说NO','情况不容乐观','我觉得根本就是NO','我持怀疑态度']
+    return random.choice(replies)
