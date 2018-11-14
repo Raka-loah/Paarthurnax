@@ -71,11 +71,6 @@
 				"texture": "_Lotus_Interface_Icons_Store_GlassHammer.png"
 			},
 			{
-				"disposition": 1.22,
-				"name": "PRISMA SKANA",
-				"texture": "_Lotus_Interface_Icons_Store_PrismaSkana.png"
-			},
-			{
 				"disposition": 1.43,
 				"name": "KRONEN",
 				"texture": "_Lotus_Interface_Icons_Store_TennoTonfa.png"
@@ -84,11 +79,6 @@
 				"disposition": 1.0,
 				"name": "BOLTACE",
 				"texture": "_Lotus_Interface_Icons_Store_Boltonfa.png"
-			},
-			{
-				"disposition": 0.84,
-				"name": "VAYKOR SYDON",
-				"texture": "_Lotus_Interface_Icons_Store_SMSydon.png"
 			},
 			{
 				"disposition": 0.81,
@@ -421,11 +411,6 @@
 				"texture": "_Lotus_Interface_Icons_Store_TnoMonkStaff.png"
 			},
 			{
-				"disposition": 1.0,
-				"name": "SILVA & AEGIS PRIME",
-				"texture": "_Lotus_Interface_Icons_Store_SilvaAegisPrime.png"
-			},
-			{
 				"disposition": 1.46,
 				"name": "ANKU",
 				"texture": "_Lotus_Interface_Icons_Store_ParisScythe.png"
@@ -569,116 +554,165 @@
 				"disposition": 0.5,
 				"name": "VENKA",
 				"texture": "_Lotus_Interface_Icons_Store_TennoClaws.png"
+			},
+			{
+				"disposition": 1.0, 
+				"name": "KRESKA", 
+				"texture": "_Lotus_Interface_Icons_Store_CrpVenusHatchet.png"
 			}
 		],
 		"Buffs": [{
 				"text": "|val|% 近战伤害",
-				"value": 164.7
+				"value": 164.7,
+				"prefix": "Visi",
+				"suffix": "Ata"
 			},
 			{
 				"text": "|val|% 冲击伤害",
 				"curse": true,
-				"value": 119.7
+				"value": 119.7,
+				"prefix": "Magna",
+				"suffix": "Ton"
 			},
 			{
 				"text": "|val|% 穿刺伤害",
 				"curse": true,
-				"value": 119.7
+				"value": 119.7,
+				"prefix": "Insi",
+				"suffix": "Cak"				
 			},
 			{
 				"text": "|val|% 切割伤害",
 				"curse": true,
-				"value": 119.7
+				"value": 119.7,
+				"prefix": "Sci",
+				"suffix": "Sus"
 			},
 			{
 				"text": "|val|% 暴击几率",
 				"curse": true,
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Crita",
+				"suffix": "Cron"
 			},
 			{
 				"text": "|val|% 暴击伤害",
 				"curse": true,
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Acri",
+				"suffix": "Tis"
 			},
 			{
 				"text": "|val|% 火焰伤害",
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Igni",
+				"suffix": "Pha"
 			},
 			{
 				"text": "|val|% 冰冻伤害",
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Geli",
+				"suffix": "Do"
 			},
 			{
 				"text": "|val|% 电击伤害",
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Vexi",
+				"suffix": "Tio"
 			},
 			{
 				"text": "|val|% 毒素伤害",
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Toxi",
+				"suffix": "Tox"
 			},
 			{
 				"text": "|val|% 触发几率",
 				"curse": true,
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Hexa",
+				"suffix": "Dex"
 			},
 			{
 				"text": "|val|% 触发时间",
 				"curse": true,
-				"value": 99.99
+				"value": 99.99,
+				"prefix": "Deci",
+				"suffix": "Des"
 			},
 			{
 				"text": "|val|% 对Grineer伤害",
 				"curse": true,
-				"value": 45.0
+				"value": 45.0,
+				"prefix": "Agri",
+				"suffix": "Con"
 			},
 			{
 				"text": "|val|% 对Corpus伤害",
 				"curse": true,
-				"value": 45.0
+				"value": 45.0,
+				"prefix": "Manti",
+				"suffix": "Tron"
 			},
 			{
 				"text": "|val|% 对Infested伤害",
 				"curse": true,
-				"value": 45.0
+				"value": 45.0,
+				"prefix": "Pura",
+				"suffix": "Ada"
 			},
 			{
 				"text": "|val|% 攻击速度",
 				"curse": true,
-				"value": 54.9
+				"value": 54.9,
+				"prefix": "Croni",
+				"suffix": "Dra"
 			},
 			{
 				"text": "|val|% 导引效率",
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Uti",
+				"suffix": "Tia"
 			},
 			{
 				"text": "|val|% 导引伤害",
-				"value": 150.3
+				"value": 150.3,
+				"prefix": "Tori",
+				"suffix": "Bo"
 			},
 			{
 				"text": "|val|% 终结技伤害",
 				"curse": true,
-				"value": 119.7
+				"value": 119.7,
+				"prefix": "Exi",
+				"suffix": "Cta"
 			},
 			{
 				"text": "|val|% 范围",
 				"curse": true,
-				"value": 119.7
+				"value": 119.7,
+				"prefix": "Locti",
+				"suffix": "Tor"
 			},
 			{
 				"text": "滑行攻击有 |val|% 几率造成暴击",
 				"curse": true,
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Pleci",
+				"suffix": "Nent"
 			},
 			{
 				"text": "|val|s 连击时间",
 				"curse": true,
-				"value": 8.1
+				"value": 8.1,
+				"prefix": "Tempi",
+				"suffix": "Nem"
 			}
 		]
 	},
 	"Shotgun": {
 		"Rivens": [{
-				"disposition": 1.2,
+				"disposition": 1.1,
 				"name": "ASTILLA",
 				"texture": "_Lotus_Interface_Icons_Store_GlassShotgun.png"
 			},
@@ -688,7 +722,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_GrnDBSG.png"
 			},
 			{
-				"disposition": 1.0,
+				"disposition": 1.05,
 				"name": "CORINTH",
 				"texture": "_Lotus_Interface_Icons_Store_TnHeavyShotgun.png"
 			},
@@ -698,19 +732,14 @@
 				"texture": "_Lotus_Interface_Icons_Store_TennoFullAutoShotgun.png"
 			},
 			{
-				"disposition": 0.55,
+				"disposition": 0.7,
 				"name": "HEK",
 				"texture": "_Lotus_Interface_Icons_Store_GrineerQuadShotgun.png"
 			},
 			{
-				"disposition": 1.42,
+				"disposition": 1.35,
 				"name": "STRUN",
 				"texture": "_Lotus_Interface_Icons_Store_TennoShotgun.png"
-			},
-			{
-				"disposition": 1.0,
-				"name": "SWEEPER",
-				"texture": "_Lotus_Interface_Icons_Store_SentinelSweeper.png"
 			},
 			{
 				"disposition": 1.48,
@@ -723,7 +752,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_CrpSplitRifle.png"
 			},
 			{
-				"disposition": 0.9,
+				"disposition": 0.7,
 				"name": "ARCA PLASMOR",
 				"texture": "_Lotus_Interface_Icons_Store_CrpShotgun.png"
 			},
@@ -746,130 +775,176 @@
 		"Buffs": [{
 				"text": "|val|% 多重射击",
 				"curse": true,
-				"value": 119.7
+				"value": 119.7,
+				"prefix": "Sati",
+				"suffix": "Can"
 			},
 			{
 				"text": "|val|% 伤害",
 				"curse": true,
-				"value": 164.7
+				"value": 164.7,
+				"prefix": "Visi",
+				"suffix": "Ata"
 			},
 			{
 				"text": "|val|% 冲击伤害",
-				"value": 119.97
+				"value": 119.97,
+				"prefix": "Magna",
+				"suffix": "Ton"
 			},
 			{
 				"text": "|val|% 穿刺伤害",
-				"value": 119.97
+				"value": 119.97,
+				"prefix": "Insi",
+				"suffix": "Cak"
 			},
 			{
 				"text": "|val|% 切割伤害",
-				"value": 119.97
+				"value": 119.97,
+				"prefix": "Sci",
+				"suffix": "Sus"
 			},
 			{
 				"text": "|val|% 暴击几率",
 				"curse": true,
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Crita",
+				"suffix": "Cron"
 			},
 			{
 				"text": "|val|% 暴击伤害",
 				"curse": true,
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Acri",
+				"suffix": "Tis"
 			},
 			{
 				"text": "|val|% 火焰伤害",
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Igni",
+				"suffix": "Pha"
 			},
 			{
 				"text": "|val|% 冰冻伤害",
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Geli",
+				"suffix": "Do"
 			},
 			{
 				"text": "|val|% 电击伤害",
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Vexi",
+				"suffix": "Tio"
 			},
 			{
 				"text": "|val|% 毒素伤害",
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Toxi",
+				"suffix": "Tox"
 			},
 			{
 				"text": "|val|% 触发几率",
 				"curse": true,
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Hexa",
+				"suffix": "Dex"
 			},
 			{
 				"text": "|val|% 触发时间",
 				"curse": true,
-				"value": 99.99
+				"value": 99.99,
+				"prefix": "Deci",
+				"suffix": "Des"
 			},
 			{
 				"text": "|val|% 对Grineer伤害",
 				"curse": true,
-				"value": 45.0
+				"value": 45.0,
+				"prefix": "Agri",
+				"suffix": "Con"
 			},
 			{
 				"text": "|val|% 对Corpus伤害",
 				"curse": true,
-				"value": 45.0
+				"value": 45.0,
+				"prefix": "Manti",
+				"suffix": "Tron"
 			},
 			{
 				"text": "|val|% 对Infested伤害",
 				"curse": true,
-				"value": 45.0
+				"value": 45.0,
+				"prefix": "Pura",
+				"suffix": "Ada"
 			},			
 			{
 				"text": "|val|% 射击速度 (弓类武器x2)",
 				"curse": true,
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Croni",
+				"suffix": "Dra"
 			},
 			{
 				"text": "|val|% 弹匣容量",
 				"curse": true,
-				"value": 50.0
+				"value": 50.0,
+				"prefix": "Arma",
+				"suffix": "Tin"
 			},
 			{
 				"text": "|val|% 备弹",
 				"curse": true,
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Ampi",
+				"suffix": "Bin"
 			},
 			{
 				"text": "|val|% 子弹飞行速度",
 				"curse": true,
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Conci",
+				"suffix": "Nak"
 			},
 			{
 				"text": "|val|% 装填速度",
 				"curse": true,
-				"value": 50.0
+				"value": 50.0,
+				"prefix": "Feva",
+				"suffix": "Tak"
 			},
 			{
 				"text": "|val|% 后坐力",
 				"curse": true,
-				"value": -90.0
+				"value": -90.0,
+				"prefix": "Zeti",
+				"suffix": "Mag"
 			},
 			{
 				"text": "|val|m 穿透",
-				"value": 2.7
+				"value": 2.7,
+				"prefix": "Lexi",
+				"suffix": "Nok"
 			}
 		]
 	},
 	"Pistol": {
 		"Rivens": [{
-				"disposition": 1.0,
+				"disposition": 1.05,
 				"name": "HYSTRIX",
 				"texture": "_Lotus_Interface_Icons_Store_QuillDartGun.png"
 			},
 			{
-				"disposition": 1.2,
+				"disposition": 1.3,
 				"name": "FUSILAI",
 				"texture": "_Lotus_Interface_Icons_Store_GlassKunai.png"
 			},
 			{
-				"disposition": 1.0,
+				"disposition": 1.15,
 				"name": "TWIN ROGGA",
 				"texture": "_Lotus_Interface_Icons_Store_GrnQueenGuardDualPistols.png"
 			},
 			{
-				"disposition": 1.1,
+				"disposition": 1.2,
 				"name": "KULSTAR",
 				"texture": "_Lotus_Interface_Icons_Store_GrnTorpedoPistol.png"
 			},
@@ -879,12 +954,12 @@
 				"texture": "_Lotus_Interface_Icons_Store_GrnUziWeapon.png"
 			},
 			{
-				"disposition": 0.87,
+				"disposition": 0.8,
 				"name": "ATOMOS",
 				"texture": "_Lotus_Interface_Icons_Store_GrnHeatGun.png"
 			},
 			{
-				"disposition": 0.5,
+				"disposition": 0.65,
 				"name": "MARELOK",
 				"texture": "_Lotus_Interface_Icons_Store_GrineerLeverActionPistol.png"
 			},
@@ -894,29 +969,24 @@
 				"texture": "_Lotus_Interface_Icons_Store_GrineerMicrowaveGun.png"
 			},
 			{
-				"disposition": 1.1,
+				"disposition": 1.2,
 				"name": "TWIN KOHMAK",
 				"texture": "_Lotus_Interface_Icons_Store_DualKohmak.png"
 			},
 			{
-				"disposition": 1.2,
+				"disposition": 1.3,
 				"name": "KOHMAK",
 				"texture": "_Lotus_Interface_Icons_Store_GrnWindUpPistol.png"
 			},
 			{
-				"disposition": 0.82,
+				"disposition": 0.95,
 				"name": "POX",
 				"texture": "_Lotus_Interface_Icons_Store_InfProximityStars.png"
 			},
 			{
-				"disposition": 1.19,
+				"disposition": 1.25,
 				"name": "DUAL TOXOCYST",
 				"texture": "_Lotus_Interface_Icons_Store_InfVomitGun.png"
-			},
-			{
-				"disposition": 1.45,
-				"name": "BURST LASER",
-				"texture": "_Lotus_Interface_Icons_Store_SentinelBurstLaser.png"
 			},
 			{
 				"disposition": 1.49,
@@ -924,7 +994,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_CorpusModularPistol.png"
 			},
 			{
-				"disposition": 0.5,
+				"disposition": 0.65,
 				"name": "SONICOR",
 				"texture": "_Lotus_Interface_Icons_Store_CrpAirPistolArray.png"
 			},
@@ -934,12 +1004,12 @@
 				"texture": "_Lotus_Interface_Icons_Store_Bolto.png"
 			},
 			{
-				"disposition": 1.5,
+				"disposition": 1.3,
 				"name": "SICARUS",
 				"texture": "_Lotus_Interface_Icons_Store_TennoBurstPistol.png"
 			},
 			{
-				"disposition": 1.2,
+				"disposition": 1.3,
 				"name": "BRONCO",
 				"texture": "_Lotus_Interface_Icons_Store_HandCannon.png"
 			},
@@ -954,7 +1024,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_Furis.png"
 			},
 			{
-				"disposition": 1.42,
+				"disposition": 1.35,
 				"name": "CASTANAS",
 				"texture": "_Lotus_Interface_Icons_Store_TaserStar.png"
 			},
@@ -964,12 +1034,12 @@
 				"texture": "_Lotus_Interface_Icons_Store_U18throwingknives.png"
 			},
 			{
-				"disposition": 1.0,
+				"disposition": 1.1,
 				"name": "ZAKTI",
 				"texture": "_Lotus_Interface_Icons_Store_TnGuandaoPistol.png"
 			},
 			{
-				"disposition": 1.0,
+				"disposition": 1.15,
 				"name": "KNELL",
 				"texture": "_Lotus_Interface_Icons_Store_PriestPistol.png"
 			},
@@ -979,12 +1049,12 @@
 				"texture": "_Lotus_Interface_Icons_Store_TnoBladedPistols.png"
 			},
 			{
-				"disposition": 1.0,
+				"disposition": 0.95,
 				"name": "PANDERO",
 				"texture": "_Lotus_Interface_Icons_Store_TnBardPistol.png"
 			},
 			{
-				"disposition": 0.66,
+				"disposition": 0.85,
 				"name": "SPIRA",
 				"texture": "_Lotus_Interface_Icons_Store_LiDagger.png"
 			},
@@ -994,7 +1064,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_GrineerAcidBlowDartGun.png"
 			},
 			{
-				"disposition": 1.35,
+				"disposition": 1.3,
 				"name": "DUAL CESTRA",
 				"texture": "_Lotus_Interface_Icons_Store_DualCorpusMinigun.png"
 			},
@@ -1009,27 +1079,27 @@
 				"texture": "_Lotus_Interface_Icons_Store_InfestedDartPistol.png"
 			},
 			{
-				"disposition": 0.53,
+				"disposition": 0.65,
 				"name": "GAMMACOR",
 				"texture": "_Lotus_Interface_Icons_Store_Gammacor.png"
 			},
 			{
-				"disposition": 1.51,
+				"disposition": 1.4,
 				"name": "LATO",
 				"texture": "_Lotus_Interface_Icons_Store_Pistol.png"
 			},
 			{
-				"disposition": 1.53,
+				"disposition": 1.4,
 				"name": "VASTO",
 				"texture": "_Lotus_Interface_Icons_Store_TennoHandCannon.png"
 			},
 			{
-				"disposition": 0.75,
+				"disposition": 0.7,
 				"name": "EUPHONA PRIME",
 				"texture": "_Lotus_Interface_Icons_Store_Primes_EuphoraPrime.png"
 			},
 			{
-				"disposition": 0.85,
+				"disposition": 0.95,
 				"name": "BALLISTICA",
 				"texture": "_Lotus_Interface_Icons_Store_TennoAutoCrossbow.png"
 			},
@@ -1044,7 +1114,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_CorpusMinigun.png"
 			},
 			{
-				"disposition": 1.24,
+				"disposition": 1.3,
 				"name": "DESPAIR",
 				"texture": "_Lotus_Interface_Icons_Store_StalkerKunai.png"
 			},
@@ -1054,7 +1124,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_KunaiThrowingKnives.png"
 			},
 			{
-				"disposition": 0.69,
+				"disposition": 0.75,
 				"name": "HIKOU",
 				"texture": "_Lotus_Interface_Icons_Store_ThrowingStar.png"
 			},
@@ -1074,7 +1144,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_CrpScopePistol.png"
 			},
 			{
-				"disposition": 1.5,
+				"disposition": 1.4,
 				"name": "TWIN GREMLINS",
 				"texture": "_Lotus_Interface_Icons_Store_GrineerBulbousSmg.png"
 			},
@@ -1084,12 +1154,12 @@
 				"texture": "_Lotus_Interface_Icons_Store_GrineerHeavyPistol.png"
 			},
 			{
-				"disposition": 1.53,
+				"disposition": 1.45,
 				"name": "VIPER",
 				"texture": "_Lotus_Interface_Icons_Store_GrineerLightPistol.png"
 			},
 			{
-				"disposition": 0.76,
+				"disposition": 0.85,
 				"name": "TWIN GRAKATAS",
 				"texture": "_Lotus_Interface_Icons_Store_Akgrakata.png"
 			},
@@ -1099,7 +1169,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_CaptainVorPistol.png"
 			},
 			{
-				"disposition": 0.75,
+				"disposition": 0.95,
 				"name": "BRAKK",
 				"texture": "_Lotus_Interface_Icons_Store_GrineerHandShotgun.png"
 			},
@@ -1114,7 +1184,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_Akmagnus.png"
 			},
 			{
-				"disposition": 1.24,
+				"disposition": 1.3,
 				"name": "AKVASTO",
 				"texture": "_Lotus_Interface_Icons_Store_DualVasto.png"
 			},
@@ -1129,7 +1199,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_GrineerLightPistolAkimbo.png"
 			},
 			{
-				"disposition": 0.85,
+				"disposition": 0.8,
 				"name": "AKBOLTO",
 				"texture": "_Lotus_Interface_Icons_Store_TennoAkimboPistols.png"
 			},
@@ -1144,12 +1214,12 @@
 				"texture": "_Lotus_Interface_Icons_Store_TennoAkimboAutoPistols.png"
 			},
 			{
-				"disposition": 0.5,
+				"disposition": 0.65,
 				"name": "VAYKOR MARELOK",
 				"texture": "_Lotus_Interface_Icons_Store_SMMarelok.png"
 			},
 			{
-				"disposition": 1.0,
+				"disposition": 0.92,
 				"name": "AKLEX",
 				"texture": "_Lotus_Interface_Icons_Store_Aklex.png"
 			},
@@ -1159,17 +1229,17 @@
 				"texture": "_Lotus_Interface_Icons_Store_CorpusHandCannon.png"
 			},
 			{
-				"disposition": 1.0,
+				"disposition": 1.1,
 				"name": "CYCRON",
 				"texture": "_Lotus_Interface_Icons_Store_CrpChargeGun.png"
 			},
 			{
-				"disposition": 1.26,
+				"disposition": 1.2,
 				"name": "AKSOMATI",
 				"texture": "_Lotus_Interface_Icons_Store_AkimboSomaPistols.png"
 			},
 			{
-				"disposition": 1.2,
+				"disposition": 1.0,
 				"name": "PYRANA",
 				"texture": "_Lotus_Interface_Icons_Store_SawnOffShotgun.png"
 			},
@@ -1189,131 +1259,184 @@
 				"texture": "_Lotus_Interface_Icons_Store_TennoUzi.png"
 			},
 			{
-				"disposition": 1.35,
+				"disposition": 1.25,
 				"name": "AZIMA",
 				"texture": "_Lotus_Interface_Icons_Store_SundialPistol.png"
+			},
+			{
+				"disposition": 1.0, 
+				"name": "OCUCOR", 
+				"texture": "_Lotus_Interface_Icons_Store_CrpSentExperimentPistol.png"
 			}
 		],
 		"Buffs": [{
 				"text": "|val|% 多重射击",
 				"curse": true,
-				"value": 119.7
+				"value": 119.7,
+				"prefix": "Sati",
+				"suffix": "Can"
 			},
 			{
 				"text": "|val|% 伤害",
 				"curse": true,
-				"value": 219.6
+				"value": 219.6,
+				"prefix": "Visi",
+				"suffix": "Ata"
 			},
 			{
 				"text": "|val|% 冲击伤害",
 				"curse": true,
-				"value": 119.97
+				"value": 119.97,
+				"prefix": "Magna",
+				"suffix": "Ton"
 			},
 			{
 				"text": "|val|% 穿刺伤害",
 				"curse": true,
-				"value": 119.97
+				"value": 119.97,
+				"prefix": "Insi",
+				"suffix": "Cak"
 			},
 			{
 				"text": "|val|% 切割伤害",
 				"curse": true,
-				"value": 119.97
+				"value": 119.97,
+				"prefix": "Sci",
+				"suffix": "Sus"
 			},
 			{
 				"text": "|val|% 暴击几率",
 				"curse": true,
-				"value": 149.99
+				"value": 149.99,
+				"prefix": "Crita",
+				"suffix": "Cron"
 			},
 			{
 				"text": "|val|% 暴击伤害",
 				"curse": true,
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Acri",
+				"suffix": "Tis"
 			},
 			{
 				"text": "|val|% 火焰伤害",
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Igni",
+				"suffix": "Pha"
 			},
 			{
 				"text": "|val|% 冰冻伤害",
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Geli",
+				"suffix": "Do"
 			},
 			{
 				"text": "|val|% 电击伤害",
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Vexi",
+				"suffix": "Tio"
 			},
 			{
 				"text": "|val|% 毒素伤害",
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Toxi",
+				"suffix": "Tox"
 			},
 			{
 				"text": "|val|% 触发几率",
 				"curse": true,
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Hexa",
+				"suffix": "Dex"
 			},
 			{
 				"text": "|val|% 触发时间",
 				"curse": true,
-				"value": 99.99
+				"value": 99.99,
+				"prefix": "Deci",
+				"suffix": "Des"
 			},
 			{
 				"text": "|val|% 对Grineer伤害",
 				"curse": true,
-				"value": 45.0
+				"value": 45.0,
+				"prefix": "Agri",
+				"suffix": "Con"
 			},
 			{
 				"text": "|val|% 对Corpus伤害",
 				"curse": true,
-				"value": 45.0
+				"value": 45.0,
+				"prefix": "Manti",
+				"suffix": "Tron"
 			},
 			{
 				"text": "|val|% 对Infested伤害",
 				"curse": true,
-				"value": 45.0
+				"value": 45.0,
+				"prefix": "Pura",
+				"suffix": "Ada"
 			},
 			{
 				"text": "|val|% 射击速度",
 				"curse": true,
-				"value": 74.7
+				"value": 74.7,
+				"prefix": "Croni",
+				"suffix": "Dra"
 			},
 			{
 				"text": "|val|% 弹匣容量",
 				"curse": true,
-				"value": 50.0
+				"value": 50.0,
+				"prefix": "Arma",
+				"suffix": "Tin"
 			},
 			{
 				"text": "|val|% 备弹",
 				"curse": true,
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Ampi",
+				"suffix": "Bin"
 			},
 			{
 				"text": "|val|% 子弹飞行速度",
 				"curse": true,
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Conci",
+				"suffix": "Nak"
 			},
 			{
 				"text": "|val|% 装填速度",
 				"curse": true,
-				"value": 50.0
+				"value": 50.0,
+				"prefix": "Feva",
+				"suffix": "Tak"
 			},
 			{
 				"text": "|val|% 后坐力",
 				"curse": true,
-				"value": -90.0
+				"value": -90.0,
+				"prefix": "Zeti",
+				"suffix": "Mag"
 			},
 			{
 				"text": "|val|% 变焦",
 				"curse": true,
-				"value": 80.1
+				"value": 80.1,
+				"prefix": "Hera",
+				"suffix": "Lis"
 			},
 			{
 				"text": "|val|m 穿透",
-				"value": 2.7
+				"value": 2.7,
+				"prefix": "Lexi",
+				"suffix": "Nok"
 			}
 		]
 	},
 	"Rifle": {
 		"Rivens": [{
-				"disposition": 1.0,
+				"disposition": 1.1,
 				"name": "VELDT",
 				"texture": "_Lotus_Interface_Icons_Store_TnRevolverRifle.png"
 			},
@@ -1323,12 +1446,12 @@
 				"texture": "_Lotus_Interface_Icons_Store_TnSMGWeapon.png"
 			},
 			{
-				"disposition": 1.0,
+				"disposition": 1.1,
 				"name": "ARGONAK",
 				"texture": "_Lotus_Interface_Icons_Store_LaserAimRifle.png"
 			},
 			{
-				"disposition": 1.21,
+				"disposition": 1.15,
 				"name": "OPTICOR",
 				"texture": "_Lotus_Interface_Icons_Store_CrpBFG.png"
 			},
@@ -1338,12 +1461,12 @@
 				"texture": "_Lotus_Interface_Icons_Store_CrpFreezeRayRifle.png"
 			},
 			{
-				"disposition": 0.895,
+				"disposition": 1.0,
 				"name": "QUANTA",
 				"texture": "_Lotus_Interface_Icons_Store_CrpShockRifle.png"
 			},
 			{
-				"disposition": 0.965,
+				"disposition": 0.85,
 				"name": "AMPREX",
 				"texture": "_Lotus_Interface_Icons_Store_ChainLightningGun.png"
 			},
@@ -1353,7 +1476,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_CorpusUMP.png"
 			},
 			{
-				"disposition": 1.175,
+				"disposition": 1.25,
 				"name": "PENTA",
 				"texture": "_Lotus_Interface_Icons_Store_CorpusGrenadeLauncher.png"
 			},
@@ -1363,17 +1486,12 @@
 				"texture": "_Lotus_Interface_Icons_Store_SentinelDethMachineRifle.png"
 			},
 			{
-				"disposition": 1.245,
-				"name": "VULKLOK",
-				"texture": "_Lotus_Interface_Icons_Store_SentinelElectricRailgun.png"
-			},
-			{
 				"disposition": 1.21,
 				"name": "DAIKYU",
 				"texture": "_Lotus_Interface_Icons_Store_AsymmetricBow.png"
 			},
 			{
-				"disposition": 0.86,
+				"disposition": 0.92,
 				"name": "CERNOS",
 				"texture": "_Lotus_Interface_Icons_Store_AntlerBow.png"
 			},
@@ -1383,7 +1501,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_InfQuantaRifle.png"
 			},
 			{
-				"disposition": 1.0,
+				"disposition": 1.1,
 				"name": "HEMA",
 				"texture": "_Lotus_Interface_Icons_Store_InfestedBurstRifle.png"
 			},
@@ -1393,7 +1511,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_U10InfPrimary.png"
 			},
 			{
-				"disposition": 1.07,
+				"disposition": 1.15,
 				"name": "LATRON",
 				"texture": "_Lotus_Interface_Icons_Store_TennoSemiAutoRifle.png"
 			},
@@ -1413,12 +1531,12 @@
 				"texture": "_Lotus_Interface_Icons_Store_TnoPrmryXbow.png"
 			},
 			{
-				"disposition": 0.965,
+				"disposition": 1.01,
 				"name": "BRATON",
 				"texture": "_Lotus_Interface_Icons_Store_CorpusAutoRifle.png"
 			},
 			{
-				"disposition": 1.175,
+				"disposition": 1.25,
 				"name": "BURSTON",
 				"texture": "_Lotus_Interface_Icons_Store_Burston.png"
 			},
@@ -1426,11 +1544,6 @@
 				"disposition": 1.175,
 				"name": "GORGON",
 				"texture": "_Lotus_Interface_Icons_Store_Gorgon.png"
-			},
-			{
-				"disposition": 1.315,
-				"name": "STINGER",
-				"texture": "_Lotus_Interface_Icons_Store_SentinelStinger.png"
 			},
 			{
 				"disposition": 1.45,
@@ -1448,12 +1561,12 @@
 				"texture": "_Lotus_Interface_Icons_Store_GrnBurstIcon.png"
 			},
 			{
-				"disposition": 1.0,
+				"disposition": 1.1,
 				"name": "FERROX",
 				"texture": "_Lotus_Interface_Icons_Store_CorpusSpearGun.png"
 			},
 			{
-				"disposition": 1.6,
+				"disposition": 1.55,
 				"name": "MITER",
 				"texture": "_Lotus_Interface_Icons_Store_GrineerSawbladeWeapon.png"
 			},
@@ -1468,12 +1581,12 @@
 				"texture": "_Lotus_Interface_Icons_Store_GrineerLeverActionRifle.png"
 			},
 			{
-				"disposition": 0.965,
+				"disposition": 1.05,
 				"name": "PARIS",
 				"texture": "_Lotus_Interface_Icons_Store_HuntingBow.png"
 			},
 			{
-				"disposition": 0.825,
+				"disposition": 0.9,
 				"name": "DREAD",
 				"texture": "_Lotus_Interface_Icons_Store_StalkerBow.png"
 			},
@@ -1483,7 +1596,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_DexTheThird.png"
 			},
 			{
-				"disposition": 1.5,
+				"disposition": 1.3,
 				"name": "TIBERON",
 				"texture": "_Lotus_Interface_Icons_Store_DrakeRifle.png"
 			},
@@ -1493,37 +1606,32 @@
 				"texture": "_Lotus_Interface_Icons_Store_FiveShotSniper.png"
 			},
 			{
-				"disposition": 1.0,
+				"disposition": 1.1,
 				"name": "ZENITH",
 				"texture": "_Lotus_Interface_Icons_Store_SundialRifle.png"
 			},
 			{
-				"disposition": 1.55,
+				"disposition": 1.5,
 				"name": "PANTHERA",
 				"texture": "_Lotus_Interface_Icons_Store_TennoMiter.png"
 			},
 			{
-				"disposition": 1.21,
-				"name": "LASER RIFLE",
-				"texture": "_Lotus_Interface_Icons_Store_SentinelLaserRifle.png"
-			},
-			{
-				"disposition": 0.5,
+				"disposition": 0.55,
 				"name": "SOMA",
 				"texture": "_Lotus_Interface_Icons_Store_U10DesignCouncilTennoAR.png"
 			},
 			{
-				"disposition": 1.0,
+				"disposition": 0.92,
 				"name": "VECTIS",
 				"texture": "_Lotus_Interface_Icons_Store_TennoSniperRifle.png"
 			},
 			{
-				"disposition": 0.79,
+				"disposition": 0.7,
 				"name": "IGNIS",
 				"texture": "_Lotus_Interface_Icons_Store_GrineerFlameThrower.png"
 			},
 			{
-				"disposition": 1.14,
+				"disposition": 1.2,
 				"name": "TORID",
 				"texture": "_Lotus_Interface_Icons_Store_GrineerGrenadeLauncher.png"
 			},
@@ -1538,7 +1646,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_CorpusLaserRifle.png"
 			},
 			{
-				"disposition": 1.14,
+				"disposition": 1.0,
 				"name": "SUPRA",
 				"texture": "_Lotus_Interface_Icons_Store_CorpusMachineGun.png"
 			},
@@ -1553,12 +1661,12 @@
 				"texture": "_Lotus_Interface_Icons_Store_CrpBow.png"
 			},
 			{
-				"disposition": 1.105,
+				"disposition": 0.95,
 				"name": "LANKA",
 				"texture": "_Lotus_Interface_Icons_Store_CorpusSniperRifle.png"
 			},
 			{
-				"disposition": 1.21,
+				"disposition": 1.26,
 				"name": "MUTALIST CERNOS",
 				"texture": "_Lotus_Interface_Icons_Store_InfCernos.png"
 			},
@@ -1568,7 +1676,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_InfCrpShockSwarm.png"
 			},
 			{
-				"disposition": 0.55,
+				"disposition": 0.75,
 				"name": "TONKOR",
 				"texture": "_Lotus_Interface_Icons_Store_GrnGrenadeLauncher.png"
 			},
@@ -1578,42 +1686,42 @@
 				"texture": "_Lotus_Interface_Icons_Store_GrnHarpoonGun.png"
 			},
 			{
-				"disposition": 1.0,
+				"disposition": 1.1,
 				"name": "JAVLOK",
 				"texture": "_Lotus_Interface_Icons_Store_GrnFlameSpear.png"
 			},
 			{
-				"disposition": 1.2,
+				"disposition": 1.25,
 				"name": "QUARTAKK",
 				"texture": "_Lotus_Interface_Icons_Store_GrnFourBarrelRifleWeapon.png"
 			},
 			{
-				"disposition": 1.55,
+				"disposition": 1.45,
 				"name": "BUZLOK",
 				"texture": "_Lotus_Interface_Icons_Store_GrnGorgSniperRifle.png"
 			},
 			{
-				"disposition": 1.0,
+				"disposition": 1.08,
 				"name": "ZARR",
 				"texture": "_Lotus_Interface_Icons_Store_GrineerCannon.png"
 			},
 			{
-				"disposition": 0.5,
+				"disposition": 0.7,
 				"name": "SIMULOR",
 				"texture": "_Lotus_Interface_Icons_Store_CephPrimary.png"
 			},
 			{
-				"disposition": 1.0,
+				"disposition": 1.05,
 				"name": "TENORA",
 				"texture": "_Lotus_Interface_Icons_Store_TnBardRifle.png"
 			},
 			{
-				"disposition": 1.175,
+				"disposition": 1.25,
 				"name": "STRADAVAR",
 				"texture": "_Lotus_Interface_Icons_Store_TennoTommyGun.png"
 			},
 			{
-				"disposition": 1.105,
+				"disposition": 1.18,
 				"name": "ZHUGE",
 				"texture": "_Lotus_Interface_Icons_Store_RepeatingCrossbow.png"
 			},
@@ -1623,125 +1731,183 @@
 				"texture": "_Lotus_Interface_Icons_Store_TnoLeverActionRifle.png"
 			},
 			{
-				"disposition": 1.0,
+				"disposition": 1.1,
 				"name": "SCOURGE",
 				"texture": "_Lotus_Interface_Icons_Store_PriestSpearGun.png"
+			},
+			{
+				"disposition": 1.0, 
+				"name": "NAGANTAKA", 
+				"texture": "_Lotus_Interface_Icons_Store_GarudaCrossbow.png"
+			},
+			{
+				"disposition": 1.0, 
+				"name": "BATTACOR", 
+				"texture": "_Lotus_Interface_Icons_Store_CrpSentExperimentRifle.png"
 			}
 		],
 		"Buffs": [{
 				"text": "|val|% 多重射击",
 				"curse": true,
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Sati",
+				"suffix": "Can"
 			},
 			{
 				"text": "|val|% 伤害",
 				"curse": true,
-				"value": 165.0
+				"value": 165.0,
+				"prefix": "Visi",
+				"suffix": "Ata"
 			},
 			{
 				"text": "|val|% 冲击伤害",
 				"curse": true,
-				"value": 119.97
+				"value": 119.97,
+				"prefix": "Magna",
+				"suffix": "Ton"
 			},
 			{
 				"text": "|val|% 穿刺伤害",
 				"curse": true,
-				"value": 119.97
+				"value": 119.97,
+				"prefix": "Insi",
+				"suffix": "Cak"
 			},
 			{
 				"text": "|val|% 切割伤害",
 				"curse": true,
-				"value": 119.97
+				"value": 119.97,
+				"prefix": "Sci",
+				"suffix": "Sus"
 			},
 			{
 				"text": "|val|% 暴击几率",
 				"curse": true,
-				"value": 149.99
+				"value": 149.99,
+				"prefix": "Crita",
+				"suffix": "Cron"
 			},
 			{
 				"text": "|val|% 暴击伤害",
 				"curse": true,
-				"value": 120.0
+				"value": 120.0,
+				"prefix": "Acri",
+				"suffix": "Tis"
 			},
 			{
 				"text": "|val|% 火焰伤害",
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Igni",
+				"suffix": "Pha"
 			},
 			{
 				"text": "|val|% 冰冻伤害",
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Geli",
+				"suffix": "Do"
 			},
 			{
 				"text": "|val|% 电击伤害",
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Vexi",
+				"suffix": "Tio"
 			},
 			{
 				"text": "|val|% 毒素伤害",
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Toxi",
+				"suffix": "Tox"
 			},
 			{
 				"text": "|val|% 触发几率",
 				"curse": true,
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Hexa",
+				"suffix": "Dex"
 			},
 			{
 				"text": "|val|% 触发时间",
 				"curse": true,
-				"value": 99.99
+				"value": 99.99,
+				"prefix": "Deci",
+				"suffix": "Des"
 			},
 			{
 				"text": "|val|% 对Grineer伤害",
 				"curse": true,
-				"value": 45.0
+				"value": 45.0,
+				"prefix": "Agri",
+				"suffix": "Con"
 			},
 			{
 				"text": "|val|% 对Corpus伤害",
 				"curse": true,
-				"value": 45.0
+				"value": 45.0,
+				"prefix": "Manti",
+				"suffix": "Tron"
 			},
 			{
 				"text": "|val|% 对Infested伤害",
 				"curse": true,
-				"value": 45.0
+				"value": 45.0,
+				"prefix": "Pura",
+				"suffix": "Ada"
 			},
 			{
 				"text": "|val|% 射击速度 (弓类武器x2)",
 				"curse": true,
-				"value": 60.03
+				"value": 60.03,
+				"prefix": "Croni",
+				"suffix": "Dra"
 			},
 			{
 				"text": "|val|% 弹匣容量",
 				"curse": true,
-				"value": 50.0
+				"value": 50.0,
+				"prefix": "Arma",
+				"suffix": "Tin"
 			},
 			{
 				"text": "|val|% 备弹",
 				"curse": true,
-				"value": 49.95
+				"value": 49.95,
+				"prefix": "Ampi",
+				"suffix": "Bin"
 			},
 			{
 				"text": "|val|% 子弹飞行速度",
 				"curse": true,
-				"value": 90.0
+				"value": 90.0,
+				"prefix": "Conci",
+				"suffix": "Nak"
 			},
 			{
 				"text": "|val|% 装填速度",
 				"curse": true,
-				"value": 50.0
+				"value": 50.0,
+				"prefix": "Feva",
+				"suffix": "Tak"
 			},
 			{
 				"text": "|val|% 后坐力",
 				"curse": true,
-				"value": -90.0
+				"value": -90.0,
+				"prefix": "Zeti",
+				"suffix": "Mag"
 			},
 			{
 				"text": "|val|% 变焦",
 				"curse": true,
-				"value": 59.99
+				"value": 59.99,
+				"prefix": "Hera",
+				"suffix": "Lis"
 			},
 			{
 				"text": "|val|m 穿透",
-				"value": 2.7
+				"value": 2.7,
+				"prefix": "Lexi",
+				"suffix": "Nok"
 			}
 		]
 	}

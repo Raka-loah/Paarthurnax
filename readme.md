@@ -8,8 +8,9 @@ requests和requests-cache。
 
 **使用方法：**
 1. 把所有的.py和.json复制到QQbot的插件文件夹，例如用户文件夹的.qqbot-tmp\plugins
-2. 启动QQbot，通过命令qq plug wf加载，或写入QQbot的配置文件自动加载
-3. GROFIT!
+2. 修改wf.py里的通报群名称
+3. 启动QQbot，通过命令qq plug wf加载，或写入QQbot的配置文件自动加载
+4. GROFIT!
 
 **进度：**
 - [x] 警报任务用户触发通报
