@@ -43,6 +43,13 @@ def onQQMessage(bot, contact, member, content):
 				bot.SendTo(contact, msg)
 	elif content.startswith('/ask'):
 		bot.SendTo(contact, wf.ask_8ball(content))
+	elif content.startswith('/wm'):
+		msg = wf.get_wmprice(content.replace('/wm', '').strip())
+		if msg != '':
+			if contact.ctype == 'group':
+				bot.SendTo(contact, '[' + member.name + ']\n' + msg)
+			else:
+				bot.SendTo(contact, msg)
 
 # It works but is it good to pull data from web every minute?
 @qqbotsched(second='00')

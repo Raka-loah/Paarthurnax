@@ -7,6 +7,7 @@ import json
 import time
 import math
 import random
+from bs4 import BeautifulSoup
 
 # Get world state json
 # Usage: get_worldstate()
@@ -40,6 +41,9 @@ with open(os.path.dirname(os.path.abspath(__file__)) + '\\riven.json', 'r', enco
 
 with open(os.path.dirname(os.path.abspath(__file__)) + '\\customReplies.json', 'r', encoding='utf-8') as E:
 	CR = json.loads(E.read())
+
+with open(os.path.dirname(os.path.abspath(__file__)) + '\\wm.json', 'r', encoding='utf-8') as E:
+	WM = json.loads(E.read())
 
 melee_dispo = {}
 melee_buff = {}
@@ -406,3 +410,37 @@ def misc_roll(content):
 def ask_8ball(content):
 	replies = ['当然YES咯','我觉得OK','毫无疑问','妥妥儿的','你就放心吧','让我说的话，YES','基本上没跑了','看起来没问题','YES','我听卡德加说YES，那就YES吧','有点复杂，再试一次','过会儿再问我','我觉得还是别剧透了','放飞自我中，过会儿再问','你心不够诚，再试一次','我觉得不行','我必须说NO','情况不容乐观','我觉得根本就是NO','我持怀疑态度']
 	return random.choice(replies)
+
+def get_wmprice(item_name):
+	msg = ''
+	item_name = item_name.lower().replace(' ','')
+	if item_name in WM:
+		wmurl = 'https://warframe.market/items/' + WM[item_name]
+		try:
+			wm = requests.get(wmurl).text
+
+			soup = BeautifulSoup(wm, features='html.parser')
+			data = soup.find('script', id='application-state').text
+
+			try:
+				converted_data = json.loads(data)
+				sellers = {}
+				for order in converted_data['payload']['orders']:
+					if order['order_type'] == 'sell' and order['user']['status'] == 'ingame':
+						sellers[order['user']['ingame_name']] = order['platinum']
+				sorted_sellers = sorted(sellers, key=lambda x: (sellers[x], x))
+				plat = 0
+				count = 0
+				for i in range(0,5):
+					try:
+						plat += sellers[sorted_sellers[i]]
+						msg += 'ID: ' + sorted_sellers[i] + ' 售价: ' + str(sellers[sorted_sellers[i]]) + '\n'
+						count += 1
+					except:
+						break
+				msg += '平均:' + str(plat / count)
+			except:
+				return '[ERROR]无法处理WM数据'
+		except:
+			return '[ERROR]无法连接到WM'
+	return msg
