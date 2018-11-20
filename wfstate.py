@@ -203,7 +203,6 @@ def get_sorties():
 # Cetus
 # Usage: get_cetus_time()
 # Return: a string about cetus time
-# Fortuna WIP
 
 def get_cetus_time():
 	try:
@@ -212,26 +211,31 @@ def get_cetus_time():
 		return '[ERROR] 获取世界状态失败'
 	day_cycle_text = ''
 	cetus_activation = 0
-	fortuna_activation = 0
 	for syndicate in ws['SyndicateMissions']:
 		if syndicate['Tag'] == 'CetusSyndicate':
 			cetus_activation = syndicate['Activation']['$date']['$numberLong']
 			cetus_expiry = syndicate['Expiry']['$date']['$numberLong']
-	for syndicate in ws['SyndicateMissions']:
-		if syndicate['Tag'] == 'SolarisSyndicate':
-			fortuna_activation = syndicate['Activation']['$date']['$numberLong']
-			fortuna_expiry = syndicate['Expiry']['$date']['$numberLong']
 	cetus_sec_remain = ((float(cetus_expiry) - float(cetus_activation)) / 1000) - (time.time() - float(cetus_activation) / 1000)
-	fortuna_sec_remain = ((float(fortuna_expiry) - float(fortuna_activation)) / 1000)- (time.time() - float(fortuna_activation) / 1000)
 	if cetus_sec_remain > 50 * 60: # not night
 		day_cycle_text = '希图斯当前是白天，剩余时间' + s2h(cetus_sec_remain - 3000) + '。'
 	elif cetus_sec_remain > 0:
 		day_cycle_text = '希图斯当前是夜晚，剩余时间' + s2h(cetus_sec_remain) + '。'
 	else:
 		return '[ERROR] 无法获取平原时间。'
-	day_cycle_text += '\n福尔图娜当天剩余时间' + s2h(fortuna_sec_remain) + '。麻烦你们赶紧去测时间啊！'
-	print(str(float(fortuna_expiry) - float(fortuna_activation)))
 	return day_cycle_text
+
+# Fortuna
+# Usage: get_fortuna_time()
+# Return: a string about Orb Vallis weather
+
+def get_fortuna_time():
+	weather_cycle_text = ''
+	cycle_remaining = 1600 - ((time.time() - 1541837628 - 36) % 1600) # 1541837628 has a 36 sec delay
+	if cycle_remaining > 1200:
+		weather_cycle_text = '奥布山谷当前天气温暖，剩余时间' + s2h(cycle_remaining - 1200) + '。'
+	else:
+		weather_cycle_text = '奥布山谷当前天气寒冷，剩余时间' + s2h(cycle_remaining) + '。'
+	return weather_cycle_text
 
 # Riven
 # Usage: get_riven_info()

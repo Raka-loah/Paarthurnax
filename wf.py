@@ -20,7 +20,7 @@ def onQQMessage(bot, contact, member, content):
 	if content == '警报':
 		bot.SendTo(contact, wf.get_alerts() + suffix)
 	elif content == '平原时间':
-		bot.SendTo(contact, wf.get_cetus_time() + suffix)
+		bot.SendTo(contact, wf.get_cetus_time() + '\n' + wf.get_fortuna_time() + suffix)
 	elif content == '突击':
 		bot.SendTo(contact, wf.get_sorties() + suffix)
 	elif content == '裂缝':
