@@ -396,11 +396,6 @@
 				"texture": "_Lotus_Interface_Icons_Store_GlaiveLight.png"
 			},
 			{
-				"disposition": 1.25,
-				"name": "DECONSTRUCTOR",
-				"texture": "_Lotus_Interface_Icons_Store_SentinelGlaiveWeapon.png"
-			},
-			{
 				"disposition": 1.0,
 				"name": "OHMA",
 				"texture": "_Lotus_Interface_Icons_Store_CorpusTonfas.png"
@@ -1267,6 +1262,26 @@
 				"disposition": 1.0, 
 				"name": "OCUCOR", 
 				"texture": "_Lotus_Interface_Icons_Store_CrpSentExperimentPistol.png"
+			},
+			{
+				"disposition": 1.0, 
+				"name": "TOMBFINGER", 
+				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_SUModularSecondary_SUModularSecondaryBarrelBPart.png"
+			}, 
+			{
+				"disposition": 1.0, 
+				"name": "CATCHMOON", 
+				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_SUModularSecondary_SUModularSecondaryBarrelAPart.png"
+			}, 
+			{
+				"disposition": 1.0, 
+				"name": "GAZE", 
+				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_SUModularSecondary_SUModularSecondaryBarrelDPart.png"
+			}, 
+			{
+				"disposition": 1.0, 
+				"name": "RATTLEGUTS", 
+				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_SUModularSecondary_SUModularSecondaryBarrelCPart.png"
 			}
 		],
 		"Buffs": [{
@@ -1479,11 +1494,6 @@
 				"disposition": 1.25,
 				"name": "PENTA",
 				"texture": "_Lotus_Interface_Icons_Store_CorpusGrenadeLauncher.png"
-			},
-			{
-				"disposition": 1.455,
-				"name": "DETH MACHINE RIFLE",
-				"texture": "_Lotus_Interface_Icons_Store_SentinelDethMachineRifle.png"
 			},
 			{
 				"disposition": 1.21,

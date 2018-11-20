@@ -411,6 +411,10 @@ def ask_8ball(content):
 	replies = ['当然YES咯','我觉得OK','毫无疑问','妥妥儿的','你就放心吧','让我说的话，YES','基本上没跑了','看起来没问题','YES','我听卡德加说YES，那就YES吧','有点复杂，再试一次','过会儿再问我','我觉得还是别剧透了','放飞自我中，过会儿再问','你心不够诚，再试一次','我觉得不行','我必须说NO','情况不容乐观','我觉得根本就是NO','我持怀疑态度']
 	return random.choice(replies)
 
+def cooldown():
+	replies = ['我还不能施放这个法术', '这个法术还在冷却中', '法术冷却中', '被抵抗，请稍后再试']
+	return random.choice(replies)
+
 def get_wmprice(item_name):
 	msg = ''
 	item_name = item_name.lower().replace(' ','')

@@ -11,6 +11,7 @@ with open(os.path.dirname(os.path.abspath(__file__)) + '\\customReplies.json', '
 
 stats = {}
 stats['last_sent'] = time.time()
+stats['last_wm_query'] = time.time()
 
 def onQQMessage(bot, contact, member, content):
 	suffix = '\n更多命令请输入"帮助"。'
@@ -30,6 +31,8 @@ def onQQMessage(bot, contact, member, content):
 		if time.time() - stats['last_sent'] > 60:
 			bot.SendTo(contact, '[' + member.name + ']' + wf.get_riven_info(content.replace('模拟开卡', '').strip()))
 			stats['last_sent'] = time.time()
+		else:
+			bot.SendTo(contact, '[' + member.name + ']\n' + wf.cooldown())
 	elif content == '帮助':
 		bot.SendTo(contact, '目前可用命令：\n帮助、警报、平原时间、突击、裂缝')
 	elif content.lower().replace(' ','') in R:
@@ -44,7 +47,11 @@ def onQQMessage(bot, contact, member, content):
 	elif content.startswith('/ask'):
 		bot.SendTo(contact, wf.ask_8ball(content))
 	elif content.startswith('/wm'):
-		msg = wf.get_wmprice(content.replace('/wm', '').strip())
+		if time.time() - stats['last_wm_query'] > 10:		
+			msg = wf.get_wmprice(content.replace('/wm', '').strip())
+			stats['last_wm_query'] = time.time()
+		else:
+			msg = wf.cooldown()
 		if msg != '':
 			if contact.ctype == 'group':
 				bot.SendTo(contact, '[' + member.name + ']\n' + msg)
