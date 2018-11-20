@@ -227,14 +227,19 @@ def get_cetus_time():
 # Fortuna
 # Usage: get_fortuna_time()
 # Return: a string about Orb Vallis weather
+# Note to self: 400(Warm) - 400(Cold) - 467(Freezing) - 333(Cold)
 
 def get_fortuna_time():
 	weather_cycle_text = ''
-	cycle_remaining = 1600 - ((time.time() - 1541837628 - 36) % 1600) # 1541837628 has a 36 sec delay
+	cycle_remaining = 1600 - ((time.time() - 1541837628 - 36) % 1600) # 1541837628 and a 36 sec delay
 	if cycle_remaining > 1200:
-		weather_cycle_text = '奥布山谷当前天气温暖，剩余时间' + s2h(cycle_remaining - 1200) + '。'
+		weather_cycle_text = '奥布山谷当前天气温暖，将在' + s2h(cycle_remaining - 1200) + '后转为寒冷。'
+	elif cycle_remaining > 800:
+		weather_cycle_text = '奥布山谷当前天气寒冷，将在' + s2h(cycle_remaining - 800) + '后转为刺骨，' + s2h(cycle_remaining) + '后转为温暖。'
+	elif cycle_remaining > 333:
+		weather_cycle_text = '奥布山谷当前天气刺骨，将在' + s2h(cycle_remaining - 333) + '后转为寒冷，' + s2h(cycle_remaining) + '后转为温暖。'
 	else:
-		weather_cycle_text = '奥布山谷当前天气寒冷，剩余时间' + s2h(cycle_remaining) + '。'
+		weather_cycle_text = '奥布山谷当前天气寒冷，将在' + s2h(cycle_remaining) + '后转为温暖。'
 	return weather_cycle_text
 
 # Riven
@@ -416,7 +421,7 @@ def ask_8ball(content):
 	return random.choice(replies)
 
 def cooldown():
-	replies = ['我还不能施放这个法术', '这个法术还在冷却中', '法术冷却中', '被抵抗，请稍后再试']
+	replies = ['我还不能施放这个法术', '这个法术还在冷却中', '法术冷却中', '我还没准备好施放这个法术', '被抵抗，请稍后再试']
 	return random.choice(replies)
 
 def get_wmprice(item_name):
