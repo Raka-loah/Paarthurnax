@@ -1209,11 +1209,6 @@
 				"texture": "_Lotus_Interface_Icons_Store_TennoAkimboAutoPistols.png"
 			},
 			{
-				"disposition": 0.65,
-				"name": "VAYKOR MARELOK",
-				"texture": "_Lotus_Interface_Icons_Store_SMMarelok.png"
-			},
-			{
 				"disposition": 0.92,
 				"name": "AKLEX",
 				"texture": "_Lotus_Interface_Icons_Store_Aklex.png"
@@ -1910,6 +1905,384 @@
 				"text": "|val|% 变焦",
 				"curse": true,
 				"value": 59.99,
+				"prefix": "Hera",
+				"suffix": "Lis"
+			},
+			{
+				"text": "|val|m 穿透",
+				"value": 2.7,
+				"prefix": "Lexi",
+				"suffix": "Nok"
+			}
+		]
+	},
+	"Zaw": {
+		"Rivens": [{
+				"disposition": 1,
+				"name": "PLAGUE KEEWAR",
+				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeInfestedTipTwo.png"
+			},
+			{
+				"disposition": 1,
+				"name": "PLAGUE KRIPATH",
+				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeInfestedTipOne.png"
+			},
+			{
+				"disposition": 1,
+				"name": "CYATH",
+				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipFour.png"
+			},
+			{
+				"disposition": 1,
+				"name": "DEHTAT",
+				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipFive.png"
+			},
+			{
+				"disposition": 1,
+				"name": "KRONSH",
+				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipSix.png"
+			},
+			{
+				"disposition": 1,
+				"name": "BALLA",
+				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipOne.png"
+			},
+			{
+				"disposition": 1,
+				"name": "OOLTHA",
+				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipTwo.png"
+			},
+			{
+				"disposition": 1,
+				"name": "MEWAN",
+				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipThree.png"
+			}
+		],
+		"Buffs": [{
+				"text": "|val|% 近战伤害",
+				"value": 164.7,
+				"prefix": "Visi",
+				"suffix": "Ata"
+			},
+			{
+				"text": "|val|% 冲击伤害",
+				"curse": true,
+				"value": 119.7,
+				"prefix": "Magna",
+				"suffix": "Ton"
+			},
+			{
+				"text": "|val|% 穿刺伤害",
+				"curse": true,
+				"value": 119.7,
+				"prefix": "Insi",
+				"suffix": "Cak"				
+			},
+			{
+				"text": "|val|% 切割伤害",
+				"curse": true,
+				"value": 119.7,
+				"prefix": "Sci",
+				"suffix": "Sus"
+			},
+			{
+				"text": "|val|% 暴击几率",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Crita",
+				"suffix": "Cron"
+			},
+			{
+				"text": "|val|% 暴击伤害",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Acri",
+				"suffix": "Tis"
+			},
+			{
+				"text": "|val|% 火焰伤害",
+				"value": 90.0,
+				"prefix": "Igni",
+				"suffix": "Pha"
+			},
+			{
+				"text": "|val|% 冰冻伤害",
+				"value": 90.0,
+				"prefix": "Geli",
+				"suffix": "Do"
+			},
+			{
+				"text": "|val|% 电击伤害",
+				"value": 90.0,
+				"prefix": "Vexi",
+				"suffix": "Tio"
+			},
+			{
+				"text": "|val|% 毒素伤害",
+				"value": 90.0,
+				"prefix": "Toxi",
+				"suffix": "Tox"
+			},
+			{
+				"text": "|val|% 触发几率",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Hexa",
+				"suffix": "Dex"
+			},
+			{
+				"text": "|val|% 触发时间",
+				"curse": true,
+				"value": 99.99,
+				"prefix": "Deci",
+				"suffix": "Des"
+			},
+			{
+				"text": "|val|% 对Grineer伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Agri",
+				"suffix": "Con"
+			},
+			{
+				"text": "|val|% 对Corpus伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Manti",
+				"suffix": "Tron"
+			},
+			{
+				"text": "|val|% 对Infested伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Pura",
+				"suffix": "Ada"
+			},
+			{
+				"text": "|val|% 攻击速度",
+				"curse": true,
+				"value": 54.9,
+				"prefix": "Croni",
+				"suffix": "Dra"
+			},
+			{
+				"text": "|val|% 导引效率",
+				"value": 90.0,
+				"prefix": "Uti",
+				"suffix": "Tia"
+			},
+			{
+				"text": "|val|% 导引伤害",
+				"value": 150.3,
+				"prefix": "Tori",
+				"suffix": "Bo"
+			},
+			{
+				"text": "|val|% 终结技伤害",
+				"curse": true,
+				"value": 119.7,
+				"prefix": "Exi",
+				"suffix": "Cta"
+			},
+			{
+				"text": "|val|% 范围",
+				"curse": true,
+				"value": 119.7,
+				"prefix": "Locti",
+				"suffix": "Tor"
+			},
+			{
+				"text": "滑行攻击有 |val|% 几率造成暴击",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Pleci",
+				"suffix": "Nent"
+			},
+			{
+				"text": "|val|s 连击时间",
+				"curse": true,
+				"value": 8.1,
+				"prefix": "Tempi",
+				"suffix": "Nem"
+			}
+		]
+	},
+	"Kitgun": {
+		"Rivens": [{
+				"disposition": 1.0, 
+				"name": "TOMBFINGER", 
+				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_SUModularSecondary_SUModularSecondaryBarrelBPart.png"
+			}, 
+			{
+				"disposition": 1.0, 
+				"name": "CATCHMOON", 
+				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_SUModularSecondary_SUModularSecondaryBarrelAPart.png"
+			}, 
+			{
+				"disposition": 1.0, 
+				"name": "GAZE", 
+				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_SUModularSecondary_SUModularSecondaryBarrelDPart.png"
+			}, 
+			{
+				"disposition": 1.0, 
+				"name": "RATTLEGUTS", 
+				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_SUModularSecondary_SUModularSecondaryBarrelCPart.png"
+			}
+		],
+		"Buffs": [{
+				"text": "|val|% 多重射击",
+				"curse": true,
+				"value": 119.7,
+				"prefix": "Sati",
+				"suffix": "Can"
+			},
+			{
+				"text": "|val|% 伤害",
+				"curse": true,
+				"value": 219.6,
+				"prefix": "Visi",
+				"suffix": "Ata"
+			},
+			{
+				"text": "|val|% 冲击伤害",
+				"curse": true,
+				"value": 119.97,
+				"prefix": "Magna",
+				"suffix": "Ton"
+			},
+			{
+				"text": "|val|% 穿刺伤害",
+				"curse": true,
+				"value": 119.97,
+				"prefix": "Insi",
+				"suffix": "Cak"
+			},
+			{
+				"text": "|val|% 切割伤害",
+				"curse": true,
+				"value": 119.97,
+				"prefix": "Sci",
+				"suffix": "Sus"
+			},
+			{
+				"text": "|val|% 暴击几率",
+				"curse": true,
+				"value": 149.99,
+				"prefix": "Crita",
+				"suffix": "Cron"
+			},
+			{
+				"text": "|val|% 暴击伤害",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Acri",
+				"suffix": "Tis"
+			},
+			{
+				"text": "|val|% 火焰伤害",
+				"value": 90.0,
+				"prefix": "Igni",
+				"suffix": "Pha"
+			},
+			{
+				"text": "|val|% 冰冻伤害",
+				"value": 90.0,
+				"prefix": "Geli",
+				"suffix": "Do"
+			},
+			{
+				"text": "|val|% 电击伤害",
+				"value": 90.0,
+				"prefix": "Vexi",
+				"suffix": "Tio"
+			},
+			{
+				"text": "|val|% 毒素伤害",
+				"value": 90.0,
+				"prefix": "Toxi",
+				"suffix": "Tox"
+			},
+			{
+				"text": "|val|% 触发几率",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Hexa",
+				"suffix": "Dex"
+			},
+			{
+				"text": "|val|% 触发时间",
+				"curse": true,
+				"value": 99.99,
+				"prefix": "Deci",
+				"suffix": "Des"
+			},
+			{
+				"text": "|val|% 对Grineer伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Agri",
+				"suffix": "Con"
+			},
+			{
+				"text": "|val|% 对Corpus伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Manti",
+				"suffix": "Tron"
+			},
+			{
+				"text": "|val|% 对Infested伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Pura",
+				"suffix": "Ada"
+			},
+			{
+				"text": "|val|% 射击速度",
+				"curse": true,
+				"value": 74.7,
+				"prefix": "Croni",
+				"suffix": "Dra"
+			},
+			{
+				"text": "|val|% 弹匣容量",
+				"curse": true,
+				"value": 50.0,
+				"prefix": "Arma",
+				"suffix": "Tin"
+			},
+			{
+				"text": "|val|% 备弹",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Ampi",
+				"suffix": "Bin"
+			},
+			{
+				"text": "|val|% 子弹飞行速度",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Conci",
+				"suffix": "Nak"
+			},
+			{
+				"text": "|val|% 装填速度",
+				"curse": true,
+				"value": 50.0,
+				"prefix": "Feva",
+				"suffix": "Tak"
+			},
+			{
+				"text": "|val|% 后坐力",
+				"curse": true,
+				"value": -90.0,
+				"prefix": "Zeti",
+				"suffix": "Mag"
+			},
+			{
+				"text": "|val|% 变焦",
+				"curse": true,
+				"value": 80.1,
 				"prefix": "Hera",
 				"suffix": "Lis"
 			},

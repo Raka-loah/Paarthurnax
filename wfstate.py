@@ -45,6 +45,12 @@ with open(os.path.dirname(os.path.abspath(__file__)) + '\\customReplies.json', '
 with open(os.path.dirname(os.path.abspath(__file__)) + '\\wm.json', 'r', encoding='utf-8') as E:
 	WM = json.loads(E.read())
 
+with open(os.path.dirname(os.path.abspath(__file__)) + '\\wm-parody.json', 'r', encoding='utf-8') as E:
+	WP = json.loads(E.read())
+
+with open(os.path.dirname(os.path.abspath(__file__)) + '\\jobs.json', 'r', encoding='utf-8') as E:
+	J = json.loads(E.read())
+
 melee_dispo = {}
 melee_buff = {}
 melee_curse = {}
@@ -355,6 +361,40 @@ def riven_details(weapon, buffs, has_curse, simulate=0):
 			+ '\n' + buffs[2].replace('|val|', str(round(rand_coh[2]*curr_buff[buffs[2]]*dispo,2))) + ' [' + str(round((rand_coh[2] - 1)*100,2)) + '%]'
 	return riven_info
 
+# Bounties
+# Usage: get_bounties(category) category: 'cetus'/'solaris'
+# Return: a very long string about selected bounties
+
+def get_bounties(category):
+	try:
+		ws = get_worldstate()
+	except:
+		return '[ERROR] 获取世界状态失败' 
+	msg = ''
+	if category == 'cetus':
+		for syndicate in ws['SyndicateMissions']:
+			if syndicate['Tag'] == 'CetusSyndicate':
+				cetus_bounties = syndicate['Jobs']
+				expiry = syndicate['Expiry']['$date']['$numberLong']
+		job_count = 0
+		msg = '希图斯当前赏金：（' + s2h(float(expiry) / 1000 - time.time()) + '后轮换）\n'
+		for job in cetus_bounties:
+			job_count += 1
+			msg += '赏金' + str(job_count) + ': ' + J[job['rewards'].lower()]['value'] + '\n'
+	elif category == 'solaris':
+		for syndicate in ws['SyndicateMissions']:
+			if syndicate['Tag'] == 'SolarisSyndicate':
+				solaris_bounties = syndicate['Jobs']
+				expiry = syndicate['Expiry']['$date']['$numberLong']
+		job_count = 0
+		msg = '索拉里斯联盟当前赏金：（' + s2h(float(expiry) / 1000 - time.time()) + '后轮换）\n'
+		for job in solaris_bounties:
+			job_count += 1
+			msg += '赏金' + str(job_count) + ': ' + J[job['rewards'].lower()]['value'] + '\n'
+
+	else:
+		msg = ''
+	return msg
 
 # Automatic broadcasting:
 
@@ -427,6 +467,10 @@ def cooldown():
 def get_wmprice(item_name):
 	msg = ''
 	item_name = item_name.lower().replace(' ','')
+	if item_name in WP:
+		msg = random.choice(WP[item_name])
+		return msg
+		
 	if item_name in WM:
 		wmurl = 'https://warframe.market/items/' + WM[item_name]
 		try:

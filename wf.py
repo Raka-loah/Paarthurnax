@@ -23,6 +23,10 @@ def onQQMessage(bot, contact, member, content):
 		bot.SendTo(contact, wf.get_cetus_time() + '\n' + wf.get_fortuna_time() + suffix)
 	elif content == '突击':
 		bot.SendTo(contact, wf.get_sorties() + suffix)
+	elif content == '地球赏金':
+		bot.SendTo(contact, wf.get_bounties('cetus') + suffix)
+	elif content == '金星赏金':
+		bot.SendTo(contact, wf.get_bounties('solaris') + suffix)
 	elif content == '裂缝':
 		bot.SendTo(contact, wf.get_fissures() + suffix)        
 	elif content == '入侵':
@@ -34,7 +38,7 @@ def onQQMessage(bot, contact, member, content):
 		else:
 			bot.SendTo(contact, '[' + member.name + ']\n' + wf.cooldown())
 	elif content == '帮助':
-		bot.SendTo(contact, '目前可用命令：\n帮助、警报、平原时间、突击、裂缝')
+		bot.SendTo(contact, '目前可用命令：\n帮助、警报、平原时间、地球赏金、金星赏金、突击、裂缝')
 	elif content.lower().replace(' ','') in R:
 		bot.SendTo(contact, R[content.lower().replace(' ','')])
 	elif content.startswith('/roll'):
