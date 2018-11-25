@@ -38,7 +38,7 @@ def onQQMessage(bot, contact, member, content):
 		else:
 			bot.SendTo(contact, '[' + member.name + ']\n' + wf.cooldown())
 	elif content == '帮助':
-		bot.SendTo(contact, '目前可用命令：\n帮助、警报、平原时间、地球赏金、金星赏金、突击、裂缝')
+		bot.SendTo(contact, '目前可用命令：\n帮助、警报、入侵、平原时间、地球赏金、金星赏金、突击、裂缝')
 	elif content.lower().replace(' ','') in R:
 		bot.SendTo(contact, R[content.lower().replace(' ','')])
 	elif content.startswith('/roll'):
