@@ -779,22 +779,22 @@
 		"value": "Orokin反应堆"
 	},
 	"/lotus/language/menu/corpusinvasiongeneric": {
-		"value": "Corpus Siege"
+		"value": "Corpus围攻"
 	},
 	"/lotus/language/menu/grineerinvasiongeneric": {
-		"value": "Grineer Offensive"
+		"value": "Grineer进攻"
 	},
 	"/lotus/language/menu/grineerinvasionleader": {
 		"value": "Grineer Faction"
 	},
 	"/lotus/language/menu/infestedinvasionboss": {
-		"value": "Phorid Manifestation"
+		"value": "Phorid现身"
 	},
 	"/lotus/language/menu/infestedinvasionending": {
 		"value": "Infestation Subsiding"
 	},
 	"/lotus/language/menu/infestedinvasiongeneric": {
-		"value": "Infested Outbreak"
+		"value": "Infested爆发"
 	},
 	"/lotus/language/sigils/kelaeventsigilname": {
 		"desc": "A sigil commemorating the liberation of defectors from the Grineer.",
@@ -13080,19 +13080,19 @@
 		"value": "Forma蓝图"
 	},
 	"/lotus/types/recipes/components/orokincatalystblueprint": {
-		"value": "Orokin Catalyst Blueprint"
+		"value": "Orokin催化剂蓝图"
 	},
 	"/lotus/types/recipes/components/orokinreactorblueprint": {
-		"value": "Orokin Reactor Blueprint"
+		"value": "Orokin反应堆蓝图"
 	},
 	"/lotus/types/recipes/components/utilityunlockerblueprint": {
-		"value": "Exilus Adapter Blueprint"
+		"value": "特殊功能槽连接器蓝图"
 	},
 	"/lotus/types/recipes/helmets/statlesslokialthelmetblueprint": {
-		"value": "Essence Loki Helmet Blueprint"
+		"value": "Loki精华头盔蓝图"
 	},
 	"/lotus/types/recipes/helmets/statlessnyxalthelmetblueprint": {
-		"value": "灭神Nyx头盔蓝图"
+		"value": "Nyx灭神头盔蓝图"
 	},
 	"/lotus/types/recipes/helmets/statlessv2nyxalthelmetblueprint": {
 		"value": "Vespa Nyx Helmet Blueprint"
@@ -13101,94 +13101,94 @@
 		"value": "Clisthert Equinox Helmet Blueprint"
 	},
 	"/lotus/types/recipes/weapons/deravandalblueprint": {
-		"value": "Dera Vandal Blueprint"
+		"value": "德拉 破坏者 蓝图"
 	},
 	"/lotus/types/recipes/weapons/grineercombatknifeprint": {
-		"value": "Sheev Blueprint"
+		"value": "西弗 蓝图"
 	},
 	"/lotus/types/recipes/weapons/grineercombatknifesortieblueprint": {
-		"value": "Sheev Blueprint"
+		"value": "西弗 蓝图"
 	},
 	"/lotus/types/recipes/weapons/karakwraithblueprint": {
-		"value": "Karak Wraith Blueprint"
+		"value": "卡拉克 亡魂 蓝图"
 	},
 	"/lotus/types/recipes/weapons/latronwraithblueprint": {
-		"value": "Latron Wraith Blueprint"
+		"value": "拉特昂 亡魂 蓝图"
 	},
 	"/lotus/types/recipes/weapons/snipetronvandalblueprint": {
-		"value": "Snipetron Vandal Blueprint"
+		"value": "狙击特昂 破坏者 蓝图"
 	},
 	"/lotus/types/recipes/weapons/strunwraithblueprint": {
-		"value": "Strun Wraith Blueprint"
+		"value": "斯特朗 亡魂 蓝图"
 	},
 	"/lotus/types/recipes/weapons/twinviperswraithblueprint": {
-		"value": "Wraith Twin Vipers Blueprint"
+		"value": "双子蝰蛇 亡魂 蓝图"
 	},
 	"/lotus/types/recipes/weapons/weaponparts/deravandalbarrel": {
-		"value": "Dera Vandal Barrel"
+		"value": "德拉 破坏者 枪管"
 	},
 	"/lotus/types/recipes/weapons/weaponparts/deravandalreceiver": {
-		"value": "Dera Vandal Receiver"
+		"value": "德拉 破坏者 枪机"
 	},
 	"/lotus/types/recipes/weapons/weaponparts/deravandalstock": {
-		"value": "Dera Vandal Stock"
+		"value": "德拉 破坏者 枪托"
 	},
 	"/lotus/types/recipes/weapons/weaponparts/grineercombatknifeblade": {
-		"value": "Sheev Blade"
+		"value": "西弗 刀刃"
 	},
 	"/lotus/types/recipes/weapons/weaponparts/grineercombatknifehandle": {
-		"value": "Sheev Handle"
+		"value": "西弗 握把"
 	},
 	"/lotus/types/recipes/weapons/weaponparts/grineercombatknifeheatsink": {
-		"value": "Sheev Heatsink"
+		"value": "西弗 散热器"
 	},
 	"/lotus/types/recipes/weapons/weaponparts/grineercombatknifehilt": {
-		"value": "Sheev Hilt"
+		"value": "西弗 握柄"
 	},
 	"/lotus/types/recipes/weapons/weaponparts/karakwraithbarrel": {
-		"value": "Karak Wraith Barrel"
+		"value": "卡拉克 亡魂 枪管"
 	},
 	"/lotus/types/recipes/weapons/weaponparts/karakwraithreceiver": {
-		"value": "Karak Wraith Receiver"
+		"value": "卡拉克 亡魂 枪机"
 	},
 	"/lotus/types/recipes/weapons/weaponparts/karakwraithstock": {
-		"value": "Karak Wraith Stock"
+		"value": "卡拉克 亡魂 枪托"
 	},
 	"/lotus/types/recipes/weapons/weaponparts/latronwraithbarrel": {
-		"value": "Latron Wraith Barrel"
+		"value": "拉特昂 亡魂 枪管"
 	},
 	"/lotus/types/recipes/weapons/weaponparts/latronwraithreceiver": {
-		"value": "Latron Wraith Receiver"
+		"value": "拉特昂 亡魂 枪机"
 	},
 	"/lotus/types/recipes/weapons/weaponparts/latronwraithstock": {
-		"value": "Latron Wraith Stock"
+		"value": "拉特昂 亡魂 枪托"
 	},
 	"/lotus/types/recipes/weapons/weaponparts/snipetronvandalbarrel": {
-		"value": "Snipetron Vandal Barrel"
+		"value": "狙击特昂 破坏者 枪管"
 	},
 	"/lotus/types/recipes/weapons/weaponparts/snipetronvandalreceiver": {
-		"value": "Snipetron Vandal Receiver"
+		"value": "狙击特昂 破坏者 枪机"
 	},
 	"/lotus/types/recipes/weapons/weaponparts/snipetronvandalstock": {
-		"value": "Snipetron Vandal Stock"
+		"value": "狙击特昂 破坏者 枪托"
 	},
 	"/lotus/types/recipes/weapons/weaponparts/strunwraithbarrel": {
-		"value": "Strun Wraith Barrel"
+		"value": "斯特朗 亡魂 枪管"
 	},
 	"/lotus/types/recipes/weapons/weaponparts/strunwraithreceiver": {
-		"value": "Strun Wraith Receiver"
+		"value": "斯特朗 亡魂 枪机"
 	},
 	"/lotus/types/recipes/weapons/weaponparts/strunwraithstock": {
-		"value": "Strun Wraith Stock"
+		"value": "斯特朗 亡魂 枪托"
 	},
 	"/lotus/types/recipes/weapons/weaponparts/twinviperswraithbarrel": {
-		"value": "Wraith Twin Vipers Barrel"
+		"value": "双子蝰蛇 亡魂 枪管"
 	},
 	"/lotus/types/recipes/weapons/weaponparts/twinviperswraithlink": {
-		"value": "Wraith Twin Vipers Link"
+		"value": "双子蝰蛇 亡魂 连接器"
 	},
 	"/lotus/types/recipes/weapons/weaponparts/twinviperswraithreceiver": {
-		"value": "Wraith Twin Vipers Receiver"
+		"value": "双子蝰蛇 亡魂 枪机"
 	},
 	"/lotus/types/restoratives/deployables/lisetturretavatar": {
 		"value": "Liset Turret Avatar"

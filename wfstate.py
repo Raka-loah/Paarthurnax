@@ -153,7 +153,41 @@ def get_alerts():
 
 # Invasions
 def get_invasions():
-	return '[ERROR] 功能开发中，敬请期待'
+	inv_factions = {
+		'FC_INFESTATION': 'Infested',
+		'FC_CORPUS': 'Corpus',
+		'FC_GRINEER': 'Grineer'
+	}
+	msg = ''
+	try:
+		ws = get_worldstate()
+	except:
+		return '[ERROR] 获取世界状态失败'
+	invasions = ws['Invasions']
+	for invasion in invasions:
+		if invasion['Completed'] == 1:
+			continue
+		inv_vs_infestation = True if invasion['DefenderMissionInfo']['faction'] == 'FC_INFESTATION' else False
+		goal_perc = (1 + (float(invasion['Count']) / float(invasion['Goal']))) * (100 if inv_vs_infestation else 50)
+		eta_finish = (int(invasion['Goal']) - abs(int(invasion['Count']))) * ((time.time() - float(invasion['Activation']['$date']['$numberLong']) / 1000) / abs(int(invasion['Count'])))
+		atk_faction = invasion['DefenderMissionInfo']['faction']
+		def_faction = invasion['AttackerMissionInfo']['faction']
+		atk_reward =  L[invasion['AttackerReward']['countedItems'][0]['ItemType'].lower()]['value'] if 'countedItems' in invasion['AttackerReward'] else ''
+		atk_reward_q = ' x ' + str(invasion['AttackerReward']['countedItems'][0]['ItemCount']) if 'countedItems' in invasion['AttackerReward'] else ''
+		def_reward =  L[invasion['DefenderReward']['countedItems'][0]['ItemType'].lower()]['value'] if 'countedItems' in invasion['DefenderReward'] else ''
+		def_reward_q = ' x ' + str(invasion['DefenderReward']['countedItems'][0]['ItemCount']) if 'countedItems' in invasion['DefenderReward'] else ''
+
+		msg += '地点：' + S[invasion['Node']]['value'] + '\n' \
+		+ '阵营：' + inv_factions[atk_faction] + ' vs ' + inv_factions[def_faction] + ' (' + L[invasion['LocTag'].lower()]['value'] + ')\n' \
+		+ '进度：' + '%.2f%% (ETA: %s)' % (goal_perc, s2h(eta_finish)) + '\n' 
+
+		if inv_vs_infestation:
+			msg += '奖励：' + def_reward + def_reward_q + '\n'
+		else:
+			msg += '奖励：' + atk_reward + atk_reward_q + ' vs ' + def_reward + def_reward_q + '\n'
+
+		msg += '\n'
+	return msg[:-2]
 
 
 # Fissures
@@ -381,6 +415,7 @@ def get_bounties(category):
 		for job in cetus_bounties:
 			job_count += 1
 			msg += '赏金' + str(job_count) + ': ' + J[job['rewards'].lower()]['value'] + '\n'
+		msg = msg[:-1]
 	elif category == 'solaris':
 		for syndicate in ws['SyndicateMissions']:
 			if syndicate['Tag'] == 'SolarisSyndicate':
@@ -391,7 +426,7 @@ def get_bounties(category):
 		for job in solaris_bounties:
 			job_count += 1
 			msg += '赏金' + str(job_count) + ': ' + J[job['rewards'].lower()]['value'] + '\n'
-
+		msg = msg[:-1]
 	else:
 		msg = ''
 	return msg
