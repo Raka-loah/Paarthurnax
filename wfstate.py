@@ -51,6 +51,9 @@ with open(os.path.dirname(os.path.abspath(__file__)) + '\\wm-parody.json', 'r', 
 with open(os.path.dirname(os.path.abspath(__file__)) + '\\jobs.json', 'r', encoding='utf-8') as E:
 	J = json.loads(E.read())
 
+with open(os.path.dirname(os.path.abspath(__file__)) + '\\modlist.json', 'r', encoding='utf-8') as E:
+	ML = json.loads(E.read())
+
 melee_dispo = {}
 melee_buff = {}
 melee_curse = {}
@@ -535,4 +538,20 @@ def get_wmprice(item_name):
 				return '[ERROR]无法处理WM数据'
 		except:
 			return '[ERROR]无法连接到WM'
+	return msg
+
+def get_wiki_text(mod_name):
+	s = requests_cache.CachedSession(backend='sqlite', expire_after=3600, cache_name='wiki_cache')
+	msg = ''
+	if mod_name in ML:
+		wikiurl = 'http://warframe.huijiwiki.com/wiki/' + ML[mod_name]
+	else:
+		return ''
+	try:
+		wiki = s.get(wikiurl).text
+		soup = BeautifulSoup(wiki, features='html.parser')
+		data = soup.find('div', {'class': 'mw-parser-output'})
+		msg = data.find('p').text.strip()
+	except:
+		return ''
 	return msg

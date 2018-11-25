@@ -10,8 +10,9 @@ with open(os.path.dirname(os.path.abspath(__file__)) + '\\customReplies.json', '
 	R = json.loads(E.read())
 
 stats = {}
-stats['last_sent'] = time.time()
-stats['last_wm_query'] = time.time()
+stats['last_sent'] = 0
+stats['last_wm_query'] = 0
+stats['last_wiki_query'] = 0
 
 def onQQMessage(bot, contact, member, content):
 	suffix = '\n更多命令请输入"帮助"。'
@@ -61,7 +62,18 @@ def onQQMessage(bot, contact, member, content):
 				bot.SendTo(contact, '[' + member.name + ']\n' + msg)
 			else:
 				bot.SendTo(contact, msg)
-
+	elif content.startswith('/mod'):
+		if time.time() - stats['last_wiki_query'] > 10:
+			msg = wf.get_wiki_text(content.replace('/mod', '').strip())
+			stats['last_wiki_query'] = time.time()
+		else:
+			msg = wf.cooldown()
+		if msg != '':
+			if contact.ctype == 'group':
+				bot.SendTo(contact, '[' + member.name + ']\n' + msg)
+			else:
+				bot.SendTo(contact, msg)
+				
 # It works but is it good to pull data from web every minute?
 @qqbotsched(second='00')
 def task_new_alert(bot):
