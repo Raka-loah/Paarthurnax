@@ -541,10 +541,10 @@ def get_wmprice(item_name):
 	return msg
 
 def get_wiki_text(mod_name):
-	s = requests_cache.CachedSession(backend='sqlite', expire_after=3600, cache_name='wiki_cache')
+	s = requests_cache.CachedSession(backend='sqlite', cache_name='wiki_cache')
 	msg = ''
-	if mod_name in ML:
-		wikiurl = 'http://warframe.huijiwiki.com/wiki/' + ML[mod_name]
+	if mod_name.lower().replace(' ','') in ML:
+		wikiurl = 'http://warframe.huijiwiki.com/wiki/' + ML[mod_name.lower().replace(' ','')]
 	else:
 		return ''
 	try:
