@@ -1,3 +1,5 @@
+惊闻SmartQQ将在19年1月1日关闭，届时这个插件可能真的就彻底没用了，各位再见
+---
 【施工中】适用于[QQbot](https://github.com/pandolia/qqbot)的Warframe世界状态插件
 ---
 **依赖**
