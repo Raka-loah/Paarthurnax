@@ -361,16 +361,16 @@ def riven_details(weapon, buffs, has_curse, simulate=0):
 					pass
 			curse = random.sample(temp_curr_curse, 1)
 			riven_info = CR['翻译' + weapon.lower().replace(' ','')] + ' ' + curr_prefix[buffs[0]] + curr_suffix[buffs[1]].lower() + '\n' \
-			+ buffs[0].replace('|val|', str(round(rand_coh[0]*curr_buff[buffs[0]]*dispo,2))) + ' [' + str(round((rand_coh[0] - 1)*100,2)) + '%]'\
-			+ '\n' + buffs[1].replace('|val|', str(round(rand_coh[1]*curr_buff[buffs[1]]*dispo,2))) + ' [' + str(round((rand_coh[1] - 1)*100,2)) + '%]'\
-			+ '\n' + curse[0].replace('|val|', str(-1*round(rand_coh[2]*curr_curse[curse[0]]*curr_dispo[weapon]*1.5*0.33,2))) + ' [' + str(round((rand_coh[2] - 1)*100,2)) + '%]'
+			+ buffs[0].replace('|val|', str(round(rand_coh[0]*curr_buff[buffs[0]]*dispo,2))) + ' [' + riven_rank(round((rand_coh[0] - 1)*100,2)) + ']'\
+			+ '\n' + buffs[1].replace('|val|', str(round(rand_coh[1]*curr_buff[buffs[1]]*dispo,2))) + ' [' + riven_rank(round((rand_coh[1] - 1)*100,2)) + ']'\
+			+ '\n' + curse[0].replace('|val|', str(-1*round(rand_coh[2]*curr_curse[curse[0]]*curr_dispo[weapon]*1.5*0.33,2))) + ' [' + riven_rank(round((rand_coh[2] - 1)*100,2)) + ']'
 		else:
 			dispo = curr_dispo[weapon] #裂罅倾向
 			dispo = dispo * 0.66 * 1.5 #2buff，无负，按照0.66，1.5紫卡系数
 			buffs = random.sample(list(curr_buff),2) #下限系数0.9，上限系数1.1
 			riven_info = CR['翻译'+weapon.lower().replace(' ','')] + ' ' + curr_prefix[buffs[0]] + curr_suffix[buffs[1]].lower() + '\n' \
-			+ buffs[0].replace('|val|', str(round(rand_coh[0]*curr_buff[buffs[0]]*dispo,2))) + ' [' + str(round((rand_coh[0] - 1)*100,2)) + '%]' \
-			+ '\n' + buffs[1].replace('|val|', str(round(rand_coh[1]*curr_buff[buffs[1]]*dispo,2))) + ' [' + str(round((rand_coh[1] - 1)*100,2)) + '%]'
+			+ buffs[0].replace('|val|', str(round(rand_coh[0]*curr_buff[buffs[0]]*dispo,2))) + ' [' + riven_rank(round((rand_coh[0] - 1)*100,2)) + ']' \
+			+ '\n' + buffs[1].replace('|val|', str(round(rand_coh[1]*curr_buff[buffs[1]]*dispo,2))) + ' [' + riven_rank(round((rand_coh[1] - 1)*100,2)) + ']'
 	elif buffs == 3:
 		if has_curse:
 			dispo = curr_dispo[weapon] * 1.25
@@ -384,19 +384,39 @@ def riven_details(weapon, buffs, has_curse, simulate=0):
 					pass
 			curse = random.sample(temp_curr_curse, 1)
 			riven_info = CR['翻译'+weapon.lower().replace(' ','')] + ' ' + curr_prefix[buffs[0]] + '-' + curr_prefix[buffs[1]].lower() + curr_suffix[buffs[2]].lower() + '\n' \
-			+ buffs[0].replace('|val|', str(round(rand_coh[0]*curr_buff[buffs[0]]*dispo,2))) + ' [' + str(round((rand_coh[0] - 1)*100,2)) + '%]' \
-			+ '\n' + buffs[1].replace('|val|', str(round(rand_coh[1]*curr_buff[buffs[1]]*dispo,2))) + ' [' + str(round((rand_coh[1] - 1)*100,2)) + '%]' \
-			+ '\n' + buffs[2].replace('|val|', str(round(rand_coh[2]*curr_buff[buffs[2]]*dispo,2))) + ' [' + str(round((rand_coh[2] - 1)*100,2)) + '%]' \
-			+ '\n' + curse[0].replace('|val|', str(-1*round(rand_coh[3]*curr_curse[curse[0]]*curr_dispo[weapon]*1.5*0.5,2))) + ' [' + str(round((rand_coh[3] - 1)*100,2)) + '%]'
+			+ buffs[0].replace('|val|', str(round(rand_coh[0]*curr_buff[buffs[0]]*dispo,2))) + ' [' + riven_rank(round((rand_coh[0] - 1)*100,2)) + ']' \
+			+ '\n' + buffs[1].replace('|val|', str(round(rand_coh[1]*curr_buff[buffs[1]]*dispo,2))) + ' [' + riven_rank(round((rand_coh[1] - 1)*100,2)) + ']' \
+			+ '\n' + buffs[2].replace('|val|', str(round(rand_coh[2]*curr_buff[buffs[2]]*dispo,2))) + ' [' + riven_rank(round((rand_coh[2] - 1)*100,2)) + ']' \
+			+ '\n' + curse[0].replace('|val|', str(-1*round(rand_coh[3]*curr_curse[curse[0]]*curr_dispo[weapon]*1.5*0.5,2))) + ' [' + riven_rank(round((rand_coh[3] - 1)*100,2)) + ']'
 		else:
 			dispo = curr_dispo[weapon]
 			dispo = dispo * 0.5 * 1.5
 			buffs = random.sample(list(curr_buff),3)
 			riven_info = CR['翻译'+weapon.lower().replace(' ','')] + ' ' + curr_prefix[buffs[0]] + '-' + curr_prefix[buffs[1]].lower() + curr_suffix[buffs[2]].lower() + '\n' \
-			+ buffs[0].replace('|val|', str(round(rand_coh[0]*curr_buff[buffs[0]]*dispo,2))) + ' [' + str(round((rand_coh[0] - 1)*100,2)) + '%]' \
-			+ '\n' + buffs[1].replace('|val|', str(round(rand_coh[1]*curr_buff[buffs[1]]*dispo,2))) + ' [' + str(round((rand_coh[1] - 1)*100,2)) + '%]' \
-			+ '\n' + buffs[2].replace('|val|', str(round(rand_coh[2]*curr_buff[buffs[2]]*dispo,2))) + ' [' + str(round((rand_coh[2] - 1)*100,2)) + '%]'
+			+ buffs[0].replace('|val|', str(round(rand_coh[0]*curr_buff[buffs[0]]*dispo,2))) + ' [' + riven_rank(round((rand_coh[0] - 1)*100,2)) + ']' \
+			+ '\n' + buffs[1].replace('|val|', str(round(rand_coh[1]*curr_buff[buffs[1]]*dispo,2))) + ' [' + riven_rank(round((rand_coh[1] - 1)*100,2)) + ']' \
+			+ '\n' + buffs[2].replace('|val|', str(round(rand_coh[2]*curr_buff[buffs[2]]*dispo,2))) + ' [' + riven_rank(round((rand_coh[2] - 1)*100,2)) + ']'
 	return riven_info
+
+def riven_rank(perc):
+	rank = ''
+	if 9.5 < perc <= 10:
+		rank = 'SSS'
+	elif 9 < perc <= 9.5:
+		rank = 'SS'
+	elif 6 < perc <= 9:
+		rank = 'S'
+	elif 2 < perc <= 6:
+		rank = 'A'
+	elif -2 < perc <= 2:
+		rank = 'B'
+	elif -6 < perc <= -2:
+		rank = 'C'
+	elif -10 <= perc <= -6:
+		rank = 'D'
+	else:
+		rank = '?'
+	return rank
 
 # Bounties
 # Usage: get_bounties(category) category: 'cetus'/'solaris'
