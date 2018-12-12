@@ -4776,19 +4776,19 @@
 		"value": "Zephyr Systems"
 	},
 	"/lotus/storeitems/types/recipes/warframerecipes/trapperchassisblueprint": {
-		"value": "Vauban Chassis Blueprint"
+		"value": "Vauban机体蓝图"
 	},
 	"/lotus/storeitems/types/recipes/warframerecipes/trapperchassiscomponent": {
 		"value": "Vauban Chassis"
 	},
 	"/lotus/storeitems/types/recipes/warframerecipes/trapperhelmetblueprint": {
-		"value": "Vauban Neuroptics Blueprint"
+		"value": "Vauban神经光元蓝图"
 	},
 	"/lotus/storeitems/types/recipes/warframerecipes/trapperhelmetcomponent": {
 		"value": "Vauban Neuroptics"
 	},
 	"/lotus/storeitems/types/recipes/warframerecipes/trappersystemsblueprint": {
-		"value": "Vauban Systems Blueprint"
+		"value": "Vauban系统蓝图"
 	},
 	"/lotus/storeitems/types/recipes/warframerecipes/trappersystemscomponent": {
 		"value": "Vauban Systems"
@@ -4821,40 +4821,40 @@
 		"value": "Volt Systems"
 	},
 	"/lotus/storeitems/types/recipes/weapons/ceramicdaggerblueprint": {
-		"value": "Ceramic Dagger Blueprint"
+		"value": "陶瓷匕首 蓝图"
 	},
 	"/lotus/storeitems/types/recipes/weapons/darkdaggerblueprint": {
-		"value": "Dark Dagger Blueprint"
+		"value": "暗黑匕首 蓝图"
 	},
 	"/lotus/storeitems/types/recipes/weapons/glaiveblueprint": {
-		"value": "Glaive Blueprint"
+		"value": "战刃 蓝图"
 	},
 	"/lotus/storeitems/types/recipes/weapons/heatdaggerblueprint": {
-		"value": "Heat Dagger Blueprint"
+		"value": "烈焰匕首 蓝图"
 	},
 	"/lotus/storeitems/types/recipes/weapons/heatswordblueprint": {
-		"value": "Heat Sword Blueprint"
+		"value": "烈焰长剑 蓝图"
 	},
 	"/lotus/storeitems/types/recipes/weapons/jawblueprint": {
-		"value": "Jaw Sword Blueprint"
+		"value": "蛇颚剑 蓝图"
 	},
 	"/lotus/storeitems/types/recipes/weapons/pangolinswordblueprint": {
-		"value": "Pangolin Sword Blueprint"
+		"value": "鲮鲤剑 蓝图"
 	},
 	"/lotus/storeitems/types/recipes/weapons/plasmaswordblueprint": {
-		"value": "Plasma Sword Blueprint"
+		"value": "等离子长剑 蓝图"
 	},
 	"/lotus/storeitems/types/recipes/weapons/skins/daggeraxeblueprint": {
-		"value": "Dagger Axe Scindo Skin"
+		"value": "分裂斩斧匕刃外观 蓝图"
 	},
 	"/lotus/storeitems/types/recipes/weapons/skins/dualdaggeraxeblueprint": {
-		"value": "Dagger Zoren Skin Blueprint"
+		"value": "佐伦双斧匕刃外观 蓝图"
 	},
 	"/lotus/storeitems/types/recipes/weapons/skins/grnaxeblueprint": {
-		"value": "Scindo Manticore Axe Skin Blueprint"
+		"value": "分裂斩斧蝎尾狮外观 蓝图"
 	},
 	"/lotus/storeitems/types/recipes/weapons/skins/grnhammerblueprint": {
-		"value": "Brokk Hammer Skin Blueprint"
+		"value": "重击巨锤布洛克外观 蓝图"
 	},
 	"/lotus/storeitems/types/recipes/weapons/weaponparts/akbroncoprimelink": {
 		"value": "Akbronco Prime Link"
@@ -12786,7 +12786,7 @@
 		"value": "Vay Hek Nav Coordinate [Obsolete??]"
 	},
 	"/lotus/types/items/miscitems/infestedaladcoordinate": {
-		"value": "Mutalist Alad V Nav Coordinate"
+		"value": "异融Alad V导航坐标"
 	},
 	"/lotus/types/items/miscitems/juggernautparta": {
 		"value": "脉动节瘤"
