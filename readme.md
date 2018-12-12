@@ -1,6 +1,7 @@
 【施工中】Warframe世界状态本地webAPI
 ---
 **依赖**
+
 flask-restful用于快速开启本地RESTful API。
 requests、requests-cache用于拉取官方API状态。
 beautifulsoup4用于分析某网页内容。
@@ -13,6 +14,7 @@ beautifulsoup4用于分析某网页内容。
 4. 使用你喜欢的机器人平台获取返回值，发送到你想发送的地方。
 
 **建议**
+
 为了安全性和性能建议使用真正的WSGI而不是这个debug服务器。
 当然懒得配置的话这样用也一样。
 
