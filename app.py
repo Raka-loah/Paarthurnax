@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_restful import Api, Resource, reqparse
+from apscheduler.schedulers.background import BackgroundScheduler
 import os
 import time
 import json
@@ -119,5 +120,18 @@ class wfst(Resource):
 # POST message to /
 api.add_resource(wfst, '/')
 
+# Cron jobs
+def task_new_alert():
+	# msg = wf.get_new_alerts()
+	pass
+
+def task_cetus_transition():
+	# msg = wf.get_cetus_transition()
+	pass
+
 if __name__ == '__main__':
-	app.run(debug=True, port=8888)
+	scheduler = BackgroundScheduler()
+	scheduler.add_job(task_new_alert, 'cron', second='00')
+	scheduler.add_job(task_cetus_transition, 'cron', second='05')
+	scheduler.start()
+	app.run(port=8888)
