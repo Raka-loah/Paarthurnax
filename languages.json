@@ -6839,6 +6839,9 @@
 	"/lotus/storeitems/upgrades/mods/melee/dualstat/rendingstrikemod": {
 		"value": "撕裂打击"
 	},
+	"/lotus/storeitems/upgrades/mods/melee/dualstat/combotimestatuschancemod": {
+		"value": "漂移接触"
+	},	
 	"/lotus/storeitems/upgrades/mods/melee/expert/weaponarmorpiercingdamagemodexpert": {
 		"value": "Primed Sundering Strike"
 	},
