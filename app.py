@@ -29,6 +29,10 @@ class wfst(Resource):
 			}
 
 			suffix = '\n更多命令请输入"帮助"。'
+
+			if j['sender']['user_id'] == j['self_id']:
+				return '', 204
+
 			if j['message'] == '警报':
 				resp['reply'] = wf.get_alerts() + suffix
 			elif j['message'] == '平原时间':
