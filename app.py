@@ -22,6 +22,7 @@ class wfst(Resource):
 	def post(self):
 		try:
 			j = request.get_json(force=True)
+			# Response payload
 			resp = {
 				'reply': '',
 				'at_sender': 'false'
@@ -122,6 +123,7 @@ class wfst(Resource):
 api.add_resource(wfst, '/')
 
 # Cron jobs
+# Change group_id to your desire group id
 def task_new_alert():
 	msg = wf.get_new_alerts()
 	if msg != '':
