@@ -22,7 +22,7 @@ apscheduler用于定时拉取。
 
 **建议**
 
-为了安全性和性能建议使用真正的WSGI而不是这个debug服务器。（例如Twisted web）
+为了安全性和性能建议使用真正的WSGI而不是这个debug服务器。（例如Twisted web，使用app_twistd.py即可）
 
 当然懒得配置的话这样用也一样。
 

@@ -4,3 +4,4 @@ ws.json
 *.sqlite
 *.pyc
 test.py
+*.log
