@@ -1,21 +1,34 @@
-惊闻SmartQQ将在19年1月1日关闭，届时这个插件可能真的就彻底没用了，各位再见
+适用于酷Q机器人的Warframe世界状态插件
 ---
-【施工中】适用于[QQbot](https://github.com/pandolia/qqbot)的Warframe世界状态插件
----
-**依赖**
-requests、requests-cache用于拉取官方API状态。
-beautifulsoup4用于分析某网页内容。
-> pip install requests
-> 
-> pip install requests-cache
->
-> pip install beautifulsoup4
+**前置条件**
+酷Q机器人的[HTTP API插件](https://github.com/richardchien/coolq-http-api)。
 
-**使用方法：**
-1. 把所有的.py和.json复制到QQbot的插件文件夹，例如用户文件夹的.qqbot-tmp\plugins
-2. 修改wf.py里的通报群名称
-3. 启动QQbot，通过命令qq plug wf加载，或写入QQbot的配置文件自动加载
-4. GROFIT!
+**Python依赖**
+
+flask-restful用于快速开启本地RESTful API。
+
+requests、requests-cache用于拉取官方API状态。
+
+beautifulsoup4用于分析某网页内容。
+
+apscheduler用于定时拉取。
+> pip install flask-restful requests requests-cache beautifulsoup4 apscheduler
+
+**使用方法**
+
+1. 修改app.py底部的参数（主要是定时通报的群号），并直接用 python app.py 启动。
+2. 设置酷Q的HTTP API插件POST到127.0.0.1:8888。
+3. 这就可以了。
+
+**建议**
+
+为了安全性和性能建议使用真正的WSGI而不是这个debug服务器。（例如Twisted web）
+
+当然懒得配置的话这样用也一样。
+
+**开发**
+
+如果其它平台的机器人也能用HTTP API，你可以适当修改app.py内的回复payload格式，从而实现其他平台使用。
 
 **进度：**
 - [x] 关键词通报（警报、入侵、裂缝、突击）
