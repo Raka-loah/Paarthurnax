@@ -4,6 +4,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 import os
 import time
 import json
+import requests
 import wfstate as wf
 
 with open(os.path.dirname(os.path.abspath(__file__)) + '\\customReplies.json', 'r', encoding='utf-8') as E:
@@ -122,16 +123,28 @@ api.add_resource(wfst, '/')
 
 # Cron jobs
 def task_new_alert():
-	# msg = wf.get_new_alerts()
-	pass
+	msg = wf.get_new_alerts()
+	if msg != '':
+		url = 'http://127.0.0.1:5700/send_group_msg_async'
+		payload = {
+			'group_id': 697991343,
+			'message': msg
+		}
+		requests.post(url, json=payload)
 
 def task_cetus_transition():
-	# msg = wf.get_cetus_transition()
-	pass
+	msg = wf.get_cetus_transition()
+	if msg != '':
+		url = 'http://127.0.0.1:5700/send_group_msg_async'
+		payload = {
+			'group_id': 697991343,
+			'message': msg
+		}
+		requests.post(url, json=payload)
 
 if __name__ == '__main__':
 	scheduler = BackgroundScheduler()
 	scheduler.add_job(task_new_alert, 'cron', second='00')
 	scheduler.add_job(task_cetus_transition, 'cron', second='05')
 	scheduler.start()
-	app.run(port=8888)
+	app.run(debug=False,port=8888)

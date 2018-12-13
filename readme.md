@@ -7,7 +7,9 @@ flask-restful用于快速开启本地RESTful API。
 requests、requests-cache用于拉取官方API状态。
 
 beautifulsoup4用于分析某网页内容。
-> pip install flask-restful requests requests-cache beautifulsoup4
+
+apscheduler用于定时拉取。
+> pip install flask-restful requests requests-cache beautifulsoup4 apscheduler
 
 **使用方法**
 1. 修改app.py底部的参数，并直接用 python app.py 启动。
