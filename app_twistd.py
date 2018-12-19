@@ -132,6 +132,7 @@ class wfst(Resource):
 
 			if j['message_type'] == 'group':
 				autoban(j['message'], j['group_id'], j['user_id'])
+				# Please ignore this
 				if j['group_id'] == 697991343:
 					if j['message'].startswith('我提一个新需求'):
 						resp['reply'] = '[CQ:at,qq=997664256] 叫Tg_Cat出来挨打'
