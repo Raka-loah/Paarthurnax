@@ -26,7 +26,16 @@ class wfst(Resource):
 	def post(self):
 		try:
 			j = request.get_json(force=True)
-			log.info('[%s]:%s' % (j['sender']['user_id'], j['message']))
+			if j['message_type'] == 'group':
+				if 'card' in j['sender'] and j['sender']['card'] != '':
+					log.info('[%s][%s(%s)]:%s' % (j['group_id'], j['sender']['card'], j['sender']['user_id'], j['message']))
+				elif 'nickname' in j['sender'] and j['sender']['nickname'] != '':
+					log.info('[%s][%s(%s)]:%s' % (j['group_id'], j['sender']['nickname'], j['sender']['user_id'], j['message']))
+				else:
+					log.info('[%s][%s]:%s' % (j['group_id'], j['sender']['user_id'], j['message']))
+			else:
+				log.info('[%s]:%s' % (j['sender']['user_id'], j['message']))
+
 			# Response payload
 			resp = {
 				'reply': '',
@@ -53,7 +62,7 @@ class wfst(Resource):
 			elif j['message'] == '入侵':
 				resp['reply'] = wf.get_invasions() + suffix  
 			elif j['message'].startswith('模拟开卡'):
-				if time.time() - stats['last_sent'] > 60:
+				if time.time() - stats['last_sent'] > 10:
 					if 'card' in j['sender'] and j['sender']['card'] != '':
 						resp['reply'] = '[' + j['sender']['card'] + ']' + wf.get_riven_info(j['message'].replace('模拟开卡', '').strip())
 						stats['last_sent'] = time.time()
@@ -120,6 +129,14 @@ class wfst(Resource):
 							resp['reply'] = msg
 					else:
 						resp['reply'] = msg
+
+			if j['message_type'] == 'group':
+				autoban(j['message'], j['group_id'], j['user_id'])
+				# Please ignore this
+				if j['group_id'] == 697991343:
+					if j['message'].startswith('我提一个新需求'):
+						resp['reply'] = '[CQ:at,qq=997664256] 叫Tg_Cat出来挨打'
+			
 			if resp['reply'] != '':
 				return resp, 200
 			else:
@@ -130,6 +147,19 @@ class wfst(Resource):
 # Usage:
 # POST message to /
 api.add_resource(wfst, '/')
+
+def autoban(message, group_id, user_id):
+	ban_word = ['惊闻', '文体两开花', '驚聞']
+	for word in ban_word:
+		if word in message.replace(' ',''):
+			url = 'http://127.0.0.1:5700/set_group_ban'
+			payload = {
+				'group_id': group_id,
+				'user_id': user_id,
+				'duration': 300
+			}
+			requests.post(url, json=payload)
+			break
 
 # Cron jobs
 # Change group_id to your desire group id

@@ -426,9 +426,9 @@ def riven_dispo_icon(dispo):
 		text = '●●●●○'
 	elif 0.9 <= dispo <= 1.1:
 		text = '●●●○○'
-	elif 0.75 <= dispo < 0.9:
+	elif 0.7 <= dispo < 0.9:
 		text = '●●○○○'
-	elif dispo < 0.75:
+	elif dispo < 0.7:
 		text = '●○○○○'
 	else:
 		text = '?'

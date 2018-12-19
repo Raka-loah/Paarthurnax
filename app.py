@@ -115,12 +115,29 @@ class wfst(Resource):
 							resp['reply'] = msg
 					else:
 						resp['reply'] = msg
+
+			if j['message_type'] == 'group':
+				autoban(j['message'], j['group_id'], j['user_id'])
+
 			if resp['reply'] != '':
 				return resp, 200
 			else:
 				return '', 204
 		except:
 			return '', 204
+
+def autoban(message, group_id, user_id):
+	ban_word = ['惊闻', '文体两开花']
+	for word in ban_word:
+		if word in message.replace(' ',''):
+			url = 'http://127.0.0.1:5700/set_group_ban'
+			payload = {
+				'group_id': group_id,
+				'user_id': user_id,
+				'duration': 300
+			}
+			requests.post(url, json=payload)
+			break
 
 # Usage:
 # POST message to /
