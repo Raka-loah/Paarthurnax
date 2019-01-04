@@ -1,6 +1,5 @@
 {
 	"!help": "没有这个命令，请使用 帮助",
-	"tg_cat请立即去世": "Tg_Cat是谁？",
 	"唯一指定配置": "瘟疫克里帕丝/克鲁斯查/伊克瓦纳翟II",
 	"唯一指定颜值配置": "瘟疫克里帕丝/瘟疫柏克文/伊克瓦纳翟II",
 	"没用": "说没用的自觉去世",
@@ -9000,6 +8999,31 @@
 	"翻译狐狸": "“我就算上能量虹吸，用Z精，带突击狗，也不会放一个井盖的”",
 	"翻译tg_cat": "Hentai Overlord",
 	"翻译tg_cad": "以下显示 翻译tg_cat 的搜索结果：\nHentai Overlord",
-	"翻译踢鸡凯特": "以下显示 翻译tg_cat 的搜索结果：\nHentai Overlord"
+	"翻译踢鸡凯特": "以下显示 翻译tg_cat 的搜索结果：\nHentai Overlord",
+
+	"翻译arch-gunace": "Arch-枪械行家",
+	"翻译archgunace": "Arch-枪械行家",
+	"翻译arch-枪械行家": "Arch-gun Ace",
+	"翻译arch枪械行家": "Arch-gun Ace",
+	"翻译坚决专注": "Resolute Focus",
+	"翻译resolutefocus": "坚决专注",
+	"翻译标记目标": "Marked Target",
+	"翻译markedtarget": "标记目标",
+	"翻译关键焦点": "Critical Focus",
+	"翻译criticalfocus": "关键焦点",
+	"翻译chargedbullets": "带电子弹",
+	"翻译带电子弹": "Charged Bullets",
+	"翻译hypothermicshell": "低温外壳",
+	"翻译低温外壳": "Hypothermic Shell",
+	"翻译contaminationcasing": "毒染套管",
+	"翻译毒染套管": "Contamination Casing",
+	"翻译shockcollar": "电击项圈",
+	"翻译电击项圈": "Shock_Collar",	
+	"翻译flamegland": "火焰腺体",
+	"翻译火焰腺体": "Flame Gland",	
+	"翻译frostjaw": "冰冻双颚",
+	"翻译冰冻双颚": "Frost Jaw",	
+	"翻译venomteeth": "牙齿毒液",
+	"翻译牙齿毒液": "Venom Teeth"
 
 }
