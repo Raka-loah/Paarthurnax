@@ -6,6 +6,8 @@ import time
 import json
 import requests
 import wfstate as wf
+import misc
+import re
 
 with open(os.path.dirname(os.path.abspath(__file__)) + '\\customReplies.json', 'r', encoding='utf-8') as E:
 	R = json.loads(E.read())
@@ -29,6 +31,18 @@ class wfst(Resource):
 			}
 
 			suffix = '\n更多命令请输入"帮助"。'
+
+			if j['post_type'] == 'request' and j['request_type'] == 'group':
+				resp = {
+					'approve': 'true'
+				}
+				return resp, 200
+			
+			if j['post_type'] == 'message':
+				if j['message_type'] == 'group':
+					misc.msg_log(j['message_id'], j['group_id'], j['sender']['user_id'], j['message'])
+				else:
+					misc.msg_log(j['message_id'], '0', j['sender']['user_id'], j['message'])
 
 			if j['sender']['user_id'] == j['self_id']:
 				return '', 204
@@ -115,6 +129,26 @@ class wfst(Resource):
 							resp['reply'] = msg
 					else:
 						resp['reply'] = msg
+			elif j['message'].startswith('早饭吃什么'):
+				for dish in misc.food('breakfast'):
+					msg += dish + ' '
+				resp['reply'] = msg
+			elif j['message'].startswith('午饭吃什么'):
+				for dish in misc.food('lunch'):
+					msg += dish + ' '
+				resp['reply'] = msg
+			elif j['message'].startswith('晚饭吃什么'):
+				for dish in misc.food('dinner'):
+					msg += dish + ' '
+				resp['reply'] = msg
+			elif j['message'] == ('吃什么'):
+				for dish in misc.food(''):
+					msg += dish + ' '
+				resp['reply'] = msg
+			elif j['message'].startswith('/echo'):
+				query_id = re.match(r'.*\[CQ:at,qq=(.*)\].*', j['message'])
+				if query_id and j['message_type'] == 'group':
+					resp['reply'] = misc.msg_fetch(j['group_id'], query_id.group(1))
 
 			if j['message_type'] == 'group':
 				autoban(j['message'], j['group_id'], j['user_id'])
