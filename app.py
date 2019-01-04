@@ -32,6 +32,18 @@ class wfst(Resource):
 
 			suffix = '\n更多命令请输入"帮助"。'
 
+			if j['post_type'] == 'request' and j['request_type'] == 'group':
+				resp = {
+					'approve': 'true'
+				}
+				return resp, 200
+			
+			if j['post_type'] == 'message':
+				if j['message_type'] == 'group':
+					misc.msg_log(j['message_id'], j['group_id'], j['sender']['user_id'], j['message'])
+				else:
+					misc.msg_log(j['message_id'], '0', j['sender']['user_id'], j['message'])
+
 			if j['sender']['user_id'] == j['self_id']:
 				return '', 204
 
