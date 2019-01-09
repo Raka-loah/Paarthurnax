@@ -129,19 +129,24 @@ class wfst(Resource):
 							resp['reply'] = msg
 					else:
 						resp['reply'] = msg
+			#TODO: Dictionary these
 			elif j['message'].startswith('早饭吃什么'):
+				msg = ''
 				for dish in misc.food('breakfast'):
 					msg += dish + ' '
 				resp['reply'] = msg
 			elif j['message'].startswith('午饭吃什么'):
+				msg = ''
 				for dish in misc.food('lunch'):
 					msg += dish + ' '
 				resp['reply'] = msg
 			elif j['message'].startswith('晚饭吃什么'):
+				msg = ''
 				for dish in misc.food('dinner'):
 					msg += dish + ' '
 				resp['reply'] = msg
 			elif j['message'] == ('吃什么'):
+				msg = ''
 				for dish in misc.food(''):
 					msg += dish + ' '
 				resp['reply'] = msg
