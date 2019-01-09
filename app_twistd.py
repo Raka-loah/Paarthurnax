@@ -133,19 +133,24 @@ class wfst(Resource):
 						resp['reply'] = '[[CQ:at,qq=' + str(j['sender']['user_id']) + ']]\n' + msg
 					else:
 						resp['reply'] = msg
+			#TODO: Dictionary these
 			elif j['message'].startswith('早饭吃什么'):
+				msg = ''
 				for dish in misc.food('breakfast'):
 					msg += dish + ' '
 				resp['reply'] = msg
 			elif j['message'].startswith('午饭吃什么'):
+				msg = ''
 				for dish in misc.food('lunch'):
 					msg += dish + ' '
 				resp['reply'] = msg
 			elif j['message'].startswith('晚饭吃什么'):
+				msg = ''
 				for dish in misc.food('dinner'):
 					msg += dish + ' '
 				resp['reply'] = msg
 			elif j['message'] == ('吃什么'):
+				msg = ''
 				for dish in misc.food(''):
 					msg += dish + ' '
 				resp['reply'] = msg
@@ -153,6 +158,13 @@ class wfst(Resource):
 				query_id = re.match(r'.*\[CQ:at,qq=(.*)\].*', j['message'])
 				if query_id and j['message_type'] == 'group':
 					resp['reply'] = misc.msg_fetch(j['group_id'], query_id.group(1))
+
+			if j['post_type'] == 'message' and j['message_type'] == 'private':
+				if j['message'].startswith('/stalk'):
+					query_id = re.match(r'.* (\d+) (\d+) (\d+)', j['message'])
+					if query_id:
+						# log.info('[STALKER] {} {} {} {}'.format(j['sender']['user_id'], query_id.group(1), query_id.group(2), query_id.group(3)))
+						resp['reply'] = misc.msg_stalker(j['sender']['user_id'], query_id.group(1), query_id.group(2), query_id.group(3))
 
 			if j['message_type'] == 'group':
 				autoban(j['message'], j['group_id'], j['user_id'])
