@@ -68,7 +68,9 @@ class wfst(Resource):
 				log.info('[%s]:%s' % (j['sender']['user_id'], j['message']))
 				logging.info('[%s]:%s' % (j['sender']['user_id'], j['message']))
 
-			if j['sender']['user_id'] == j['self_id']:
+			# All queries from banned senders are directly dropped
+			banned_sender = ['']
+			if j['sender']['user_id'] == j['self_id'] or str(j['sender']['user_id']) in banned_sender:
 				return '', 204
 
 			if j['message'] == '警报':
@@ -163,15 +165,10 @@ class wfst(Resource):
 				if j['message'].startswith('/stalk'):
 					query_id = re.match(r'.* (\d+) (\d+) (\d+)', j['message'])
 					if query_id:
-						# log.info('[STALKER] {} {} {} {}'.format(j['sender']['user_id'], query_id.group(1), query_id.group(2), query_id.group(3)))
 						resp['reply'] = misc.msg_stalker(j['sender']['user_id'], query_id.group(1), query_id.group(2), query_id.group(3))
 
 			if j['message_type'] == 'group':
 				autoban(j['message'], j['group_id'], j['user_id'])
-				# Please ignore this
-				if j['group_id'] == 697991343:
-					if j['message'].startswith('我提一个新需求'):
-						resp['reply'] = '[CQ:at,qq=997664256] 叫Tg_Cat出来挨打'
 			
 			if resp['reply'] != '':
 				return resp, 200

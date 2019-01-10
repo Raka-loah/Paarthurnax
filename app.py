@@ -44,7 +44,9 @@ class wfst(Resource):
 				else:
 					misc.msg_log(j['message_id'], '0', j['sender']['user_id'], j['message'])
 
-			if j['sender']['user_id'] == j['self_id']:
+			# All queries from banned senders are directly dropped
+			banned_sender = ['']
+			if j['sender']['user_id'] == j['self_id'] or str(j['sender']['user_id']) in banned_sender:
 				return '', 204
 
 			if j['message'] == '警报':
