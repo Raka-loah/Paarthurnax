@@ -11,46 +11,6 @@
 				"texture": "_Lotus_Interface_Icons_Store_TnHalberdPolearmWeapon.png"
 			},
 			{
-				"disposition": 1,
-				"name": "PLAGUE KEEWAR",
-				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeInfestedTipTwo.png"
-			},
-			{
-				"disposition": 1,
-				"name": "PLAGUE KRIPATH",
-				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeInfestedTipOne.png"
-			},
-			{
-				"disposition": 1,
-				"name": "CYATH",
-				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipFour.png"
-			},
-			{
-				"disposition": 1,
-				"name": "DEHTAT",
-				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipFive.png"
-			},
-			{
-				"disposition": 1,
-				"name": "KRONSH",
-				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipSix.png"
-			},
-			{
-				"disposition": 1,
-				"name": "BALLA",
-				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipOne.png"
-			},
-			{
-				"disposition": 1,
-				"name": "OOLTHA",
-				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipTwo.png"
-			},
-			{
-				"disposition": 1,
-				"name": "MEWAN",
-				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipThree.png"
-			},
-			{
 				"disposition": 1.0,
 				"name": "SIGMA & OCTANTIS",
 				"texture": "_Lotus_Interface_Icons_Store_SundialBoardSword.png"
@@ -554,7 +514,17 @@
 				"disposition": 1.0, 
 				"name": "KRESKA", 
 				"texture": "_Lotus_Interface_Icons_Store_CrpVenusHatchet.png"
-			}
+			},
+			{
+				"disposition": 1.0, 
+				"name": "GALVACORD", 
+				"texture": ""
+			},
+			{
+				"disposition": 1.0, 
+				"name": "COBRA & CRANE", 
+				"texture": ""
+			}		
 		],
 		"Buffs": [{
 				"text": "|val|% 近战伤害",
@@ -765,6 +735,11 @@
 				"disposition": 0.5,
 				"name": "TIGRIS",
 				"texture": "_Lotus_Interface_Icons_Store_TennoDoubleBarrelSG.png"
+			},
+			{
+				"disposition": 1.0,
+				"name": "EXERGIS",
+				"texture": ""
 			}
 		],
 		"Buffs": [{
@@ -1260,23 +1235,8 @@
 			},
 			{
 				"disposition": 1.0, 
-				"name": "TOMBFINGER", 
-				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_SUModularSecondary_SUModularSecondaryBarrelBPart.png"
-			}, 
-			{
-				"disposition": 1.0, 
-				"name": "CATCHMOON", 
-				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_SUModularSecondary_SUModularSecondaryBarrelAPart.png"
-			}, 
-			{
-				"disposition": 1.0, 
-				"name": "GAZE", 
-				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_SUModularSecondary_SUModularSecondaryBarrelDPart.png"
-			}, 
-			{
-				"disposition": 1.0, 
-				"name": "RATTLEGUTS", 
-				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_SUModularSecondary_SUModularSecondaryBarrelCPart.png"
+				"name": "PLINX", 
+				"texture": "_Lotus_Interface_Icons_Store_CrpSentExperimentPistol.png"
 			}
 		],
 		"Buffs": [{
@@ -1918,44 +1878,59 @@
 	},
 	"Zaw": {
 		"Rivens": [{
-				"disposition": 1,
-				"name": "PLAGUE KEEWAR",
+				"disposition": 1.0, 
+				"name": "PLAGUE KEEWAR", 
 				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeInfestedTipTwo.png"
-			},
+			}, 
 			{
-				"disposition": 1,
-				"name": "PLAGUE KRIPATH",
-				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeInfestedTipOne.png"
-			},
-			{
-				"disposition": 1,
-				"name": "CYATH",
+				"disposition": 1.0, 
+				"name": "CYATH", 
 				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipFour.png"
-			},
+			}, 
 			{
-				"disposition": 1,
-				"name": "DEHTAT",
+				"disposition": 1.0, 
+				"name": "DEHTAT", 
 				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipFive.png"
-			},
+			}, 
 			{
-				"disposition": 1,
-				"name": "KRONSH",
+				"disposition": 1.0, 
+				"name": "KRONSH", 
 				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipSix.png"
-			},
+			}, 
 			{
-				"disposition": 1,
-				"name": "BALLA",
+				"disposition": 1.0, 
+				"name": "BALLA", 
 				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipOne.png"
-			},
+			}, 
 			{
-				"disposition": 1,
-				"name": "OOLTHA",
+				"disposition": 1.0, 
+				"name": "OOLTHA", 
 				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipTwo.png"
-			},
+			}, 
 			{
-				"disposition": 1,
-				"name": "MEWAN",
+				"disposition": 1.0, 
+				"name": "MEWAN", 
 				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipThree.png"
+			}, 
+			{
+				"disposition": 1.0, 
+				"name": "SEPFAHN", 
+				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipNine.png"
+			}, 
+			{
+				"disposition": 1.0, 
+				"name": "DOKRAHM", 
+				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipEleven.png"
+			}, 
+			{
+				"disposition": 1.0, 
+				"name": "PLAGUE KRIPATH", 
+				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeInfestedTipOne.png"
+			}, 
+			{
+				"disposition": 1.0, 
+				"name": "RABVEE", 
+				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipTen.png"
 			}
 		],
 		"Buffs": [{
