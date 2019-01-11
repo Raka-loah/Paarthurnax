@@ -519,7 +519,12 @@
 				"disposition": 1.0, 
 				"name": "GALVACORD", 
 				"texture": ""
-			}
+			},
+			{
+				"disposition": 1.0, 
+				"name": "COBRA & CRANE", 
+				"texture": ""
+			}		
 		],
 		"Buffs": [{
 				"text": "|val|% 近战伤害",
