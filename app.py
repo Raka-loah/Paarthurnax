@@ -21,7 +21,6 @@ class wfst(Resource):
 	def post(self):
 		try:
 			j = request.get_json(force=True)
-			print(j)
 			# Response payload
 			resp = {
 				'reply': '',
