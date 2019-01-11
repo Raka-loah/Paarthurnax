@@ -16,9 +16,6 @@ logging.basicConfig(level=logging.INFO,
 					datefmt='%m-%d %H:%M',
 					handlers=[logging.FileHandler('qqbot.log', 'a', 'utf-8')])
 
-with open(os.path.dirname(os.path.abspath(__file__)) + '\\customReplies.json', 'r', encoding='utf-8') as E:
-	R = json.loads(E.read())
-
 stats = {}
 stats['last_sent'] = 0
 stats['last_wm_query'] = 0
@@ -102,8 +99,8 @@ class wfst(Resource):
 						resp['reply'] = wf.cooldown()																		
 			elif j['message'] == '帮助':
 				resp['reply'] = '目前可用命令：\n帮助、警报、入侵、平原时间、地球赏金、金星赏金、突击、裂缝'
-			elif j['message'].lower().replace(' ','') in R:
-				resp['reply'] = R[j['message'].lower().replace(' ','')]
+			elif j['message'].lower().replace(' ','') in wf.data_dict['CR']:
+				resp['reply'] = wf.data_dict['CR'][j['message'].lower().replace(' ','')]
 			elif j['message'].startswith('/roll'):
 				msg = wf.misc_roll(j['message'])
 				if msg != '':

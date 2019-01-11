@@ -58,13 +58,11 @@ def msg_fetch(group_id, sender_id, lines=5):
 		return '[ERROR] Database error'
 
 import requests
-import requests_cache
 import json
-
-requests_cache.install_cache('qqstats', expire_after=1800)
 
 def msg_stalker(self_id, group_id, sender_id, lines=5):
 	try:
+		# It's already cached in CQP client, caching again is redundant
 		raw_memberlist = requests.get('http://127.0.0.1:5700/get_group_member_list?group_id={}'.format(group_id)).json()
 		memberlist = []
 		if raw_memberlist['data']:
