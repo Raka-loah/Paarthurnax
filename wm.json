@@ -4035,5 +4035,8 @@
 	"frostjaw": "frost_jaw",
 	"冰冻双颚": "frost_jaw",	
 	"venomteeth": "venom_teeth",
-	"牙齿毒液": "venom_teeth"
+	"牙齿毒液": "venom_teeth",
+
+	"zaw未开紫卡": "zaw_riven_mod_(veiled)",
+	"kitgun未开紫卡": "kitgun_riven_mod_(veiled)"
 }
