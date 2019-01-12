@@ -81,10 +81,14 @@ for k in riven_type:
 # Useful functions
 
 def s2h(seconds):
+	d = 0
 	if seconds >= 86400:
-		return str(math.floor(seconds / 86400)) + '天'
+		d = math.floor(seconds / 86400)
+	seconds = seconds % 86400
 	m, s = divmod(seconds, 60)
 	h, m = divmod(m, 60)
+	if d > 0:
+		return '%d天%02d:%02d:%02d' % (d, h, m, s)
 	if h > 0:
 		return '%d:%02d:%02d' % (h, m, s)
 	else:
@@ -110,8 +114,10 @@ def get_alerts():
 					   ['$numberLong']) / 1000 - time.time()
 		req_archwing = 'Archwing' if 'archwingRequired' in alert['MissionInfo'] else ''
 		rew_credits = alert['MissionInfo']['missionReward']['credits']
-		rew_items = ' - ' + data_dict['L'][alert['MissionInfo']['missionReward']['items'][0].lower(
-		)]['value'] if 'items' in alert['MissionInfo']['missionReward'] else ''
+		try:
+			rew_items = ' - ' + data_dict['L'][alert['MissionInfo']['missionReward']['items'][0].lower()]['value'] if 'items' in alert['MissionInfo']['missionReward'] else ''
+		except:
+			rew_items = ' - ' + alert['MissionInfo']['missionReward']['items'][0] if 'items' in alert['MissionInfo']['missionReward'] else ''
 		rew_counteditems = ' - ' + str(alert['MissionInfo']['missionReward']['countedItems'][0]['ItemCount']) \
 			+ ' x ' + str(data_dict['L'][alert['MissionInfo']['missionReward']['countedItems'][0]['ItemType'].lower()]['value']) \
 			if 'countedItems' in alert['MissionInfo']['missionReward'] else ''
@@ -452,6 +458,43 @@ def get_bounties(category):
 		msg = ''
 	return msg
 
+# Void Trader
+
+def get_voidtrader():
+	try:
+		ws = get_worldstate()
+	except:
+		return '[ERROR] 获取世界状态失败'
+	msg = ''
+	vt = ws['VoidTraders'][0]
+	# Void Trader is here
+	if float(vt['Activation']['$date']['$numberLong']) / 1000 - time.time() < 0 and float(vt['Expiry']['$date']['$numberLong']) / 1000 - time.time() > 0:
+		inv = vt['Manifest']
+		msg = '奸商目前已抵达{}，还有{}离开，本次携带物品：'.format(data_dict['S'][vt['Node']]['value'], s2h(float(vt['Expiry']['$date']['$numberLong']) / 1000 - time.time()))
+		for item in inv:
+			try:
+				msg += '\n物品：{} DK：{} CR：{}'.format(data_dict['L'][item['ItemType'].lower()]['value'], item['PrimePrice'], item['RegularPrice'])
+			except:
+				msg += '\n物品：{} DK：{} CR：{}'.format(item['ItemType'], item['PrimePrice'], item['RegularPrice'])
+	else:
+		msg = '奸商将于{}后到达{}。'.format(s2h(float(vt['Activation']['$date']['$numberLong']) / 1000 - time.time()), data_dict['S'][vt['Node']])
+	return msg
+
+# Daily Deal
+
+def get_dailydeal():
+	try:
+		ws = get_worldstate()
+	except:
+		return '[ERROR] 获取世界状态失败'
+	msg = ''
+	dd = ws['DailyDeals'][0]
+	try:
+		msg += '今日特惠物品：{}，打折-{}%，原价{}白金，现价{}白金，剩余{}/{}。'.format(data_dict['L'][dd['StoreItem'].lower()]['value'], dd['Discount'] ,dd['OriginalPrice'], dd['SalePrice'], int(dd['AmountTotal']) - int(dd['AmountSold']), dd['AmountTotal'])
+	except:
+		pass
+	return msg
+	
 # Automatic broadcasting:
 
 # Cetus day/night transition within 60 seconds
@@ -494,8 +537,10 @@ def get_new_alerts():
 						   ['$numberLong']) / 1000 - time.time()
 			req_archwing = 'Archwing' if 'archwingRequired' in alert['MissionInfo'] else ''
 			rew_credits = alert['MissionInfo']['missionReward']['credits']
-			rew_items = ' - ' + data_dict['L'][alert['MissionInfo']['missionReward']['items'][0].lower(
-			)]['value'] if 'items' in alert['MissionInfo']['missionReward'] else ''
+			try:
+				rew_items = ' - ' + data_dict['L'][alert['MissionInfo']['missionReward']['items'][0].lower()]['value'] if 'items' in alert['MissionInfo']['missionReward'] else ''
+			except:
+				rew_items = ' - ' + alert['MissionInfo']['missionReward']['items'][0] if 'items' in alert['MissionInfo']['missionReward'] else ''
 			rew_counteditems = ' - ' + str(alert['MissionInfo']['missionReward']['countedItems'][0]['ItemCount']) \
 				+ ' x ' + str(data_dict['L'][alert['MissionInfo']['missionReward']['countedItems'][0]['ItemType'].lower()]['value']) \
 				if 'countedItems' in alert['MissionInfo']['missionReward'] else ''
