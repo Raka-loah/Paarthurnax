@@ -12,7 +12,9 @@ requests、requests-cache用于拉取官方API状态。
 beautifulsoup4用于分析某网页内容。
 
 apscheduler用于定时拉取。
-> pip install flask-restful requests requests-cache beautifulsoup4 apscheduler
+
+fuzzywuzzy用于模糊查询.
+> pip install flask-restful requests requests-cache beautifulsoup4 apscheduler fuzzywuzzy[speedup]
 
 **使用方法**
 
