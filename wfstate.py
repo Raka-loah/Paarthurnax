@@ -7,6 +7,8 @@ import json
 import time
 import math
 import random
+from fuzzywuzzy import fuzz
+from fuzzywuzzy import process
 from bs4 import BeautifulSoup
 
 # Get world state json
@@ -619,6 +621,10 @@ def get_wmprice(item_name):
 				return '[ERROR]无法处理WM数据'
 		except:
 			return '[ERROR]无法连接到WM'
+	else:
+		msg = '未找到这项物品，你是不是想查询：'
+		for item in process.extract(item_name, list(data_dict['WM']), limit=5):
+			msg += '\n{}'.format(item[0])
 	return msg
 
 
