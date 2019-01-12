@@ -59,7 +59,11 @@ class wfst(Resource):
 			elif j['message'] == '裂缝':
 				resp['reply'] = wf.get_fissures() + suffix        
 			elif j['message'] == '入侵':
-				resp['reply'] = wf.get_invasions() + suffix  
+				resp['reply'] = wf.get_invasions() + suffix
+			elif j['message'] == '奸商':
+				resp['reply'] = wf.get_voidtrader() + suffix
+			elif j['message'] == '每日特惠':
+				resp['reply'] = wf.get_dailydeal() + suffix
 			elif j['message'].startswith('模拟开卡'):
 				if time.time() - stats['last_sent'] > 60:
 					if 'card' in j['sender'] and j['sender']['card'] != '':
@@ -77,9 +81,9 @@ class wfst(Resource):
 					elif 'nickname' in j['sender'] and j['sender']['nickname'] != '':
 						resp['reply'] = '[' + j['sender']['nickname'] + ']\n' + wf.cooldown()
 					else:
-						resp['reply'] = wf.cooldown()																		
+						resp['reply'] = wf.cooldown()
 			elif j['message'] == '帮助':
-				resp['reply'] = '目前可用命令：\n帮助、警报、入侵、平原时间、地球赏金、金星赏金、突击、裂缝'
+				resp['reply'] = '目前可用命令：\n帮助、警报、入侵、平原时间、地球赏金、金星赏金、突击、裂缝、奸商、每日特惠、模拟开卡'
 			elif j['message'].lower().replace(' ','') in wf.data_dict['CR']:
 				resp['reply'] = wf.data_dict['CR'][j['message'].lower().replace(' ','')]
 			elif j['message'].startswith('/roll'):
