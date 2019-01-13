@@ -3702,7 +3702,7 @@
 		"value": "Noggle Statue - Banshee"
 	},
 	"/lotus/storeitems/types/items/shipdecos/barokiteerbobblehead": {
-		"value": "Noggle Statue - Baro Ki'Teer"
+		"value": "Baro Ki'Teer摇头娃娃"
 	},
 	"/lotus/storeitems/types/items/shipdecos/conclaveoroornament": {
 		"value": "Oro Ornament"
@@ -4071,7 +4071,7 @@
 		"value": "Solve The Riddle From The Inbox Message"
 	},
 	"/lotus/storeitems/types/keys/mummyquestkeyblueprint": {
-		"value": "Sands Of Inaros Blueprint"
+		"value": "Inaros之沙蓝图"
 	},
 	"/lotus/storeitems/types/keys/nightmarekeyshipyardsretrieval": {
 		"value": "Tethra Shield Cipher"
@@ -8799,19 +8799,19 @@
 		"value": "Edo Knee Plates"
 	},
 	"/lotus/storeitems/upgrades/skins/armor/settwosamurai/vtsettwoarmleftarmor": {
-		"value": "Left Prisma Edo Shoulder Armor"
+		"value": "棱晶江户左肩甲"
 	},
 	"/lotus/storeitems/upgrades/skins/armor/settwosamurai/vtsettwoarmrightarmor": {
-		"value": "Right Prisma Edo Shoulder Armor"
+		"value": "棱晶江户右肩甲"
 	},
 	"/lotus/storeitems/upgrades/skins/armor/settwosamurai/vtsettwochestarmor": {
-		"value": "Prisma Edo Chest Plate"
+		"value": "棱晶江户胸甲"
 	},
 	"/lotus/storeitems/upgrades/skins/armor/settwosamurai/vtsettwolegleftarmor": {
-		"value": "Left Prisma Edo Knee Plates"
+		"value": "棱晶江户左腿甲"
 	},
 	"/lotus/storeitems/upgrades/skins/armor/settwosamurai/vtsettwolegrightarmor": {
-		"value": "Right Prisma Edo Knee Plates"
+		"value": "棱晶江户右腿甲"
 	},
 	"/lotus/storeitems/upgrades/skins/armor/vteos/vteosalarmor": {
 		"value": "Left Eos Prime Shoulder Plates"
@@ -16249,5 +16249,14 @@
 	},
 	"/lotus/storeitems/types/recipes/helmets/garudaalthelmetblueprint": {
 		"value": "Garuda巴托里头盔蓝图"
+	},
+	"/Lotus/StoreItems/Types/Game/Projections/T4VoidProjectionMagNovaVaultBBronze": {
+		"value": "后纪A5遗物"
+	},
+	"/Lotus/StoreItems/Weapons/Corpus/LongGuns/Machinegun/SupraVandal": {
+		"value": "苏普拉破坏者"
+	},
+	"/Lotus/StoreItems/Upgrades/Skins/VoidTrader/ElixisOpticor": {
+		"value": "奥堤克光子枪镀铜外观"
 	}
 }

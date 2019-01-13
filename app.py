@@ -9,18 +9,60 @@ import wfstate as wf
 import misc
 import re
 
-stats = {}
-stats['last_sent'] = 0
-stats['last_wm_query'] = 0
-stats['last_wiki_query'] = 0
-
 app = Flask(__name__)
 api = Api(app)
+
+# Commands that need a full match on keyword and take no arguments at all
+command_full = {
+	'警报': wf.get_alerts,
+	'平原时间': wf.get_plains_time,
+	'每日特惠': wf.get_dailydeal,
+	'裂缝': wf.get_fissures,
+	'入侵': wf.get_invasions,
+	'突击': wf.get_sorties,
+	'奸商': wf.get_voidtrader,
+	'虚空商人': wf.get_voidtrader,
+	'帮助': wf.get_some_help,
+	'吃什么': misc.general,
+	'早饭吃什么': misc.breakfast,
+	'午饭吃什么': misc.lunch,
+	'晚饭吃什么': misc.dinner
+}
+
+# Commands that need arguments and will get POSTed json as argument
+command_partial = {
+	'地球赏金': wf.get_bounties,
+	'金星赏金': wf.get_bounties,
+	'模拟开卡': wf.get_riven_info,
+	'/wm': wf.get_wmprice,
+	'/mod': wf.get_wiki_text,
+	'/ask': wf.ask_8ball,
+	'/roll': wf.misc_roll,
+	'/echo': misc.msg_ar_wrapper,
+	'/stalker': misc.msg_ar_wrapper
+}
+
+# Do not append suffix or @sender tag
+command_suppress = ['吃什么', '早饭吃什么', '午饭吃什么', '晚饭吃什么']
+
+# Cooldown for individual commands in seconds
+command_cooldown_full = {}
+
+command_cooldown_partial = {
+	'模拟开卡': 10,
+	'/wm': 10,
+	'/mod': 5
+}
+
+# Cooldown stats
+stats = {}
 
 class wfst(Resource):
 	def post(self):
 		try:
+			# POSTed data as json
 			j = request.get_json(force=True)
+
 			# Response payload
 			resp = {
 				'reply': '',
@@ -29,144 +71,91 @@ class wfst(Resource):
 
 			suffix = '\n更多命令请输入"帮助"。'
 
-			if j['post_type'] == 'request' and j['request_type'] == 'group':
-				resp = {
-					'approve': 'true'
-				}
-				return resp, 200
+			# QQ Requests
+			if j['post_type'] == 'request':
+				if j['request_type'] == 'group':
+					resp = {
+						'approve': 'true'
+					}
+					return resp, 200
 			
-			if j['post_type'] == 'message':
+			# Logs
+			log_msg = True
+			if log_msg and j['post_type'] == 'message':
 				if j['message_type'] == 'group':
 					misc.msg_log(j['message_id'], j['group_id'], j['sender']['user_id'], j['message'])
 				else:
 					misc.msg_log(j['message_id'], '0', j['sender']['user_id'], j['message'])
 
-			# All queries from banned senders are directly dropped
+			# All queries from banned senders and bot themselves are directly dropped
 			banned_sender = ['']
 			if j['sender']['user_id'] == j['self_id'] or str(j['sender']['user_id']) in banned_sender:
 				return '', 204
 
-			if j['message'] == '警报':
-				resp['reply'] = wf.get_alerts() + suffix
-			elif j['message'] == '平原时间':
-				resp['reply'] = wf.get_cetus_time() + '\n' + wf.get_fortuna_time() + suffix
-			elif j['message'] == '突击':
-				resp['reply'] = wf.get_sorties() + suffix
-			elif j['message'] == '地球赏金':
-				resp['reply'] = wf.get_bounties('cetus') + suffix
-			elif j['message'] == '金星赏金':
-				resp['reply'] = wf.get_bounties('solaris') + suffix
-			elif j['message'] == '裂缝':
-				resp['reply'] = wf.get_fissures() + suffix        
-			elif j['message'] == '入侵':
-				resp['reply'] = wf.get_invasions() + suffix
-			elif j['message'] == '奸商':
-				resp['reply'] = wf.get_voidtrader() + suffix
-			elif j['message'] == '每日特惠':
-				resp['reply'] = wf.get_dailydeal() + suffix
-			elif j['message'].startswith('模拟开卡'):
-				if time.time() - stats['last_sent'] > 60:
-					if 'card' in j['sender'] and j['sender']['card'] != '':
-						resp['reply'] = '[' + j['sender']['card'] + ']' + wf.get_riven_info(j['message'].replace('模拟开卡', '').strip())
-						stats['last_sent'] = time.time()
-					elif 'nickname' in j['sender'] and j['sender']['nickname'] != '':
-						resp['reply'] = '[' + j['sender']['nickname'] + ']' + wf.get_riven_info(j['message'].replace('模拟开卡', '').strip())
-						stats['last_sent'] = time.time()
-					else:
-						resp['reply'] = wf.get_riven_info(j['message'].replace('模拟开卡', '').strip())
-						stats['last_sent'] = time.time()
-				else:
-					if 'card' in j['sender'] and j['sender']['card'] != '':
-						resp['reply'] = '[' + j['sender']['card'] + ']\n' + wf.cooldown()
-					elif 'nickname' in j['sender'] and j['sender']['nickname'] != '':
-						resp['reply'] = '[' + j['sender']['nickname'] + ']\n' + wf.cooldown()
-					else:
-						resp['reply'] = wf.cooldown()
-			elif j['message'] == '帮助':
-				resp['reply'] = '目前可用命令：\n帮助、警报、入侵、平原时间、地球赏金、金星赏金、突击、裂缝、奸商、每日特惠、模拟开卡'
-			elif j['message'].lower().replace(' ','') in wf.data_dict['CR']:
-				resp['reply'] = wf.data_dict['CR'][j['message'].lower().replace(' ','')]
-			elif j['message'].startswith('/roll'):
-				msg = wf.misc_roll(j['message'])
-				if msg != '':
-					if j['message_type'] == 'group':
-						if 'card' in j['sender'] and j['sender']['card'] != '':
-							resp['reply'] = '[' + j['sender']['card'] + ']' + msg
-						elif 'nickname' in j['sender'] and j['sender']['nickname'] != '':
-							resp['reply'] = '[' + j['sender']['nickname'] + ']' + msg
-						else:
-							resp['reply'] = msg
-					else:
-						resp['reply'] = msg
-			elif j['message'].startswith('/ask'):
-				resp['reply'] = wf.ask_8ball(j['message'])
-			elif j['message'].startswith('/wm'):
-				if time.time() - stats['last_wm_query'] > 10:		
-					msg = wf.get_wmprice(j['message'].replace('/wm', '').strip())
-					stats['last_wm_query'] = time.time()
-				else:
-					msg = wf.cooldown()
-				if msg != '':
-					if j['message_type'] == 'group':
-						if 'card' in j['sender'] and j['sender']['card'] != '':
-							resp['reply'] = '[' + j['sender']['card'] + ']\n' + msg
-						elif 'nickname' in j['sender'] and j['sender']['nickname'] != '':
-							resp['reply'] = '[' + j['sender']['nickname'] + ']\n' + msg
-						else:
-							resp['reply'] = msg
-					else:
-						resp['reply'] = msg
-			elif j['message'].startswith('/mod'):
-				if time.time() - stats['last_wiki_query'] > 10:
-					msg = wf.get_wiki_text(j['message'].replace('/mod', '').strip())
-					stats['last_wiki_query'] = time.time()
-				else:
-					msg = wf.cooldown()
-				if msg != '':
-					if j['message_type'] == 'group':
-						if 'card' in j['sender'] and j['sender']['card'] != '':
-							resp['reply'] = '[' + j['sender']['card'] + ']\n' + msg
-						elif 'nickname' in j['sender'] and j['sender']['nickname'] != '':
-							resp['reply'] = '[' + j['sender']['nickname'] + ']\n' + msg
-						else:
-							resp['reply'] = msg
-					else:
-						resp['reply'] = msg
-			#TODO: Dictionary these
-			elif j['message'].startswith('早饭吃什么'):
-				msg = ''
-				for dish in misc.food('breakfast'):
-					msg += dish + ' '
-				resp['reply'] = msg
-			elif j['message'].startswith('午饭吃什么'):
-				msg = ''
-				for dish in misc.food('lunch'):
-					msg += dish + ' '
-				resp['reply'] = msg
-			elif j['message'].startswith('晚饭吃什么'):
-				msg = ''
-				for dish in misc.food('dinner'):
-					msg += dish + ' '
-				resp['reply'] = msg
-			elif j['message'] == ('吃什么'):
-				msg = ''
-				for dish in misc.food(''):
-					msg += dish + ' '
-				resp['reply'] = msg
-			elif j['message'].startswith('/echo'):
-				query_id = re.match(r'.*\[CQ:at,qq=(.*)\].*', j['message'])
-				if query_id and j['message_type'] == 'group':
-					resp['reply'] = misc.msg_fetch(j['group_id'], query_id.group(1))
+			# CQ tag for @sender if message type is group
+			at_sender = '[CQ:at,qq={}]：\n'.format(j['sender']['user_id']) if j['message_type'] == 'group' else ''
 
+			# Check query cooldown
+			for cd in command_cooldown_full:
+				if cd in j['message']:
+					if cd in stats:
+						if time.time() - stats[cd] < command_cooldown_full[cd]:
+							resp['reply'] = at_sender + wf.cooldown()
+							return resp, 200
+						else:
+							stats[cd] = time.time()
+					else:
+						stats[cd] = time.time()
+
+			for cd in command_cooldown_partial:
+				if j['message'].startswith(cd):
+					if cd in stats:
+						if time.time() - stats[cd] < command_cooldown_partial[cd]:
+							resp['reply'] = at_sender + wf.cooldown()
+							return resp, 200
+						else:
+							stats[cd] = time.time()
+					else:
+						stats[cd] = time.time()
+
+			# Handle commands
+			for command in command_full:
+				if j['message'] == command:
+					msg = command_full.get(command, lambda: '')()
+					if msg != '':
+						if command in command_suppress:
+							resp['reply'] = msg
+						else:
+							resp['reply'] = msg + suffix
+						return resp, 200
+
+			for command in command_partial:
+				if j['message'].startswith(command):
+					msg = command_partial.get(command, lambda: '')(j)
+					if msg != '':
+						if command in command_suppress:
+							resp['reply'] = msg
+						else:
+							resp['reply'] = at_sender + msg
+						return resp, 200						
+
+			# Custom replies
+			if j['message'].lower().replace(' ','') in wf.data_dict['CR']:
+				resp['reply'] = wf.data_dict['CR'][j['message'].lower().replace(' ','')]
+				return resp, 200
+
+			# Autoban
 			if j['message_type'] == 'group':
 				autoban(j['message'], j['group_id'], j['user_id'])
-
+			
+			# This is basically not possible due to every message being handled above, but what if something weird happened?
 			if resp['reply'] != '':
 				return resp, 200
 			else:
 				return '', 204
+
 		except Exception as e:
-			print(str(e))
+			print(repr(e))
 			return '', 204
 
 def autoban(message, group_id, user_id):

@@ -11,14 +11,30 @@ def food(meal):
 	if meal in dishlist:
 		for dish in dishlist[meal]:
 			dishes.append(dish)
-	
+
 	selected_dishes = []
 	for _ in range(0,3):
 		selected_dish = random.choice(dishes)
 		selected_dishes.append(selected_dish)
 		dishes.remove(selected_dish)
 
-	return selected_dishes
+	msg = ''
+	for dish in selected_dishes:
+		msg += dish + ' '
+
+	return msg
+
+def breakfast():
+	return food('breakfast')
+
+def lunch():
+	return food('lunch')
+
+def dinner():
+	return food('dinner')
+
+def general():
+	return food('')
 
 import sqlite3
 import time
@@ -42,7 +58,7 @@ def msg_log(message_id, group_id, sender_id, message):
 	finally:
 		db.close()
 		return '[INFO] Transaction complete'
-	
+
 def msg_fetch(group_id, sender_id, lines=5):
 	try:
 		db = sqlite3.connect('qqbot.sqlite')
@@ -88,3 +104,18 @@ def msg_stalker(self_id, group_id, sender_id, lines=5):
 			return '[ERROR] 你不在目标群中，你这个Stalker'
 	except:
 		return '[ERROR] 目标群号错误或系统故障'
+
+import re
+def msg_ar_wrapper(j):
+	if j['message'].startswith('/echo'):
+		query_id = re.match(r'.*\[CQ:at,qq=(.*)\].*', j['message'])
+		if query_id and j['message_type'] == 'group':
+			return msg_fetch(j['group_id'], query_id.group(1))
+
+	if j['post_type'] == 'message' and j['message_type'] == 'private':
+		if j['message'].startswith('/stalk'):
+			query_id = re.match(r'.* (\d+) (\d+) (\d+)', j['message'])
+			if query_id:
+				return msg_stalker(j['sender']['user_id'], query_id.group(1), query_id.group(2), query_id.group(3))
+	
+	return ''
