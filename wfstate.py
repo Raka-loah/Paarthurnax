@@ -81,6 +81,8 @@ for k in riven_type:
 # Useful functions
 
 def s2h(seconds):
+	if seconds <= 0:
+		return 'N/A'
 	d = 0
 	if seconds >= 86400:
 		d = math.floor(seconds / 86400)
@@ -149,8 +151,10 @@ def get_invasions():
 		inv_vs_infestation = True if invasion['DefenderMissionInfo']['faction'] == 'FC_INFESTATION' else False
 		goal_perc = (1 + (float(invasion['Count']) / float(invasion['Goal']))) * (
 			100 if inv_vs_infestation else 50)
-		eta_finish = (int(invasion['Goal']) - abs(int(invasion['Count']))) * ((time.time() - float(
-			invasion['Activation']['$date']['$numberLong']) / 1000) / abs(int(invasion['Count'])))
+		try:
+			eta_finish = (int(invasion['Goal']) - abs(int(invasion['Count']))) * ((time.time() - float(invasion['Activation']['$date']['$numberLong']) / 1000) / abs(int(invasion['Count'])))
+		except:
+			eta_finish = 0
 		atk_faction = invasion['DefenderMissionInfo']['faction']
 		def_faction = invasion['AttackerMissionInfo']['faction']
 		atk_reward = data_dict['L'][invasion['AttackerReward']['countedItems'][0]['ItemType'].lower(
