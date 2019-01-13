@@ -48,7 +48,7 @@ command_partial = {
 	'/ask': wf.ask_8ball,
 	'/roll': wf.misc_roll,
 	'/echo': misc.msg_ar_wrapper,
-	'/stalker': misc.msg_ar_wrapper
+	'/stalk': misc.msg_ar_wrapper
 }
 
 # Do not append suffix or @sender tag
