@@ -17,12 +17,10 @@ from bs4 import BeautifulSoup
 
 requests_cache.install_cache('worldstate_cache', expire_after=60)
 
-
 def get_worldstate():
 	wsurl = 'http://content.warframe.com/dynamic/worldState.php'
 	ws = requests.get(wsurl).json()
 	return ws
-
 
 # Dictionaries!
 
@@ -287,12 +285,18 @@ def get_fortuna_time():
 		weather_cycle_text = '奥布山谷当前天气寒冷，将在' + s2h(cycle_remaining) + '后转为温暖。'
 	return weather_cycle_text
 
+# Plains time
+
+def get_plains_time():
+	return '{}\n{}'.format(get_cetus_time(), get_fortuna_time())
+
 # Riven
 # Usage: get_riven_info()
 # Return: Various
 # Riven info copied from: https://semlar.com/rivencalc
 
-def get_riven_info(weapon, simulate=0):
+def get_riven_info(j):
+	weapon = j['message'].replace('模拟开卡', '').strip()
 	riven_info = ''
 	prefix = ''
 
@@ -421,15 +425,19 @@ def riven_dispo_icon(dispo):
 	return (' %s(%.2f)' % (text, dispo))
 
 # Bounties
-# Usage: get_bounties(category) category: 'cetus'/'solaris'
+# Usage: get_bounties(j) message=>category: 'cetus'/'solaris'
 # Return: a very long string about selected bounties
 
-
-def get_bounties(category):
+def get_bounties(j):
 	try:
 		ws = get_worldstate()
 	except:
 		return '[ERROR] 获取世界状态失败'
+	category_dict = {
+		'地球赏金': 'cetus',
+		'金星赏金': 'solaris'
+	}
+	category = category_dict[j['message']]
 	msg = ''
 	if category == 'cetus':
 		for syndicate in ws['SyndicateMissions']:
@@ -496,7 +504,11 @@ def get_dailydeal():
 	except:
 		pass
 	return msg
-	
+
+def get_some_help():
+	# I NEED THIS SO BAD SOMEONE PLEASE
+	return '目前可用命令：\n帮助、警报、入侵、平原时间、地球赏金、金星赏金、突击、裂缝、奸商、每日特惠、模拟开卡'
+
 # Automatic broadcasting:
 
 # Cetus day/night transition within 60 seconds
@@ -560,8 +572,8 @@ def get_new_alerts():
 # Miscellaneous:
 # Roll
 
-
-def misc_roll(content):
+def misc_roll(j):
+	content = j['message']
 	try:
 		roll_range = int(content.replace('/roll', ''))
 	except:
@@ -570,8 +582,7 @@ def misc_roll(content):
 		return 'Roll(' + str(roll_range) + '): ' + str(random.randint(1, roll_range))
 	return ''
 
-
-def ask_8ball(content):
+def ask_8ball(j):
 	replies = ['当然YES咯', '我觉得OK', '毫无疑问', '妥妥儿的', '你就放心吧', '让我说的话，YES', '基本上没跑了', '看起来没问题', 'YES', '我听卡德加说YES，那就YES吧',
 			   '有点复杂，再试一次', '过会儿再问我', '我觉得还是别剧透了', '放飞自我中，过会儿再问', '你心不够诚，再试一次', '我觉得不行', '我必须说NO', '情况不容乐观', '我觉得根本就是NO', '我持怀疑态度']
 	return random.choice(replies)
@@ -581,9 +592,9 @@ def cooldown():
 	replies = ['我还不能施放这个法术', '这个法术还在冷却中', '法术冷却中', '我还没准备好施放这个法术', '被抵抗，请稍后再试']
 	return random.choice(replies)
 
-
-def get_wmprice(item_name):
+def get_wmprice(j):
 	msg = ''
+	item_name = j['message'].replace('/wm','').strip()
 	item_name = item_name.lower().replace(' ', '')
 	if item_name in data_dict['WP']:
 		msg = random.choice(data_dict['WP'][item_name])
@@ -607,6 +618,7 @@ def get_wmprice(item_name):
 				sorted_sellers = sorted(sellers, key=lambda x: (sellers[x], x))
 				plat = 0
 				count = 0
+				msg += '{}({})\n'.format(j['message'].replace('/wm','').strip(), data_dict['WM'][item_name])
 				for i in range(0, 5):
 					try:
 						plat += sellers[sorted_sellers[i]]
@@ -627,9 +639,9 @@ def get_wmprice(item_name):
 			msg += '\n{}'.format(item[0])
 	return msg
 
-
-def get_wiki_text(mod_name):
+def get_wiki_text(j):
 	s = requests_cache.CachedSession(backend='sqlite', cache_name='wiki_cache')
+	mod_name = j['message'].replace('/mod','').strip()
 	msg = ''
 	if mod_name.lower().replace(' ', '') in data_dict['ML']:
 		wikiurl = 'http://warframe.huijiwiki.com/wiki/' + \
