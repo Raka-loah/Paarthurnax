@@ -54,7 +54,7 @@ command_partial = {
 # Do not append suffix or @sender tag
 command_suppress = ['吃什么', '早饭吃什么', '午饭吃什么', '晚饭吃什么']
 
-# Cooldown for individual commands in seconds
+# Cooldown for individual command in seconds
 command_cooldown_full = {}
 
 command_cooldown_partial = {
