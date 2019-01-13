@@ -315,7 +315,8 @@ def get_riven_info(j):
 		).pop()
 		prefix = '你从虚空中获得了一张%s裂罅Mod并开出了：\n' % (riven_type[weapon])
 		riven_info = riven_details(random.sample(list(riven_data[weapon]['dispo']), 1)[0], random.randint(2, 3), random.randint(0, 1))
-	if weapon == '卡':
+
+	if j['message'].replace('模拟开卡', '').strip() == '卡':
 		prefix = prefix.replace('裂罅Mod', '紫色卡卡')
 	return prefix + riven_info
 
