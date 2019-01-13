@@ -16250,13 +16250,13 @@
 	"/lotus/storeitems/types/recipes/helmets/garudaalthelmetblueprint": {
 		"value": "Garuda巴托里头盔蓝图"
 	},
-	"/Lotus/StoreItems/Types/Game/Projections/T4VoidProjectionMagNovaVaultBBronze": {
+	"/lotus/storeitems/types/game/projections/t4voidprojectionmagnovavaultbbronze": {
 		"value": "后纪A5遗物"
 	},
-	"/Lotus/StoreItems/Weapons/Corpus/LongGuns/Machinegun/SupraVandal": {
+	"/lotus/storeitems/weapons/corpus/longguns/machinegun/supravandal": {
 		"value": "苏普拉破坏者"
 	},
-	"/Lotus/StoreItems/Upgrades/Skins/VoidTrader/ElixisOpticor": {
+	"/lotus/storeitems/upgrades/skins/voidtrader/elixisopticor": {
 		"value": "奥堤克光子枪镀铜外观"
 	}
 }
