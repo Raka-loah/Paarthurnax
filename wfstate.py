@@ -564,8 +564,9 @@ def get_new_alerts():
 				+ ' x ' + str(data_dict['L'][alert['MissionInfo']['missionReward']['countedItems'][0]['ItemType'].lower()]['value']) \
 				if 'countedItems' in alert['MissionInfo']['missionReward'] else ''
 
+			bc_counteditems = ['泥炭萃取物', '库狛', '库娃', '虚空光体']
 			if rew_items == '' or '内融核心' in rew_items:
-				if '泥炭萃取物' not in rew_counteditems:
+				if not any(item in rew_counteditems for item in bc_counteditems):
 					break
 
 			alert_text += '新警报任务！\n\n地点：' + data_dict['S'][alert['MissionInfo']['location']]['value'] + ' | ' + req_archwing + data_dict['M'][alert['MissionInfo']['missionType']]['value'] \
