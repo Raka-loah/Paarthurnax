@@ -492,7 +492,7 @@ def get_voidtrader():
 			except:
 				msg += '\n物品：{} DK：{} CR：{}'.format(item['ItemType'], item['PrimePrice'], item['RegularPrice'])
 	else:
-		msg = '奸商将于{}后到达{}。'.format(s2h(float(vt['Activation']['$date']['$numberLong']) / 1000 - time.time()), data_dict['S'][vt['Node']])
+		msg = '奸商将于{}后到达{}。'.format(s2h(float(vt['Activation']['$date']['$numberLong']) / 1000 - time.time()), data_dict['S'][vt['Node']]['value'])
 	return msg
 
 # Daily Deal
