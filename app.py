@@ -144,11 +144,11 @@ class wfst(Resource):
 				resp['reply'] = wf.data_dict['CR'][j['message'].lower().replace(' ','')]
 				return resp, 200
 
-			# Autoban
+			# Autoban & EXECUTION
 			if j['message_type'] == 'group':
 				autoban(j['message'], j['group_id'], j['user_id'])
+				resp['reply'] = misc.msg_executioner(j)
 			
-			# This is basically not possible due to every message being handled above, but what if something weird happened?
 			if resp['reply'] != '':
 				return resp, 200
 			else:
@@ -201,5 +201,5 @@ if __name__ == '__main__':
 	scheduler = BackgroundScheduler()
 	scheduler.add_job(task_new_alert, 'cron', second='00')
 	scheduler.add_job(task_cetus_transition, 'cron', second='05')
-	scheduler.start()
+	#scheduler.start()
 	app.run(debug=False,port=8888)

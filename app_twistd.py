@@ -169,8 +169,8 @@ class wfst(Resource):
 			# Autoban
 			if j['message_type'] == 'group':
 				autoban(j['message'], j['group_id'], j['user_id'])
+				resp['reply'] = misc.msg_executioner(j)
 			
-			# This is basically not possible due to every message being handled above, but what if something weird happened?
 			if resp['reply'] != '':
 				return resp, 200
 			else:
