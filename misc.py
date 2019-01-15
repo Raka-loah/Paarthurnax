@@ -119,3 +119,21 @@ def msg_ar_wrapper(j):
 				return msg_stalker(j['sender']['user_id'], query_id.group(1), query_id.group(2), query_id.group(3))
 	
 	return ''
+
+def msg_executioner(j):
+	if j['message_type'] == 'group':
+		try:
+			db = sqlite3.connect('qqbot.sqlite')
+			cursor = db.cursor()
+			cursor.execute('''SELECT timestamp, sender_id FROM messages WHERE group_id = ? ORDER BY timestamp DESC LIMIT 2''', (j['group_id'],))
+			rows = cursor.fetchall()
+			msg = ''
+			if len(rows) == 2:
+				timespan = float(rows[0][0]) - float(rows[1][0])
+				if timespan > 120 and rows[0][1] == rows[1][1]:
+					msg = random.choice(['哦', '这样', '真的吗', '挽尊', '然后呢', '嗯嗯'])
+			return msg
+		except:
+			db.close()
+			return ''
+	return ''
