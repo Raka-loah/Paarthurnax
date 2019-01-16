@@ -430,19 +430,14 @@ def riven_dispo_icon(dispo):
 	return (' %s(%.2f)' % (text, dispo))
 
 # Bounties
-# Usage: get_bounties(j) message=>category: 'cetus'/'solaris'
+# Usage: get_bounties(category) category: 'cetus'/'solaris'
 # Return: a very long string about selected bounties
 
-def get_bounties(j):
+def get_bounties(category):
 	try:
 		ws = get_worldstate()
 	except:
 		return '[ERROR] 获取世界状态失败'
-	category_dict = {
-		'地球赏金': 'cetus',
-		'金星赏金': 'solaris'
-	}
-	category = category_dict[j['message']]
 	msg = ''
 	if category == 'cetus':
 		for syndicate in ws['SyndicateMissions']:
@@ -472,6 +467,12 @@ def get_bounties(j):
 	else:
 		msg = ''
 	return msg
+
+def get_bounties_cetus():
+	return get_bounties('cetus')
+
+def get_bounties_solaris():
+	return get_bounties('solaris')
 
 # Void Trader
 

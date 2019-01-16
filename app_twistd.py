@@ -32,6 +32,8 @@ command_full = {
 	'奸商': wf.get_voidtrader,
 	'虚空商人': wf.get_voidtrader,
 	'帮助': wf.get_some_help,
+	'地球赏金': wf.get_bounties_cetus,
+	'金星赏金': wf.get_bounties_solaris,
 	'吃什么': misc.general,
 	'早饭吃什么': misc.breakfast,
 	'午饭吃什么': misc.lunch,
@@ -40,8 +42,6 @@ command_full = {
 
 # Commands that need arguments and will get POSTed json as argument
 command_partial = {
-	'地球赏金': wf.get_bounties,
-	'金星赏金': wf.get_bounties,
 	'模拟开卡': wf.get_riven_info,
 	'/wm': wf.get_wmprice,
 	'/mod': wf.get_wiki_text,
@@ -52,7 +52,7 @@ command_partial = {
 }
 
 # Do not append suffix or @sender tag
-command_suppress = ['吃什么', '早饭吃什么', '午饭吃什么', '晚饭吃什么']
+command_suppress = ['帮助', '吃什么', '早饭吃什么', '午饭吃什么', '晚饭吃什么']
 
 # Cooldown for individual command in seconds
 command_cooldown_full = {}
