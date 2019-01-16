@@ -110,7 +110,8 @@ def msg_ar_wrapper(j):
 	if j['message'].startswith('/echo'):
 		query_id = re.match(r'.*\[CQ:at,qq=(.*)\].*', j['message'])
 		if query_id and j['message_type'] == 'group':
-			return msg_fetch(j['group_id'], query_id.group(1))
+			# return msg_fetch(j['group_id'], query_id.group(1))
+			return '请私聊机器人 /stalk {} {} 5'.format(j['group_id'], query_id.group(1))
 
 	if j['post_type'] == 'message' and j['message_type'] == 'private':
 		if j['message'].startswith('/stalk'):
@@ -137,3 +138,14 @@ def msg_executioner(j):
 			db.close()
 			return ''
 	return ''
+
+import urllib.parse
+def let_me_baidu_that_for_you(j):
+	msg = ''
+	keyword = j['message'].replace('百度','').strip()
+	skip = ['', '呀', '啊', '哇', '一下', '一下你就知道']
+	if keyword in skip:
+		return ''
+	if j['message_type'] == 'group':
+		msg = '请点击以下链接直达百度搜索“{}”：\nhttps://www.baidu.com/s?wd={}'.format(keyword, urllib.parse.quote_plus(keyword))
+	return msg
