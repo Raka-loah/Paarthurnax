@@ -48,11 +48,12 @@ command_partial = {
 	'/ask': wf.ask_8ball,
 	'/roll': wf.misc_roll,
 	'/echo': misc.msg_ar_wrapper,
-	'/stalk': misc.msg_ar_wrapper
+	'/stalk': misc.msg_ar_wrapper,
+	'百度': misc.let_me_baidu_that_for_you
 }
 
 # Do not append suffix or @sender tag
-command_suppress = ['帮助', '吃什么', '早饭吃什么', '午饭吃什么', '晚饭吃什么']
+command_suppress = ['帮助', '吃什么', '早饭吃什么', '午饭吃什么', '晚饭吃什么', '百度']
 
 # Cooldown for individual command in seconds
 command_cooldown_full = {}
@@ -60,7 +61,8 @@ command_cooldown_full = {}
 command_cooldown_partial = {
 	'模拟开卡': 10,
 	'/wm': 10,
-	'/mod': 5
+	'/mod': 5,
+	'百度': 10
 }
 
 # Cooldown stats
