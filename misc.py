@@ -110,7 +110,8 @@ def msg_ar_wrapper(j):
 	if j['message'].startswith('/echo'):
 		query_id = re.match(r'.*\[CQ:at,qq=(.*)\].*', j['message'])
 		if query_id and j['message_type'] == 'group':
-			return msg_fetch(j['group_id'], query_id.group(1))
+			# return msg_fetch(j['group_id'], query_id.group(1))
+			return '请私聊机器人 /stalk {} {} 5'.format(j['group_id'], query_id.group(1))
 
 	if j['post_type'] == 'message' and j['message_type'] == 'private':
 		if j['message'].startswith('/stalk'):
