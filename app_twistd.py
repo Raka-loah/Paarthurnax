@@ -77,16 +77,16 @@ class wfst(Resource):
 			# Response payload
 			resp = {
 				'reply': '',
-				'at_sender': 'false'
+				'at_sender': False
 			}
 
 			suffix = '\n更多命令请输入"帮助"。'
 
 			# QQ Requests
 			if j['post_type'] == 'request':
-				if j['request_type'] == 'group':
+				if j['request_type'] == 'group' or j['request_type'] == 'friend':
 					resp = {
-						'approve': 'true'
+						'approve': True
 					}
 					return resp, 200
 			
