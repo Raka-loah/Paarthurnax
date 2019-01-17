@@ -142,7 +142,7 @@ def msg_executioner(j):
 import urllib.parse
 def let_me_baidu_that_for_you(j):
 	msg = ''
-	keyword = j['message'][2:].strip()
+	keyword = j['message'][3:23].strip()
 	skip = ['', '呀', '啊', '哇', '一下', '一下你就知道']
 	if keyword in skip:
 		return ''
