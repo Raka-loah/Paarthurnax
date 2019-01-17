@@ -40,11 +40,11 @@ command_partial = {
 	'/roll': wf.misc_roll,
 	'/echo': misc.msg_ar_wrapper,
 	'/stalk': misc.msg_ar_wrapper,
-	'百度': misc.let_me_baidu_that_for_you
+	'/百度': misc.let_me_baidu_that_for_you
 }
 
 # Do not append suffix or @sender tag
-command_suppress = ['帮助', '吃什么', '早饭吃什么', '午饭吃什么', '晚饭吃什么', '百度']
+command_suppress = ['帮助', '吃什么', '早饭吃什么', '午饭吃什么', '晚饭吃什么', '/百度']
 
 # Cooldown for individual command in seconds
 command_cooldown_full = {}
@@ -53,7 +53,7 @@ command_cooldown_partial = {
 	'模拟开卡': 10,
 	'/wm': 10,
 	'/mod': 5,
-	'百度': 10
+	'/百度': 10
 }
 
 # Cooldown stats
@@ -68,16 +68,16 @@ class wfst(Resource):
 			# Response payload
 			resp = {
 				'reply': '',
-				'at_sender': 'false'
+				'at_sender': False
 			}
 
 			suffix = '\n更多命令请输入"帮助"。'
 
 			# QQ Requests
 			if j['post_type'] == 'request':
-				if j['request_type'] == 'group':
+				if j['request_type'] == 'group' or j['request_type'] == 'friend':
 					resp = {
-						'approve': 'true'
+						'approve': True
 					}
 					return resp, 200
 			
