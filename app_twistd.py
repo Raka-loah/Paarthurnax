@@ -143,15 +143,13 @@ class wfst(Resource):
 						stats[cd] = time.time()
 
 			# Handle commands
-			for command in command_full:
-				if j['message'] == command:
-					msg = command_full.get(command, lambda: '')()
-					if msg != '':
-						if command in command_suppress:
-							resp['reply'] = msg
-						else:
-							resp['reply'] = msg + suffix
-						return resp, 200
+			msg = command_full.get(j['message'], lambda: '')()
+			if msg != '':
+				if j['message'] in command_suppress:
+					resp['reply'] = msg
+				else:
+					resp['reply'] = msg + suffix
+				return resp, 200
 
 			for command in command_partial:
 				if j['message'].startswith(command):
@@ -170,7 +168,15 @@ class wfst(Resource):
 
 			# Autoban
 			if j['message_type'] == 'group':
-				autoban(j['message'], j['group_id'], j['user_id'])
+				ban_word = ['惊闻', '文体两开花', '驚聞']
+				for word in ban_word:
+					if word in j['message'].replace(' ',''):	
+						resp['ban'] = True
+						resp['ban_duration'] = 300
+						return resp, 200
+
+			# "Execute" person nobody cared about within 120 seconds
+			if j['message_type'] == 'group':
 				resp['reply'] = misc.msg_executioner(j)
 			
 			if resp['reply'] != '':
@@ -182,44 +188,33 @@ class wfst(Resource):
 			log.error(repr(e))
 			return '', 204
 
-# Usage:
-# POST message to /
 api.add_resource(wfst, '/')
-
-def autoban(message, group_id, user_id):
-	ban_word = ['惊闻', '文体两开花', '驚聞']
-	for word in ban_word:
-		if word in message.replace(' ',''):
-			url = 'http://127.0.0.1:5700/set_group_ban'
-			payload = {
-				'group_id': group_id,
-				'user_id': user_id,
-				'duration': 300
-			}
-			requests.post(url, json=payload)
-			break
 
 # Cron jobs
 # Change group_id to your desire group id
+broadcast_group = [697991343]
+
 def task_new_alert():
 	msg = wf.get_new_alerts()
 	if msg != '':
 		url = 'http://127.0.0.1:5700/send_group_msg_async'
-		payload = {
-			'group_id': 697991343,
-			'message': msg
-		}
-		requests.post(url, json=payload)
+		for group_id in broadcast_group:
+			payload = {
+				'group_id': group_id,
+				'message': msg
+			}
+			requests.post(url, json=payload)
 
 def task_cetus_transition():
 	msg = wf.get_cetus_transition()
 	if msg != '':
 		url = 'http://127.0.0.1:5700/send_group_msg_async'
-		payload = {
-			'group_id': 697991343,
-			'message': msg
-		}
-		requests.post(url, json=payload)
+		for group_id in broadcast_group:
+			payload = {
+				'group_id': group_id,
+				'message': msg
+			}
+			requests.post(url, json=payload)
 
 scheduler = BackgroundScheduler()
 scheduler.add_job(task_new_alert, 'cron', second='00')
