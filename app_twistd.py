@@ -84,7 +84,7 @@ class wfst(Resource):
 
 			# QQ Requests
 			if j['post_type'] == 'request':
-				if j['request_type'] == 'group' or j['request_type'] == 'friend':
+				if (j['request_type'] == 'group' and j['sub_type'] == 'invite') or j['request_type'] == 'friend':
 					resp = {
 						'approve': True
 					}
