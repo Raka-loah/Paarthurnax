@@ -139,6 +139,27 @@ def msg_executioner(j):
 			return ''
 	return ''
 
+def msg_nature_of_humanity(j):
+	if j['message_type'] == 'group':
+		try:
+			db = sqlite3.connect('qqbot.sqlite')
+			cursor = db.cursor()
+			cursor.execute('''SELECT message, sender_id FROM messages WHERE group_id = ? ORDER BY timestamp DESC LIMIT 3''', (j['group_id'],))
+			rows = cursor.fetchall()
+			msg = ''
+			# Exactly 3 messages, last two messages are identical, last third is not.
+			# Repeat the last message, and ensure repeating only once.
+			if len(rows) == 3:
+				messages = [rows[0][0], rows[1][0], rows[2][0]]
+				senders = [rows[0][1], rows[1][1], rows[2][1]]
+				if messages[0] == messages[1] and messages[1] != messages[2] and senders[0] != senders[1]:
+					msg = rows[0][0]
+					return msg
+		except:
+			db.close()
+			return ''
+	return ''
+
 import urllib.parse
 def let_me_baidu_that_for_you(j):
 	msg = ''

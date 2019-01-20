@@ -176,8 +176,9 @@ class wfst(Resource):
 						return resp, 200
 
 			# "Execute" person nobody cared about within 120 seconds
+			# The Nature of Humanity, will override Execution
 			if j['message_type'] == 'group':
-				resp['reply'] = misc.msg_executioner(j)
+				resp['reply'] = misc.msg_executioner(j) if misc.msg_executioner(j) != '' else misc.msg_nature_of_humanity(j)
 			
 			if resp['reply'] != '':
 				return resp, 200
