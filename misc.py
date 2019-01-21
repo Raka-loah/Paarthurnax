@@ -131,7 +131,7 @@ def msg_executioner(j):
 			msg = ''
 			if len(rows) == 2:
 				timespan = float(rows[0][0]) - float(rows[1][0])
-				if timespan > 120 and rows[0][1] == rows[1][1]:
+				if timespan > 180 and rows[0][1] == rows[1][1] and random.randint(1, 10) == 1:
 					msg = random.choice(['哦', '这样', '真的吗', '挽尊', '然后呢', '嗯嗯'])
 			return msg
 		except:
