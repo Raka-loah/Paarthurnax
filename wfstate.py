@@ -7,6 +7,7 @@ import json
 import time
 import math
 import random
+import re
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 from bs4 import BeautifulSoup
@@ -580,14 +581,49 @@ def get_new_alerts():
 # Roll
 
 def misc_roll(j):
-	content = j['message']
+	msg = ''
+	dice_num = 1
+	dice_faces = 100
+	# xdy format
 	try:
-		roll_range = int(content.replace('/roll', ''))
+		dices = re.match(r'.* (\d+)[dD](\d+)', j['message'])
+		if dices:
+			dice_num = int(dices.group(1)) if int(dices.group(1)) <= 10 else 10
+			dice_faces = int(dices.group(2)) if int(dices.group(2)) <= 1000 else 1000
+		else:
+			raise ValueError('No match for xdy format')
 	except:
-		roll_range = 100
-	if roll_range > 1:
-		return 'Roll(' + str(roll_range) + '): ' + str(random.randint(1, roll_range))
-	return ''
+		try:
+			dices = re.match(r'.* (\d+)', j['message'])
+			if dices:
+				dice_num = 1
+				dice_faces = int(dices.group(1)) if int(dices.group(1)) <= 1000 else 1000
+		except:
+			pass
+
+	results = []
+
+	try:
+		for _ in range(0, dice_num):
+			results.append(random.randint(1, dice_faces))
+	except:
+		results.append(random.randint(1, 100))
+
+	if len(results) <= 1:
+		msg = str(results.pop())
+	else:
+		msg = '('
+		sum_dices = 0
+		for result in results:
+			msg += str(result) + ','
+			sum_dices += result
+		msg = msg[:-1]
+		msg += ') = {}'.format(sum_dices)
+
+	if msg != '':
+		return 'Roll({}d{}): {}'.format(dice_num, dice_faces, msg)
+	else:
+		return ''
 
 def ask_8ball(j):
 	replies = ['当然YES咯', '我觉得OK', '毫无疑问', '妥妥儿的', '你就放心吧', '让我说的话，YES', '基本上没跑了', '看起来没问题', 'YES', '我听卡德加说YES，那就YES吧',
