@@ -40,11 +40,13 @@ command_partial = {
 	'/roll': wf.misc_roll,
 	'/echo': misc.msg_ar_wrapper,
 	'/stalk': misc.msg_ar_wrapper,
-	'/百度': misc.let_me_baidu_that_for_you
+	'/百度': misc.let_me_baidu_that_for_you,
+	'点歌': misc.music_share,
+	'来首': misc.music_share
 }
 
 # Do not append suffix or @sender tag
-command_suppress = ['帮助', '吃什么', '早饭吃什么', '午饭吃什么', '晚饭吃什么', '/百度']
+command_suppress = ['帮助', '吃什么', '早饭吃什么', '午饭吃什么', '晚饭吃什么', '/百度', '点歌', '来首']
 
 # Cooldown for individual command in seconds
 command_cooldown_full = {}
