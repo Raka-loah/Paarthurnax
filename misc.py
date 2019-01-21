@@ -170,3 +170,18 @@ def let_me_baidu_that_for_you(j):
 	if j['message_type'] == 'group':
 		msg = '请点击以下链接直达百度搜索“{}”：\nhttps://www.baidu.com/s?ie=utf8&wd={}'.format(keyword, urllib.parse.quote_plus(keyword))
 	return msg
+
+def music_share(j):
+	msg = ''
+	if j['message_type'] == 'group':
+		song_name = j['message'][2:22].strip()
+		try:
+			data = requests.get('https://c.y.qq.com/soso/fcgi-bin/client_search_cp?g_tk=5381&p=1&n=20&w={}&format=json&loginUin=0&hostUin=0&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&remoteplace=txt.yqq.song&t=0&aggr=1&cr=1&catZhida=1'.format(song_name)).json()
+			msg = '[CQ:music,type=qq,id={}]'.format(data['data']['song']['list'][0]['songid'])
+		except:
+			try:
+				data = requests.get('https://api.mlwei.com/music/api/wy/?key=523077333&id={}&type=so&cache=0&nu=1'.format(song_name)).json()
+				msg = '[CQ:music,type=163,id={}]'.format(data['Body'][0]['id'])
+			except:
+				msg = '[ERROR]点歌失败，网络错误'
+	return msg
