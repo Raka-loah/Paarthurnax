@@ -42,7 +42,8 @@ command_partial = {
 	'/stalk': misc.msg_ar_wrapper,
 	'/百度': misc.let_me_baidu_that_for_you,
 	'点歌': misc.music_share,
-	'来首': misc.music_share
+	'来首': misc.music_share,
+	'/tarot': misc.draw_tarot
 }
 
 # Do not append suffix or @sender tag
@@ -55,7 +56,8 @@ command_cooldown_partial = {
 	'模拟开卡': 10,
 	'/wm': 10,
 	'/mod': 5,
-	'/百度': 10
+	'/百度': 10,
+	'/tarot': 10
 }
 
 # Cooldown stats

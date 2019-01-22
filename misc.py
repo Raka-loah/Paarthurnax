@@ -185,3 +185,18 @@ def music_share(j):
 			except:
 				msg = '[ERROR]点歌失败，网络错误'
 	return msg
+
+import json
+import os
+with open(os.path.dirname(os.path.abspath(__file__)) + '\\data\\tarot.json', 'r', encoding='utf-8') as E:
+	tarot_deck = json.loads(E.read())
+
+def draw_tarot(j):
+	msg = ''
+	chosen_card = random.choice(tarot_deck)
+	msg = chosen_card['name'] + '\n'
+	if random.randint(-1, 1) == 0:
+		msg += chosen_card['desc']
+	else:
+		msg += chosen_card['rdesc']
+	return msg
