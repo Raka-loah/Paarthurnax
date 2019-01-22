@@ -131,7 +131,7 @@ def msg_executioner(j):
 			msg = ''
 			if len(rows) == 2:
 				timespan = float(rows[0][0]) - float(rows[1][0])
-				if timespan > 120 and rows[0][1] == rows[1][1]:
+				if timespan > 180 and rows[0][1] == rows[1][1] and random.randint(1, 10) == 1:
 					msg = random.choice(['哦', '这样', '真的吗', '挽尊', '然后呢', '嗯嗯'])
 			return msg
 		except:
@@ -184,4 +184,19 @@ def music_share(j):
 				msg = '[CQ:music,type=163,id={}]'.format(data['Body'][0]['id'])
 			except:
 				msg = '[ERROR]点歌失败，网络错误'
+	return msg
+
+import json
+import os
+with open(os.path.dirname(os.path.abspath(__file__)) + '\\data\\tarot.json', 'r', encoding='utf-8') as E:
+	tarot_deck = json.loads(E.read())
+
+def draw_tarot(j):
+	msg = ''
+	chosen_card = random.choice(tarot_deck)
+	msg = chosen_card['name'] + '\n'
+	if random.randint(-1, 1) == 0:
+		msg += chosen_card['desc']
+	else:
+		msg += chosen_card['rdesc']
 	return msg
