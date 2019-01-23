@@ -36,6 +36,8 @@ def dinner():
 def general():
 	return food('')
 
+def wikilink():
+	return 'Warframe Wiki : https://warframe.huijiwiki.com/wiki/%E9%A6%96%E9%A1%B5'
 import sqlite3
 import time
 
