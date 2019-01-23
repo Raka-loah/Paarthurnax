@@ -193,10 +193,26 @@ with open(os.path.dirname(os.path.abspath(__file__)) + '\\data\\tarot.json', 'r'
 
 def draw_tarot(j):
 	msg = ''
-	chosen_card = random.choice(tarot_deck)
-	msg = chosen_card['name'] + '\n'
-	if random.randint(-1, 1) == 0:
-		msg += chosen_card['desc']
-	else:
-		msg += chosen_card['rdesc']
+	draw_num = re.match(r'.* (\d)', j['message'])
+	try:
+		if draw_num:
+			chosen_card = random.sample(tarot_deck, int(draw_num.group(1)))
+			for card in chosen_card:
+				msg += card['name'] + '\n'
+				if random.randint(0, 1) == 0:
+					msg += card['desc'] + '\n'
+				else:
+					msg += card['rdesc'] + '\n'
+				msg += '\n'
+			msg = msg[:-2]
+		else:
+			raise ValueError('No match')
+	except:
+		chosen_card = random.choice(tarot_deck)
+		msg = chosen_card['name'] + '\n'
+		if random.randint(0, 1) == 0:
+			msg += chosen_card['desc']
+		else:
+			msg += chosen_card['rdesc']
+
 	return msg
