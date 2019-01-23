@@ -57,7 +57,7 @@ command_partial = {
 }
 
 # Do not append suffix or @sender tag
-command_suppress = ['帮助', '吃什么', '早饭吃什么', '午饭吃什么', '晚饭吃什么', '/百度', '点歌', '来首']
+command_suppress = ['帮助', '吃什么', '早饭吃什么', '午饭吃什么', '晚饭吃什么', '/百度', '点歌', '来首', 'wiki来']
 
 # Cooldown for individual command in seconds
 command_cooldown_full = {}
@@ -67,7 +67,8 @@ command_cooldown_partial = {
 	'/wm': 10,
 	'/mod': 5,
 	'/百度': 10,
-	'/tarot': 10
+	'/tarot': 10,
+	'wiki来': 10
 }
 
 # Cooldown stats
