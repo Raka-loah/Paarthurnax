@@ -43,7 +43,8 @@ command_partial = {
 	'/百度': misc.let_me_baidu_that_for_you,
 	'点歌': misc.music_share,
 	'来首': misc.music_share,
-	'/tarot': misc.draw_tarot
+	'/tarot': misc.draw_tarot,
+	'wiki来': wf.get_wiki_link
 }
 
 # Do not append suffix or @sender tag
