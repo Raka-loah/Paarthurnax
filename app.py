@@ -176,7 +176,7 @@ api.add_resource(wfst, '/')
 
 # Cron jobs
 # Change group_id to your desire group id
-broadcast_group = [537715015]
+broadcast_group = [697991343]
 
 def task_new_alert():
 	msg = wf.get_new_alerts()
