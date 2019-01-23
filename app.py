@@ -28,7 +28,8 @@ command_full = {
 	'吃什么': misc.general,
 	'早饭吃什么': misc.breakfast,
 	'午饭吃什么': misc.lunch,
-	'晚饭吃什么': misc.dinner
+	'晚饭吃什么': misc.dinner,
+	'wiki来':misc.wikilink,
 }
 
 # Commands that need arguments and will get POSTed json as argument
@@ -175,7 +176,7 @@ api.add_resource(wfst, '/')
 
 # Cron jobs
 # Change group_id to your desire group id
-broadcast_group = [697991343]
+broadcast_group = [537715015]
 
 def task_new_alert():
 	msg = wf.get_new_alerts()
