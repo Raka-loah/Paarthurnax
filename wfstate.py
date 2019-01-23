@@ -725,3 +725,12 @@ def get_wiki_text(j):
 	except:
 		return ''
 	return msg
+
+def get_wiki_link(j):
+	msg = ''
+	keyword = j['message'].replace('wiki来', '', 1).strip()
+	if len(keyword) > 1:
+		msg = '请点击直达Warframe中文维基搜索页：\nhttps://warframe.huijiwiki.com/index.php?search={}'.format(keyword)
+	else:
+		msg = r'Warframe Wiki : https://warframe.huijiwiki.com/wiki/%E9%A6%96%E9%A1%B5'
+	return msg

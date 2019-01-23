@@ -28,8 +28,7 @@ command_full = {
 	'吃什么': misc.general,
 	'早饭吃什么': misc.breakfast,
 	'午饭吃什么': misc.lunch,
-	'晚饭吃什么': misc.dinner,
-	'wiki来':misc.wikilink,
+	'晚饭吃什么': misc.dinner
 }
 
 # Commands that need arguments and will get POSTed json as argument
@@ -44,7 +43,8 @@ command_partial = {
 	'/百度': misc.let_me_baidu_that_for_you,
 	'点歌': misc.music_share,
 	'来首': misc.music_share,
-	'/tarot': misc.draw_tarot
+	'/tarot': misc.draw_tarot,
+	'wiki来': wf.get_wiki_link
 }
 
 # Do not append suffix or @sender tag
