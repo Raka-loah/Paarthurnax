@@ -582,24 +582,35 @@ def get_new_alerts():
 
 def misc_roll(j):
 	msg = ''
+
+	max_dices = 10
+	max_faces = 1000
+
+	# default to 1d100+0
 	dice_num = 1
 	dice_faces = 100
-	# xdy format
-	try:
+	dice_modifier = '+'
+	dice_modifier_num = 0
+
+	# xdy+z format
+	dices = re.match(r'.* (\d+)[dD](\d+)([\+\-])(\d+)', j['message'])
+	if dices:
+		dice_num = int(dices.group(1)) if int(dices.group(1)) <= max_dices else max_dices
+		dice_faces = int(dices.group(2)) if int(dices.group(2)) <= max_faces else max_faces
+		dice_modifier = dices.group(3)
+		dice_modifier_num = int(dices.group(4))
+	else:
+		# xdy format
 		dices = re.match(r'.* (\d+)[dD](\d+)', j['message'])
 		if dices:
-			dice_num = int(dices.group(1)) if int(dices.group(1)) <= 10 else 10
-			dice_faces = int(dices.group(2)) if int(dices.group(2)) <= 1000 else 1000
+			dice_num = int(dices.group(1)) if int(dices.group(1)) <= max_dices else max_dices
+			dice_faces = int(dices.group(2)) if int(dices.group(2)) <= max_faces else max_faces
 		else:
-			raise ValueError('No match for xdy format')
-	except:
-		try:
+			# only a number	
 			dices = re.match(r'.* (\d+)', j['message'])
 			if dices:
 				dice_num = 1
-				dice_faces = int(dices.group(1)) if int(dices.group(1)) <= 1000 else 1000
-		except:
-			pass
+				dice_faces = int(dices.group(1)) if int(dices.group(1)) <= max_faces else max_faces
 
 	results = []
 
@@ -610,18 +621,33 @@ def misc_roll(j):
 		results.append(random.randint(1, 100))
 
 	if len(results) <= 1:
-		msg = str(results.pop())
+		if dice_modifier_num > 0:
+			msg = '{} {} {} = {}'.format(results[0], dice_modifier, dice_modifier_num, results[0] + dice_modifier_num if dice_modifier == '+' else results[0] - dice_modifier_num)
+		else:
+			msg = str(results[0])
 	else:
-		msg = '('
-		sum_dices = 0
-		for result in results:
-			msg += str(result) + ','
-			sum_dices += result
-		msg = msg[:-1]
-		msg += ') = {}'.format(sum_dices)
+		if dice_modifier_num > 0:
+			msg = '('
+			sum_dices = 0
+			for result in results:
+				msg += str(result) + ','
+				sum_dices += result
+			msg = msg[:-1]
+			msg += ') {} {} = {}'.format(dice_modifier, dice_modifier_num, sum_dices + dice_modifier_num if dice_modifier == '+' else sum_dices - dice_modifier_num)			
+		else:
+			msg = '('
+			sum_dices = 0
+			for result in results:
+				msg += str(result) + ','
+				sum_dices += result
+			msg = msg[:-1]
+			msg += ') = {}'.format(sum_dices)
 
 	if msg != '':
-		return 'Roll({}d{}): {}'.format(dice_num, dice_faces, msg)
+		if dice_modifier_num > 0:
+			return 'Roll({}d{}{}{}): {}'.format(dice_num, dice_faces, dice_modifier, dice_modifier_num, msg)
+		else:
+			return 'Roll({}d{}): {}'.format(dice_num, dice_faces, msg)
 	else:
 		return ''
 
