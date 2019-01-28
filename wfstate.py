@@ -530,7 +530,7 @@ def get_acolytes():
 
 def get_some_help():
 	# I NEED THIS SO BAD SOMEONE PLEASE
-	return '目前可用命令：\n帮助、警报、入侵、平原时间、地球赏金、金星赏金、突击、裂缝、奸商、每日特惠、模拟开卡'
+	return '目前可用命令：\n帮助、警报、入侵、平原时间、地球赏金、金星赏金、突击、裂缝、奸商、每日特惠、模拟开卡、小小黑'
 
 # Automatic broadcasting:
 
