@@ -28,7 +28,8 @@ command_full = {
 	'吃什么': misc.general,
 	'早饭吃什么': misc.breakfast,
 	'午饭吃什么': misc.lunch,
-	'晚饭吃什么': misc.dinner
+	'晚饭吃什么': misc.dinner,
+	'小小黑': wf.get_acolytes
 }
 
 # Commands that need arguments and will get POSTed json as argument
@@ -201,9 +202,21 @@ def task_cetus_transition():
 			}
 			requests.post(url, json=payload)
 
+def task_new_acolyte():
+	msg = wf.get_new_acolyte()
+	if msg != '':
+		url = 'http://127.0.0.1:5700/send_group_msg_async'
+		for group_id in broadcast_group:
+			payload = {
+				'group_id': group_id,
+				'message': msg
+			}
+			requests.post(url, json=payload)
+
 if __name__ == '__main__':
 	scheduler = BackgroundScheduler()
 	scheduler.add_job(task_new_alert, 'cron', second='00')
 	scheduler.add_job(task_cetus_transition, 'cron', second='05')
+	scheduler.add_job(task_new_acolyte, 'cron', second='05')
 	scheduler.start()
 	app.run(debug=False,port=8888)

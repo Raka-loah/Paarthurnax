@@ -216,3 +216,22 @@ def draw_tarot(j):
 			msg += chosen_card['rdesc']
 
 	return msg
+
+import re
+def msg_random_picture_rating(j):
+	if j['message_type'] == 'group':
+		try:
+			db = sqlite3.connect('qqbot.sqlite')
+			cursor = db.cursor()
+			cursor.execute('''SELECT message FROM messages WHERE group_id = ? AND message like '[CQ:image,file=%' ORDER BY timestamp DESC LIMIT 1''', (j['group_id'],))
+			rows = cursor.fetchall()
+			msg = ''
+			raw_score = re.match(r'\[CQ\:image\,file\=(.).*\]', rows[0][0])
+			rate = ['负分', '负分', '负分', 'F', 'F', 'E', 'D-', 'D', 'C-', 'C', 'B', 'A', 'A+', 'S', 'SS', 'SSS']
+			if raw_score:
+				msg = rate[int(raw_score.group(1), 16)]
+			return msg
+		except:
+			db.close()
+			return ''
+	return ''

@@ -512,9 +512,25 @@ def get_dailydeal():
 		pass
 	return msg
 
+def get_acolytes():
+	try:
+		ws = get_worldstate()
+	except:
+		return '[ERROR] 获取世界状态失败'
+	msg = ''
+	ac = ws['PersistentEnemies']
+	if len(ac) > 0:
+		msg = '当前出现的追随者：\n'
+		for acolyte in ac:
+			msg += '【{}】\n状态：{}\n位置：{}\n生命：{:2.2f}%\n\n'.format(data_dict['L'][acolyte['LocTag'].lower()]['value'], '出现' if acolyte['Discovered'] else '未知', data_dict['S'][acolyte['LastDiscoveredLocation']]['value'] if acolyte['Discovered'] else '未知', float(acolyte['HealthPercent']) * 100)
+		msg = msg[:-2]
+	else:
+		msg = '当前出现的追随者：无'
+	return msg
+
 def get_some_help():
 	# I NEED THIS SO BAD SOMEONE PLEASE
-	return '目前可用命令：\n帮助、警报、入侵、平原时间、地球赏金、金星赏金、突击、裂缝、奸商、每日特惠、模拟开卡'
+	return '目前可用命令：\n帮助、警报、入侵、平原时间、地球赏金、金星赏金、突击、裂缝、奸商、每日特惠、模拟开卡、小小黑'
 
 # Automatic broadcasting:
 
@@ -576,6 +592,22 @@ def get_new_alerts():
 				+ '\n奖励：' + str(rew_credits) + ' CR' + rew_items + rew_counteditems\
 				+ '\n时限：' + s2h(expiry)
 	return alert_text
+
+def get_new_acolyte():
+	try:
+		ws = get_worldstate()
+	except:
+		return '[ERROR] 获取世界状态失败'
+	msg = ''
+	ac = ws['PersistentEnemies']
+	if len(ac) > 0:
+		for acolyte in ac:
+			ldt = time.time() - float(acolyte['LastDiscoveredTime']['$date']['$numberLong']) / 1000
+			if 0 < ldt < 60:
+				msg += '【{}】\n状态：{}\n位置：{}\n生命：{:2.2f}%\n\n'.format(data_dict['L'][acolyte['LocTag'].lower()]['value'], '出现' if acolyte['Discovered'] else '未知', data_dict['S'][acolyte['LastDiscoveredLocation']]['value'] if acolyte['Discovered'] else '未知', float(acolyte['HealthPercent']) * 100)
+	if msg != '':
+		msg = '新出现的追随者：\n' + msg[:-2]
+	return msg
 
 # Miscellaneous:
 # Roll
