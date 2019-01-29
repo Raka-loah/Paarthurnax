@@ -597,7 +597,7 @@ def get_new_acolyte():
 	try:
 		ws = get_worldstate()
 	except:
-		return '[ERROR] 获取世界状态失败'
+		return ''
 	msg = ''
 	ac = ws['PersistentEnemies']
 	if len(ac) > 0:

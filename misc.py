@@ -235,3 +235,32 @@ def msg_random_picture_rating(j):
 			db.close()
 			return ''
 	return ''
+
+import hashlib
+def msg_translate(j):
+	msg = ''
+	source_text = j['message'].replace('/翻译', '', 1).strip()
+	if len(source_text) > 0:
+		try:
+			appid = '' # Your APPID
+			secretKey = '' # Your Secret Key
+			payload = {
+				'q': '',
+				'from': 'auto',
+				'to': 'zh',
+				'appid': appid,
+				'salt': '',
+				'sign': ''
+			}
+			payload['q'] = source_text
+			payload['salt'] = str(random.randint(32768, 65536))
+			m = hashlib.md5()
+			m.update((appid + payload['q'] + payload['salt'] + secretKey).encode('utf-8'))
+			payload['sign'] = m.hexdigest()
+			url = 'https://fanyi-api.baidu.com/api/trans/vip/translate'
+			response = requests.post(url, data=payload)
+			result = response.json()
+			msg = '{} =>\n{}'.format(result['trans_result'][0]['src'], result['trans_result'][0]['dst'])
+		except:
+			msg = ''
+	return msg
