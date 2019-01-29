@@ -45,7 +45,8 @@ command_partial = {
 	'点歌': misc.music_share,
 	'来首': misc.music_share,
 	'/tarot': misc.draw_tarot,
-	'wiki来': wf.get_wiki_link
+	'wiki来': wf.get_wiki_link,
+	'/翻译': misc.msg_translate
 }
 
 # Do not append suffix or @sender tag
@@ -60,7 +61,8 @@ command_cooldown_partial = {
 	'/mod': 5,
 	'/百度': 10,
 	'/tarot': 10,
-	'wiki来': 10
+	'wiki来': 10,
+	'/翻译': 10
 }
 
 # Cooldown stats
