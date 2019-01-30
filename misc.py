@@ -242,8 +242,8 @@ def msg_translate(j):
 	source_text = j['message'].replace('/翻译', '', 1).strip()
 	if len(source_text) > 0:
 		try:
-			appid = '' # Your APPID
-			secretKey = '' # Your Secret Key
+			appid = '20190129000260043'
+			secretKey = '0j8goKfCXy2I7P9f4jXD'
 			payload = {
 				'q': '',
 				'from': 'auto',
@@ -261,6 +261,37 @@ def msg_translate(j):
 			response = requests.post(url, data=payload)
 			result = response.json()
 			msg = '{} =>\n{}'.format(result['trans_result'][0]['src'], result['trans_result'][0]['dst'])
+		except:
+			msg = ''
+	return msg
+
+import os
+import uuid
+def msg_translate_bing(j):
+	msg = ''
+	source_text = j['message'].replace('/翻译', '', 1).strip()
+	if len(source_text) > 0:
+		try:
+			subscriptionKey = ''
+			if 'TRANSLATOR_TEXT_KEY' in os.environ:
+				subscriptionKey = os.environ['TRANSLATOR_TEXT_KEY']
+			else:
+				raise ValueError('No subscription key')
+
+			url = 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh'
+			headers = {
+				'Ocp-Apim-Subscription-Key': subscriptionKey,
+				'Content-type': 'application/json',
+				'X-ClientTraceId': str(uuid.uuid4())
+			}
+			body = [{
+				'text' : source_text
+			}]
+			request = requests.post(url, headers=headers, json=body)
+			response = request.json()
+
+			if request.status_code == 200:
+				msg = '{} =>\n{}'.format(source_text, response[0]['translations'][0]['text'])
 		except:
 			msg = ''
 	return msg

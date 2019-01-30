@@ -55,7 +55,7 @@ command_partial = {
 	'来首': misc.music_share,
 	'/tarot': misc.draw_tarot,
 	'wiki来': wf.get_wiki_link,
-	'/翻译': misc.msg_translate
+	'/翻译': misc.msg_translate_bing
 }
 
 # Do not append suffix or @sender tag
