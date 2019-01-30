@@ -242,8 +242,8 @@ def msg_translate(j):
 	source_text = j['message'].replace('/翻译', '', 1).strip()
 	if len(source_text) > 0:
 		try:
-			appid = '20190129000260043'
-			secretKey = '0j8goKfCXy2I7P9f4jXD'
+			appid = ''
+			secretKey = ''
 			payload = {
 				'q': '',
 				'from': 'auto',
