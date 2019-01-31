@@ -46,7 +46,14 @@ command_partial = {
 	'来首': misc.music_share,
 	'/tarot': misc.draw_tarot,
 	'wiki来': wf.get_wiki_link,
-	'/翻译': misc.msg_translate_bing
+	'/翻译': misc.msg_translate_bing,
+	'hurt me': misc.msg_demotivational,
+	'tease me': misc.msg_tackypickuplines
+}
+
+# Commands that need a regex match
+command_advanced = {
+	r'.*今天.+了吗': misc.msg_bankrupt
 }
 
 # Commands that need a regex match
