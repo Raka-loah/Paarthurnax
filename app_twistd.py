@@ -58,6 +58,11 @@ command_partial = {
 	'/翻译': misc.msg_translate_bing
 }
 
+# Commands that need a regex match
+command_advanced = {
+	r'.*今天.+了吗': misc.msg_bankrupt
+}
+
 # Do not append suffix or @sender tag
 command_suppress = ['帮助', '吃什么', '早饭吃什么', '午饭吃什么', '晚饭吃什么', '/百度', '点歌', '来首', 'wiki来']
 
@@ -73,6 +78,8 @@ command_cooldown_partial = {
 	'wiki来': 10,
 	'/翻译': 10
 }
+
+command_cooldown_advanced = {}
 
 # Cooldown stats
 stats = {}
@@ -151,6 +158,18 @@ class wfst(Resource):
 					else:
 						stats[cd] = time.time()
 
+			for cd in command_cooldown_advanced:
+				match = re.match(cd, j['message'])
+				if match:
+					if cd in stats:
+						if time.time() - stats[cd] < command_cooldown_advanced[cd]:
+							resp['reply'] = at_sender + wf.cooldown()
+							return resp, 200
+						else:
+							stats[cd] = time.time()
+					else:
+						stats[cd] = time.time()
+
 			# Handle commands
 			msg = command_full.get(j['message'], lambda: '')()
 			if msg != '':
@@ -169,6 +188,17 @@ class wfst(Resource):
 						else:
 							resp['reply'] = at_sender + msg
 						return resp, 200						
+
+			for command in command_advanced:
+				match = re.match(command, j['message'])
+				if match:
+					msg = command_advanced.get(command, lambda: '')(j)
+					if msg != '':
+						if command in command_suppress:
+							resp['reply'] = msg
+						else:
+							resp['reply'] = at_sender + msg
+						return resp, 200
 
 			# Custom replies
 			if j['message'].lower().replace(' ','') in wf.data_dict['CR']:

@@ -295,3 +295,6 @@ def msg_translate_bing(j):
 		except:
 			msg = ''
 	return msg
+
+def msg_bankrupt(j):
+	return random.choice(['没有哦', '快了哦', '马上哦', '还没哦'])
