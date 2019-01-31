@@ -65,11 +65,6 @@ command_advanced = {
 	r'.*今天.+了吗': misc.msg_bankrupt
 }
 
-# Commands that need a regex match
-command_advanced = {
-	r'.*今天.+了吗': misc.msg_bankrupt
-}
-
 # Do not append suffix or @sender tag
 command_suppress = ['帮助', '吃什么', '早饭吃什么', '午饭吃什么', '晚饭吃什么', '/百度', '点歌', '来首', 'wiki来']
 
