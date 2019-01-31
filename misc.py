@@ -298,3 +298,14 @@ def msg_translate_bing(j):
 
 def msg_bankrupt(j):
 	return random.choice(['没有哦', '快了哦', '马上哦', '还没哦'])
+
+data_dict = {}
+with open(os.path.dirname(os.path.abspath(__file__)) + '\\data\\demotivational.json', 'r', encoding='utf-8') as E:
+	data_dict['d'] = json.loads(E.read())
+def msg_demotivational(j):
+	return random.choice(data_dict['d'])
+
+with open(os.path.dirname(os.path.abspath(__file__)) + '\\data\\tackypickuplines.json', 'r', encoding='utf-8') as E:
+	data_dict['t'] = json.loads(E.read())
+def msg_tackypickuplines(j):
+	return random.choice(data_dict['t'])
