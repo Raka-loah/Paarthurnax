@@ -48,7 +48,8 @@ command_partial = {
 	'wiki来': wf.get_wiki_link,
 	'/翻译': misc.msg_translate_bing,
 	'hurt me': misc.msg_demotivational,
-	'tease me': misc.msg_tackypickuplines
+	'tease me': misc.msg_tackypickuplines,
+	'/rr': misc.russian_roulette
 }
 
 # Commands that need a regex match

@@ -309,3 +309,33 @@ with open(os.path.dirname(os.path.abspath(__file__)) + '\\data\\tackypickuplines
 	data_dict['t'] = json.loads(E.read())
 def msg_tackypickuplines(j):
 	return random.choice(data_dict['t'])
+
+rr_init = {}
+rr_stat = {}
+rr_max_round = 180
+rr_ban_duration = 300
+def russian_roulette(j):
+	msg = ''
+	if j['message_type'] == 'group':
+		if time.time() - rr_init.get(j['group_id'], 0) > rr_max_round:
+			rr_init[j['group_id']] = time.time()
+			rr_stat[j['group_id']] = [0, 0, 0, 0, 0, 0]
+			rr_stat[j['group_id']][random.randint(0,5)] = 1
+			msg += '新一轮开始。\n\n'
+
+		if rr_stat[j['group_id']].pop() == 1:
+			rr_init[j['group_id']] = 0
+			msg += 'Bang！'
+			payload = {
+				'group_id': j['group_id'],
+				'user_id': j['sender']['user_id'],
+				'duration': rr_ban_duration
+			}
+			try:
+				requests.post('http://127.0.0.1:5700/set_group_ban', json=payload)
+			except:
+				return ''
+		else:
+			msg += '*咔哒*\n\n剩余次数{}，本轮将在{:.0f}秒后结束。'.format(len(rr_stat[j['group_id']]), rr_max_round - (time.time() - rr_init[j['group_id']]))
+
+	return msg
