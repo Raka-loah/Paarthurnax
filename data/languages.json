@@ -7443,16 +7443,16 @@
 		"value": "霰弹枪裂罅MOD"
 	},
 	"/lotus/storeitems/upgrades/mods/randomized/playermeleeweaponrandommodrare": {
-		"value": "Veiled Melee Riven Mod"
+		"value": "近战未开裂罅MOD"
 	},
 	"/lotus/storeitems/upgrades/mods/randomized/playerpistolweaponrandommodrare": {
-		"value": "Veiled Pistol Riven Mod"
+		"value": "手枪未开裂罅MOD"
 	},
 	"/lotus/storeitems/upgrades/mods/randomized/playerrifleweaponrandommodrare": {
-		"value": "Veiled Rifle Riven Mod"
+		"value": "步枪未开裂罅MOD"
 	},
 	"/lotus/storeitems/upgrades/mods/randomized/playershotgunweaponrandommodrare": {
-		"value": "Veiled Shotgun Riven Mod"
+		"value": "霰弹枪未开裂罅MOD"
 	},
 	"/lotus/storeitems/upgrades/mods/rifle/beginner/weaponammomaxmodbeginner": {
 		"value": "弹鼓"
@@ -16258,5 +16258,8 @@
 	},
 	"/lotus/storeitems/upgrades/skins/voidtrader/elixisopticor": {
 		"value": "奥堤克光子枪镀铜外观"
+	},
+	"/lotus/storeitems/types/recipes/helmets/nidusalttwohelmetblueprint": {
+		"value": "Nidus盲鳗头盔蓝图"
 	}
 }

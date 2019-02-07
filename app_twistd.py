@@ -57,12 +57,8 @@ command_partial = {
 	'wiki来': wf.get_wiki_link,
 	'/翻译': misc.msg_translate_bing,
 	'hurt me': misc.msg_demotivational,
-	'tease me': misc.msg_tackypickuplines
-}
-
-# Commands that need a regex match
-command_advanced = {
-	r'.*今天.+了吗': misc.msg_bankrupt
+	'tease me': misc.msg_tackypickuplines,
+	'/rr': misc.russian_roulette
 }
 
 # Do not append suffix or @sender tag
