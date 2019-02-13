@@ -213,9 +213,17 @@ class wfst(Resource):
 
 	def patch(self):
 		try:
-			importlib.reload(wf)
-			importlib.reload(misc)
-			return 'Successfully reloaded modules.', 200
+			access_token = '' # Access Token
+			try:
+				request_token = request.get_json(force=True)['token']
+			except:
+				request_token = ''
+			if request_token == access_token:
+				importlib.reload(wf)
+				importlib.reload(misc)
+				return 'Successfully reloaded modules.', 200
+			else:
+				return 'Access Denied.', 403
 		except Exception as e:
 			return repr(e), 500
 
