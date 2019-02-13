@@ -312,6 +312,7 @@ def msg_tackypickuplines(j):
 
 rr_init = {}
 rr_stat = {}
+rr_banned = {}
 rr_max_round = 180
 rr_ban_duration = 300
 def russian_roulette(j):
@@ -332,10 +333,26 @@ def russian_roulette(j):
 				'duration': rr_ban_duration
 			}
 			try:
+				if j['sender']['user_id'] not in rr_banned:
+					rr_banned[j['sender']['user_id']] = []
+				rr_banned[j['sender']['user_id']].append(j['group_id'])
 				requests.post('http://127.0.0.1:5700/set_group_ban', json=payload)
 			except:
 				return ''
 		else:
 			msg += '*咔哒*\n\n剩余次数{}，本轮将在{:.0f}秒后结束。'.format(len(rr_stat[j['group_id']]), rr_max_round - (time.time() - rr_init[j['group_id']]))
-
+	elif j['message_type'] == 'private':
+		if j['sender']['user_id'] in rr_banned:
+			for group_id in rr_banned[j['sender']['user_id']]:
+				payload = {
+					'group_id': group_id,
+					'user_id': j['sender']['user_id'],
+					'duration': 0
+				}
+				try:
+					del rr_banned[j['sender']['user_id']]
+					requests.post('http://127.0.0.1:5700/set_group_ban', json=payload)
+				except:
+					return ''			
+				return '由/rr产生的禁言已解除。'
 	return msg
