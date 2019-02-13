@@ -11,6 +11,8 @@ import wfstate as wf
 import misc
 import re	
 import logging
+import importlib
+
 logging.basicConfig(level=logging.INFO,
 					format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
 					datefmt='%m-%d %H:%M',
@@ -59,6 +61,11 @@ command_partial = {
 	'hurt me': misc.msg_demotivational,
 	'tease me': misc.msg_tackypickuplines,
 	'/rr': misc.russian_roulette
+}
+
+# Commands that need a regex match
+command_advanced = {
+	r'.*今天.+了吗': misc.msg_bankrupt
 }
 
 # Do not append suffix or @sender tag
@@ -225,6 +232,22 @@ class wfst(Resource):
 		except Exception as e:
 			log.error(repr(e))
 			return '', 204
+
+	def patch(self):
+		try:
+			access_token = '' # Access Token
+			try:
+				request_token = request.get_json(force=True)['token']
+			except:
+				request_token = ''
+			if request_token == access_token:
+				importlib.reload(wf)
+				importlib.reload(misc)
+				return 'Successfully reloaded modules.', 200
+			else:
+				return 'Access Denied.', 403
+		except Exception as e:
+			return repr(e), 500
 
 api.add_resource(wfst, '/')
 

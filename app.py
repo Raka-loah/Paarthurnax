@@ -8,6 +8,7 @@ import requests
 import wfstate as wf
 import misc
 import re
+import importlib
 
 app = Flask(__name__)
 api = Api(app)
@@ -209,6 +210,22 @@ class wfst(Resource):
 		except Exception as e:
 			print(repr(e))
 			return '', 204
+
+	def patch(self):
+		try:
+			access_token = '' # Access Token
+			try:
+				request_token = request.get_json(force=True)['token']
+			except:
+				request_token = ''
+			if request_token == access_token:
+				importlib.reload(wf)
+				importlib.reload(misc)
+				return 'Successfully reloaded modules.', 200
+			else:
+				return 'Access Denied.', 403
+		except Exception as e:
+			return repr(e), 500
 
 api.add_resource(wfst, '/')
 
