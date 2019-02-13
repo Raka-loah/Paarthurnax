@@ -11,6 +11,8 @@ import wfstate as wf
 import misc
 import re	
 import logging
+import importlib
+
 logging.basicConfig(level=logging.INFO,
 					format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
 					datefmt='%m-%d %H:%M',
@@ -230,6 +232,14 @@ class wfst(Resource):
 		except Exception as e:
 			log.error(repr(e))
 			return '', 204
+
+	def patch(self):
+		try:
+			importlib.reload(wf)
+			importlib.reload(misc)
+			return 'Successfully reloaded modules.', 200
+		except Exception as e:
+			return repr(e), 500
 
 api.add_resource(wfst, '/')
 

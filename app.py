@@ -8,6 +8,7 @@ import requests
 import wfstate as wf
 import misc
 import re
+import importlib
 
 app = Flask(__name__)
 api = Api(app)
@@ -209,6 +210,14 @@ class wfst(Resource):
 		except Exception as e:
 			print(repr(e))
 			return '', 204
+
+	def patch(self):
+		try:
+			importlib.reload(wf)
+			importlib.reload(misc)
+			return 'Successfully reloaded modules.', 200
+		except Exception as e:
+			return repr(e), 500
 
 api.add_resource(wfst, '/')
 
