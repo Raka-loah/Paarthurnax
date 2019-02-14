@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 from flask_restful import Api, Resource, reqparse
 from twisted.internet import reactor
 from twisted.logger import Logger
+from twisted.python import rebuild
 from apscheduler.schedulers.background import BackgroundScheduler
 import os
 import time
@@ -241,8 +242,8 @@ class wfst(Resource):
 			except:
 				request_token = ''
 			if request_token == access_token:
-				importlib.reload(wf)
-				importlib.reload(misc)
+				rebuild.rebuild(wf)
+				rebuild.rebuild(misc)
 				return 'Successfully reloaded modules.', 200
 			else:
 				return 'Access Denied.', 403
