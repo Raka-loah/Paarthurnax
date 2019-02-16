@@ -121,8 +121,13 @@ def get_alerts():
 			rew_items = ' - ' + data_dict['L'][alert['MissionInfo']['missionReward']['items'][0].lower()]['value'] if 'items' in alert['MissionInfo']['missionReward'] else ''
 		except:
 			rew_items = ' - ' + alert['MissionInfo']['missionReward']['items'][0] if 'items' in alert['MissionInfo']['missionReward'] else ''
-		rew_counteditems = ' - ' + str(alert['MissionInfo']['missionReward']['countedItems'][0]['ItemCount']) \
+		try:
+			rew_counteditems = ' - ' + str(alert['MissionInfo']['missionReward']['countedItems'][0]['ItemCount']) \
 			+ ' x ' + str(data_dict['L'][alert['MissionInfo']['missionReward']['countedItems'][0]['ItemType'].lower()]['value']) \
+			if 'countedItems' in alert['MissionInfo']['missionReward'] else ''
+		except:
+			rew_counteditems = ' - ' + str(alert['MissionInfo']['missionReward']['countedItems'][0]['ItemCount']) \
+			+ ' x ' + str(alert['MissionInfo']['missionReward']['countedItems'][0]['ItemType'].lower()) \
 			if 'countedItems' in alert['MissionInfo']['missionReward'] else ''
 
 		alert_text += '\n\n地点：' + data_dict['S'][alert['MissionInfo']['location']]['value'] + ' | ' + req_archwing + data_dict['M'][alert['MissionInfo']['missionType']]['value'] \
@@ -627,22 +632,22 @@ def misc_roll(j):
 	# xdy+z format
 	dices = re.match(r'.* (\d+)[dD](\d+)([\+\-])(\d+)', j['message'])
 	if dices:
-		dice_num = int(dices.group(1)) if int(dices.group(1)) <= max_dices else max_dices
-		dice_faces = int(dices.group(2)) if int(dices.group(2)) <= max_faces else max_faces
+		dice_num = int(dices.group(1)) if 0 < int(dices.group(1)) <= max_dices else max_dices
+		dice_faces = int(dices.group(2)) if 0 < int(dices.group(2)) <= max_faces else max_faces
 		dice_modifier = dices.group(3)
 		dice_modifier_num = int(dices.group(4))
 	else:
 		# xdy format
 		dices = re.match(r'.* (\d+)[dD](\d+)', j['message'])
 		if dices:
-			dice_num = int(dices.group(1)) if int(dices.group(1)) <= max_dices else max_dices
-			dice_faces = int(dices.group(2)) if int(dices.group(2)) <= max_faces else max_faces
+			dice_num = int(dices.group(1)) if 0 < int(dices.group(1)) <= max_dices else max_dices
+			dice_faces = int(dices.group(2)) if 0 < int(dices.group(2)) <= max_faces else max_faces
 		else:
 			# only a number	
 			dices = re.match(r'.* (\d+)', j['message'])
 			if dices:
 				dice_num = 1
-				dice_faces = int(dices.group(1)) if int(dices.group(1)) <= max_faces else max_faces
+				dice_faces = int(dices.group(1)) if 0 < int(dices.group(1)) <= max_faces else max_faces
 
 	results = []
 
@@ -650,6 +655,8 @@ def misc_roll(j):
 		for _ in range(0, dice_num):
 			results.append(random.randint(1, dice_faces))
 	except:
+		dice_num = 1
+		dice_faces = 100
 		results.append(random.randint(1, 100))
 
 	if len(results) <= 1:

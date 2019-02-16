@@ -58,6 +58,8 @@ command_advanced = {
 	r'.*今天.+了吗': misc.msg_bankrupt
 }
 
+# Commands that require administrator role
+command_require_admin = []
 
 # Do not append suffix or @sender tag
 command_suppress = ['帮助', '吃什么', '早饭吃什么', '午饭吃什么', '晚饭吃什么', '/百度', '点歌', '来首', 'wiki来']
@@ -79,6 +81,8 @@ command_cooldown_advanced = {}
 
 # Cooldown stats
 stats = {}
+
+bot_privilege = {}
 
 class wfst(Resource):
 	def post(self):
