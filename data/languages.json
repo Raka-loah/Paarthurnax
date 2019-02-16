@@ -16261,5 +16261,8 @@
 	},
 	"/lotus/storeitems/types/recipes/helmets/nidusalttwohelmetblueprint": {
 		"value": "Nidus盲鳗头盔蓝图"
+	},
+	"/lotus/types/game/projections/t2voidprojectionalertsarynprimebronze": {
+		"value": "前纪S9遗物"
 	}
 }
