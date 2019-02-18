@@ -474,14 +474,14 @@ rr_stat = {}
 rr_banned = {}
 rr_max_round = 180
 rr_ban_duration = 300
-
+rr_magazine = 6
 
 def russian_roulette(j):
     msg = ''
     if j['message_type'] == 'group':
         if time.time() - rr_init.get(j['group_id'], 0) > rr_max_round:
             rr_init[j['group_id']] = time.time()
-            rr_stat[j['group_id']] = [0, 0, 0, 0, 0, 0]
+            rr_stat[j['group_id']] = [0] * rr_magazine
             rr_stat[j['group_id']][random.randint(0, 5)] = 1
             msg += '新一轮开始。'
 
