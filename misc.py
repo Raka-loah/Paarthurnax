@@ -322,7 +322,7 @@ def russian_roulette(j):
 			rr_init[j['group_id']] = time.time()
 			rr_stat[j['group_id']] = [0, 0, 0, 0, 0, 0]
 			rr_stat[j['group_id']][random.randint(0,5)] = 1
-			msg += '新一轮开始。\n\n'
+			msg += '新一轮开始。'
 
 		if rr_stat[j['group_id']].pop() == 1:
 			rr_init[j['group_id']] = 0
@@ -340,7 +340,7 @@ def russian_roulette(j):
 			except:
 				return ''
 		else:
-			msg += '*咔哒*\n\n剩余次数{}，本轮将在{:.0f}秒后结束。'.format(len(rr_stat[j['group_id']]), rr_max_round - (time.time() - rr_init[j['group_id']]))
+			msg += '*咔哒*\n剩余次数{}，本轮将在{:.0f}秒后结束。'.format(len(rr_stat[j['group_id']]), rr_max_round - (time.time() - rr_init[j['group_id']]))
 	elif j['message_type'] == 'private':
 		if j['sender']['user_id'] in rr_banned:
 			for group_id, ban_init in rr_banned[j['sender']['user_id']].items():
@@ -357,3 +357,81 @@ def russian_roulette(j):
 						return ''
 				return '由/rr产生的禁言已解除。'
 	return msg
+
+def misc_roll(j):
+	msg = ''
+
+	max_dices = 10
+	max_faces = 1000
+
+	# default to 1d100+0
+	dice_num = 1
+	dice_faces = 100
+	dice_modifier = '+'
+	dice_modifier_num = 0
+
+	# xdy+z format
+	dices = re.match(r'.* (\d+)[dD](\d+)([\+\-])(\d+)', j['message'])
+	if dices:
+		dice_num = int(dices.group(1)) if 0 < int(dices.group(1)) <= max_dices else max_dices
+		dice_faces = int(dices.group(2)) if 0 < int(dices.group(2)) <= max_faces else max_faces
+		dice_modifier = dices.group(3)
+		dice_modifier_num = int(dices.group(4))
+	else:
+		# xdy format
+		dices = re.match(r'.* (\d+)[dD](\d+)', j['message'])
+		if dices:
+			dice_num = int(dices.group(1)) if 0 < int(dices.group(1)) <= max_dices else max_dices
+			dice_faces = int(dices.group(2)) if 0 < int(dices.group(2)) <= max_faces else max_faces
+		else:
+			# only a number	
+			dices = re.match(r'.* (\d+)', j['message'])
+			if dices:
+				dice_num = 1
+				dice_faces = int(dices.group(1)) if 0 < int(dices.group(1)) <= max_faces else max_faces
+
+	results = []
+
+	try:
+		for _ in range(0, dice_num):
+			results.append(random.randint(1, dice_faces))
+	except:
+		dice_num = 1
+		dice_faces = 100
+		results.append(random.randint(1, 100))
+
+	if len(results) <= 1:
+		if dice_modifier_num > 0:
+			msg = '{} {} {} = {}'.format(results[0], dice_modifier, dice_modifier_num, results[0] + dice_modifier_num if dice_modifier == '+' else results[0] - dice_modifier_num)
+		else:
+			msg = str(results[0])
+	else:
+		if dice_modifier_num > 0:
+			msg = '('
+			sum_dices = 0
+			for result in results:
+				msg += str(result) + ','
+				sum_dices += result
+			msg = msg[:-1]
+			msg += ') {} {} = {}'.format(dice_modifier, dice_modifier_num, sum_dices + dice_modifier_num if dice_modifier == '+' else sum_dices - dice_modifier_num)			
+		else:
+			msg = '('
+			sum_dices = 0
+			for result in results:
+				msg += str(result) + ','
+				sum_dices += result
+			msg = msg[:-1]
+			msg += ') = {}'.format(sum_dices)
+
+	if msg != '':
+		if dice_modifier_num > 0:
+			return 'Roll({}d{}{}{}): {}'.format(dice_num, dice_faces, dice_modifier, dice_modifier_num, msg)
+		else:
+			return 'Roll({}d{}): {}'.format(dice_num, dice_faces, msg)
+	else:
+		return ''
+
+def ask_8ball(j):
+	replies = ['当然YES咯', '我觉得OK', '毫无疑问', '妥妥儿的', '你就放心吧', '让我说的话，YES', '基本上没跑了', '看起来没问题', 'YES', '我听卡德加说YES，那就YES吧',
+			   '有点复杂，再试一次', '过会儿再问我', '我觉得还是别剧透了', '放飞自我中，过会儿再问', '你心不够诚，再试一次', '我觉得不行', '我必须说NO', '情况不容乐观', '我觉得根本就是NO', '我持怀疑态度']
+	return random.choice(replies)
