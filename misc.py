@@ -1,13 +1,14 @@
 import hashlib
-import urllib.parse
-import re
-import requests
-import sqlite3
-import uuid
-import os
 import json
-import time
+import os
 import random
+import re
+import sqlite3
+import time
+import urllib.parse
+import uuid
+
+import requests
 
 
 def food(meal):

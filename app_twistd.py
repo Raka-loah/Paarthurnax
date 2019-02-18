@@ -1,18 +1,20 @@
+import importlib
+import json
+import logging
+import os
+import re
+import time
+
+import requests
+from apscheduler.schedulers.background import BackgroundScheduler
 from flask import Flask, jsonify, request
 from flask_restful import Api, Resource, reqparse
 from twisted.internet import reactor
 from twisted.logger import Logger
 from twisted.python import rebuild
-from apscheduler.schedulers.background import BackgroundScheduler
-import os
-import time
-import json
-import requests
-import wfstate as wf
+
 import misc
-import re
-import logging
-import importlib
+import wfstate as wf
 
 logging.basicConfig(
     level=logging.INFO,
@@ -267,13 +269,16 @@ class wfst(Resource):
                 return resp, 200
 
             # Autoban
-            if j['message_type'] == 'group':
-                ban_word = ['惊闻', '文体两开花', '驚聞']
-                for word in ban_word:
-                    if word in j['message'].replace(' ', ''):
-                        resp['ban'] = True
-                        resp['ban_duration'] = 300
-                        return resp, 200
+            try:
+                if j['message_type'] == 'group':
+                    ban_word = []
+                    for word in ban_word:
+                        if word in j['message'].replace(' ', ''):
+                            resp['ban'] = True
+                            resp['ban_duration'] = 300
+                            return resp, 200
+            except BaseException:
+                pass
 
             # "Execute" person nobody cared about within 120 seconds
             # The Nature of Humanity, will override Execution

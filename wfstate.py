@@ -1,31 +1,29 @@
 # -*- coding: utf-8 -*-
 
-import urllib.parse
-import requests
-import requests_cache
-import os
 import json
-import time
 import math
+import os
 import random
 import re
-from fuzzywuzzy import fuzz
-from fuzzywuzzy import process
-from bs4 import BeautifulSoup
+import time
+import urllib.parse
 
-# Get world state json
-# Usage: get_worldstate()
-# Return: a very complicated nested array
+import requests
+import requests_cache
+from bs4 import BeautifulSoup
+from fuzzywuzzy import fuzz, process
 
 requests_cache.install_cache('worldstate_cache', expire_after=60)
 
 
 def get_worldstate():
+    """Get world state json.
+
+    Return a very complicated nested array
+    """
     wsurl = 'http://content.warframe.com/dynamic/worldState.php'
     ws = requests.get(wsurl).json()
     return ws
-
-# Dictionaries!
 
 
 data_files = {
@@ -47,8 +45,6 @@ data_dict = {}
 for k in data_files:
     with open(os.path.dirname(os.path.abspath(__file__)) + '\\data\\' + k, 'r', encoding='utf-8') as E:
         data_dict[data_files[k]] = json.loads(E.read())
-
-# Riven data
 
 riven_type = {
     'Melee': '近战',
@@ -82,10 +78,9 @@ for k in riven_type:
         if 'curse' in curse:
             riven_data[k]['curse'][curse['text']] = curse['value']
 
-# Useful functions
-
 
 def s2h(seconds):
+    """Convert seconds to D/HH/MM/SS format."""
     if seconds <= 0:
         return 'N/A'
     d = 0
@@ -101,14 +96,12 @@ def s2h(seconds):
     else:
         return '%02d:%02d' % (m, s)
 
-# User queries:
-
-# Alerts
-# Usage: get_alerts()
-# Return: a formatted string which contains current alerts
-
 
 def get_alerts():
+    """Get current alerts.
+
+    Return a formatted string which contains current alerts.
+    """
     try:
         ws = get_worldstate()
     except BaseException:
@@ -142,10 +135,12 @@ def get_alerts():
             + '\n时限：' + s2h(expiry)
     return alert_text
 
-# Invasions
-
 
 def get_invasions():
+    """Get current invasions.
+
+    Return a formatted string which contains current invasions.
+    """
     inv_factions = {
         'FC_INFESTATION': 'Infested',
         'FC_CORPUS': 'Corpus',
@@ -193,10 +188,11 @@ def get_invasions():
     return msg[:-2]
 
 
-# Fissures
-
-
 def get_fissures():
+    """Get current void fissures.
+
+    Return a formatted string which contains current void fissures.
+    """
     try:
         ws = get_worldstate()
     except BaseException:
@@ -225,12 +221,12 @@ def get_fissures():
                                                                                                       ]['value'] + '\n时限：' + s2h(float(fissure['Expiry']['$date']['$numberLong']) / 1000 - time.time()) + '\n\n'
     return fissure_text[:-2]
 
-# Sorties
-# Usage: get_sorties()
-# Return: a formatted string which contains today's sorties
-
 
 def get_sorties():
+    """Get today's sortie missions.
+
+    Return a formatted string which contains today's sorties.
+    """
     try:
         ws = get_worldstate()
     except BaseException:
@@ -251,6 +247,10 @@ def get_sorties():
 # Return: a string about cetus time
 
 def get_cetus_time():
+    """Get cetus time.
+
+    Return a string about cetus time.
+    """
     try:
         ws = get_worldstate()
     except BaseException:
@@ -271,13 +271,13 @@ def get_cetus_time():
         return '[ERROR] 无法获取平原时间。'
     return day_cycle_text
 
-# Fortuna
-# Usage: get_fortuna_time()
-# Return: a string about Orb Vallis weather
-# Note to self: 400(Warm) - 400(Cold) - 467(Freezing) - 333(Cold)
-
 
 def get_fortuna_time():
+    """Get fortuna time.
+
+    Return a string about Orb Vallis weather.
+    Cycle in seconds: 400(Warm) - 400(Cold) - 467(Freezing) - 333(Cold).
+    """
     weather_cycle_text = ''
     # 1541837628 and a 36 sec delay
     cycle_remaining = 1600 - ((time.time() - 1541837628 - 36) % 1600)
@@ -296,19 +296,22 @@ def get_fortuna_time():
         weather_cycle_text = '奥布山谷当前天气寒冷，将在' + s2h(cycle_remaining) + '后转为温暖。'
     return weather_cycle_text
 
-# Plains time
-
 
 def get_plains_time():
-    return '{}\n{}'.format(get_cetus_time(), get_fortuna_time())
+    """Get time information for both plains.
 
-# Riven
-# Usage: get_riven_info()
-# Return: Various
-# Riven info copied from: https://semlar.com/rivencalc
+    Return get_cetus_time() + get_fortuna_time().
+    """
+    return '{}\n{}'.format(get_cetus_time(), get_fortuna_time())
 
 
 def get_riven_info(j):
+    """Get a random riven.
+
+    A wrapper for riven_details().
+    Has the same drop rate distribution as official Sortie drop table.
+    """
+    # Riven info copied from: https://semlar.com/rivencalc
     weapon = j['message'].replace('模拟开卡', '').strip()
     riven_info = ''
     prefix = ''
@@ -347,6 +350,24 @@ def get_riven_info(j):
 
 
 def riven_details(weapon, buffs, has_curse, simulate=0):
+    """Generate riven detail for given weapon and arguments.
+
+    Parameters
+    ----------
+    weapon: str
+        Weapon name in UPPERCASE.
+    buffs: int
+        How many buffs, 2 or 3.
+    has_curse: int
+        How many curses, 0 or 1.
+    simulate: int
+        WIP: 1 to print all possible ranges.
+
+    Returns
+    -------
+    str
+        Riven detail.
+    """
     if weapon in riven_weapons:
         curr_dispo = riven_data[riven_weapons[weapon]]['dispo']
         curr_buff = riven_data[riven_weapons[weapon]]['buff']
