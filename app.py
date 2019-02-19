@@ -52,7 +52,8 @@ command_partial = {
     '/翻译': misc.msg_translate_bing,
     'hurt me': misc.msg_demotivational,
     'tease me': misc.msg_tackypickuplines,
-    '/rr': misc.russian_roulette
+    '/rr': misc.russian_roulette,
+    '/stella': misc.msg_stella
 }
 
 # Commands that need a regex match
