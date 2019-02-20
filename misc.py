@@ -474,14 +474,14 @@ rr_stat = {}
 rr_banned = {}
 rr_max_round = 180
 rr_ban_duration = 300
-
+rr_magazine = 6
 
 def russian_roulette(j):
     msg = ''
     if j['message_type'] == 'group':
         if time.time() - rr_init.get(j['group_id'], 0) > rr_max_round:
             rr_init[j['group_id']] = time.time()
-            rr_stat[j['group_id']] = [0, 0, 0, 0, 0, 0]
+            rr_stat[j['group_id']] = [0] * rr_magazine
             rr_stat[j['group_id']][random.randint(0, 5)] = 1
             msg += '新一轮开始。'
 
@@ -643,3 +643,45 @@ def ask_8ball(j):
         '我觉得根本就是NO',
         '我持怀疑态度']
     return random.choice(replies)
+
+
+stella_ban_duration = 180
+
+def msg_stella(j):
+    msg = ''
+    bot_role = ''
+    if j['message_type'] == 'group':
+        try:
+            r = requests.get('http://10.11.68.115:5700/get_group_member_info?group_id={}&user_id={}'.format(j['group_id'], j['self_id'])).json()
+            bot_role = r['data']['role']
+        except BaseException:
+            pass
+        if bot_role == 'admin' or bot_role == 'owner':
+            target = re.match(r'.*\[CQ:at,qq=(\d+)\]', j['message'])
+            if target:
+                target_id = target.group(1)
+                payload_self = {
+                    'group_id': j['group_id'],
+                    'user_id': j['sender']['user_id'],
+                    'duration': stella_ban_duration
+                }
+                payload_target = {
+                    'group_id': j['group_id'],
+                    'user_id': target_id,
+                    'duration': stella_ban_duration
+                }
+                try:
+                    if random.randint(0, 1) > 0 and j['sender']['user_id'] != target_id:
+                        requests.post('http://127.0.0.1:5700/set_group_ban_rate_limited', json=payload_self)
+                        requests.post('http://127.0.0.1:5700/set_group_ban_rate_limited', json=payload_target)
+                        msg = 'Stella发动成功！[CQ:at,qq={}]被同时禁言！'.format(target_id)
+                    else:
+                        requests.post('http://127.0.0.1:5700/set_group_ban_rate_limited', json=payload_self)
+                        msg = 'Stella发动失败，你被单独禁言！'
+                except BaseException:
+                    pass
+            else:
+                msg = '未指定Stella的目标。'
+    elif j['message_type'] == 'private':
+        msg = 'Stella产生的禁言无法自助解除，请联系其他管理员。'
+    return msg
