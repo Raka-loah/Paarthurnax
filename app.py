@@ -25,7 +25,7 @@ C = internal.const
 # function: Callback function
 # filter_type: 0 - Blacklist, only specific groups banned from this keyword
 #              1 - Whitelist, only specific groups can use this keyword, duh.
-# [group_ids]: Group ids for the filter (STRINGS!)
+# [group_ids]: Group ids for the filter
 # cool_down: Cool down of this keyword in seconds, shared between all groups
 # message: True - Callback function will get POSTed message as argument
 #          False - Just call that function maybe
