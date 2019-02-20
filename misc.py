@@ -422,7 +422,7 @@ def msg_translate_bing(j):
     source_text = j['message'].replace('/翻译', '', 1).strip()
     if len(source_text) > 0:
         try:
-            subscriptionKey = ''
+            subscriptionKey = '' # Refer to https://docs.microsoft.com/zh-cn/azure/cognitive-services/translator/quickstart-python-translate
             if 'TRANSLATOR_TEXT_KEY' in os.environ:
                 subscriptionKey = os.environ['TRANSLATOR_TEXT_KEY']
             else:
@@ -688,7 +688,7 @@ def msg_stella(j):
 
 
 def msg_aqi(j):
-    token = ''
+    token = '' # Get yours on http://aqicn.org/data-platform/token/#/
     msg = ''
 
     pol_dict = {
