@@ -685,3 +685,68 @@ def msg_stella(j):
     elif j['message_type'] == 'private':
         msg = 'Stella产生的禁言无法自助解除，请联系其他管理员。'
     return msg
+
+
+def msg_aqi(j):
+    token = ''
+    msg = ''
+
+    pol_dict = {
+        'pm25': 'PM2.5',
+        'pm10': 'PM10',
+        'co': '一氧化碳',
+        'no2': '二氧化氮',
+        'o3': '臭氧',
+        'so2': '二氧化硫',
+    }
+
+    match = re.match(r'.* \@(\d+)', j['message'])
+
+    if match:
+        try:
+            api_data = requests.get('https://api.waqi.info/feed/@{}/?token={}'.format(match.group(1), token)).json()
+            if api_data['status'] != 'ok':
+                raise 'API ERROR'
+        except BaseException:
+            return '[ERROR]天气信息获取失败。'
+        
+        data = api_data['data']
+        msg = '城市或监测站：{}\nAQI：{}({})\n主要污染物：{}'.format(data['city']['name'], data['aqi'], aqi_level(data['aqi']), pol_dict[data['dominentpol']])
+        
+        msg += '\n污染物指数：'
+        for pol in data['iaqi']:
+            if pol in pol_dict:
+                msg += '\n{}：{}'.format(pol_dict[pol], data['iaqi'][pol]['v'])
+    else:
+        try:
+            api_data = requests.get('https://api.waqi.info/search/?keyword={}&token={}'.format(j['message'].replace('/aqi', '', 1).strip(), token)).json()
+            if api_data['status'] != 'ok':
+                raise 'API ERROR'
+        except BaseException:
+            return '[ERROR]天气信息获取失败。'
+
+        data = api_data['data']
+        msg = '根据关键字搜索到的城市或监测站：\n'
+
+        for station in data:
+            msg += '@{}：{}，AQI {}\n'.format(station['uid'], station['station']['name'], station['aqi'])
+        
+        msg += '详细信息可使用/aqi @数字id进行查询。'
+
+    return msg
+
+def aqi_level(aqi):
+    aqi = int(aqi)
+    if 0 <= aqi <= 50:
+        return '优'
+    elif 51 <= aqi <= 100:
+        return '良'
+    elif 101 <= aqi <= 150:
+        return '轻度污染'
+    elif 151 <= aqi <= 200:
+        return '中度污染'
+    elif 201 <= aqi <= 300:
+        return '重度污染'
+    elif aqi >= 301:
+        return '严重污染'
+    return '?'

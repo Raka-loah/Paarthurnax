@@ -85,6 +85,7 @@ bot_command = {
     '/rr': [misc.russian_roulette, C.BLACKLIST, [], 0, C.MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
     # '/stella': [misc.msg_stella, C.BLACKLIST, [], 0, C.MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
     r'.*今天.+了吗': [misc.msg_bankrupt, C.BLACKLIST, [], 0, C.MSG, C.REGEX, C.NOT_SUPPRESSED],
+    '/aqi': [misc.msg_aqi, C.BLACKLIST, [], 5, C.MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
 }
 
 # Cooldown stats
