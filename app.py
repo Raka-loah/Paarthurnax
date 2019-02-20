@@ -75,6 +75,7 @@ bot_command = {
 stats = {}
 
 
+
 class wfst(Resource):
     def post(self):
         try:
