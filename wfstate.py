@@ -799,3 +799,47 @@ def get_wiki_link(j):
     else:
         msg = r'Warframe Wiki : https://warframe.huijiwiki.com/wiki/%E9%A6%96%E9%A1%B5'
     return msg
+
+def get_random_sortie_reward(j):
+    if random.randint(0, 9) > 1:
+        reward = '你打通了突击任务并获得了【{}】。'.format(random.choices(
+            population=[
+                '步枪紫卡',
+                '阿耶檀识Anasa雕像',
+                '4000内融核心',
+                'Forma',
+                '特殊功能槽连接器',
+                'Orokin反应堆蓝图',
+                'Orokin催化剂蓝图',
+                '传说核心',
+                '6000赤毒',
+                '现金增幅',
+                '经验增幅',
+                '掉落几率增幅',
+                '手枪紫卡',
+                '霰弹枪紫卡',
+                '近战紫卡',
+                'Zaw紫卡',
+                'Kitgun紫卡'],
+            weights=[
+                6.79,
+                28.00,
+                12.10,
+                2.50,
+                2.50,
+                2.50,
+                2.50,
+                0.18,
+                12.00,
+                3.27,
+                3.27,
+                3.27,
+                7.61,
+                1.36,
+                8.14,
+                2.00,
+                2.00],
+            k=1).pop())
+    else:
+        reward = '你没有打通突击任务，无任何奖励。'
+    return reward

@@ -719,7 +719,11 @@ def msg_aqi(j):
                 msg += '\n{}：{}'.format(pol_dict[pol], data['iaqi'][pol]['v'])
     else:
         try:
-            api_data = requests.get('https://api.waqi.info/search/?keyword={}&token={}'.format(j['message'].replace('/aqi', '', 1).strip(), token)).json()
+            keyword = j['message'].replace('/aqi', '', 1).strip()
+            if len(keyword) > 0:
+                api_data = requests.get('https://api.waqi.info/search/?keyword={}&token={}'.format(keyword, token)).json()
+            else:
+                return '请指定要搜索的城市或监测站的名称。'
             if api_data['status'] != 'ok':
                 raise 'API ERROR'
         except BaseException:
