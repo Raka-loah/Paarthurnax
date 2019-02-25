@@ -52,6 +52,7 @@ bot_command = {
     '晚饭吃什么': [misc.dinner, C.BLACKLIST, [], 0, C.NO_MSG, C.NOT_REGEX, C.SUPPRESSED],
     '小小黑': [wf.get_acolytes, C.BLACKLIST, [], 0, C.NO_MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
     '模拟开卡': [wf.get_riven_info, C.BLACKLIST, [], 10, C.MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
+    '模拟突击': [wf.get_random_sortie_reward, C.BLACKLIST, [], 0, C.MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
     '/wm': [wf.get_wmprice, C.BLACKLIST, [], 10, C.MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
     '/mod': [wf.get_wiki_text, C.BLACKLIST, [], 5, C.MSG, C.NOT_REGEX, C.SUPPRESSED],
     '/ask': [misc.ask_8ball, C.BLACKLIST, [], 0, C.MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
