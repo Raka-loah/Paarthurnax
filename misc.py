@@ -9,6 +9,7 @@ import urllib.parse
 import uuid
 
 import requests
+import requests_cache
 
 
 def food(meal):
@@ -754,3 +755,22 @@ def aqi_level(aqi):
     elif aqi >= 301:
         return '严重污染'
     return '?'
+
+
+def msg_exchange_rate(j):
+    msg = ''
+    match = re.match(r'.*?(\d+\.*\d*).*?([A-Za-z]{3})', j['message'])
+    if match:
+        try:
+            r = requests_cache.CachedSession(backend='sqlite', cache_name='er_cache', expire_after=3600)
+            er = r.get('https://api.exchangeratesapi.io/latest?base=CNY').json()
+            if match.group(2).upper() in er['rates']:
+                if match.group(2).upper() == 'CNY':
+                    return '按……等一下你是认真的吗？ {} CNY = {} CNY（确信）'.format(match.group(1), match.group(1))
+                return '按当前汇率：{} {} = {:.3f} CNY ({:.3f})'.format(match.group(1), match.group(2).upper(), float(match.group(1)) / float(er['rates'][match.group(2).upper()]), 1 / float(er['rates'][match.group(2).upper()]))
+            else:
+                return '目前尚未有货币{}的汇率。'.format(match.group(2).upper())
+        except BaseException:
+            pass
+    msg = '命令格式：/汇率 数字 货币种类，支持小数点，货币种类如USD EUR HKD等。'
+    return msg

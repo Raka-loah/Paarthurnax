@@ -87,6 +87,8 @@ bot_command = {
     # '/stella': [misc.msg_stella, C.BLACKLIST, [], 0, C.MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
     r'.*今天.+了吗': [misc.msg_bankrupt, C.BLACKLIST, [], 0, C.MSG, C.REGEX, C.NOT_SUPPRESSED],
     '/aqi': [misc.msg_aqi, C.BLACKLIST, [], 5, C.MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
+    '模拟突击': [wf.get_random_sortie_reward, C.BLACKLIST, [], 0, C.MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
+    '/汇率': [misc.msg_exchange_rate, C.BLACKLIST, [], 0, C.MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
 }
 
 # Cooldown stats
