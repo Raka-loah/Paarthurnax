@@ -137,7 +137,7 @@ def msg_log(message_id, group_id, sender_id, message):
         db = sqlite3.connect('qqbot.sqlite')
         cursor = db.cursor()
         cursor.execute(
-            '''CREATE TABLE IF NOT EXISTS messages(id INTEGER PRIMARY KEY, group_id INTEGER, sender_id INTEGER, message TEXT, timestamp REAL)''')
+            '''CREATE TABLE IF NOT EXISTS messages(id INTEGER, group_id INTEGER, sender_id INTEGER, message TEXT, timestamp REAL)''')
         db.commit()
     except BaseException:
         db.rollback()
