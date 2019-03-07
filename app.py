@@ -11,6 +11,7 @@ from flask_restful import Api, Resource, reqparse
 
 import internal
 import misc
+import trivia
 import wfstate as wf
 
 app = Flask(__name__)
@@ -36,6 +37,9 @@ C = internal.const
 
 bot_command = {
     '警报': [wf.get_alerts, C.BLACKLIST, [], 0, C.NO_MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
+    '日常': [wf.get_challenges_daily, C.BLACKLIST, [], 0, C.NO_MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
+    '周常': [wf.get_challenges_weekly, C.BLACKLIST, [], 0, C.NO_MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
+    '赛季': [wf.get_challenges_season, C.BLACKLIST, [], 0, C.NO_MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
     '平原时间': [wf.get_plains_time, C.BLACKLIST, [], 0, C.NO_MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
     '每日特惠': [wf.get_dailydeal, C.BLACKLIST, [], 0, C.NO_MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
     '裂缝': [wf.get_fissures, C.BLACKLIST, [], 0, C.NO_MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
@@ -203,6 +207,15 @@ class wfst(Resource):
                             resp['ban'] = True
                             resp['ban_duration'] = 300
                             return resp, 200
+            except BaseException:
+                pass
+
+            # Trivia
+            try:
+                if j['message_type'] == 'group':
+                    resp['reply'] = trivia.triviabot(j)
+                    if resp['reply'] != '':
+                        return resp, 200
             except BaseException:
                 pass
 

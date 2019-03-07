@@ -843,3 +843,58 @@ def get_random_sortie_reward(j):
     else:
         reward = '你没有打通突击任务，无任何奖励。'
     return reward
+
+
+def get_challenges_daily():
+    try:
+        ws = get_worldstate()
+    except BaseException:
+        return '[ERROR] 获取世界状态失败'
+
+    msg = '当前赛季日常挑战：'
+
+    challenges = ws['SeasonInfo']['ActiveChallenges']
+    dailies = []
+
+    for challenge in challenges:
+        if ('Daily', True) in challenge.items():
+            dailies.append(challenge)
+
+    for daily in dailies:
+        msg += '\n挑战：{}\n时限：{}\n'.format(data_dict['L'][daily['Challenge'].lower()]['desc'] if daily['Challenge'].lower() in data_dict['L'] else daily['Challenge'], s2h(float(daily['Expiry']['$date']['$numberLong']) / 1000 - time.time()))
+
+    return msg
+
+
+def get_challenges_weekly():
+    try:
+        ws = get_worldstate()
+    except BaseException:
+        return '[ERROR] 获取世界状态失败'
+
+    msg = '当前赛季周常挑战：'
+
+    challenges = ws['SeasonInfo']['ActiveChallenges']
+    dailies = []
+
+    for challenge in challenges:
+        if 'Daily' not in challenge:
+            dailies.append(challenge)
+
+    msg += '\n剩余时间：{}'.format(s2h(float(dailies[0]['Expiry']['$date']['$numberLong']) / 1000 - time.time()))
+
+    for daily in dailies:
+        msg += '\n挑战：{}\n奖励声望：{}\n'.format(data_dict['L'][daily['Challenge'].lower()]['desc'] if daily['Challenge'].lower() in data_dict['L'] else daily['Challenge'], 5000 if 'hard' in daily['Challenge'].lower() else 3000)
+
+    return msg
+
+
+def get_challenges_season():
+    try:
+        ws = get_worldstate()
+    except BaseException:
+        return '[ERROR] 获取世界状态失败'
+    
+    msg = '当前赛季结束时间：{}'.format(time.strftime('%Y/%m/%d %H:%M:%S', time.localtime(float(ws['SeasonInfo']['Expiry']['$date']['$numberLong'])/1000)))
+
+    return msg
