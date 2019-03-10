@@ -6841,7 +6841,7 @@
 	},
 	"/lotus/storeitems/upgrades/mods/melee/dualstat/combotimestatuschancemod": {
 		"value": "漂移接触"
-	},	
+	},
 	"/lotus/storeitems/upgrades/mods/melee/expert/weaponarmorpiercingdamagemodexpert": {
 		"value": "Primed Sundering Strike"
 	},
@@ -16270,5 +16270,121 @@
 	},
 	"/lotus/types/game/projections/t3voidprojectionalertsarynprimebronze": {
 		"value": "中纪S10遗物"
+	},
+	"/lotus/types/challenges/seasons/daily/seasondailydeployglyph": {
+		"value": "Graffiti",
+		"desc": "Deploy a Glyph while in a mission"
+	},
+	"/lotus/types/challenges/seasons/daily/seasondailycodexscan": {
+		"value": "Researcher",
+		"desc": "Scan 25 Objects or Enemies"
+	},
+	"/lotus/types/challenges/seasons/daily/seasondailykillenemieswithblast": {
+		"value": "Detonator",
+		"desc": "Kill 150 Enemies with Blast Damage"
+	},
+	"/lotus/types/challenges/seasons/daily/seasondailykillenemieswithfire": {
+		"value": "Arsonist",
+		"desc": "Kill 150 Enemies with Heat Damage"
+	},
+	"/lotus/types/challenges/seasons/daily/seasondailykillenemieswithfreeze": {
+		"value": "Deep Freeze",
+		"desc": "Kill 150 Enemies with Cold Damage"
+	},
+	"/lotus/types/challenges/seasons/daily/seasondailykillenemieswithmagnetic": {
+		"value": "Attractive",
+		"desc": "Kill 150 Enemies with Magnetic Damage"
+	},
+	"/lotus/types/challenges/seasons/daily/seasondailykillenemieswithelectricity": {
+		"value": "",
+		"desc": "Kill 150 Enemies with Electricity Damage"
+	},
+	"/lotus/types/challenges/seasons/daily/seasondailypickupmods": {
+		"value": "Shiny",
+		"desc": "Pick up 8 Mods"
+	},
+	"/lotus/types/challenges/seasons/daily/seasondailyslidekills": {
+		"value": "Accelerator",
+		"desc": "Kill 20 Enemies while Sliding"
+	},
+	"/lotus/types/challenges/seasons/weekly/seasonweeklycompletecapture": {
+		"value": "Jailer",
+		"desc": "Complete 3 Capture missions"
+	},
+	"/lotus/types/challenges/seasons/weekly/seasonweeklycompleteinvasionmissions": {
+		"value": "Invader",
+		"desc": "Complete 9 Invasion missions of any type"
+	},
+	"/lotus/types/challenges/seasons/weekly/seasonweeklycompletesyndicatemissions": {
+		"value": "Supporter",
+		"desc": "Complete 10 Syndicate misions"
+	},
+	"/lotus/types/challenges/seasons/weekly/seasonweeklycompletesortie": {
+		"value": "Sortie Specialist",
+		"desc": "Complete 1 Sorties"
+	},
+	"/lotus/types/challenges/seasons/weekly/seasonweeklycompleteassassination": {
+		"value": "Assassin",
+		"desc": "Complete 3 Assassination missions"
+	},
+	"/lotus/types/challenges/seasons/weekly/seasonweeklycompletetreasures": {
+		"value": "Animator",
+		"desc": "Fully socket 5 Ayatan Sculptures"
+	},
+	"/lotus/types/challenges/seasons/weekly/seasonweeklykillenemies": {
+		"value": "Not a Warning Shot",
+		"desc": "Kill 500 Enemies"
+	},
+	"/lotus/types/challenges/seasons/weekly/seasonweeklykilleximus": {
+		"value": "Eximus Eliminator",
+		"desc": "Kill 30 Eximus"
+	},
+	"/lotus/types/challenges/seasons/weekly/seasonweeklyperfectanimalcapture": {
+		"value": "Conservationist",
+		"desc": "Complete 10 Perfect Animal Captures"
+	},
+	"/lotus/types/challenges/seasons/weekly/seasonweeklypickupraremods": {
+		"value": "Enhance!",
+		"desc": "Pick up 8 Rare Mods"
+	},
+	"/lotus/types/challenges/seasons/weekly/seasonweeklyplainsbounties": {
+		"value": "Earth Bounty Hunter",
+		"desc": "Complete 8 Bounties in the Plains of Eidolon"
+	},
+	"/lotus/types/challenges/seasons/weekly/seasonweeklysanctuaryonslaught": {
+		"value": "Test Subject",
+		"desc": "Complete 3 waves of Sanctuary Onslaught"
+	},
+	"/lotus/types/challenges/seasons/weekly/seasonweeklysimarisscan": {
+		"value": "Sanctuary Researcher",
+		"desc": "Complete 5 Scans for Cephalon Simaris"
+	},
+	"/lotus/types/challenges/seasons/weekly/seasonweeklyunlockrelics": {
+		"value": "Unlock Relics",
+		"desc": "Unlock 3 Relics"
+	},
+	"/lotus/types/challenges/seasons/weeklyhard/seasonweeklyhardelitesanctuaryonslaught": {
+		"value": "Elite Test Subject",
+		"desc": "Complete 3 waves of Elite Sanctuary Onslaught"
+	},
+	"/lotus/types/challenges/seasons/weeklyhard/seasonweeklyhardfriendssortie": {
+		"value": "Sortie with Friends",
+		"desc": "Complete a Sortie while playing with a friend or clanmate"
+	},
+	"/lotus/types/challenges/seasons/weeklyhard/seasonweeklyhardkilleximus": {
+		"value": "Eximus Executioner",
+		"desc": "Kill 100 Eximus"
+	},
+	"/lotus/types/challenges/seasons/weeklyhard/seasonweeklyhardkillorcapturerainalyst": {
+		"value": "Hydrolyst Hunter",
+		"desc": "Kill or Capture an Eidolon Hydrolyst"
+	},
+	"/lotus/types/challenges/seasons/weeklyhard/seasonweeklyhardkuvasurvivalnocapsules": {
+		"value": "Hold Your Breath",
+		"desc": "Survive for over 60 minutes without using Life Suport Modules in Kuva Survival"
+	},
+	"/lotus/types/challenges/seasons/weeklyhard/seasonweeklyhardfriendssurvival": {
+		"value": "Survival with Friends",
+		"desc": "Complete a Survival mission reaching at least 60 minutes, while playing with a friend or clanmate"
 	}
 }

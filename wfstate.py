@@ -316,26 +316,38 @@ def get_riven_info(j):
     riven_info = ''
     prefix = ''
 
+    riven_category = {
+        '近战': 'Melee',
+        '步枪': 'Rifle',
+        '手枪': 'Pistol',
+        '霰弹枪': 'Shotgun',
+        'Zaw': 'Zaw',
+        'Kitgun': 'Kitgun'
+    }
+
     if weapon in riven_weapons:
         riven_info = riven_details(
             weapon, random.randint(2, 3), random.randint(0, 1))
     else:
-        weapon = random.choices(
-            population=[
-                'Melee',
-                'Rifle',
-                'Pistol',
-                'Shotgun',
-                'Zaw',
-                'Kitgun'],
-            weights=[
-                8.14,
-                6.79,
-                7.61,
-                1.36,
-                2.0,
-                2.0],
-            k=1).pop()
+        if weapon in riven_category:
+            weapon = riven_category[weapon]
+        else:
+            weapon = random.choices(
+                population=[
+                    'Melee',
+                    'Rifle',
+                    'Pistol',
+                    'Shotgun',
+                    'Zaw',
+                    'Kitgun'],
+                weights=[
+                    8.14,
+                    6.79,
+                    7.61,
+                    1.36,
+                    2.0,
+                    2.0],
+                k=1).pop()
         prefix = '你从虚空中获得了一张%s裂罅Mod并开出了：\n' % (riven_type[weapon])
         riven_info = riven_details(
             random.sample(
@@ -843,3 +855,58 @@ def get_random_sortie_reward(j):
     else:
         reward = '你没有打通突击任务，无任何奖励。'
     return reward
+
+
+def get_challenges_daily():
+    try:
+        ws = get_worldstate()
+    except BaseException:
+        return '[ERROR] 获取世界状态失败'
+
+    msg = '当前赛季日常挑战：'
+
+    challenges = ws['SeasonInfo']['ActiveChallenges']
+    dailies = []
+
+    for challenge in challenges:
+        if ('Daily', True) in challenge.items():
+            dailies.append(challenge)
+
+    for daily in dailies:
+        msg += '\n挑战：{}\n时限：{}\n'.format(data_dict['L'][daily['Challenge'].lower()]['desc'] if daily['Challenge'].lower() in data_dict['L'] else daily['Challenge'], s2h(float(daily['Expiry']['$date']['$numberLong']) / 1000 - time.time()))
+
+    return msg
+
+
+def get_challenges_weekly():
+    try:
+        ws = get_worldstate()
+    except BaseException:
+        return '[ERROR] 获取世界状态失败'
+
+    msg = '当前赛季周常挑战：'
+
+    challenges = ws['SeasonInfo']['ActiveChallenges']
+    dailies = []
+
+    for challenge in challenges:
+        if 'Daily' not in challenge:
+            dailies.append(challenge)
+
+    msg += '\n剩余时间：{}'.format(s2h(float(dailies[0]['Expiry']['$date']['$numberLong']) / 1000 - time.time()))
+
+    for daily in dailies:
+        msg += '\n挑战：{}\n奖励声望：{}\n'.format(data_dict['L'][daily['Challenge'].lower()]['desc'] if daily['Challenge'].lower() in data_dict['L'] else daily['Challenge'], 5000 if 'hard' in daily['Challenge'].lower() else 3000)
+
+    return msg
+
+
+def get_challenges_season():
+    try:
+        ws = get_worldstate()
+    except BaseException:
+        return '[ERROR] 获取世界状态失败'
+    
+    msg = '当前赛季结束时间：{}'.format(time.strftime('%Y/%m/%d %H:%M:%S', time.localtime(float(ws['SeasonInfo']['Expiry']['$date']['$numberLong'])/1000)))
+
+    return msg
