@@ -316,26 +316,38 @@ def get_riven_info(j):
     riven_info = ''
     prefix = ''
 
+    riven_category = {
+        '近战': 'Melee',
+        '步枪': 'Rifle',
+        '手枪': 'Pistol',
+        '霰弹枪': 'Shotgun',
+        'Zaw': 'Zaw',
+        'Kitgun': 'Kitgun'
+    }
+
     if weapon in riven_weapons:
         riven_info = riven_details(
             weapon, random.randint(2, 3), random.randint(0, 1))
     else:
-        weapon = random.choices(
-            population=[
-                'Melee',
-                'Rifle',
-                'Pistol',
-                'Shotgun',
-                'Zaw',
-                'Kitgun'],
-            weights=[
-                8.14,
-                6.79,
-                7.61,
-                1.36,
-                2.0,
-                2.0],
-            k=1).pop()
+        if weapon in riven_category:
+            weapon = riven_category[weapon]
+        else:
+            weapon = random.choices(
+                population=[
+                    'Melee',
+                    'Rifle',
+                    'Pistol',
+                    'Shotgun',
+                    'Zaw',
+                    'Kitgun'],
+                weights=[
+                    8.14,
+                    6.79,
+                    7.61,
+                    1.36,
+                    2.0,
+                    2.0],
+                k=1).pop()
         prefix = '你从虚空中获得了一张%s裂罅Mod并开出了：\n' % (riven_type[weapon])
         riven_info = riven_details(
             random.sample(
