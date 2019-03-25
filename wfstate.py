@@ -743,15 +743,12 @@ def get_wmprice(j):
         return msg
 
     if item_name in data_dict['WM']:
-        wmurl = 'https://warframe.market/items/' + data_dict['WM'][item_name]
+        wmurl = 'https://api.warframe.market/v1/items/{}/orders'.format(data_dict['WM'][item_name])
         try:
-            wm = requests.get(wmurl).text
-
-            soup = BeautifulSoup(wm, features='html.parser')
-            data = soup.find('script', id='application-state').text
+            wm = requests.get(wmurl)
 
             try:
-                converted_data = json.loads(data)
+                converted_data = wm.json()
                 sellers = {}
                 for order in converted_data['payload']['orders']:
                     if order['order_type'] == 'sell' and order['user']['status'] == 'ingame':

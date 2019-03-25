@@ -2079,7 +2079,7 @@
 	"庇护焚炉": "warding_thurible",
 	"分裂槌音": "partitioned_mallet",
 	"苏普拉破坏者": "supra_vandal",
-	"棱晶双子小精灵": "prisma_twin_gremlins_weapon",
+	"棱晶双子小精灵": "prisma_twin_gremlins",
 	"包覆游云": "enveloping_cloud",
 	"蓄积长鞭": "accumulating_whipclaw",
 	"指挥家": "conductor",
@@ -3982,7 +3982,7 @@
 	"wardingthurible": "warding_thurible",
 	"partitionedmallet": "partitioned_mallet",
 	"supravandal": "supra_vandal",
-	"prismatwingremlinsweapon": "prisma_twin_gremlins_weapon",
+	"prismatwingremlinsweapon": "prisma_twin_gremlins",
 	"envelopingcloud": "enveloping_cloud",
 	"accumulatingwhipclaw": "accumulating_whipclaw",
 	"conductor": "conductor",
@@ -4148,5 +4148,10 @@
 	"牙齿毒液": "venom_teeth",
 
 	"zaw未开紫卡": "zaw_riven_mod_(veiled)",
-	"kitgun未开紫卡": "kitgun_riven_mod_(veiled)"
+	"kitgun未开紫卡": "kitgun_riven_mod_(veiled)",
+
+	"wiserazor": "wise_razor",
+	"慧黠斩剃": "wise_razor",
+	"prismagrinlok": "prisma_grinlok",
+	"棱晶葛恩火枪": "prisma_grinlok"
 }
