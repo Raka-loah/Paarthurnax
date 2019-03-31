@@ -65,6 +65,7 @@ bot_command = {
     r'.*今天.+了吗': [misc.msg_bankrupt, C.BLACKLIST, [], 0, C.MSG, C.REGEX, C.NOT_SUPPRESSED],
     '/aqi': [misc.msg_aqi, C.BLACKLIST, [], 5, C.MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
     '/汇率': [misc.msg_exchange_rate, C.BLACKLIST, [], 0, C.MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
+    '/紫卡': [wf.get_riven_prices, C.BLACKLIST, [], 10, C.MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
 }
 
 # Suffix for C.NO_MSG commands

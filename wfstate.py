@@ -37,7 +37,8 @@ data_files = {
     '\\wm.json': 'WM',
     '\\wm-parody.json': 'WP',
     '\\jobs.json': 'J',
-    '\\modlist.json': 'ML'
+    '\\modlist.json': 'ML',
+    '\\weapon.json': 'W'
 }
 
 data_dict = {}
@@ -907,3 +908,54 @@ def get_challenges_season():
     msg = '当前赛季结束时间：{}'.format(time.strftime('%Y/%m/%d %H:%M:%S', time.localtime(float(ws['SeasonInfo']['Expiry']['$date']['$numberLong'])/1000)))
 
     return msg
+
+def get_riven_pricedata():
+    """Get riven price history json.
+
+    Return a very complicated nested array
+    """
+    s = requests_cache.CachedSession(backend='sqlite', cache_name='riven_cache', expire_after=86400)
+    url = 'http://n9e5v4d8.ssl.hwcdn.net/repos/weeklyRivensPC.json'
+    data = s.get(url).json()
+    return data
+
+def get_riven_prices(j):
+    '''Riven price for history data Phase 1
+    '''
+    try:
+        data = get_riven_pricedata()
+    except BaseException:
+        return '[ERROR] 获取裂罅MOD交易统计数据失败。'
+
+    none_cat = {
+        "步枪未开": "Rifle Riven Mod",
+        "近战未开": "Melee Riven Mod",
+        "手枪未开": "Pistol Riven Mod",
+        "zaw未开": "Zaw Riven Mod",
+        "kitgun未开": "Kitgun Riven Mod",
+        "霰弹枪未开": "Shotgun Riven Mod"
+    }
+
+    msg = ''
+    item_name = j['message'].replace('/紫卡', '').strip()
+    item_name = item_name.lower().replace(' ', '')
+
+    if item_name in data_dict['W']:
+        msg += '{}：\n'.format(item_name)
+        if data_dict['W'][item_name] == 'none':
+            for d in data:
+                if d['itemType'] == none_cat[item_name] and d['compatibility'] == None:
+                    msg += '{:.0f}~{:.0f} (平均{:.2f}，总交易量占比{:.2f}%)'.format(d['min'], d['max'], d['avg'], d['pop'])
+        else:
+            for d in data:
+                if str(d['compatibility']).replace(' ', '') == data_dict['W'][item_name].upper():
+                    if d['rerolled'] == False:
+                        msg += '零洗：{:.0f}~{:.0f} (平均{:.2f}，总交易量占比{:.2f}%)\n'.format(d['min'], d['max'], d['avg'], d['pop'])
+                    else:
+                        msg += '多洗：{:.0f}~{:.0f} (平均{:.2f}，总交易量占比{:.2f}%)\n'.format(d['min'], d['max'], d['avg'], d['pop'])
+    else:
+        msg = '未找到这项物品，你是不是想查询：'
+        for item in process.extract(item_name, list(data_dict['W']), limit=5):
+            msg += '\n{}'.format(item[0])
+
+    return msg.strip()
