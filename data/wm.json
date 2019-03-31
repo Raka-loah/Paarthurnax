@@ -4153,5 +4153,15 @@
 	"wiserazor": "wise_razor",
 	"慧黠斩剃": "wise_razor",
 	"prismagrinlok": "prisma_grinlok",
-	"棱晶葛恩火枪": "prisma_grinlok"
+	"棱晶葛恩火枪": "prisma_grinlok",
+	"恶狼战锤一套": "wolf_sledge_set",
+	"恶狼战锤蓝图": "wolf_sledge_blueprint",
+	"恶狼战锤握柄": "wolf_sledge_handle",
+	"恶狼战锤锤头": "wolf_sledge_head",
+	"恶狼战锤马达": "wolf_sledge_motor",
+	"wolfsledgeset": "wolf_sledge_set",
+	"wolfsledgeblueprint": "wolf_sledge_blueprint",
+	"wolfsledgehandle": "wolf_sledge_handle",
+	"wolfsledgehead": "wolf_sledge_head",
+	"wolfsledgemotor": "wolf_sledge_motor"
 }
