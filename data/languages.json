@@ -16292,8 +16292,8 @@
 		"desc": "Kill 150 Enemies with Cold Damage"
 	},
 	"/lotus/types/challenges/seasons/daily/seasondailykillenemieswithmagnetic": {
-		"value": "Attractive",
-		"desc": "Kill 150 Enemies with Magnetic Damage"
+		"value": "吸引力",
+		"desc": "使用磁力伤害击杀 150 名敌人"
 	},
 	"/lotus/types/challenges/seasons/daily/seasondailykillenemieswithelectricity": {
 		"value": "",
@@ -16324,16 +16324,16 @@
 		"desc": "完成 1 项突击任务"
 	},
 	"/lotus/types/challenges/seasons/weekly/seasonweeklycompleteassassination": {
-		"value": "Assassin",
-		"desc": "Complete 3 Assassination missions"
+		"value": "刺客",
+		"desc": "完成 3 项刺杀任务"
 	},
 	"/lotus/types/challenges/seasons/weekly/seasonweeklycompletetreasures": {
 		"value": "Animator",
 		"desc": "Fully socket 5 Ayatan Sculptures"
 	},
 	"/lotus/types/challenges/seasons/weekly/seasonweeklykillenemies": {
-		"value": "Not a Warning Shot",
-		"desc": "Kill 500 Enemies"
+		"value": "这不是警告射击",
+		"desc": "击杀 500 名敌人"
 	},
 	"/lotus/types/challenges/seasons/weekly/seasonweeklykilleximus": {
 		"value": "Eximus Eliminator",
@@ -16348,8 +16348,8 @@
 		"desc": "Pick up 8 Rare Mods"
 	},
 	"/lotus/types/challenges/seasons/weekly/seasonweeklyplainsbounties": {
-		"value": "Earth Bounty Hunter",
-		"desc": "Complete 8 Bounties in the Plains of Eidolon"
+		"value": "地球赏金猎人",
+		"desc": "在夜灵平原完成 8 项赏金任务"
 	},
 	"/lotus/types/challenges/seasons/weekly/seasonweeklysanctuaryonslaught": {
 		"value": "测试对象",
@@ -16364,16 +16364,16 @@
 		"desc": "Unlock 3 Relics"
 	},
 	"/lotus/types/challenges/seasons/weeklyhard/seasonweeklyhardelitesanctuaryonslaught": {
-		"value": "Elite Test Subject",
-		"desc": "Complete 3 waves of Elite Sanctuary Onslaught"
+		"value": "精英测试对象",
+		"desc": "完成 3 次精英级圣殿突袭回合"
 	},
 	"/lotus/types/challenges/seasons/weeklyhard/seasonweeklyhardfriendssortie": {
 		"value": "Sortie with Friends",
 		"desc": "Complete a Sortie while playing with a friend or clanmate"
 	},
 	"/lotus/types/challenges/seasons/weeklyhard/seasonweeklyhardkilleximus": {
-		"value": "Eximus Executioner",
-		"desc": "Kill 100 Eximus"
+		"value": "卓越处刑者",
+		"desc": "击杀 100 名卓越者"
 	},
 	"/lotus/types/challenges/seasons/weeklyhard/seasonweeklyhardkillorcapturerainalyst": {
 		"value": "Hydrolyst Hunter",
@@ -16386,6 +16386,10 @@
 	"/lotus/types/challenges/seasons/weeklyhard/seasonweeklyhardfriendssurvival": {
 		"value": "Survival with Friends",
 		"desc": "Complete a Survival mission reaching at least 60 minutes, while playing with a friend or clanmate"
+	},
+	"/lotus/types/challenges/seasons/daily/seasondailykillenemieswithprimary": {
+		"value": "撂倒他们",
+		"desc": "使用主要武器击杀 150 名敌人"
 	},
 	"/lotus/types/challenges/seasons/daily/seasondailykillenemieswithradiation": {
 		"value": "核反应器",
@@ -16531,6 +16535,10 @@
 		"value": "好朋友",
 		"desc": "帮助 Clem 完成他的周常任务"
 	},
+	"/lotus/types/challenges/seasons/weeklyhard/seasonweeklyhardcompletenightmaremissions": {
+		"value": "暗夜之恐",
+		"desc": "完成 10 项任意类型的噩梦任务"
+	},
 	"/lotus/types/challenges/seasons/weeklyhard/seasonweeklyhardkillsilvergrovespecters": {
 		"value": "树庭守护者",
 		"desc": "击杀 3 名落银树庭魅影"
@@ -16541,7 +16549,7 @@
 	},
 	"/lotus/types/challenges/seasons/weeklyhard/seasonweeklyhardindexwinstreak": {
 		"value": "日间商人",
-		"desc": "在指数之场一张 3 注中没有让敌人得分"
+		"desc": "在指数之场一场 3 注中没有让敌人得分"
 	},
 	"/lotus/types/challenges/seasons/weeklyhard/seasonweeklyhardexterminatenoalarm": {
 		"value": "寂静歼灭",
