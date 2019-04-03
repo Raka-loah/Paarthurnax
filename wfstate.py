@@ -326,6 +326,9 @@ def get_riven_info(j):
         'Kitgun': 'Kitgun'
     }
 
+    if '翻译{}'.format(weapon.lower()) in data_dict['CR']:
+        weapon = data_dict['CR']['翻译{}'.format(weapon.lower())].upper()
+
     if weapon in riven_weapons:
         riven_info = riven_details(
             weapon, random.randint(2, 3), random.randint(0, 1))

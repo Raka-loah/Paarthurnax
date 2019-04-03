@@ -529,6 +529,11 @@
 				"disposition": 1.0, 
 				"name": "TATSU", 
 				"texture": ""
+			},
+			{
+				"disposition": 1.0, 
+				"name": "WOLFSLEDGE", 
+				"texture": ""
 			}
 		],
 		"Buffs": [{
@@ -692,7 +697,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_GrnDBSG.png"
 			},
 			{
-				"disposition": 1.05,
+				"disposition": 0.95,
 				"name": "CORINTH",
 				"texture": "_Lotus_Interface_Icons_Store_TnHeavyShotgun.png"
 			},
@@ -702,7 +707,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_TennoFullAutoShotgun.png"
 			},
 			{
-				"disposition": 0.7,
+				"disposition": 0.85,
 				"name": "HEK",
 				"texture": "_Lotus_Interface_Icons_Store_GrineerQuadShotgun.png"
 			},
@@ -722,7 +727,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_CrpSplitRifle.png"
 			},
 			{
-				"disposition": 0.7,
+				"disposition": 0.6,
 				"name": "ARCA PLASMOR",
 				"texture": "_Lotus_Interface_Icons_Store_CrpShotgun.png"
 			},
@@ -904,7 +909,7 @@
 	},
 	"Pistol": {
 		"Rivens": [{
-				"disposition": 1.05,
+				"disposition": 1.1,
 				"name": "HYSTRIX",
 				"texture": "_Lotus_Interface_Icons_Store_QuillDartGun.png"
 			},
@@ -914,17 +919,17 @@
 				"texture": "_Lotus_Interface_Icons_Store_GlassKunai.png"
 			},
 			{
-				"disposition": 1.15,
+				"disposition": 1.2,
 				"name": "TWIN ROGGA",
 				"texture": "_Lotus_Interface_Icons_Store_GrnQueenGuardDualPistols.png"
 			},
 			{
-				"disposition": 1.2,
+				"disposition": 1.25,
 				"name": "KULSTAR",
 				"texture": "_Lotus_Interface_Icons_Store_GrnTorpedoPistol.png"
 			},
 			{
-				"disposition": 1.25,
+				"disposition": 1.3,
 				"name": "STUBBA",
 				"texture": "_Lotus_Interface_Icons_Store_GrnUziWeapon.png"
 			},
@@ -934,7 +939,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_GrnHeatGun.png"
 			},
 			{
-				"disposition": 0.65,
+				"disposition": 0.8,
 				"name": "MARELOK",
 				"texture": "_Lotus_Interface_Icons_Store_GrineerLeverActionPistol.png"
 			},
@@ -944,22 +949,22 @@
 				"texture": "_Lotus_Interface_Icons_Store_GrineerMicrowaveGun.png"
 			},
 			{
-				"disposition": 1.2,
+				"disposition": 1.25,
 				"name": "TWIN KOHMAK",
 				"texture": "_Lotus_Interface_Icons_Store_DualKohmak.png"
 			},
 			{
-				"disposition": 1.3,
+				"disposition": 1.35,
 				"name": "KOHMAK",
 				"texture": "_Lotus_Interface_Icons_Store_GrnWindUpPistol.png"
 			},
 			{
-				"disposition": 0.95,
+				"disposition": 1.05,
 				"name": "POX",
 				"texture": "_Lotus_Interface_Icons_Store_InfProximityStars.png"
 			},
 			{
-				"disposition": 1.25,
+				"disposition": 1.3,
 				"name": "DUAL TOXOCYST",
 				"texture": "_Lotus_Interface_Icons_Store_InfVomitGun.png"
 			},
@@ -969,22 +974,22 @@
 				"texture": "_Lotus_Interface_Icons_Store_CorpusModularPistol.png"
 			},
 			{
-				"disposition": 0.65,
+				"disposition": 0.8,
 				"name": "SONICOR",
 				"texture": "_Lotus_Interface_Icons_Store_CrpAirPistolArray.png"
 			},
 			{
-				"disposition": 0.5,
+				"disposition": 1.05,
 				"name": "LEX",
 				"texture": "_Lotus_Interface_Icons_Store_Bolto.png"
 			},
 			{
-				"disposition": 1.3,
+				"disposition": 1.15,
 				"name": "SICARUS",
 				"texture": "_Lotus_Interface_Icons_Store_TennoBurstPistol.png"
 			},
 			{
-				"disposition": 1.3,
+				"disposition": 1.35,
 				"name": "BRONCO",
 				"texture": "_Lotus_Interface_Icons_Store_HandCannon.png"
 			},
@@ -1009,7 +1014,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_U18throwingknives.png"
 			},
 			{
-				"disposition": 1.1,
+				"disposition": 1.2,
 				"name": "ZAKTI",
 				"texture": "_Lotus_Interface_Icons_Store_TnGuandaoPistol.png"
 			},
@@ -1019,7 +1024,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_PriestPistol.png"
 			},
 			{
-				"disposition": 1.43,
+				"disposition": 1.25,
 				"name": "AKJAGARA",
 				"texture": "_Lotus_Interface_Icons_Store_TnoBladedPistols.png"
 			},
@@ -1029,7 +1034,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_TnBardPistol.png"
 			},
 			{
-				"disposition": 0.85,
+				"disposition": 1.0,
 				"name": "SPIRA",
 				"texture": "_Lotus_Interface_Icons_Store_LiDagger.png"
 			},
@@ -1054,17 +1059,17 @@
 				"texture": "_Lotus_Interface_Icons_Store_InfestedDartPistol.png"
 			},
 			{
-				"disposition": 0.65,
+				"disposition": 0.8,
 				"name": "GAMMACOR",
 				"texture": "_Lotus_Interface_Icons_Store_Gammacor.png"
 			},
 			{
-				"disposition": 1.4,
+				"disposition": 1.35,
 				"name": "LATO",
 				"texture": "_Lotus_Interface_Icons_Store_Pistol.png"
 			},
 			{
-				"disposition": 1.4,
+				"disposition": 1.35,
 				"name": "VASTO",
 				"texture": "_Lotus_Interface_Icons_Store_TennoHandCannon.png"
 			},
@@ -1074,7 +1079,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_Primes_EuphoraPrime.png"
 			},
 			{
-				"disposition": 0.95,
+				"disposition": 1.05,
 				"name": "BALLISTICA",
 				"texture": "_Lotus_Interface_Icons_Store_TennoAutoCrossbow.png"
 			},
@@ -1099,12 +1104,12 @@
 				"texture": "_Lotus_Interface_Icons_Store_KunaiThrowingKnives.png"
 			},
 			{
-				"disposition": 0.75,
+				"disposition": 0.95,
 				"name": "HIKOU",
 				"texture": "_Lotus_Interface_Icons_Store_ThrowingStar.png"
 			},
 			{
-				"disposition": 1.4,
+				"disposition": 1.3,
 				"name": "ANGSTRUM",
 				"texture": "_Lotus_Interface_Icons_Store_CorpusHandRocket.png"
 			},
@@ -1119,7 +1124,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_CrpScopePistol.png"
 			},
 			{
-				"disposition": 1.4,
+				"disposition": 1.3,
 				"name": "TWIN GREMLINS",
 				"texture": "_Lotus_Interface_Icons_Store_GrineerBulbousSmg.png"
 			},
@@ -1134,7 +1139,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_GrineerLightPistol.png"
 			},
 			{
-				"disposition": 0.85,
+				"disposition": 1.0,
 				"name": "TWIN GRAKATAS",
 				"texture": "_Lotus_Interface_Icons_Store_Akgrakata.png"
 			},
@@ -1144,7 +1149,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_CaptainVorPistol.png"
 			},
 			{
-				"disposition": 0.95,
+				"disposition": 1.1,
 				"name": "BRAKK",
 				"texture": "_Lotus_Interface_Icons_Store_GrineerHandShotgun.png"
 			},
@@ -1159,12 +1164,12 @@
 				"texture": "_Lotus_Interface_Icons_Store_Akmagnus.png"
 			},
 			{
-				"disposition": 1.3,
+				"disposition": 1.2,
 				"name": "AKVASTO",
 				"texture": "_Lotus_Interface_Icons_Store_DualVasto.png"
 			},
 			{
-				"disposition": 1.2,
+				"disposition": 1.25,
 				"name": "AKBRONCO",
 				"texture": "_Lotus_Interface_Icons_Store_DualBroncos.png"
 			},
@@ -1189,7 +1194,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_TennoAkimboAutoPistols.png"
 			},
 			{
-				"disposition": 0.92,
+				"disposition": 0.85,
 				"name": "AKLEX",
 				"texture": "_Lotus_Interface_Icons_Store_Aklex.png"
 			},
@@ -1209,7 +1214,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_AkimboSomaPistols.png"
 			},
 			{
-				"disposition": 1.0,
+				"disposition": 0.8,
 				"name": "PYRANA",
 				"texture": "_Lotus_Interface_Icons_Store_SawnOffShotgun.png"
 			},
@@ -1234,14 +1239,19 @@
 				"texture": "_Lotus_Interface_Icons_Store_SundialPistol.png"
 			},
 			{
-				"disposition": 1.0, 
+				"disposition": 1.1, 
 				"name": "OCUCOR", 
 				"texture": "_Lotus_Interface_Icons_Store_CrpSentExperimentPistol.png"
 			},
 			{
-				"disposition": 1.0, 
+				"disposition": 1.1, 
 				"name": "PLINX", 
 				"texture": "_Lotus_Interface_Icons_Store_CrpSentExperimentPistol.png"
+			},
+			{
+				"disposition": 1.15, 
+				"name": "ZYLOK", 
+				"texture": "_Lotus_Interface_Icons_Store_ConclaveLeverPistol.png"
 			}
 		],
 		"Buffs": [{
@@ -1411,17 +1421,17 @@
 	},
 	"Rifle": {
 		"Rivens": [{
-				"disposition": 1.1,
+				"disposition": 1.2,
 				"name": "VELDT",
 				"texture": "_Lotus_Interface_Icons_Store_TnRevolverRifle.png"
 			},
 			{
-				"disposition": 1.1,
+				"disposition": 1.0,
 				"name": "BAZA",
 				"texture": "_Lotus_Interface_Icons_Store_TnSMGWeapon.png"
 			},
 			{
-				"disposition": 1.1,
+				"disposition": 1.2,
 				"name": "ARGONAK",
 				"texture": "_Lotus_Interface_Icons_Store_LaserAimRifle.png"
 			},
@@ -1436,12 +1446,12 @@
 				"texture": "_Lotus_Interface_Icons_Store_CrpFreezeRayRifle.png"
 			},
 			{
-				"disposition": 1.0,
+				"disposition": 1.1,
 				"name": "QUANTA",
 				"texture": "_Lotus_Interface_Icons_Store_CrpShockRifle.png"
 			},
 			{
-				"disposition": 0.85,
+				"disposition": 0.7,
 				"name": "AMPREX",
 				"texture": "_Lotus_Interface_Icons_Store_ChainLightningGun.png"
 			},
@@ -1451,17 +1461,17 @@
 				"texture": "_Lotus_Interface_Icons_Store_CorpusUMP.png"
 			},
 			{
-				"disposition": 1.25,
+				"disposition": 1.3,
 				"name": "PENTA",
 				"texture": "_Lotus_Interface_Icons_Store_CorpusGrenadeLauncher.png"
 			},
 			{
-				"disposition": 1.21,
+				"disposition": 1.3,
 				"name": "DAIKYU",
 				"texture": "_Lotus_Interface_Icons_Store_AsymmetricBow.png"
 			},
 			{
-				"disposition": 0.92,
+				"disposition": 1.1,
 				"name": "CERNOS",
 				"texture": "_Lotus_Interface_Icons_Store_AntlerBow.png"
 			},
@@ -1471,7 +1481,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_InfQuantaRifle.png"
 			},
 			{
-				"disposition": 1.1,
+				"disposition": 1.2,
 				"name": "HEMA",
 				"texture": "_Lotus_Interface_Icons_Store_InfestedBurstRifle.png"
 			},
@@ -1481,17 +1491,17 @@
 				"texture": "_Lotus_Interface_Icons_Store_U10InfPrimary.png"
 			},
 			{
-				"disposition": 1.15,
+				"disposition": 1.25,
 				"name": "LATRON",
 				"texture": "_Lotus_Interface_Icons_Store_TennoSemiAutoRifle.png"
 			},
 			{
-				"disposition": 1.165,
+				"disposition": 1.25,
 				"name": "SNIPETRON",
 				"texture": "_Lotus_Interface_Icons_Store_CorpusSniperRifle.png"
 			},
 			{
-				"disposition": 0.79,
+				"disposition": 0.95,
 				"name": "BOLTOR",
 				"texture": "_Lotus_Interface_Icons_Store_Boltor.png"
 			},
@@ -1501,27 +1511,27 @@
 				"texture": "_Lotus_Interface_Icons_Store_TnoPrmryXbow.png"
 			},
 			{
-				"disposition": 1.01,
+				"disposition": 1.1,
 				"name": "BRATON",
 				"texture": "_Lotus_Interface_Icons_Store_CorpusAutoRifle.png"
 			},
 			{
-				"disposition": 1.25,
+				"disposition": 1.3,
 				"name": "BURSTON",
 				"texture": "_Lotus_Interface_Icons_Store_Burston.png"
 			},
 			{
-				"disposition": 1.175,
+				"disposition": 1.4,
 				"name": "GORGON",
 				"texture": "_Lotus_Interface_Icons_Store_Gorgon.png"
 			},
 			{
-				"disposition": 1.45,
+				"disposition": 1.4,
 				"name": "VULKAR",
 				"texture": "_Lotus_Interface_Icons_Store_GrineerSniperRifle.png"
 			},
 			{
-				"disposition": 1.105,
+				"disposition": 1.2,
 				"name": "GRAKATA",
 				"texture": "_Lotus_Interface_Icons_Store_GrineerAssaultRifle.png"
 			},
@@ -1531,7 +1541,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_GrnBurstIcon.png"
 			},
 			{
-				"disposition": 1.1,
+				"disposition": 1.15,
 				"name": "FERROX",
 				"texture": "_Lotus_Interface_Icons_Store_CorpusSpearGun.png"
 			},
@@ -1551,12 +1561,12 @@
 				"texture": "_Lotus_Interface_Icons_Store_GrineerLeverActionRifle.png"
 			},
 			{
-				"disposition": 1.05,
+				"disposition": 1.2,
 				"name": "PARIS",
 				"texture": "_Lotus_Interface_Icons_Store_HuntingBow.png"
 			},
 			{
-				"disposition": 0.9,
+				"disposition": 1.1,
 				"name": "DREAD",
 				"texture": "_Lotus_Interface_Icons_Store_StalkerBow.png"
 			},
@@ -1566,12 +1576,12 @@
 				"texture": "_Lotus_Interface_Icons_Store_DexTheThird.png"
 			},
 			{
-				"disposition": 1.3,
+				"disposition": 1.1,
 				"name": "TIBERON",
 				"texture": "_Lotus_Interface_Icons_Store_DrakeRifle.png"
 			},
 			{
-				"disposition": 1.105,
+				"disposition": 0.8,
 				"name": "RUBICO",
 				"texture": "_Lotus_Interface_Icons_Store_FiveShotSniper.png"
 			},
@@ -1581,32 +1591,32 @@
 				"texture": "_Lotus_Interface_Icons_Store_SundialRifle.png"
 			},
 			{
-				"disposition": 1.5,
+				"disposition": 1.4,
 				"name": "PANTHERA",
 				"texture": "_Lotus_Interface_Icons_Store_TennoMiter.png"
 			},
 			{
-				"disposition": 0.55,
+				"disposition": 0.75,
 				"name": "SOMA",
 				"texture": "_Lotus_Interface_Icons_Store_U10DesignCouncilTennoAR.png"
 			},
 			{
-				"disposition": 0.92,
+				"disposition": 0.85,
 				"name": "VECTIS",
 				"texture": "_Lotus_Interface_Icons_Store_TennoSniperRifle.png"
 			},
 			{
-				"disposition": 0.7,
+				"disposition": 0.6,
 				"name": "IGNIS",
 				"texture": "_Lotus_Interface_Icons_Store_GrineerFlameThrower.png"
 			},
 			{
-				"disposition": 1.2,
+				"disposition": 1.3,
 				"name": "TORID",
 				"texture": "_Lotus_Interface_Icons_Store_GrineerGrenadeLauncher.png"
 			},
 			{
-				"disposition": 1.245,
+				"disposition": 1.3,
 				"name": "OGRIS",
 				"texture": "_Lotus_Interface_Icons_Store_Ogris.png"
 			},
@@ -1616,12 +1626,12 @@
 				"texture": "_Lotus_Interface_Icons_Store_CorpusLaserRifle.png"
 			},
 			{
-				"disposition": 1.0,
+				"disposition": 0.85,
 				"name": "SUPRA",
 				"texture": "_Lotus_Interface_Icons_Store_CorpusMachineGun.png"
 			},
 			{
-				"disposition": 1.245,
+				"disposition": 1.3,
 				"name": "DERA",
 				"texture": "_Lotus_Interface_Icons_Store_CorpusEnergyRifle.png"
 			},
@@ -1631,12 +1641,12 @@
 				"texture": "_Lotus_Interface_Icons_Store_CrpBow.png"
 			},
 			{
-				"disposition": 0.95,
+				"disposition": 0.85,
 				"name": "LANKA",
 				"texture": "_Lotus_Interface_Icons_Store_CorpusSniperRifle.png"
 			},
 			{
-				"disposition": 1.26,
+				"disposition": 1.35,
 				"name": "MUTALIST CERNOS",
 				"texture": "_Lotus_Interface_Icons_Store_InfCernos.png"
 			},
@@ -1646,7 +1656,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_InfCrpShockSwarm.png"
 			},
 			{
-				"disposition": 0.75,
+				"disposition": 0.95,
 				"name": "TONKOR",
 				"texture": "_Lotus_Interface_Icons_Store_GrnGrenadeLauncher.png"
 			},
@@ -1656,7 +1666,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_GrnHarpoonGun.png"
 			},
 			{
-				"disposition": 1.1,
+				"disposition": 1.2,
 				"name": "JAVLOK",
 				"texture": "_Lotus_Interface_Icons_Store_GrnFlameSpear.png"
 			},
@@ -1671,12 +1681,12 @@
 				"texture": "_Lotus_Interface_Icons_Store_GrnGorgSniperRifle.png"
 			},
 			{
-				"disposition": 1.08,
+				"disposition": 1.15,
 				"name": "ZARR",
 				"texture": "_Lotus_Interface_Icons_Store_GrineerCannon.png"
 			},
 			{
-				"disposition": 0.7,
+				"disposition": 0.85,
 				"name": "SIMULOR",
 				"texture": "_Lotus_Interface_Icons_Store_CephPrimary.png"
 			},
@@ -1686,27 +1696,27 @@
 				"texture": "_Lotus_Interface_Icons_Store_TnBardRifle.png"
 			},
 			{
-				"disposition": 1.25,
+				"disposition": 1.15,
 				"name": "STRADAVAR",
 				"texture": "_Lotus_Interface_Icons_Store_TennoTommyGun.png"
 			},
 			{
-				"disposition": 1.18,
+				"disposition": 1.25,
 				"name": "ZHUGE",
 				"texture": "_Lotus_Interface_Icons_Store_RepeatingCrossbow.png"
 			},
 			{
-				"disposition": 0.895,
+				"disposition": 1.0,
 				"name": "SYBARIS",
 				"texture": "_Lotus_Interface_Icons_Store_TnoLeverActionRifle.png"
 			},
 			{
-				"disposition": 1.1,
+				"disposition": 1.15,
 				"name": "SCOURGE",
 				"texture": "_Lotus_Interface_Icons_Store_PriestSpearGun.png"
 			},
 			{
-				"disposition": 1.0, 
+				"disposition": 1.05, 
 				"name": "NAGANTAKA", 
 				"texture": "_Lotus_Interface_Icons_Store_GarudaCrossbow.png"
 			},
@@ -2089,12 +2099,12 @@
 	},
 	"Kitgun": {
 		"Rivens": [{
-				"disposition": 1.0, 
+				"disposition": 0.85, 
 				"name": "TOMBFINGER", 
 				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_SUModularSecondary_SUModularSecondaryBarrelBPart.png"
 			}, 
 			{
-				"disposition": 1.0, 
+				"disposition": 0.8, 
 				"name": "CATCHMOON", 
 				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_SUModularSecondary_SUModularSecondaryBarrelAPart.png"
 			}, 
@@ -2104,7 +2114,7 @@
 				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_SUModularSecondary_SUModularSecondaryBarrelDPart.png"
 			}, 
 			{
-				"disposition": 1.0, 
+				"disposition": 0.9, 
 				"name": "RATTLEGUTS", 
 				"texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_SUModularSecondary_SUModularSecondaryBarrelCPart.png"
 			}
