@@ -40,6 +40,7 @@ data_files = {
     'modlist.json': 'ML',
     'weapon.json': 'W',
     'relic_rewards.json': 'RR',
+    'prime_parts.json': 'PP',
 }
 
 data_dict = {}
@@ -649,7 +650,7 @@ def get_acolytes():
 
 def get_some_help():
     # I NEED THIS SO BAD SOMEONE PLEASE
-    return '目前可用命令：\n帮助、警报、入侵、平原时间、地球赏金、金星赏金、突击、裂缝、奸商、每日特惠、模拟开卡、小小黑'
+    return '目前可用命令：\n帮助、警报、入侵、平原时间、地球赏金、金星赏金、突击、裂缝、奸商、遗物、出处、每日特惠、模拟开卡、小小黑'
 
 # Automatic broadcasting:
 
@@ -964,6 +965,7 @@ def get_riven_prices(j):
 
     return msg.strip()
 
+
 def get_relic_rewards(j):
     msg = ''
     match = re.match(r'.* (.+) (.+) (.*)', j['message'])
@@ -982,3 +984,17 @@ def get_relic_rewards(j):
         msg = '命令格式：遗物 纪元 代号 品质(可选)，例如：遗物 古纪 A1。'
 
     return msg
+
+
+def get_prime_part_drop_from(j):
+    msg = ''
+    item_name = j['message'].replace('出处', '').strip()
+
+    if item_name.lower().title() in data_dict['PP']:
+        msg = '{}(掉率为完整遗物)：\n{}'.format(item_name.lower().title(), data_dict['PP'][item_name.lower().title()])
+    else:
+        msg = '未找到这项物品，你是不是想查询：'
+        for item in process.extract(item_name, list(data_dict['PP']), limit=5):
+            msg += '\n{}'.format(item[0])
+
+    return msg.strip()

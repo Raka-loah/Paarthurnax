@@ -67,6 +67,7 @@ bot_command = {
     '/汇率': [misc.msg_exchange_rate, C.BLACKLIST, [], 0, C.MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
     '/紫卡': [wf.get_riven_prices, C.BLACKLIST, [], 10, C.MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
     '遗物': [wf.get_relic_rewards, C.BLACKLIST, [], 0, C.MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
+    '出处': [wf.get_prime_part_drop_from, C.BLACKLIST, [], 0, C.MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
 }
 
 # Suffix for C.NO_MSG commands
