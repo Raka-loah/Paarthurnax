@@ -968,12 +968,12 @@ def get_riven_prices(j):
 
 def get_relic_rewards(j):
     msg = ''
-    match = re.match(r'.* (.+) (.+) (.*)', j['message'])
+    match = re.match(r'.* (.+) ([A-za-z]+\d+)(.*)', j['message'])
     if match:
         if match.group(1) in data_dict['RR']:
             if match.group(2).upper() in data_dict['RR'][match.group(1)]:
-                if match.group(3) in data_dict['RR'][match.group(1)][match.group(2).upper()]:
-                    quality = match.group(3)
+                if match.group(3).strip() in data_dict['RR'][match.group(1)][match.group(2).upper()]:
+                    quality = match.group(3).strip()
                 else:
                     quality = '完整'
 
