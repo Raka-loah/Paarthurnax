@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import importlib
 import json
 import logging
@@ -177,6 +179,7 @@ class wfst(Resource):
                     stats[matched_keyword] = time.time()
 
                 # Handle command
+                j['keyword'] = matched_keyword
                 try:
                     if bot_command[matched_keyword][4] == C.NO_MSG:
                         msg = bot_command[matched_keyword][0]()

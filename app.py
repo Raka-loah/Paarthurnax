@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import importlib
 import json
 import os
@@ -72,8 +74,7 @@ class wfst(Resource):
             # All queries from banned senders and bot themselves are directly
             # dropped
             banned_sender = cfg.banned_sender
-            if j['sender']['user_id'] == j['self_id'] or str(
-                    j['sender']['user_id']) in banned_sender:
+            if j['sender']['user_id'] == j['self_id'] or j['sender']['user_id'] in banned_sender:
                 return '', 204
 
             # CQ tag for @sender if message type is group
@@ -122,6 +123,7 @@ class wfst(Resource):
                     stats[matched_keyword] = time.time()
 
                 # Handle command
+                j['keyword'] = matched_keyword
                 try:
                     if bot_command[matched_keyword][4] == C.NO_MSG:
                         msg = bot_command[matched_keyword][0]()

@@ -58,7 +58,7 @@ def triviabot(j):
         return curr[j['group_id']]['question']
 
     # If a question stays unanswered
-    if curr[j['group_id']]['state'] == 1:
+    if j['group_id'] in curr and curr[j['group_id']]['state'] == 1:
         if j['message'].lower().strip() == curr[j['group_id']]['answer'].lower().strip():
             curr[j['group_id']]['state'] = 0
             return '[CQ:at,qq={}]：\n回答正确！'.format(j['sender']['user_id'])

@@ -66,6 +66,7 @@ bot_command = {
     '/aqi': [misc.msg_aqi, C.BLACKLIST, [], 5, C.MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
     '/汇率': [misc.msg_exchange_rate, C.BLACKLIST, [], 0, C.MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
     '/紫卡': [wf.get_riven_prices, C.BLACKLIST, [], 10, C.MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
+    # Added: 2019/Apr/04
     '遗物': [wf.get_relic_rewards, C.BLACKLIST, [], 0, C.MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
     '出处': [wf.get_prime_part_drop_from, C.BLACKLIST, [], 0, C.MSG, C.NOT_REGEX, C.NOT_SUPPRESSED],
 }
@@ -77,7 +78,7 @@ suffix = '\n更多命令请输入"帮助"。'
 approve = True
 
 # Banned senders
-banned_sender = ['']
+banned_sender = []
 
 # Broadcast
 enable_broadcast = True
