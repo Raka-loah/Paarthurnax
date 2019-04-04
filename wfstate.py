@@ -27,18 +27,19 @@ def get_worldstate():
 
 
 data_files = {
-    '\\solNodes.json': 'S',
-    '\\languages.json': 'L',
-    '\\missionTypes.json': 'M',
-    '\\sortieBoss.json': 'B',
-    '\\sortieModifier.json': 'SM',
-    '\\riven.json': 'R',
-    '\\customReplies.json': 'CR',
-    '\\wm.json': 'WM',
-    '\\wm-parody.json': 'WP',
-    '\\jobs.json': 'J',
-    '\\modlist.json': 'ML',
-    '\\weapon.json': 'W'
+    'solNodes.json': 'S',
+    'languages.json': 'L',
+    'missionTypes.json': 'M',
+    'sortieBoss.json': 'B',
+    'sortieModifier.json': 'SM',
+    'riven.json': 'R',
+    'customReplies.json': 'CR',
+    'wm.json': 'WM',
+    'wm-parody.json': 'WP',
+    'jobs.json': 'J',
+    'modlist.json': 'ML',
+    'weapon.json': 'W',
+    'relic_rewards.json': 'RR',
 }
 
 data_dict = {}
@@ -962,3 +963,22 @@ def get_riven_prices(j):
             msg += '\n{}'.format(item[0])
 
     return msg.strip()
+
+def get_relic_rewards(j):
+    msg = ''
+    match = re.match(r'.* (.+) (.+) (.*)', j['message'])
+    if match:
+        if match.group(1) in data_dict['RR']:
+            if match.group(2).upper() in data_dict['RR'][match.group(1)]:
+                if match.group(3) in data_dict['RR'][match.group(1)][match.group(2).upper()]:
+                    quality = match.group(3)
+                else:
+                    quality = '完整'
+
+                msg = '{}{}遗物({})：'.format(match.group(1), match.group(2).upper(), quality)
+                for reward in data_dict['RR'][match.group(1)][match.group(2).upper()][quality]:
+                    msg += '\n{}({:.2f}%)'.format(reward['itemName'], reward['chance'])
+    else:
+        msg = '命令格式：遗物 纪元 代号 品质(可选)，例如：遗物 古纪 A1。'
+
+    return msg
