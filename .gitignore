@@ -5,3 +5,7 @@ ws.json
 *.pyc
 test.py
 *.log
+data/relics.json
+data/weapon_en2cn.json
+relic.py
+config.py
