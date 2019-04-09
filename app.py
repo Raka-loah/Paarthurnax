@@ -78,7 +78,17 @@ class wfst(Resource):
                 return '', 204
 
             # CQ tag for @sender if message type is group
-            at_sender = '[CQ:at,qq={}]：\n'.format(
+            title = ''
+            if hasattr(cfg, 'custom_title') and j['message_type'] == 'group':
+                if j['sender']['user_id'] in cfg.custom_title:
+                    if j['group_id'] in cfg.custom_title[j['sender']['user_id']]:
+                        title = cfg.custom_title[j['sender']['user_id']][j['group_id']]
+                    elif 'default' in cfg.custom_title[j['sender']['user_id']]:
+                        title = cfg.custom_title[j['sender']['user_id']]['default']
+                elif 'default' in cfg.custom_title:
+                    title = cfg.custom_title['default']
+
+            at_sender = '{}[CQ:at,qq={}]：\n'.format(title, 
                 j['sender']['user_id']) if j['message_type'] == 'group' else ''
 
             # Determine which keyword got called
@@ -109,7 +119,7 @@ class wfst(Resource):
                     else:
                         if j['group_id'] not in bot_command[matched_keyword][2]:
                             matched_keyword = None
-            
+
             # If we got a keyword
             if matched_keyword is not None:
                 # Check cooldown

@@ -742,7 +742,7 @@ def get_new_acolyte():
 
 def get_wmprice(j):
     msg = ''
-    item_name = j['message'].replace('/wm', '').strip()
+    item_name = j['message'].replace(j['keyword'], '').strip()
     item_name = item_name.lower().replace(' ', '')
     if item_name in data_dict['WP']:
         msg = random.choice(data_dict['WP'][item_name])
@@ -763,7 +763,7 @@ def get_wmprice(j):
                 sorted_sellers = sorted(sellers, key=lambda x: (sellers[x], x))
                 plat = 0
                 count = 0
-                msg += '{}({})\n'.format(j['message'].replace('/wm',
+                msg += '{}({})\n'.format(j['message'].replace(j['keyword'],
                                                               '').strip(), data_dict['WM'][item_name])
                 for i in range(0, 5):
                     try:
@@ -788,7 +788,7 @@ def get_wmprice(j):
 
 def get_wiki_text(j):
     s = requests_cache.CachedSession(backend='sqlite', cache_name='wiki_cache')
-    mod_name = j['message'].replace('/mod', '').strip()
+    mod_name = j['message'].replace(j['keyword'], '').strip()
     msg = ''
     if mod_name.lower().replace(' ', '') in data_dict['ML']:
         wikiurl = 'http://warframe.huijiwiki.com/wiki/' + \
@@ -807,7 +807,7 @@ def get_wiki_text(j):
 
 def get_wiki_link(j):
     msg = ''
-    keyword = j['message'].replace('wiki来', '', 1).strip()
+    keyword = j['message'].replace(j['keyword'], '', 1).strip()
     if len(keyword) > 1:
         msg = '请点击直达Warframe中文维基搜索页：\nhttps://warframe.huijiwiki.com/index.php?search={}'.format(
             urllib.parse.quote_plus(keyword))
@@ -942,7 +942,7 @@ def get_riven_prices(j):
     }
 
     msg = ''
-    item_name = j['message'].replace('/紫卡', '').strip()
+    item_name = j['message'].replace(j['keyword'], '').strip()
     item_name = item_name.lower().replace(' ', '')
 
     if item_name in data_dict['W']:
@@ -988,7 +988,7 @@ def get_relic_rewards(j):
 
 def get_prime_part_drop_from(j):
     msg = ''
-    item_name = j['message'].replace('出处', '').strip()
+    item_name = j['message'].replace(j['keyword'], '').strip()
 
     if item_name.lower().title() in data_dict['PP']:
         msg = '{}(掉率为完整遗物)：\n{}'.format(item_name.lower().title(), data_dict['PP'][item_name.lower().title()])

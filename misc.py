@@ -286,7 +286,7 @@ def msg_nature_of_humanity(j):
 
 def let_me_baidu_that_for_you(j):
     msg = ''
-    keyword = j['message'][3:23].strip()
+    keyword = j['message'].replace(j['keyword'], '')[:20].strip()
     skip = ['', '呀', '啊', '哇', '一下', '一下你就知道']
     if keyword in skip:
         return ''
@@ -299,7 +299,7 @@ def let_me_baidu_that_for_you(j):
 def music_share(j):
     msg = ''
     if j['message_type'] == 'group':
-        song_name = j['message'][2:22].strip()
+        song_name = j['message'].replace(j['keyword'], '')[:20].strip()
         try:
             data = requests.get('https://c.y.qq.com/soso/fcgi-bin/client_search_cp?g_tk=5381&p=1&n=20&w={}&format=json&loginUin=0&hostUin=0&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&remoteplace=txt.yqq.song&t=0&aggr=1&cr=1&catZhida=1'.format(song_name)).json()
             msg = '[CQ:music,type=qq,id={}]'.format(
@@ -385,7 +385,7 @@ def msg_random_picture_rating(j):
 
 def msg_translate(j):
     msg = ''
-    source_text = j['message'].replace('/翻译', '', 1).strip()
+    source_text = j['message'].replace(j['keyword'], '', 1).strip()
     if len(source_text) > 0:
         try:
             appid = ''
@@ -418,9 +418,9 @@ def msg_translate(j):
     return msg
 
 
-def msg_translate_bing(j):
+def msg_translate_bing(j, to='zh'):
     msg = ''
-    source_text = j['message'].replace('/翻译', '', 1).strip()
+    source_text = j['message'].replace(j['keyword'], '', 1).strip()
     if len(source_text) > 0:
         try:
             subscriptionKey = '' # Refer to https://docs.microsoft.com/zh-cn/azure/cognitive-services/translator/quickstart-python-translate
@@ -429,7 +429,7 @@ def msg_translate_bing(j):
             else:
                 raise ValueError('No subscription key')
 
-            url = 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh'
+            url = 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to={}'.format(to)
             headers = {
                 'Ocp-Apim-Subscription-Key': subscriptionKey,
                 'Content-type': 'application/json',
@@ -447,6 +447,9 @@ def msg_translate_bing(j):
         except BaseException:
             msg = ''
     return msg
+
+def msg_translate_bing_2en(j):
+    return msg_translate_bing(j, 'en')
 
 
 def msg_bankrupt(j):
