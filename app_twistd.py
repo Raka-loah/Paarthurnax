@@ -234,6 +234,12 @@ class wfst(Resource):
             except BaseException:
                 pass
 
+            try:
+                if j['message'].lower().strip() == trivia.curr[j['group_id']]['answer'].lower().strip():
+                    return '', 204
+            except BaseException:
+                pass
+
             # "Execute" person nobody cared about within 120 seconds
             # The Nature of Humanity, will override Execution
             if j['message_type'] == 'group':
