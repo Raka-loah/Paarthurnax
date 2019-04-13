@@ -301,13 +301,13 @@ def music_share(j):
     if j['message_type'] == 'group':
         song_name = j['message'].replace(j['keyword'], '')[:20].strip()
         try:
-            data = requests.get('https://c.y.qq.com/soso/fcgi-bin/client_search_cp?g_tk=5381&p=1&n=20&w={}&format=json&loginUin=0&hostUin=0&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&remoteplace=txt.yqq.song&t=0&aggr=1&cr=1&catZhida=1'.format(song_name)).json()
+            data = requests.get('https://c.y.qq.com/soso/fcgi-bin/client_search_cp?g_tk=5381&p=1&n=20&w={}&format=json&loginUin=0&hostUin=0&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&remoteplace=txt.yqq.song&t=0&aggr=1&cr=1&catZhida=1'.format(urllib.parse.quote_plus(song_name))).json()
             msg = '[CQ:music,type=qq,id={}]'.format(
                 data['data']['song']['list'][0]['songid'])
         except BaseException:
             try:
                 data = requests.get(
-                    'https://api.mlwei.com/music/api/wy/?key=523077333&id={}&type=so&cache=0&nu=1'.format(song_name)).json()
+                    'https://api.mlwei.com/music/api/wy/?key=523077333&id={}&type=so&cache=0&nu=1'.format(urllib.parse.quote_plus(song_name))).json()
                 msg = '[CQ:music,type=163,id={}]'.format(data['Body'][0]['id'])
             except BaseException:
                 msg = '[ERROR]点歌失败，网络错误'

@@ -816,6 +816,7 @@ def get_wiki_link(j):
     return msg
 
 def get_random_sortie_reward(j):
+    random.seed('{}{}'.format(j['sender']['user_id'], time.strftime('%Y%m%d', time.gmtime())), version=2)
     if random.randint(0, 9) > 1:
         reward = '你打通了突击任务并获得了【{}】。'.format(random.choices(
             population=[
@@ -857,6 +858,7 @@ def get_random_sortie_reward(j):
             k=1).pop())
     else:
         reward = '你没有打通突击任务，无任何奖励。'
+    random.seed()
     return reward
 
 
