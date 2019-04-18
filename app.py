@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import importlib
+import html
 import json
 import os
 import re
@@ -45,6 +46,9 @@ class wfst(Resource):
             }
 
             suffix = cfg.suffix
+
+            if 'message' in j:
+                j['message'] = html.unescape(j['message'])
 
             # QQ Requests
             if j['post_type'] == 'request':
