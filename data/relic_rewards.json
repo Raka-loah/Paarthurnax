@@ -4004,6 +4004,160 @@
 				}
 			]
 		},
+		"L4": {
+			"完整": [
+				{
+					"_id": "b5bf497cb8f5e02ef6e819630dc7a204",
+					"itemName": "Loki Prime系统蓝图",
+					"rarity": "Rare",
+					"chance": 2
+				},
+				{
+					"_id": "089da4f57091cddbc2f52bdb93294fe3",
+					"itemName": "Volt Prime系统蓝图",
+					"rarity": "Uncommon",
+					"chance": 11
+				},
+				{
+					"_id": "27595a7e564cec2211f5ae9901eb48ac",
+					"itemName": "Odonata Prime蓝图",
+					"rarity": "Uncommon",
+					"chance": 11
+				},
+				{
+					"_id": "f1d3923651587359f9444f183330e4c2",
+					"itemName": "Forma蓝图",
+					"rarity": "Uncommon",
+					"chance": 25.33
+				},
+				{
+					"_id": "df71e3bb006070672efb8d18653bf066",
+					"itemName": "玻之武杖Prime饰物",
+					"rarity": "Uncommon",
+					"chance": 25.33
+				},
+				{
+					"_id": "7edbb2b202691aacf9821c1fef78d8b2",
+					"itemName": "蛟龙Prime外壳",
+					"rarity": "Uncommon",
+					"chance": 25.33
+				}
+			],
+			"优良": [
+				{
+					"_id": "b5bf497cb8f5e02ef6e819630dc7a204",
+					"itemName": "Loki Prime系统蓝图",
+					"rarity": "Rare",
+					"chance": 4
+				},
+				{
+					"_id": "089da4f57091cddbc2f52bdb93294fe3",
+					"itemName": "Volt Prime系统蓝图",
+					"rarity": "Uncommon",
+					"chance": 13
+				},
+				{
+					"_id": "27595a7e564cec2211f5ae9901eb48ac",
+					"itemName": "Odonata Prime蓝图",
+					"rarity": "Uncommon",
+					"chance": 13
+				},
+				{
+					"_id": "f1d3923651587359f9444f183330e4c2",
+					"itemName": "Forma蓝图",
+					"rarity": "Uncommon",
+					"chance": 23.33
+				},
+				{
+					"_id": "df71e3bb006070672efb8d18653bf066",
+					"itemName": "玻之武杖Prime饰物",
+					"rarity": "Uncommon",
+					"chance": 23.33
+				},
+				{
+					"_id": "7edbb2b202691aacf9821c1fef78d8b2",
+					"itemName": "蛟龙Prime外壳",
+					"rarity": "Uncommon",
+					"chance": 23.33
+				}
+			],
+			"无暇": [
+				{
+					"_id": "b5bf497cb8f5e02ef6e819630dc7a204",
+					"itemName": "Loki Prime系统蓝图",
+					"rarity": "Rare",
+					"chance": 6
+				},
+				{
+					"_id": "089da4f57091cddbc2f52bdb93294fe3",
+					"itemName": "Volt Prime系统蓝图",
+					"rarity": "Uncommon",
+					"chance": 17
+				},
+				{
+					"_id": "27595a7e564cec2211f5ae9901eb48ac",
+					"itemName": "Odonata Prime蓝图",
+					"rarity": "Uncommon",
+					"chance": 17
+				},
+				{
+					"_id": "f1d3923651587359f9444f183330e4c2",
+					"itemName": "Forma蓝图",
+					"rarity": "Uncommon",
+					"chance": 20
+				},
+				{
+					"_id": "df71e3bb006070672efb8d18653bf066",
+					"itemName": "玻之武杖Prime饰物",
+					"rarity": "Uncommon",
+					"chance": 20
+				},
+				{
+					"_id": "7edbb2b202691aacf9821c1fef78d8b2",
+					"itemName": "蛟龙Prime外壳",
+					"rarity": "Uncommon",
+					"chance": 20
+				}
+			],
+			"光辉": [
+				{
+					"_id": "b5bf497cb8f5e02ef6e819630dc7a204",
+					"itemName": "Loki Prime系统蓝图",
+					"rarity": "Uncommon",
+					"chance": 10
+				},
+				{
+					"_id": "089da4f57091cddbc2f52bdb93294fe3",
+					"itemName": "Volt Prime系统蓝图",
+					"rarity": "Uncommon",
+					"chance": 20
+				},
+				{
+					"_id": "27595a7e564cec2211f5ae9901eb48ac",
+					"itemName": "Odonata Prime蓝图",
+					"rarity": "Uncommon",
+					"chance": 20
+				},
+				{
+					"_id": "f1d3923651587359f9444f183330e4c2",
+					"itemName": "Forma蓝图",
+					"rarity": "Uncommon",
+					"chance": 16.67
+				},
+				{
+					"_id": "df71e3bb006070672efb8d18653bf066",
+					"itemName": "玻之武杖Prime饰物",
+					"rarity": "Uncommon",
+					"chance": 16.67
+				},
+				{
+					"_id": "7edbb2b202691aacf9821c1fef78d8b2",
+					"itemName": "蛟龙Prime外壳",
+					"rarity": "Uncommon",
+					"chance": 16.67
+				}
+			]
+		},
 		"N1": {
 			"完整": [
 				{
@@ -12476,6 +12630,160 @@
 				}
 			]
 		},
+		"O2": {
+			"完整": [
+				{
+					"_id": "1dba53d133b597773cd3012b83bf22aa",
+					"itemName": "Odonata Prime机翼蓝图",
+					"rarity": "Rare",
+					"chance": 2
+				},
+				{
+					"_id": "f94ab3df02d2634810ad1e6db2d320f0",
+					"itemName": "Loki Prime机体蓝图",
+					"rarity": "Uncommon",
+					"chance": 11
+				},
+				{
+					"_id": "f1d3923651587359f9444f183330e4c2",
+					"itemName": "Forma蓝图",
+					"rarity": "Uncommon",
+					"chance": 11
+				},
+				{
+					"_id": "c3c87bc5f808caf33cb64e6ec8c5c16d",
+					"itemName": "Volt Prime蓝图",
+					"rarity": "Uncommon",
+					"chance": 25.33
+				},
+				{
+					"_id": "bf084c532254b5e90284fa35d9cad608",
+					"itemName": "玻之武杖Prime蓝图",
+					"rarity": "Uncommon",
+					"chance": 25.33
+				},
+				{
+					"_id": "5adfe4da53237e28040a59f8cfc6c859",
+					"itemName": "蛟龙Prime头部神经光元",
+					"rarity": "Uncommon",
+					"chance": 25.33
+				}
+			],
+			"优良": [
+				{
+					"_id": "1dba53d133b597773cd3012b83bf22aa",
+					"itemName": "Odonata Prime机翼蓝图",
+					"rarity": "Rare",
+					"chance": 4
+				},
+				{
+					"_id": "f94ab3df02d2634810ad1e6db2d320f0",
+					"itemName": "Loki Prime机体蓝图",
+					"rarity": "Uncommon",
+					"chance": 13
+				},
+				{
+					"_id": "f1d3923651587359f9444f183330e4c2",
+					"itemName": "Forma蓝图",
+					"rarity": "Uncommon",
+					"chance": 13
+				},
+				{
+					"_id": "c3c87bc5f808caf33cb64e6ec8c5c16d",
+					"itemName": "Volt Prime蓝图",
+					"rarity": "Uncommon",
+					"chance": 23.33
+				},
+				{
+					"_id": "bf084c532254b5e90284fa35d9cad608",
+					"itemName": "玻之武杖Prime蓝图",
+					"rarity": "Uncommon",
+					"chance": 23.33
+				},
+				{
+					"_id": "5adfe4da53237e28040a59f8cfc6c859",
+					"itemName": "蛟龙Prime头部神经光元",
+					"rarity": "Uncommon",
+					"chance": 23.33
+				}
+			],
+			"无暇": [
+				{
+					"_id": "1dba53d133b597773cd3012b83bf22aa",
+					"itemName": "Odonata Prime机翼蓝图",
+					"rarity": "Rare",
+					"chance": 6
+				},
+				{
+					"_id": "f94ab3df02d2634810ad1e6db2d320f0",
+					"itemName": "Loki Prime机体蓝图",
+					"rarity": "Uncommon",
+					"chance": 17
+				},
+				{
+					"_id": "f1d3923651587359f9444f183330e4c2",
+					"itemName": "Forma蓝图",
+					"rarity": "Uncommon",
+					"chance": 17
+				},
+				{
+					"_id": "c3c87bc5f808caf33cb64e6ec8c5c16d",
+					"itemName": "Volt Prime蓝图",
+					"rarity": "Uncommon",
+					"chance": 20
+				},
+				{
+					"_id": "bf084c532254b5e90284fa35d9cad608",
+					"itemName": "玻之武杖Prime蓝图",
+					"rarity": "Uncommon",
+					"chance": 20
+				},
+				{
+					"_id": "5adfe4da53237e28040a59f8cfc6c859",
+					"itemName": "蛟龙Prime头部神经光元",
+					"rarity": "Uncommon",
+					"chance": 20
+				}
+			],
+			"光辉": [
+				{
+					"_id": "1dba53d133b597773cd3012b83bf22aa",
+					"itemName": "Odonata Prime机翼蓝图",
+					"rarity": "Uncommon",
+					"chance": 10
+				},
+				{
+					"_id": "f94ab3df02d2634810ad1e6db2d320f0",
+					"itemName": "Loki Prime机体蓝图",
+					"rarity": "Uncommon",
+					"chance": 20
+				},
+				{
+					"_id": "f1d3923651587359f9444f183330e4c2",
+					"itemName": "Forma蓝图",
+					"rarity": "Uncommon",
+					"chance": 20
+				},
+				{
+					"_id": "c3c87bc5f808caf33cb64e6ec8c5c16d",
+					"itemName": "Volt Prime蓝图",
+					"rarity": "Uncommon",
+					"chance": 16.67
+				},
+				{
+					"_id": "bf084c532254b5e90284fa35d9cad608",
+					"itemName": "玻之武杖Prime蓝图",
+					"rarity": "Uncommon",
+					"chance": 16.67
+				},
+				{
+					"_id": "5adfe4da53237e28040a59f8cfc6c859",
+					"itemName": "蛟龙Prime头部神经光元",
+					"rarity": "Uncommon",
+					"chance": 16.67
+				}
+			]
+		},
 		"P1": {
 			"完整": [
 				{
@@ -19711,6 +20019,160 @@
 				{
 					"_id": "ef29487d6ba1f08afa5ca8bacaac8761",
 					"itemName": "狂鲨Prime枪机",
+					"rarity": "Uncommon",
+					"chance": 16.67
+				}
+			]
+		},
+		"O3": {
+			"完整": [
+				{
+					"_id": "1dba53d133b597773cd3012b83bf22aa",
+					"itemName": "Odonata Prime机翼蓝图",
+					"rarity": "Rare",
+					"chance": 2
+				},
+				{
+					"_id": "14e9b1648fe16ec4e7ffbf5c09db6132",
+					"itemName": "Volt Prime机体蓝图",
+					"rarity": "Uncommon",
+					"chance": 11
+				},
+				{
+					"_id": "277506c8de7bc01a300ead4d291304b7",
+					"itemName": "蛟龙Prime系统",
+					"rarity": "Uncommon",
+					"chance": 11
+				},
+				{
+					"_id": "f1d3923651587359f9444f183330e4c2",
+					"itemName": "Forma蓝图",
+					"rarity": "Uncommon",
+					"chance": 25.33
+				},
+				{
+					"_id": "91f73c7e6cc5029558cb888722039b83",
+					"itemName": "Loki Prime神经光元蓝图",
+					"rarity": "Uncommon",
+					"chance": 25.33
+				},
+				{
+					"_id": "4c4da00bdf70e2ff783255099802d5f0",
+					"itemName": "Odonata Prime系统蓝图",
+					"rarity": "Uncommon",
+					"chance": 25.33
+				}
+			],
+			"优良": [
+				{
+					"_id": "1dba53d133b597773cd3012b83bf22aa",
+					"itemName": "Odonata Prime机翼蓝图",
+					"rarity": "Rare",
+					"chance": 4
+				},
+				{
+					"_id": "14e9b1648fe16ec4e7ffbf5c09db6132",
+					"itemName": "Volt Prime机体蓝图",
+					"rarity": "Uncommon",
+					"chance": 13
+				},
+				{
+					"_id": "277506c8de7bc01a300ead4d291304b7",
+					"itemName": "蛟龙Prime系统",
+					"rarity": "Uncommon",
+					"chance": 13
+				},
+				{
+					"_id": "f1d3923651587359f9444f183330e4c2",
+					"itemName": "Forma蓝图",
+					"rarity": "Uncommon",
+					"chance": 23.33
+				},
+				{
+					"_id": "91f73c7e6cc5029558cb888722039b83",
+					"itemName": "Loki Prime神经光元蓝图",
+					"rarity": "Uncommon",
+					"chance": 23.33
+				},
+				{
+					"_id": "4c4da00bdf70e2ff783255099802d5f0",
+					"itemName": "Odonata Prime系统蓝图",
+					"rarity": "Uncommon",
+					"chance": 23.33
+				}
+			],
+			"无暇": [
+				{
+					"_id": "1dba53d133b597773cd3012b83bf22aa",
+					"itemName": "Odonata Prime机翼蓝图",
+					"rarity": "Rare",
+					"chance": 6
+				},
+				{
+					"_id": "14e9b1648fe16ec4e7ffbf5c09db6132",
+					"itemName": "Volt Prime机体蓝图",
+					"rarity": "Uncommon",
+					"chance": 17
+				},
+				{
+					"_id": "277506c8de7bc01a300ead4d291304b7",
+					"itemName": "蛟龙Prime系统",
+					"rarity": "Uncommon",
+					"chance": 17
+				},
+				{
+					"_id": "f1d3923651587359f9444f183330e4c2",
+					"itemName": "Forma蓝图",
+					"rarity": "Uncommon",
+					"chance": 20
+				},
+				{
+					"_id": "91f73c7e6cc5029558cb888722039b83",
+					"itemName": "Loki Prime神经光元蓝图",
+					"rarity": "Uncommon",
+					"chance": 20
+				},
+				{
+					"_id": "4c4da00bdf70e2ff783255099802d5f0",
+					"itemName": "Odonata Prime系统蓝图",
+					"rarity": "Uncommon",
+					"chance": 20
+				}
+			],
+			"光辉": [
+				{
+					"_id": "1dba53d133b597773cd3012b83bf22aa",
+					"itemName": "Odonata Prime机翼蓝图",
+					"rarity": "Uncommon",
+					"chance": 10
+				},
+				{
+					"_id": "14e9b1648fe16ec4e7ffbf5c09db6132",
+					"itemName": "Volt Prime机体蓝图",
+					"rarity": "Uncommon",
+					"chance": 20
+				},
+				{
+					"_id": "277506c8de7bc01a300ead4d291304b7",
+					"itemName": "蛟龙Prime系统",
+					"rarity": "Uncommon",
+					"chance": 20
+				},
+				{
+					"_id": "f1d3923651587359f9444f183330e4c2",
+					"itemName": "Forma蓝图",
+					"rarity": "Uncommon",
+					"chance": 16.67
+				},
+				{
+					"_id": "91f73c7e6cc5029558cb888722039b83",
+					"itemName": "Loki Prime神经光元蓝图",
+					"rarity": "Uncommon",
+					"chance": 16.67
+				},
+				{
+					"_id": "4c4da00bdf70e2ff783255099802d5f0",
+					"itemName": "Odonata Prime系统蓝图",
 					"rarity": "Uncommon",
 					"chance": 16.67
 				}
@@ -30647,6 +31109,160 @@
 				{
 					"_id": "f1d3923651587359f9444f183330e4c2",
 					"itemName": "Forma蓝图",
+					"rarity": "Uncommon",
+					"chance": 16.67
+				}
+			]
+		},
+		"V8": {
+			"完整": [
+				{
+					"_id": "edcbfcf50eb2908e86affad70886b302",
+					"itemName": "Volt Prime神经光元蓝图",
+					"rarity": "Rare",
+					"chance": 2
+				},
+				{
+					"_id": "7d6fa76d0f41efe621c38113aebf9850",
+					"itemName": "玻之武杖Prime握柄",
+					"rarity": "Uncommon",
+					"chance": 11
+				},
+				{
+					"_id": "f1d3923651587359f9444f183330e4c2",
+					"itemName": "Forma蓝图",
+					"rarity": "Uncommon",
+					"chance": 11
+				},
+				{
+					"_id": "c3c482c0dec3dbb49f2dbf15c43552a1",
+					"itemName": "Loki Prime蓝图",
+					"rarity": "Uncommon",
+					"chance": 25.33
+				},
+				{
+					"_id": "3aa9782c1e395fd4134d880e9468d529",
+					"itemName": "Odonata Prime外甲蓝图",
+					"rarity": "Uncommon",
+					"chance": 25.33
+				},
+				{
+					"_id": "eb4d3d858c0f910514e1c04c7d9d779f",
+					"itemName": "蛟龙Prime蓝图",
+					"rarity": "Uncommon",
+					"chance": 25.33
+				}
+			],
+			"优良": [
+				{
+					"_id": "edcbfcf50eb2908e86affad70886b302",
+					"itemName": "Volt Prime神经光元蓝图",
+					"rarity": "Rare",
+					"chance": 4
+				},
+				{
+					"_id": "7d6fa76d0f41efe621c38113aebf9850",
+					"itemName": "玻之武杖Prime握柄",
+					"rarity": "Uncommon",
+					"chance": 13
+				},
+				{
+					"_id": "f1d3923651587359f9444f183330e4c2",
+					"itemName": "Forma蓝图",
+					"rarity": "Uncommon",
+					"chance": 13
+				},
+				{
+					"_id": "c3c482c0dec3dbb49f2dbf15c43552a1",
+					"itemName": "Loki Prime蓝图",
+					"rarity": "Uncommon",
+					"chance": 23.33
+				},
+				{
+					"_id": "3aa9782c1e395fd4134d880e9468d529",
+					"itemName": "Odonata Prime外甲蓝图",
+					"rarity": "Uncommon",
+					"chance": 23.33
+				},
+				{
+					"_id": "eb4d3d858c0f910514e1c04c7d9d779f",
+					"itemName": "蛟龙Prime蓝图",
+					"rarity": "Uncommon",
+					"chance": 23.33
+				}
+			],
+			"无暇": [
+				{
+					"_id": "edcbfcf50eb2908e86affad70886b302",
+					"itemName": "Volt Prime神经光元蓝图",
+					"rarity": "Rare",
+					"chance": 6
+				},
+				{
+					"_id": "7d6fa76d0f41efe621c38113aebf9850",
+					"itemName": "玻之武杖Prime握柄",
+					"rarity": "Uncommon",
+					"chance": 17
+				},
+				{
+					"_id": "f1d3923651587359f9444f183330e4c2",
+					"itemName": "Forma蓝图",
+					"rarity": "Uncommon",
+					"chance": 17
+				},
+				{
+					"_id": "c3c482c0dec3dbb49f2dbf15c43552a1",
+					"itemName": "Loki Prime蓝图",
+					"rarity": "Uncommon",
+					"chance": 20
+				},
+				{
+					"_id": "3aa9782c1e395fd4134d880e9468d529",
+					"itemName": "Odonata Prime外甲蓝图",
+					"rarity": "Uncommon",
+					"chance": 20
+				},
+				{
+					"_id": "eb4d3d858c0f910514e1c04c7d9d779f",
+					"itemName": "蛟龙Prime蓝图",
+					"rarity": "Uncommon",
+					"chance": 20
+				}
+			],
+			"光辉": [
+				{
+					"_id": "edcbfcf50eb2908e86affad70886b302",
+					"itemName": "Volt Prime神经光元蓝图",
+					"rarity": "Uncommon",
+					"chance": 10
+				},
+				{
+					"_id": "7d6fa76d0f41efe621c38113aebf9850",
+					"itemName": "玻之武杖Prime握柄",
+					"rarity": "Uncommon",
+					"chance": 20
+				},
+				{
+					"_id": "f1d3923651587359f9444f183330e4c2",
+					"itemName": "Forma蓝图",
+					"rarity": "Uncommon",
+					"chance": 20
+				},
+				{
+					"_id": "c3c482c0dec3dbb49f2dbf15c43552a1",
+					"itemName": "Loki Prime蓝图",
+					"rarity": "Uncommon",
+					"chance": 16.67
+				},
+				{
+					"_id": "3aa9782c1e395fd4134d880e9468d529",
+					"itemName": "Odonata Prime外甲蓝图",
+					"rarity": "Uncommon",
+					"chance": 16.67
+				},
+				{
+					"_id": "eb4d3d858c0f910514e1c04c7d9d779f",
+					"itemName": "蛟龙Prime蓝图",
 					"rarity": "Uncommon",
 					"chance": 16.67
 				}
