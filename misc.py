@@ -761,6 +761,10 @@ def aqi_level(aqi):
 
 
 def msg_exchange_rate(j):
+    '''API: https://exchangeratesapi.io/
+
+    No APPKEY needed, slightly inaccurate for Chinese players.
+    '''
     msg = ''
     match = re.match(r'.*?(\d+\.*\d*).*?([A-Za-z]{3})', j['message'])
     if match:
@@ -774,6 +778,125 @@ def msg_exchange_rate(j):
             else:
                 return '目前尚未有货币{}的汇率。'.format(match.group(2).upper())
         except BaseException:
-            pass
+            return ''
+    msg = '命令格式：/汇率 数字 货币种类，支持小数点，货币种类如USD EUR HKD等。'
+    return msg
+
+def msg_exchange_rate_2(j):
+    '''API: https://www.juhe.cn/docs/api/id/23
+
+    Require APPKEY. More accurate for Chinese players.
+    '''
+    msg = ''
+    appkey = '' # Your APPKEY here
+    code = {
+        '人民币': 'CNY',
+        '美元': 'USD',
+        '日元': 'JPY',
+        '欧元': 'EUR',
+        '英镑': 'GBP',
+        '韩元': 'KRW',
+        '港币': 'HKD',
+        '澳大利亚元': 'AUD',
+        '加拿大元': 'CAD',
+        '阿尔及利亚第纳尔': 'DZD',
+        '阿根廷比索': 'ARS',
+        '爱尔兰镑': 'IEP',
+        '埃及镑': 'EGP',
+        '阿联酋迪拉姆': 'AED',
+        '阿曼里亚尔': 'OMR',
+        '奥地利先令': 'ATS',
+        '澳门元': 'MOP',
+        '百慕大元': 'BMD',
+        '巴基斯坦卢比': 'PKR',
+        '巴拉圭瓜拉尼': 'PYG',
+        '巴林第纳尔': 'BHD',
+        '巴拿马巴尔博亚': 'PAB',
+        '保加利亚列弗': 'BGN',
+        '巴西雷亚尔': 'BRL',
+        '比利时法郎': 'BEF',
+        '冰岛克朗': 'ISK',
+        '博茨瓦纳普拉': 'BWP',
+        '波兰兹罗提': 'PLN',
+        '玻利维亚诺': 'BOB',
+        '丹麦克朗': 'DKK',
+        '德国马克': 'DEM',
+        '法国法郎': 'FRF',
+        '菲律宾比索': 'PHP',
+        '芬兰马克': 'FIM',
+        '哥伦比亚比索': 'COP',
+        '古巴比索': 'CUP',
+        '哈萨克坚戈': 'KZT',
+        '荷兰盾': 'NLG',
+        '加纳塞地': 'GHC',
+        '捷克克朗': 'CZK',
+        '津巴布韦元': 'ZWD',
+        '卡塔尔里亚尔': 'QAR',
+        '克罗地亚库纳': 'HRK',
+        '肯尼亚先令': 'KES',
+        '科威特第纳尔': 'KWD',
+        '老挝基普': 'LAK',
+        '拉脱维亚拉图': 'LVL',
+        '黎巴嫩镑': 'LBP',
+        '林吉特': 'MYR',
+        '立陶宛立特': 'LTL',
+        '卢布': 'RUB',
+        '罗马尼亚新列伊': 'RON',
+        '毛里求斯卢比': 'MUR',
+        '蒙古图格里克': 'MNT',
+        '孟加拉塔卡': 'BDT',
+        '缅甸缅元': 'BUK',
+        '秘鲁新索尔': 'PEN',
+        '摩洛哥迪拉姆': 'MAD',
+        '墨西哥比索': 'MXN',
+        '南非兰特': 'ZAR',
+        '挪威克朗': 'NOK',
+        '葡萄牙埃斯库多': 'PTE',
+        '瑞典克朗': 'SEK',
+        '瑞士法郎': 'CHF',
+        '沙特里亚尔': 'SAR',
+        '斯里兰卡卢比': 'LKR',
+        '索马里先令': 'SOS',
+        '泰国铢': 'THB',
+        '坦桑尼亚先令': 'TZS',
+        '土耳其新里拉': 'TRY',
+        '突尼斯第纳尔': 'TND',
+        '危地马拉格查尔': 'GTQ',
+        '委内瑞拉玻利瓦尔': 'VEB',
+        '乌拉圭新比索': 'UYU',
+        '西班牙比塞塔': 'ESP',
+        '希腊德拉克马': 'GRD',
+        '新加坡元': 'SGD',
+        '新台币': 'TWD',
+        '新西兰元': 'NZD',
+        '匈牙利福林': 'HUF',
+        '牙买加元': 'JMD',
+        '义大利里拉': 'ITL',
+        '印度卢比': 'INR',
+        '印尼盾': 'IDR',
+        '以色列谢克尔': 'ILS',
+        '约旦第纳尔': 'JOD',
+        '越南盾': 'VND',
+        '智利比索': 'CLP',
+        '白俄罗斯卢布': 'BYR'
+    }
+    match = re.match(r'.*?(\d+\.*\d*).*?([A-Za-z]{3})', j['message'])
+    if match:
+        try:
+            r = requests_cache.CachedSession(backend='sqlite', cache_name='er_cache', expire_after=72000)
+            er = r.get('http://web.juhe.cn:8080/finance/exchange/rmbquot?type=1&bank=0&key={}'.format(appkey)).json()
+            er_processed = {}
+            for currency in er['result'][0]:
+                if currency in code:
+                    er_processed[code[currency]] = er['result'][0][currency]['bankConversionPri']
+
+            if match.group(2).upper() in er_processed:
+                if match.group(2).upper() == 'CNY':
+                    return '按……等一下你是认真的吗？ {} CNY = {} CNY（确信）'.format(match.group(1), match.group(1))
+                return '按当前汇率：{} {} = {:.4f} CNY ({:.4f})'.format(match.group(1), match.group(2).upper(), float(match.group(1)) * float(er_processed[match.group(2).upper()]) / 100, float(er_processed[match.group(2).upper()]) / 100)
+            else:
+                return '目前尚未有货币{}的汇率。'.format(match.group(2).upper())
+        except BaseException:
+            return ''
     msg = '命令格式：/汇率 数字 货币种类，支持小数点，货币种类如USD EUR HKD等。'
     return msg
