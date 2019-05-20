@@ -952,14 +952,14 @@ def get_riven_prices(j):
         if data_dict['W'][item_name] == 'none':
             for d in data:
                 if d['itemType'] == none_cat[item_name] and d['compatibility'] == None:
-                    msg += '{:.0f}~{:.0f} (平均{:.2f}，总交易量占比{:.2f}%)'.format(d['min'], d['max'], d['avg'], d['pop'])
+                    msg += '{:.0f}~{:.0f} (平均{:.2f}，中位数{:.1f}，交易热度{:.0f}/100)'.format(d['min'], d['max'], d['avg'], d['median'], d['pop'])
         else:
             for d in data:
                 if str(d['compatibility']).replace(' ', '') == data_dict['W'][item_name].upper():
                     if d['rerolled'] == False:
-                        msg += '零洗：{:.0f}~{:.0f} (平均{:.2f}，总交易量占比{:.2f}%)\n'.format(d['min'], d['max'], d['avg'], d['pop'])
+                        msg += '零洗：{:.0f}~{:.0f} (平均{:.2f}，中位数{:.1f}，交易热度{:.0f}/100)\n'.format(d['min'], d['max'], d['avg'], d['median'], d['pop'])
                     else:
-                        msg += '多洗：{:.0f}~{:.0f} (平均{:.2f}，总交易量占比{:.2f}%)\n'.format(d['min'], d['max'], d['avg'], d['pop'])
+                        msg += '多洗：{:.0f}~{:.0f} (平均{:.2f}，中位数{:.1f}，交易热度{:.0f}/100)\n'.format(d['min'], d['max'], d['avg'], d['median'], d['pop'])
     else:
         msg = '未找到这项物品，你是不是想查询：'
         for item in process.extract(item_name, list(data_dict['W']), limit=5):
