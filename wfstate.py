@@ -315,7 +315,7 @@ def get_riven_info(j):
     Has the same drop rate distribution as official Sortie drop table.
     """
     # Riven info copied from: https://semlar.com/rivencalc
-    weapon = j['message'].replace('模拟开卡', '').strip()
+    weapon = j['message'].replace(j['keyword'], '').strip()
     riven_info = ''
     prefix = ''
 
@@ -328,10 +328,11 @@ def get_riven_info(j):
         'Kitgun': 'Kitgun'
     }
 
-    if '翻译{}'.format(weapon.lower()) in data_dict['CR']:
-        weapon = data_dict['CR']['翻译{}'.format(weapon.lower())].upper()
+    if weapon.lower() in data_dict['W']:
+        weapon = data_dict['W'][weapon.lower()].upper()
 
     if weapon in riven_weapons:
+        prefix = '你直接从中枢Samodeus那里收到了：\n'
         riven_info = riven_details(
             weapon, random.randint(2, 3), random.randint(0, 1))
     else:
@@ -774,7 +775,11 @@ def get_wmprice(j):
                         count += 1
                     except BaseException:
                         break
-                msg += '平均:' + str(plat / count)
+
+                if count == 0:
+                    msg += '目前无游戏内在线玩家出售此物品。'
+                else:
+                    msg += '平均:' + str(plat / count)
             except BaseException:
                 return '[ERROR]无法处理WM数据'
         except BaseException:
