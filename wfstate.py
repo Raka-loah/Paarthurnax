@@ -259,13 +259,11 @@ def get_cetus_time():
     except BaseException:
         return '[ERROR] 获取世界状态失败'
     day_cycle_text = ''
-    cetus_activation = 0
+    cetus_expiry = 0
     for syndicate in ws['SyndicateMissions']:
         if syndicate['Tag'] == 'CetusSyndicate':
-            cetus_activation = syndicate['Activation']['$date']['$numberLong']
             cetus_expiry = syndicate['Expiry']['$date']['$numberLong']
-    cetus_sec_remain = ((float(cetus_expiry) - float(cetus_activation)) /
-                        1000) - (time.time() - float(cetus_activation) / 1000)
+    cetus_sec_remain = float(cetus_expiry) / 1000 - time.time()
     if cetus_sec_remain > 50 * 60:  # not night
         day_cycle_text = '希图斯当前是白天，剩余时间' + s2h(cetus_sec_remain - 3000) + '。'
     elif cetus_sec_remain > 0:
@@ -663,11 +661,11 @@ def get_cetus_transition():
         ws = get_worldstate()
     except BaseException:
         return ''
-    activation = 0
+    expiry = 0
     for syndicate in ws['SyndicateMissions']:
         if syndicate['Tag'] == 'CetusSyndicate':
-            activation = syndicate['Activation']['$date']['$numberLong']
-    sec_remain = (150 * 60) - (time.time() - float(activation) / 1000)
+            expiry = syndicate['Expiry']['$date']['$numberLong']
+    sec_remain = float(expiry) / 1000 - time.time()
     if sec_remain > 50 * 60 and sec_remain < 51 * 60:  # 1 min before night
         return '希图斯将于1分钟后进入夜晚。'
     elif sec_remain > 0 and sec_remain < 60:  # 1 min before day
