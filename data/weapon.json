@@ -556,5 +556,11 @@
 	"手枪未开": "none",
 	"zaw未开": "none",
 	"kitgun未开": "none",
-	"霰弹枪未开": "none"
+	"霰弹枪未开": "none",
+	"猛毒": "komorex",
+	"氰毒": "cyanex",
+	"雷霆": "fulmin",
+	"komorex": "猛毒",
+	"cyanex": "氰毒",
+	"fulmin": "雷霆"
 }

@@ -7560,7 +7560,6 @@
 	"翻译猎鹰俯击": "Swooping Falcon",
 	"翻译猎鹰轮": "Falcor",
 	"翻译猛扑": "Pounce",
-	"翻译猛毒": "Venom",
 	"翻译猛毒附加": "Venom Dose",
 	"翻译猛烈爆发": "Fulmination",
 	"翻译猛禽": "Raptors",
@@ -9041,5 +9040,12 @@
 	"翻译tatsu": "龙辰",
 	"翻译龙辰": "Tatsu",
 	"翻译恶狼战锤": "Wolfsledge",
-	"翻译wolfsledge": "恶狼战锤"
+	"翻译wolfsledge": "恶狼战锤",
+
+	"翻译猛毒": "komorex",
+	"翻译氰毒": "cyanex",
+	"翻译雷霆": "fulmin",
+	"翻译komorex": "猛毒",
+	"翻译cyanex": "氰毒",
+	"翻译fulmin": "雷霆"
 }

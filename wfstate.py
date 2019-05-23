@@ -259,13 +259,11 @@ def get_cetus_time():
     except BaseException:
         return '[ERROR] 获取世界状态失败'
     day_cycle_text = ''
-    cetus_activation = 0
+    cetus_expiry = 0
     for syndicate in ws['SyndicateMissions']:
         if syndicate['Tag'] == 'CetusSyndicate':
-            cetus_activation = syndicate['Activation']['$date']['$numberLong']
             cetus_expiry = syndicate['Expiry']['$date']['$numberLong']
-    cetus_sec_remain = ((float(cetus_expiry) - float(cetus_activation)) /
-                        1000) - (time.time() - float(cetus_activation) / 1000)
+    cetus_sec_remain = (float(cetus_expiry) / 1000 - time.time()) % 9000 # When it's over 9000!
     if cetus_sec_remain > 50 * 60:  # not night
         day_cycle_text = '希图斯当前是白天，剩余时间' + s2h(cetus_sec_remain - 3000) + '。'
     elif cetus_sec_remain > 0:
@@ -315,7 +313,7 @@ def get_riven_info(j):
     Has the same drop rate distribution as official Sortie drop table.
     """
     # Riven info copied from: https://semlar.com/rivencalc
-    weapon = j['message'].replace('模拟开卡', '').strip()
+    weapon = j['message'].replace(j['keyword'], '').strip()
     riven_info = ''
     prefix = ''
 
@@ -328,10 +326,11 @@ def get_riven_info(j):
         'Kitgun': 'Kitgun'
     }
 
-    if '翻译{}'.format(weapon.lower()) in data_dict['CR']:
-        weapon = data_dict['CR']['翻译{}'.format(weapon.lower())].upper()
+    if weapon.lower() in data_dict['W']:
+        weapon = data_dict['W'][weapon.lower()].upper()
 
     if weapon in riven_weapons:
+        prefix = '你直接从中枢Samodeus那里收到了：\n'
         riven_info = riven_details(
             weapon, random.randint(2, 3), random.randint(0, 1))
     else:
@@ -414,7 +413,7 @@ def riven_details(weapon, buffs, has_curse, simulate=0):
                     pass
             curse = random.sample(temp_curr_curse, 1)
             riven_info = '{} {}{}{}\n{} [{}]\n{} [{}]\n{} [{}]'.format(
-                data_dict['CR']['翻译' + weapon.lower().replace(' ', '')],
+                data_dict['W'][weapon.lower().replace(' ', '')],
                 curr_prefix[buffs[0]],
                 curr_suffix[buffs[1]].lower(),
                 riven_dispo_icon(curr_dispo[weapon]),
@@ -433,7 +432,7 @@ def riven_details(weapon, buffs, has_curse, simulate=0):
             dispo = dispo * 0.66 * 1.5  # 2buff，无负，按照0.66，1.5紫卡系数
             buffs = random.sample(list(curr_buff), 2)  # 下限系数0.9，上限系数1.1
             riven_info = '{} {}{}{}\n{} [{}]\n{} [{}]'.format(
-                data_dict['CR']['翻译' + weapon.lower().replace(' ', '')],
+                data_dict['W'][weapon.lower().replace(' ', '')],
                 curr_prefix[buffs[0]],
                 curr_suffix[buffs[1]].lower(),
                 riven_dispo_icon(curr_dispo[weapon]),
@@ -457,7 +456,7 @@ def riven_details(weapon, buffs, has_curse, simulate=0):
                     pass
             curse = random.sample(temp_curr_curse, 1)
             riven_info = '{} {}{}{}\n{} [{}]\n{} [{}]\n{} [{}]\n{} [{}]'.format(
-                data_dict['CR']['翻译' + weapon.lower().replace(' ', '')],
+                data_dict['W'][weapon.lower().replace(' ', '')],
                 curr_prefix[buffs[0]],
                 curr_suffix[buffs[1]].lower(),
                 riven_dispo_icon(curr_dispo[weapon]),
@@ -479,7 +478,7 @@ def riven_details(weapon, buffs, has_curse, simulate=0):
             dispo = dispo * 0.5 * 1.5
             buffs = random.sample(list(curr_buff), 3)
             riven_info = '{} {}{}{}\n{} [{}]\n{} [{}]\n{} [{}]'.format(
-                data_dict['CR']['翻译' + weapon.lower().replace(' ', '')],
+                data_dict['W'][weapon.lower().replace(' ', '')],
                 curr_prefix[buffs[0]],
                 curr_suffix[buffs[1]].lower(),
                 riven_dispo_icon(curr_dispo[weapon]),
@@ -533,12 +532,20 @@ def riven_dispo_icon(dispo):
         text = '?'
     return (' %s(%.2f)' % (text, dispo))
 
-# Bounties
-# Usage: get_bounties(category) category: 'cetus'/'solaris'
-# Return: a very long string about selected bounties
-
 
 def get_bounties(category):
+    """Get current bounties and rotation time.
+
+    Parameters
+    ----------
+    category: str
+        Only accept 'cetus' or 'solaris'. Vox Solaris WIP.
+
+    Returns
+    -------
+    str
+        Bounty information.
+    """
     try:
         ws = get_worldstate()
     except BaseException:
@@ -575,16 +582,26 @@ def get_bounties(category):
 
 
 def get_bounties_cetus():
+    """Get current Cetus bounties and rotation time.
+
+    Returns a string.
+    """
     return get_bounties('cetus')
 
 
 def get_bounties_solaris():
-    return get_bounties('solaris')
+    """Get current Solaris bounties and rotation time.
 
-# Void Trader
+    Returns a string.
+    """
+    return get_bounties('solaris')
 
 
 def get_voidtrader():
+    """Get current void trader stock or relay of his next arrival.
+
+    Returns a string.
+    """
     try:
         ws = get_worldstate()
     except BaseException:
@@ -609,10 +626,12 @@ def get_voidtrader():
             vt['Activation']['$date']['$numberLong']) / 1000 - time.time()), data_dict['S'][vt['Node']]['value'])
     return msg
 
-# Daily Deal
-
 
 def get_dailydeal():
+    """Get current daily deals.
+
+    Clem.
+    """
     try:
         ws = get_worldstate()
     except BaseException:
@@ -628,6 +647,10 @@ def get_dailydeal():
 
 
 def get_acolytes():
+    """Get currently appeared acolytes.
+
+    Returns a string.
+    """
     try:
         ws = get_worldstate()
     except BaseException:
@@ -654,19 +677,21 @@ def get_some_help():
 
 # Automatic broadcasting:
 
-# Cetus day/night transition within 60 seconds
-
 
 def get_cetus_transition():
+    """BROADCASTING - Cetus transition in 1 minute.
+
+    Returns a string.
+    """
     try:
         ws = get_worldstate()
     except BaseException:
         return ''
-    activation = 0
+    expiry = 0
     for syndicate in ws['SyndicateMissions']:
         if syndicate['Tag'] == 'CetusSyndicate':
-            activation = syndicate['Activation']['$date']['$numberLong']
-    sec_remain = (150 * 60) - (time.time() - float(activation) / 1000)
+            expiry = syndicate['Expiry']['$date']['$numberLong']
+    sec_remain = (float(expiry) / 1000 - time.time()) % 9000
     if sec_remain > 50 * 60 and sec_remain < 51 * 60:  # 1 min before night
         return '希图斯将于1分钟后进入夜晚。'
     elif sec_remain > 0 and sec_remain < 60:  # 1 min before day
@@ -675,10 +700,12 @@ def get_cetus_transition():
         return ''
     return ''
 
-# Alerts appeared within 60 seconds
-
 
 def get_new_alerts():
+    """BROADCASTING - Alerts appeared within 1 minute.
+
+    Returns a string.
+    """
     try:
         requests_cache.clear()
         ws = get_worldstate()
@@ -718,6 +745,10 @@ def get_new_alerts():
 
 
 def get_new_acolyte():
+    """BROADCASTING - New acolyte appeared within 1 minute.
+
+    Returns a string.
+    """
     try:
         ws = get_worldstate()
     except BaseException:
@@ -739,8 +770,22 @@ def get_new_acolyte():
         msg = '新出现的追随者：\n' + msg[:-2]
     return msg
 
+# Other things
+
 
 def get_wmprice(j):
+    """Get warframe.market price.
+
+    Parameters
+    ----------
+    j: dict
+        Received payload.
+
+    Returns
+    -------
+    str
+        warframe.market price.
+    """
     msg = ''
     item_name = j['message'].replace(j['keyword'], '').strip()
     item_name = item_name.lower().replace(' ', '')
@@ -774,7 +819,11 @@ def get_wmprice(j):
                         count += 1
                     except BaseException:
                         break
-                msg += '平均:' + str(plat / count)
+
+                if count == 0:
+                    msg += '目前无游戏内在线玩家出售此物品。'
+                else:
+                    msg += '平均:' + str(plat / count)
             except BaseException:
                 return '[ERROR]无法处理WM数据'
         except BaseException:
