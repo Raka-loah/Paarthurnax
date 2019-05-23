@@ -31,9 +31,14 @@
 **建议**
 ------
 
-为了安全性和性能建议使用真正的WSGI而不是这个debug服务器。（例如Twisted web，使用app_twistd.py即可）
+为了安全性和性能建议不要直接把Flask用于生产环境（也就是直接运行 `python app.py`）。当然懒得配置的话这样用也一样，你没打算搞个机器人产业出来吧。
 
-当然懒得配置的话这样用也一样。
+**可用的其他版本：**
+
+`app_twistd.py`：可用于Twisted web服务器的版本，需要自行配置Twisted。
+
+`app_quart.py`：据说性能更为强大的基于Quart框架的版本，需要 `pip install quart` ，之后用 `hypercorn app_quart:app -b 127.0.0.1:8888 --access-log -` 启动。
+
 
 **开发**
 ------
