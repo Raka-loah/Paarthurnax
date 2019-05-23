@@ -4,10 +4,6 @@
 ![](https://img.shields.io/github/stars/Raka-loah/qqbot-plugin-warframe.svg)
 [![](https://img.shields.io/github/license/Raka-loah/qqbot-plugin-warframe.svg)](https://github.com/Raka-loah/qqbot-plugin-warframe/blob/master/LICENSE)
 
-**注意：2019/02/27更新后，请自行通过sqlite编辑软件将 `qqbot.sqlite` 中 `messages` 表的 `id` 字段取消主键，或直接删除后重新运行。**
-
-CQ客户端的消息id并不是唯一的，之前版本因主键约束会导致消息无法正常录入数据库，部分与历史消息相关的功能会不可用。
-
 **前置条件**
 ------
 
