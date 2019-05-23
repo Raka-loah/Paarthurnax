@@ -413,7 +413,7 @@ def riven_details(weapon, buffs, has_curse, simulate=0):
                     pass
             curse = random.sample(temp_curr_curse, 1)
             riven_info = '{} {}{}{}\n{} [{}]\n{} [{}]\n{} [{}]'.format(
-                data_dict['CR']['翻译' + weapon.lower().replace(' ', '')],
+                data_dict['W'][weapon.lower().replace(' ', '')],
                 curr_prefix[buffs[0]],
                 curr_suffix[buffs[1]].lower(),
                 riven_dispo_icon(curr_dispo[weapon]),
@@ -432,7 +432,7 @@ def riven_details(weapon, buffs, has_curse, simulate=0):
             dispo = dispo * 0.66 * 1.5  # 2buff，无负，按照0.66，1.5紫卡系数
             buffs = random.sample(list(curr_buff), 2)  # 下限系数0.9，上限系数1.1
             riven_info = '{} {}{}{}\n{} [{}]\n{} [{}]'.format(
-                data_dict['CR']['翻译' + weapon.lower().replace(' ', '')],
+                data_dict['W'][weapon.lower().replace(' ', '')],
                 curr_prefix[buffs[0]],
                 curr_suffix[buffs[1]].lower(),
                 riven_dispo_icon(curr_dispo[weapon]),
@@ -456,7 +456,7 @@ def riven_details(weapon, buffs, has_curse, simulate=0):
                     pass
             curse = random.sample(temp_curr_curse, 1)
             riven_info = '{} {}{}{}\n{} [{}]\n{} [{}]\n{} [{}]\n{} [{}]'.format(
-                data_dict['CR']['翻译' + weapon.lower().replace(' ', '')],
+                data_dict['W'][weapon.lower().replace(' ', '')],
                 curr_prefix[buffs[0]],
                 curr_suffix[buffs[1]].lower(),
                 riven_dispo_icon(curr_dispo[weapon]),
@@ -478,7 +478,7 @@ def riven_details(weapon, buffs, has_curse, simulate=0):
             dispo = dispo * 0.5 * 1.5
             buffs = random.sample(list(curr_buff), 3)
             riven_info = '{} {}{}{}\n{} [{}]\n{} [{}]\n{} [{}]'.format(
-                data_dict['CR']['翻译' + weapon.lower().replace(' ', '')],
+                data_dict['W'][weapon.lower().replace(' ', '')],
                 curr_prefix[buffs[0]],
                 curr_suffix[buffs[1]].lower(),
                 riven_dispo_icon(curr_dispo[weapon]),
@@ -532,12 +532,20 @@ def riven_dispo_icon(dispo):
         text = '?'
     return (' %s(%.2f)' % (text, dispo))
 
-# Bounties
-# Usage: get_bounties(category) category: 'cetus'/'solaris'
-# Return: a very long string about selected bounties
-
 
 def get_bounties(category):
+    """Get current bounties and rotation time.
+
+    Parameters
+    ----------
+    category: str
+        Only accept 'cetus' or 'solaris'. Vox Solaris WIP.
+
+    Returns
+    -------
+    str
+        Bounty information.
+    """
     try:
         ws = get_worldstate()
     except BaseException:
@@ -574,16 +582,26 @@ def get_bounties(category):
 
 
 def get_bounties_cetus():
+    """Get current Cetus bounties and rotation time.
+
+    Returns a string.
+    """
     return get_bounties('cetus')
 
 
 def get_bounties_solaris():
-    return get_bounties('solaris')
+    """Get current Solaris bounties and rotation time.
 
-# Void Trader
+    Returns a string.
+    """
+    return get_bounties('solaris')
 
 
 def get_voidtrader():
+    """Get current void trader stock or relay of his next arrival.
+
+    Returns a string.
+    """
     try:
         ws = get_worldstate()
     except BaseException:
@@ -608,10 +626,12 @@ def get_voidtrader():
             vt['Activation']['$date']['$numberLong']) / 1000 - time.time()), data_dict['S'][vt['Node']]['value'])
     return msg
 
-# Daily Deal
-
 
 def get_dailydeal():
+    """Get current daily deals.
+
+    Clem.
+    """
     try:
         ws = get_worldstate()
     except BaseException:
@@ -627,6 +647,10 @@ def get_dailydeal():
 
 
 def get_acolytes():
+    """Get currently appeared acolytes.
+
+    Returns a string.
+    """
     try:
         ws = get_worldstate()
     except BaseException:
@@ -653,10 +677,12 @@ def get_some_help():
 
 # Automatic broadcasting:
 
-# Cetus day/night transition within 60 seconds
-
 
 def get_cetus_transition():
+    """BROADCASTING - Cetus transition in 1 minute.
+
+    Returns a string.
+    """
     try:
         ws = get_worldstate()
     except BaseException:
@@ -674,10 +700,12 @@ def get_cetus_transition():
         return ''
     return ''
 
-# Alerts appeared within 60 seconds
-
 
 def get_new_alerts():
+    """BROADCASTING - Alerts appeared within 1 minute.
+
+    Returns a string.
+    """
     try:
         requests_cache.clear()
         ws = get_worldstate()
@@ -717,6 +745,10 @@ def get_new_alerts():
 
 
 def get_new_acolyte():
+    """BROADCASTING - New acolyte appeared within 1 minute.
+
+    Returns a string.
+    """
     try:
         ws = get_worldstate()
     except BaseException:
@@ -738,8 +770,22 @@ def get_new_acolyte():
         msg = '新出现的追随者：\n' + msg[:-2]
     return msg
 
+# Other things
+
 
 def get_wmprice(j):
+    """Get warframe.market price.
+
+    Parameters
+    ----------
+    j: dict
+        Received payload.
+
+    Returns
+    -------
+    str
+        warframe.market price.
+    """
     msg = ''
     item_name = j['message'].replace(j['keyword'], '').strip()
     item_name = item_name.lower().replace(' ', '')

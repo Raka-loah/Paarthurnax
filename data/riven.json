@@ -750,6 +750,11 @@
 				"disposition": 1.0,
 				"name": "EXERGIS",
 				"texture": ""
+			},
+			{
+				"disposition": 1.0,
+				"name": "FULMIN",
+				"texture": ""
 			}
 		],
 		"Buffs": [{
@@ -1252,6 +1257,11 @@
 				"disposition": 1.15, 
 				"name": "ZYLOK", 
 				"texture": "_Lotus_Interface_Icons_Store_ConclaveLeverPistol.png"
+			},
+			{
+				"disposition": 1.15, 
+				"name": "CYANEX", 
+				"texture": ""
 			}
 		],
 		"Buffs": [{
@@ -1716,14 +1726,19 @@
 				"texture": "_Lotus_Interface_Icons_Store_PriestSpearGun.png"
 			},
 			{
-				"disposition": 1.05, 
-				"name": "NAGANTAKA", 
+				"disposition": 1.05,
+				"name": "NAGANTAKA",
 				"texture": "_Lotus_Interface_Icons_Store_GarudaCrossbow.png"
 			},
 			{
-				"disposition": 1.0, 
-				"name": "BATTACOR", 
+				"disposition": 1.0,
+				"name": "BATTACOR",
 				"texture": "_Lotus_Interface_Icons_Store_CrpSentExperimentRifle.png"
+			},
+			{
+				"disposition": 1.0,
+				"name": "KOMOREX",
+				"texture": ""
 			}
 		],
 		"Buffs": [{
