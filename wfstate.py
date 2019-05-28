@@ -413,7 +413,7 @@ def riven_details(weapon, buffs, has_curse, simulate=0):
                     pass
             curse = random.sample(temp_curr_curse, 1)
             riven_info = '{} {}{}{}\n{} [{}]\n{} [{}]\n{} [{}]'.format(
-                data_dict['W'][weapon.lower().replace(' ', '')],
+                data_dict['W']['zh-cn'][weapon.lower().replace(' ', '')],
                 curr_prefix[buffs[0]],
                 curr_suffix[buffs[1]].lower(),
                 riven_dispo_icon(curr_dispo[weapon]),
@@ -432,7 +432,7 @@ def riven_details(weapon, buffs, has_curse, simulate=0):
             dispo = dispo * 0.66 * 1.5  # 2buff，无负，按照0.66，1.5紫卡系数
             buffs = random.sample(list(curr_buff), 2)  # 下限系数0.9，上限系数1.1
             riven_info = '{} {}{}{}\n{} [{}]\n{} [{}]'.format(
-                data_dict['W'][weapon.lower().replace(' ', '')],
+                data_dict['W']['zh-cn'][weapon.lower().replace(' ', '')],
                 curr_prefix[buffs[0]],
                 curr_suffix[buffs[1]].lower(),
                 riven_dispo_icon(curr_dispo[weapon]),
@@ -456,7 +456,7 @@ def riven_details(weapon, buffs, has_curse, simulate=0):
                     pass
             curse = random.sample(temp_curr_curse, 1)
             riven_info = '{} {}{}{}\n{} [{}]\n{} [{}]\n{} [{}]\n{} [{}]'.format(
-                data_dict['W'][weapon.lower().replace(' ', '')],
+                data_dict['W']['zh-cn'][weapon.lower().replace(' ', '')],
                 curr_prefix[buffs[0]],
                 curr_suffix[buffs[1]].lower(),
                 riven_dispo_icon(curr_dispo[weapon]),
@@ -478,7 +478,7 @@ def riven_details(weapon, buffs, has_curse, simulate=0):
             dispo = dispo * 0.5 * 1.5
             buffs = random.sample(list(curr_buff), 3)
             riven_info = '{} {}{}{}\n{} [{}]\n{} [{}]\n{} [{}]'.format(
-                data_dict['W'][weapon.lower().replace(' ', '')],
+                data_dict['W']['zh-cn'][weapon.lower().replace(' ', '')],
                 curr_prefix[buffs[0]],
                 curr_suffix[buffs[1]].lower(),
                 riven_dispo_icon(curr_dispo[weapon]),
