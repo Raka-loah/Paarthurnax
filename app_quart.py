@@ -291,11 +291,9 @@ def task_new_acolyte():
             requests.post(url, json=payload)
 
 
-if __name__ == '__main__':
-    if cfg.enable_broadcast:
-        scheduler = BackgroundScheduler()
-        scheduler.add_job(task_new_alert, 'cron', second='00')
-        scheduler.add_job(task_cetus_transition, 'cron', second='05')
-        scheduler.add_job(task_new_acolyte, 'cron', second='05')
-        scheduler.start()
-    app.run(debug=False, port=8888)
+if cfg.enable_broadcast:
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(task_new_alert, 'cron', second='00')
+    scheduler.add_job(task_cetus_transition, 'cron', second='05')
+    scheduler.add_job(task_new_acolyte, 'cron', second='05')
+    scheduler.start()
