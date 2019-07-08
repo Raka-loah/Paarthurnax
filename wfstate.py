@@ -22,7 +22,7 @@ def get_worldstate():
     Return a very complicated nested array
     """
     wsurl = 'http://content.warframe.com/dynamic/worldState.php'
-    ws = requests.get(wsurl).json()
+    ws = requests.get(wsurl, timeout=30).json()
     return ws
 
 
@@ -640,7 +640,7 @@ def get_dailydeal():
     dd = ws['DailyDeals'][0]
     try:
         msg += '今日特惠物品：{}，打折-{}%，原价{}白金，现价{}白金，剩余{}/{}。'.format(data_dict['L'][dd['StoreItem'].lower(
-        )]['value'], dd['Discount'], dd['OriginalPrice'], dd['SalePrice'], int(dd['AmountTotal']) - int(dd['AmountSold']), dd['AmountTotal'])
+        )]['value'] if dd['StoreItem'].lower() in data_dict['L'] else dd['StoreItem'], dd['Discount'], dd['OriginalPrice'], dd['SalePrice'], int(dd['AmountTotal']) - int(dd['AmountSold']), dd['AmountTotal'])
     except BaseException:
         pass
     return msg
@@ -796,7 +796,7 @@ def get_wmprice(j):
     if item_name in data_dict['WM']:
         wmurl = 'https://api.warframe.market/v1/items/{}/orders'.format(data_dict['WM'][item_name])
         try:
-            wm = requests.get(wmurl)
+            wm = requests.get(wmurl, timeout=30)
 
             try:
                 converted_data = wm.json()
@@ -845,7 +845,7 @@ def get_wiki_text(j):
     else:
         return ''
     try:
-        wiki = s.get(wikiurl).text
+        wiki = s.get(wikiurl, timeout=30).text
         soup = BeautifulSoup(wiki, features='html.parser')
         data = soup.find('div', {'class': 'mw-parser-output'})
         msg = data.find('p').text.strip()
@@ -972,7 +972,7 @@ def get_riven_pricedata():
     """
     s = requests_cache.CachedSession(backend='sqlite', cache_name='riven_cache', expire_after=86400)
     url = 'http://n9e5v4d8.ssl.hwcdn.net/repos/weeklyRivensPC.json'
-    data = s.get(url).json()
+    data = s.get(url, timeout=30).json()
     return data
 
 def get_riven_prices(j):
