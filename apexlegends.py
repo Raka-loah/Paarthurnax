@@ -45,7 +45,7 @@ def msg_get_user_stats(j):
     tracks = '追踪数据：'
     try:
         r = requests_cache.CachedSession(cache_name='apex', backend='memory', expire='300')
-        stats = r.get(url, headers=headers).json()
+        stats = r.get(url, headers=headers, timeout=30).json()
         for stat in stats['legends'][0]['stats']:
             for stat_name, stat_value in stat.items():
                 stat_name = legends_stats[stat_name] if stat_name in legends_stats else stat_name

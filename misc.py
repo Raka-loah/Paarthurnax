@@ -301,13 +301,13 @@ def music_share(j):
     if j['message_type'] == 'group':
         song_name = j['message'].replace(j['keyword'], '')[:20].strip()
         try:
-            data = requests.get('https://c.y.qq.com/soso/fcgi-bin/client_search_cp?g_tk=5381&p=1&n=20&w={}&format=json&loginUin=0&hostUin=0&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&remoteplace=txt.yqq.song&t=0&aggr=1&cr=1&catZhida=1'.format(urllib.parse.quote_plus(song_name))).json()
+            data = requests.get('https://c.y.qq.com/soso/fcgi-bin/client_search_cp?g_tk=5381&p=1&n=20&w={}&format=json&loginUin=0&hostUin=0&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&remoteplace=txt.yqq.song&t=0&aggr=1&cr=1&catZhida=1'.format(urllib.parse.quote_plus(song_name)), timeout=30).json()
             msg = '[CQ:music,type=qq,id={}]'.format(
                 data['data']['song']['list'][0]['songid'])
         except BaseException:
             try:
                 data = requests.get(
-                    'https://api.mlwei.com/music/api/wy/?key=523077333&id={}&type=so&cache=0&nu=1'.format(urllib.parse.quote_plus(song_name))).json()
+                    'https://api.mlwei.com/music/api/wy/?key=523077333&id={}&type=so&cache=0&nu=1'.format(urllib.parse.quote_plus(song_name)), timeout=30).json()
                 msg = '[CQ:music,type=163,id={}]'.format(data['Body'][0]['id'])
             except BaseException:
                 msg = '[ERROR]点歌失败，网络错误'
@@ -656,7 +656,7 @@ def msg_stella(j):
     bot_role = ''
     if j['message_type'] == 'group':
         try:
-            r = requests.get('http://10.11.68.115:5700/get_group_member_info?group_id={}&user_id={}'.format(j['group_id'], j['self_id'])).json()
+            r = requests.get('http://10.11.68.115:5700/get_group_member_info?group_id={}&user_id={}'.format(j['group_id'], j['self_id']), timeout=30).json()
             bot_role = r['data']['role']
         except BaseException:
             pass
@@ -708,7 +708,7 @@ def msg_aqi(j):
 
     if match:
         try:
-            api_data = requests.get('https://api.waqi.info/feed/@{}/?token={}'.format(match.group(1), token)).json()
+            api_data = requests.get('https://api.waqi.info/feed/@{}/?token={}'.format(match.group(1), token), timeout=30).json()
             if api_data['status'] != 'ok':
                 raise 'API ERROR'
         except BaseException:
@@ -725,7 +725,7 @@ def msg_aqi(j):
         try:
             keyword = j['message'].replace('/aqi', '', 1).strip()
             if len(keyword) > 0:
-                api_data = requests.get('https://api.waqi.info/search/?keyword={}&token={}'.format(keyword, token)).json()
+                api_data = requests.get('https://api.waqi.info/search/?keyword={}&token={}'.format(keyword, token), timeout=30).json()
             else:
                 return '请指定要搜索的城市或监测站的名称。'
             if api_data['status'] != 'ok':
@@ -770,7 +770,7 @@ def msg_exchange_rate(j):
     if match:
         try:
             r = requests_cache.CachedSession(backend='sqlite', cache_name='er_cache', expire_after=3600)
-            er = r.get('https://api.exchangeratesapi.io/latest?base=CNY').json()
+            er = r.get('https://api.exchangeratesapi.io/latest?base=CNY', timeout=30).json()
             if match.group(2).upper() in er['rates']:
                 if match.group(2).upper() == 'CNY':
                     return '按……等一下你是认真的吗？ {} CNY = {} CNY（确信）'.format(match.group(1), match.group(1))
@@ -884,7 +884,7 @@ def msg_exchange_rate_2(j):
     if match:
         try:
             r = requests_cache.CachedSession(backend='sqlite', cache_name='er_cache', expire_after=72000)
-            er = r.get('http://web.juhe.cn:8080/finance/exchange/rmbquot?type=1&bank=0&key={}'.format(appkey)).json()
+            er = r.get('http://web.juhe.cn:8080/finance/exchange/rmbquot?type=1&bank=0&key={}'.format(appkey), timeout=30).json()
             er_processed = {}
             for currency in er['result'][0]:
                 if currency in code:

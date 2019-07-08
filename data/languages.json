@@ -16562,5 +16562,182 @@
 	"/lotus/types/challenges/seasons/weeklyhard/seasonweeklyhardluapuzzles": {
 		"value": "上行",
 		"desc": "完成 4 间月球上的晋升大厅"
+	},
+	"/lotus/storeitems/powersuits/antimatter/anti": {
+		"value": "Nova"
+	},
+	"/lotus/storeitems/powersuits/antimatter/novaprime": {
+		"value": "Nova Prime"
+	},
+	"/lotus/storeitems/powersuits/archwing/demolitionjetpack/demolitionjetpack": {
+		"value": "Elytron"
+	},
+	"/lotus/storeitems/powersuits/archwing/primejetpack/primejetpack": {
+		"value": "Odonata Prime"
+	},
+	"/lotus/storeitems/powersuits/archwing/standardjetpack/standardjetpack": {
+		"value": "Odonata"
+	},
+	"/lotus/storeitems/powersuits/archwing/stealthjetpack/stealthjetpack": {
+		"value": "Itzal"
+	},
+	"/lotus/storeitems/powersuits/archwing/supportjetpack/supportjetpack": {
+		"value": "Amesha"
+	},
+	"/lotus/storeitems/powersuits/banshee/banshee": {
+		"value": "Banshee"
+	},
+	"/lotus/storeitems/powersuits/banshee/bansheeprime": {
+		"value": "Banshee Prime"
+	},
+	"/lotus/storeitems/powersuits/bard/bard": {
+		"value": "Octavia"
+	},
+	"/lotus/storeitems/powersuits/berserker/berserker": {
+		"value": "Valkyr"
+	},
+	"/lotus/storeitems/powersuits/berserker/valkyrprime": {
+		"value": "Valkyr Prime"
+	},
+	"/lotus/storeitems/powersuits/brawler/brawler": {
+		"value": "Atlas"
+	},
+	"/lotus/storeitems/powersuits/brawler/summonavatarhostile": {
+		"value": "Summon Avatar Hostile"
+	},
+	"/lotus/storeitems/powersuits/cowgirl/cowgirl": {
+		"value": "Mesa"
+	},
+	"/lotus/storeitems/powersuits/dragon/dragon": {
+		"value": "Chroma"
+	},
+	"/lotus/storeitems/powersuits/dragon/dragonpeltavatar": {
+		"value": "Dragon Pelt Avatar"
+	},
+	"/lotus/storeitems/powersuits/ember/ember": {
+		"value": "Ember"
+	},
+	"/lotus/storeitems/powersuits/ember/emberprime": {
+		"value": "Ember Prime"
+	},
+	"/lotus/storeitems/powersuits/excalibur/excalibur": {
+		"value": "Excalibur"
+	},
+	"/lotus/storeitems/powersuits/excalibur/excaliburprime": {
+		"value": "Excalibur Prime"
+	},
+	"/lotus/storeitems/powersuits/fairy/fairy": {
+		"value": "Titania"
+	},
+	"/lotus/storeitems/powersuits/frost/frost": {
+		"value": "Frost"
+	},
+	"/lotus/storeitems/powersuits/frost/frostprime": {
+		"value": "Frost Prime"
+	},
+	"/lotus/storeitems/powersuits/frost/icespikeaugmentcard": {
+		"value": "Ice Spike Augment Card"
+	},
+	"/lotus/storeitems/powersuits/glass/glass": {
+		"value": "Gara"
+	},
+	"/lotus/storeitems/powersuits/harlequin/harlequin": {
+		"value": "Mirage"
+	},
+	"/lotus/storeitems/powersuits/infestation/infestation": {
+		"value": "Nidus"
+	},
+	"/lotus/storeitems/powersuits/jade/jade": {
+		"value": "Nyx"
+	},
+	"/lotus/storeitems/powersuits/jade/nyxprime": {
+		"value": "Nyx Prime"
+	},
+	"/lotus/storeitems/powersuits/loki/loki": {
+		"value": "Loki"
+	},
+	"/lotus/storeitems/powersuits/loki/lokiprime": {
+		"value": "Loki Prime"
+	},
+	"/lotus/storeitems/powersuits/mag/mag": {
+		"value": "Mag"
+	},
+	"/lotus/storeitems/powersuits/mag/magprime": {
+		"value": "Mag Prime"
+	},
+	"/lotus/storeitems/powersuits/magician/magician": {
+		"value": "Limbo"
+	},
+	"/lotus/storeitems/powersuits/monkeyking/monkeyking": {
+		"value": "Wukong"
+	},
+	"/lotus/storeitems/powersuits/necro/necro": {
+		"value": "Nekros"
+	},
+	"/lotus/storeitems/powersuits/necro/nekrosprime": {
+		"value": "Nekros Prime"
+	},
+	"/lotus/storeitems/powersuits/nezha/nezha": {
+		"value": "Nezha"
+	},
+	"/lotus/storeitems/powersuits/ninja/ashprime": {
+		"value": "Ash Prime"
+	},
+	"/lotus/storeitems/powersuits/ninja/ninja": {
+		"value": "Ash"
+	},
+	"/lotus/storeitems/powersuits/paladin/paladin": {
+		"value": "Oberon"
+	},
+	"/lotus/storeitems/powersuits/paladin/paladinprime": {
+		"value": "Paladin Prime"
+	},
+	"/lotus/storeitems/powersuits/pirate/pirate": {
+		"value": "Hydroid"
+	},
+	"/lotus/storeitems/powersuits/priest/priest": {
+		"value": "Priest"
+	},
+	"/lotus/storeitems/powersuits/ranger/ranger": {
+		"value": "Ivara"
+	},
+	"/lotus/storeitems/powersuits/rhino/rhino": {
+		"value": "Rhino"
+	},
+	"/lotus/storeitems/powersuits/rhino/rhinoprime": {
+		"value": "Rhino Prime"
+	},
+	"/lotus/storeitems/powersuits/sandman/sandman": {
+		"value": "Inaros"
+	},
+	"/lotus/storeitems/powersuits/saryn/saryn": {
+		"value": "Saryn"
+	},
+	"/lotus/storeitems/powersuits/saryn/sarynprime": {
+		"value": "Saryn Prime"
+	},
+	"/lotus/storeitems/powersuits/tengu/tengu": {
+		"value": "Zephyr"
+	},
+	"/lotus/storeitems/powersuits/trapper/trapper": {
+		"value": "Vauban"
+	},
+	"/lotus/storeitems/powersuits/trapper/trapperprime": {
+		"value": "Vauban Prime"
+	},
+	"/lotus/storeitems/powersuits/trinity/trinity": {
+		"value": "Trinity"
+	},
+	"/lotus/storeitems/powersuits/trinity/trinityprime": {
+		"value": "Trinity Prime"
+	},
+	"/lotus/storeitems/powersuits/volt/volt": {
+		"value": "Volt"
+	},
+	"/lotus/storeitems/powersuits/volt/voltprime": {
+		"value": "Volt Prime"
+	},
+	"/lotus/storeitems/powersuits/yinyang/yinyang": {
+		"value": "Equinox"
 	}
 }
