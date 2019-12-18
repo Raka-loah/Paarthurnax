@@ -1,4 +1,10 @@
 {
+  "MT_ARTIFACT": {
+    "value": "中断"
+  },
+  "MT_DISRUPTION": {
+    "value": "中断"
+  },
   "MT_EXCAVATE": {
     "value": "挖掘"
   },
