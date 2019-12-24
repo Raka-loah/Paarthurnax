@@ -1019,19 +1019,27 @@ def get_riven_prices(j):
 
 def get_relic_rewards(j):
     msg = ''
-    match = re.match(r'.* (.+) ([A-za-z]+\d+)(.*)', j['message'])
-    if match:
-        if match.group(1) in data_dict['RR']:
-            if match.group(2).upper() in data_dict['RR'][match.group(1)]:
-                if match.group(3).strip() in data_dict['RR'][match.group(1)][match.group(2).upper()]:
-                    quality = match.group(3).strip()
-                else:
-                    quality = '完整'
+    match = re.match(r'.* (.+) ([A-Za-z0-9]+)(.*)', j['message'])
+    try:
+        if match:
+            if match.group(1) in data_dict['RR']:
+                if match.group(2).upper() in data_dict['RR'][match.group(1)]:
+                    if match.group(3).strip() in data_dict['RR'][match.group(1)][match.group(2).upper()]:
+                        quality = match.group(3).strip()
+                    else:
+                        quality = '完整'
 
-                msg = '{}{}遗物({})：'.format(match.group(1), match.group(2).upper(), quality)
-                for reward in data_dict['RR'][match.group(1)][match.group(2).upper()][quality]:
-                    msg += '\n{}({:.2f}%)'.format(reward['itemName'], reward['chance'])
-    else:
+                    msg = '{}{}遗物({})：'.format(match.group(1), match.group(2).upper(), quality)
+
+                    for reward in data_dict['RR'][match.group(1)][match.group(2).upper()][quality]:
+                        msg += '\n{}({:.2f}%)'.format(reward['itemName'], reward['chance'])
+                else:
+                    raise NameError()
+            else:
+                raise NameError()
+        else:
+            msg = '命令格式：遗物 纪元 代号 品质(可选)，例如：遗物 古纪 A1。'
+    except:
         msg = '命令格式：遗物 纪元 代号 品质(可选)，例如：遗物 古纪 A1。'
 
     return msg

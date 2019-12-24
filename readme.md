@@ -12,12 +12,9 @@
 **Python依赖**
 ------
 
-`flask-restful`用于快速开启本地RESTful API；
-`requests`、`requests-cache`用于拉取官方API状态；
-`beautifulsoup4`用于分析某网页内容；
-`apscheduler`用于定时拉取；
-`fuzzywuzzy`用于模糊查询。
-> pip install flask-restful requests requests-cache beautifulsoup4 apscheduler fuzzywuzzy[speedup]
+> pip install -r requirements.txt
+
+易得 `virtualenv` 虚拟环境更适合操作，过程略，请读者自行求解。
 
 **使用方法**
 ------
