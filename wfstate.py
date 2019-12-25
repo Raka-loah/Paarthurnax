@@ -205,11 +205,13 @@ def get_fissures():
         'VoidT1': [],
         'VoidT2': [],
         'VoidT3': [],
-        'VoidT4': []
+        'VoidT4': [],
+        'VoidT5': []
     }
     fissures = ws['ActiveMissions']
     for fissure in fissures:
         fissure_sorted[fissure['Modifier']].append(fissure)
+
     for fissure in fissure_sorted['VoidT1']:
         fissure_text += '古纪(T1)：' + data_dict['S'][fissure['Node']]['value'] + ' | ' + data_dict['M'][fissure['MissionType']
                                                                                                       ]['value'] + '\n时限：' + s2h(float(fissure['Expiry']['$date']['$numberLong']) / 1000 - time.time()) + '\n\n'
@@ -222,6 +224,10 @@ def get_fissures():
     for fissure in fissure_sorted['VoidT4']:
         fissure_text += '后纪(T4)：' + data_dict['S'][fissure['Node']]['value'] + ' | ' + data_dict['M'][fissure['MissionType']
                                                                                                       ]['value'] + '\n时限：' + s2h(float(fissure['Expiry']['$date']['$numberLong']) / 1000 - time.time()) + '\n\n'
+    for fissure in fissure_sorted['VoidT5']:
+        fissure_text += '安魂(T5)：' + data_dict['S'][fissure['Node']]['value'] + ' | ' + data_dict['M'][fissure['MissionType']
+                                                                                                      ]['value'] + '\n时限：' + s2h(float(fissure['Expiry']['$date']['$numberLong']) / 1000 - time.time()) + '\n\n'
+
     return fissure_text[:-2]
 
 
