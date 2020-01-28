@@ -34,6 +34,7 @@ class idioms_game:
         w = 480
         h = int(w / 4)
         img = Image.new('RGB', (w, h), color = (255, 255, 255))
+        img_hint = Image.new('RGB', (w, h), color = (255, 255, 255))
 
         try:
             font = ImageFont.truetype('simkai.ttf', h)
@@ -43,10 +44,12 @@ class idioms_game:
                 }            
 
         draw = ImageDraw.Draw(img)
+        draw_hint = ImageDraw.Draw(img_hint)
 
         answer = choice(self.data).strip()
 
         draw.text((0,0), f'{answer}', font=font, fill=(0, 0, 0))
+        draw_hint.text((0,0), f'{answer}', font=font, fill=(0, 0, 0))
 
         image_name = f'{datetime.now():%Y%m%d-%H%M%S}_{identifier}'
         img.save(f'{path.join(save_path, image_name)}.png', 'PNG')
@@ -54,13 +57,16 @@ class idioms_game:
         # Mask settings
         mask_col = 3
         mask_row = 3
-        reveal_blocks = 3
+        reveal_blocks = 2
+        hint_reveal_blocks = 1
         block_fill = (200, 200, 200)
         grid_fill = (128, 128, 128)
         grid_width = 3
 
         # Rectangles
         reveal_blocks = min((mask_col * mask_row, reveal_blocks))
+        if hint_reveal_blocks + reveal_blocks > mask_col * mask_row:
+            hint_reveal_blocks = 0
         for character in range(0, 4):
             mask = [0] * mask_col * mask_row
             for i in sample(range(0, mask_col * mask_row), reveal_blocks):
@@ -69,6 +75,15 @@ class idioms_game:
                 for col in range(0, mask_col):
                     if mask[row * mask_col + col] == 0:
                         draw.rectangle((h * character + col * h / mask_col, row * h / mask_row, h * character + (col+1) * h / mask_col, (row+1) * h / mask_row), fill=block_fill)
+            if hint_reveal_blocks > 0:
+                mask_hint = mask
+                hint = [i for i, j in enumerate(mask) if j == 0]
+                for i in sample(hint, k=hint_reveal_blocks):
+                    mask_hint[i] = 1
+                for row in range(0, mask_row):
+                    for col in range(0, mask_col):
+                        if mask_hint[row * mask_col + col] == 0:
+                            draw_hint.rectangle((h * character + col * h / mask_col, row * h / mask_row, h * character + (col+1) * h / mask_col, (row+1) * h / mask_row), fill=block_fill)
 
         # Mask grid
         for i in range(1, mask_row):
@@ -77,12 +92,20 @@ class idioms_game:
         for i in range(1, mask_col * 4):
             draw.line((int(w / mask_col / 4) * i - floor(grid_width / 2), 0, int(w / mask_col / 4) * i - floor(grid_width / 2), h), fill=grid_fill, width=grid_width)
 
+        for i in range(1, mask_row):
+            draw_hint.line((0, int(h / mask_row) * i - floor(grid_width / 2), w, int(h / mask_row) * i - floor(grid_width / 2)), fill=grid_fill, width=grid_width)
+
+        for i in range(1, mask_col * 4):
+            draw_hint.line((int(w / mask_col / 4) * i - floor(grid_width / 2), 0, int(w / mask_col / 4) * i - floor(grid_width / 2), h), fill=grid_fill, width=grid_width)
+
         img.save(f'{path.join(save_path, image_name)}_masked.png', 'PNG')
+        img_hint.save(f'{path.join(save_path, image_name)}_hint.png', 'PNG')
 
         result = {
-            'question': f'请写出以下成语：[CQ:image,file=file:///{path.join(save_path, image_name)}_masked.png]',
+            'question': f'请写出以下成语或熟语：[CQ:image,file=file:///{path.join(save_path, image_name)}_masked.png]',
             'answer': f'{answer}',
             'answer_announce': f'回答正确！答案是：{answer}',
+            'hint': f'提示：[CQ:image,file=file:///{path.join(save_path, image_name)}_hint.png]'
         }
 
         return result

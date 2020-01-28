@@ -9,7 +9,11 @@ from apscheduler.schedulers.background import BackgroundScheduler
 new_question_keyword = '/出题'
 time_limit_seconds = 120
 
-image_perm = requests.get('http://127.0.0.1:5700/can_send_image').json()
+try:
+    image_perm = requests.get('http://127.0.0.1:5700/can_send_image').json()
+except:
+    print('使用trivia模块请先启动CoolQ并登录')
+    image_perm = False
 
 curr = {}
 
@@ -47,9 +51,11 @@ def triviabot(j):
             curr[j['group_id']]['answer'] = res['answer']
             print(f'群{j["group_id"]}答案：{res["answer"]}')
             curr[j['group_id']]['answer_announce'] = res['answer_announce']
+            curr[j['group_id']]['hint'] = res['hint']
             curr[j['group_id']]['time'] = datetime.now()
             curr[j['group_id']]['state'] = 1
             curr[j['group_id']]['job'] = scheduler.add_job(time_up, 'date', run_date=curr[j['group_id']]['time'] + timedelta(seconds=time_limit_seconds), args=[j['group_id'], curr[j['group_id']]['answer']])
+            curr[j['group_id']]['job_hint'] = scheduler.add_job(hint, 'date', run_date=curr[j['group_id']]['time'] + timedelta(seconds=time_limit_seconds/2), args=[j['group_id'], curr[j['group_id']]['hint']])
 
         return f"{curr[j['group_id']]['question']}\n剩余时间：{time_limit_seconds - (datetime.now() - curr[j['group_id']]['time']).total_seconds():.0f}秒"
 
@@ -57,7 +63,14 @@ def triviabot(j):
     if j['group_id'] in curr and curr[j['group_id']]['state'] == 1:
         if j['message'].lower().strip() == curr[j['group_id']]['answer'].lower().strip():
             curr[j['group_id']]['state'] = 0
-            curr[j['group_id']]['job'].remove()
+            try:
+                curr[j['group_id']]['job'].remove()
+            except:
+                pass
+            try:
+                curr[j['group_id']]['job_hint'].remove()
+            except:
+                pass
             return f"[CQ:at,qq={j['sender']['user_id']}]{curr[j['group_id']]['answer_announce']}"
 
     return ''
@@ -70,3 +83,11 @@ def time_up(group_id, answer):
     }
     requests.post(url, json=payload)
     curr[group_id]['state'] = 0
+
+def hint(group_id, hint):
+    url = 'http://127.0.0.1:5700/send_group_msg_async'
+    payload = {
+        'group_id': group_id,
+        'message': f'时间过半！\n{hint}'
+    }
+    requests.post(url, json=payload)
