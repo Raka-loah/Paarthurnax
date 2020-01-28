@@ -8,3 +8,4 @@ test.py
 tools/*
 config.py
 data/lovestories.json
+__pycache__
