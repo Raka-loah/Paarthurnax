@@ -2,40 +2,33 @@ import json
 import os
 import random
 import requests
-import time
+from datetime import datetime, timedelta
+from trivia_plugins.chinese_idioms.game import idioms_game
+from apscheduler.schedulers.background import BackgroundScheduler
 
 new_question_keyword = '/出题'
+time_limit_seconds = 120
+
+image_perm = requests.get('http://127.0.0.1:5700/can_send_image').json()
 
 curr = {}
 
-questions = {}
-with open(os.path.dirname(os.path.abspath(__file__)) + '\\data\\cet4.json', 'r', encoding='utf-8') as E:
-    questions = json.loads(E.read())
+#from trivia_plugins.cet4.game import cet4_game
+#game = cet4_game()
 
-score = {}
+game = idioms_game()
+game.clean()
 
-
-def new_question():
-    pass
-
-
-def check_answer(answer):
-    pass
-
-
-def get_score(user_id=0):
-    # when user_id == 0 return all players' score
-    pass
-
-
-def generate_hint(answer):
-    pass
-
+scheduler = BackgroundScheduler()
+scheduler.start()
 
 def triviabot(j):
     # Ignore messages with no group_id
     # Double check because I'm paranoid
     if 'group_id' not in j:
+        return ''
+
+    if game.require_image and (image_perm['data']['yes'] != True):
         return ''
 
     # Someone wanted a new question
@@ -49,18 +42,31 @@ def triviabot(j):
         # Send a new question if state 0
         # Send old question if else
         if curr[j['group_id']]['state'] == 0:
-            question = random.sample(list(questions), k=1).pop()
-            curr[j['group_id']]['question'] = '请根据音标和含义写出对应英文单词：\n{}\n{}'.format(questions[question][0], questions[question][1])
-            curr[j['group_id']]['answer'] = question
-            curr[j['group_id']]['time'] = time.time()
+            res = game.generate(j['group_id'])
+            curr[j['group_id']]['question'] = res['question']
+            curr[j['group_id']]['answer'] = res['answer']
+            print(f'群{j["group_id"]}答案：{res["answer"]}')
+            curr[j['group_id']]['answer_announce'] = res['answer_announce']
+            curr[j['group_id']]['time'] = datetime.now()
             curr[j['group_id']]['state'] = 1
+            curr[j['group_id']]['job'] = scheduler.add_job(time_up, 'date', run_date=curr[j['group_id']]['time'] + timedelta(seconds=time_limit_seconds), args=[j['group_id'], curr[j['group_id']]['answer']])
 
-        return curr[j['group_id']]['question']
+        return f"{curr[j['group_id']]['question']}\n剩余时间：{time_limit_seconds - (datetime.now() - curr[j['group_id']]['time']).total_seconds():.0f}秒"
 
     # If a question stays unanswered
     if j['group_id'] in curr and curr[j['group_id']]['state'] == 1:
         if j['message'].lower().strip() == curr[j['group_id']]['answer'].lower().strip():
             curr[j['group_id']]['state'] = 0
-            return '[CQ:at,qq={}]：\n回答正确！'.format(j['sender']['user_id'])
+            curr[j['group_id']]['job'].remove()
+            return f"[CQ:at,qq={j['sender']['user_id']}]{curr[j['group_id']]['answer_announce']}"
 
     return ''
+
+def time_up(group_id, answer):
+    url = 'http://127.0.0.1:5700/send_group_msg_async'
+    payload = {
+        'group_id': group_id,
+        'message': f'时间到，无人答对，正确答案是：{answer}'
+    }
+    requests.post(url, json=payload)
+    curr[group_id]['state'] = 0
