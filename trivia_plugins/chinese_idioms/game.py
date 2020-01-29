@@ -99,13 +99,14 @@ class idioms_game:
             draw_hint.line((int(w / mask_col / 4) * i - floor(grid_width / 2), 0, int(w / mask_col / 4) * i - floor(grid_width / 2), h), fill=grid_fill, width=grid_width)
 
         img.save(f'{path.join(save_path, image_name)}_masked.png', 'PNG')
-        img_hint.save(f'{path.join(save_path, image_name)}_hint.png', 'PNG')
+        if hint_reveal_blocks > 0:
+            img_hint.save(f'{path.join(save_path, image_name)}_hint.png', 'PNG')
 
         result = {
             'question': f'请写出以下成语或熟语：[CQ:image,file=file:///{path.join(save_path, image_name)}_masked.png]',
             'answer': f'{answer}',
             'answer_announce': f'回答正确！答案是：{answer}',
-            'hint': f'提示：[CQ:image,file=file:///{path.join(save_path, image_name)}_hint.png]'
+            'hint': f'提示：[CQ:image,file=file:///{path.join(save_path, image_name)}_hint.png]' if hint_reveal_blocks > 0 else '',
         }
 
         return result

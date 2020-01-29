@@ -8,9 +8,15 @@ from apscheduler.schedulers.background import BackgroundScheduler
 
 new_question_keyword = '/出题'
 time_limit_seconds = 120
+routine_cleanup_hours = 2
 
 try:
-    image_perm = requests.get('http://127.0.0.1:5700/can_send_image').json()
+    cfg = importlib.import_module('config')
+except ImportError:
+    cfg = importlib.import_module('config-sample')
+
+try:
+    image_perm = requests.get(f"{getattr(cfg, 'base_url', 'http://127.0.0.1:5700')}/can_send_image").json()
 except:
     print('使用trivia模块请先启动CoolQ并登录')
     image_perm = False
@@ -24,6 +30,7 @@ game = idioms_game()
 game.clean()
 
 scheduler = BackgroundScheduler()
+scheduler.add_job(routine_clean(), 'interval', hours=routine_cleanup_hours)
 scheduler.start()
 
 def triviabot(j):
@@ -85,9 +92,13 @@ def time_up(group_id, answer):
     curr[group_id]['state'] = 0
 
 def hint(group_id, hint):
-    url = 'http://127.0.0.1:5700/send_group_msg_async'
-    payload = {
-        'group_id': group_id,
-        'message': f'时间过半！\n{hint}'
-    }
-    requests.post(url, json=payload)
+    if len(hint) > 0:
+        url = 'http://127.0.0.1:5700/send_group_msg_async'
+        payload = {
+            'group_id': group_id,
+            'message': f'时间过半！\n{hint}'
+        }
+        requests.post(url, json=payload)
+
+def routine_clean():
+    game.clean()
