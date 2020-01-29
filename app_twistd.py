@@ -96,6 +96,6 @@ class wfst(Resource):
 
 api.add_resource(wfst, '/')
 
-handler.add_job(wf.get_new_alerts(), second='00')
-handler.add_job(wf.get_cetus_transition(), second='05')
-handler.add_job(wf.get_new_acolyte(), second='00')
+handler.add_job(wf.get_new_alerts, second='00')
+handler.add_job(wf.get_cetus_transition, second='05')
+handler.add_job(wf.get_new_acolyte, second='00')

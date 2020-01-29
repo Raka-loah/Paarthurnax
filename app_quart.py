@@ -39,7 +39,7 @@ async def post():
     try:
         # POSTed data as json
         j = await request.get_json(force=True)
-
+        
         if j['message_type'] == 'group':
             if 'card' in j['sender'] and j['sender']['card'] != '':
                 app.logger.info('[%s][%s(%s)]:%s' % (j['group_id'], j['sender']['card'], j['sender']['user_id'], j['message']))
@@ -50,7 +50,9 @@ async def post():
         else:
             app.logger.info('[%s]:%s' % (j['sender']['user_id'], j['message']))
 
-        return handler.handle(j)
+        message, status_code = handler.handle(j)
+
+        return jsonify(message), status_code
 
     except Exception as e:
         print(e)
@@ -67,6 +69,9 @@ async def patch():
     except Exception as e:
         return print(e), 500
 
-handler.add_job(wf.get_new_alerts(), second='00')
-handler.add_job(wf.get_cetus_transition(), second='05')
-handler.add_job(wf.get_new_acolyte(), second='00')
+handler.add_job(wf.get_new_alerts, second='00')
+handler.add_job(wf.get_cetus_transition, second='05')
+handler.add_job(wf.get_new_acolyte, second='00')
+
+if __name__ == '__main__':
+    app.run(debug=False, port=8888)

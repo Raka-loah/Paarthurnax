@@ -5,6 +5,7 @@ import re
 import requests
 import time
 import wfstate as wf
+import misc
 from html import unescape
 from misc import msg_log
 
@@ -18,7 +19,7 @@ class Message_handler:
             self.cfg = importlib.import_module('config-sample')
 
         if getattr(self.cfg, 'trivia_enable', False):
-            import trivia
+            self.trivia = importlib.import_module('trivia')
 
         self.schduler = BackgroundScheduler()
         self.schduler.start()
@@ -168,7 +169,7 @@ class Message_handler:
         try:
             trivia_enable = getattr(cfg, 'trivia_enable', False)
             if j['message_type'] == 'group' and trivia_enable:
-                resp['reply'] = trivia.triviabot(j)
+                resp['reply'] = self.trivia.triviabot(j)
                 if resp['reply'] != '':
                     return resp, 200
         except BaseException:

@@ -1,3 +1,4 @@
+import importlib
 import json
 import os
 import random
@@ -28,10 +29,6 @@ curr = {}
 
 game = idioms_game()
 game.clean()
-
-scheduler = BackgroundScheduler()
-scheduler.add_job(routine_clean(), 'interval', hours=routine_cleanup_hours)
-scheduler.start()
 
 def triviabot(j):
     # Ignore messages with no group_id
@@ -83,7 +80,7 @@ def triviabot(j):
     return ''
 
 def time_up(group_id, answer):
-    url = 'http://127.0.0.1:5700/send_group_msg_async'
+    url = f"{getattr(cfg, 'base_url', 'http://127.0.0.1:5700')}/send_group_msg_async"
     payload = {
         'group_id': group_id,
         'message': f'时间到，无人答对，正确答案是：{answer}'
@@ -93,7 +90,7 @@ def time_up(group_id, answer):
 
 def hint(group_id, hint):
     if len(hint) > 0:
-        url = 'http://127.0.0.1:5700/send_group_msg_async'
+        url = f"{getattr(cfg, 'base_url', 'http://127.0.0.1:5700')}/send_group_msg_async"
         payload = {
             'group_id': group_id,
             'message': f'时间过半！\n{hint}'
@@ -102,3 +99,7 @@ def hint(group_id, hint):
 
 def routine_clean():
     game.clean()
+
+scheduler = BackgroundScheduler()
+scheduler.add_job(routine_clean, 'interval', hours=routine_cleanup_hours)
+scheduler.start()

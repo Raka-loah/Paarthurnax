@@ -35,8 +35,9 @@ class wfst(Resource):
         except Exception as e:
             return print(e), 500
 
-if __name__ == '__main__':
-    api.add_resource(wfst, '/')
+api.add_resource(wfst, '/')
+
+if __name__ == '__main__':  
     handler.add_job(wf.get_new_alerts, second='00')
     handler.add_job(wf.get_cetus_transition, second='05')
     handler.add_job(wf.get_new_acolyte, second='00')
