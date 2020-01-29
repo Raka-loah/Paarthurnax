@@ -15,6 +15,10 @@ base_url = 'http://127.0.0.1:5700'
 # Enable Trivia module or not
 trivia_enable = False
 
+# Added 2020/Jan/29
+# Only repeat messages in these groups
+noh_whitelist = []
+
 # Command Template:
 # 'keyword': [function, fliter_type, [group_ids], cool_down, message, is_regex, is_suppressed]
 #
