@@ -286,7 +286,7 @@ def msg_nature_of_humanity(j):
 
 def let_me_baidu_that_for_you(j):
     msg = ''
-    keyword = j['message'].replace(j['keyword'], '')[:20].strip()
+    keyword = j['message'].replace(j['keyword'], '')[:255].strip()
     skip = ['', '呀', '啊', '哇', '一下', '一下你就知道']
     if keyword in skip:
         return ''
