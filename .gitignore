@@ -7,3 +7,5 @@ test.py
 *.log
 tools/*
 config.py
+data/lovestories.json
+__pycache__

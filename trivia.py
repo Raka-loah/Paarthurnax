@@ -1,41 +1,42 @@
+import importlib
 import json
 import os
 import random
 import requests
-import time
+from datetime import datetime, timedelta
+from trivia_plugins.chinese_idioms.game import idioms_game
+from apscheduler.schedulers.background import BackgroundScheduler
 
 new_question_keyword = '/出题'
+time_limit_seconds = 120
+routine_cleanup_hours = 2
+
+try:
+    cfg = importlib.import_module('config')
+except ImportError:
+    cfg = importlib.import_module('config-sample')
+
+try:
+    image_perm = requests.get(f"{getattr(cfg, 'base_url', 'http://127.0.0.1:5700')}/can_send_image").json()
+except:
+    print('使用trivia模块请先启动CoolQ并登录')
+    image_perm = False
 
 curr = {}
 
-questions = {}
-with open(os.path.dirname(os.path.abspath(__file__)) + '\\data\\cet4.json', 'r', encoding='utf-8') as E:
-    questions = json.loads(E.read())
+#from trivia_plugins.cet4.game import cet4_game
+#game = cet4_game()
 
-score = {}
-
-
-def new_question():
-    pass
-
-
-def check_answer(answer):
-    pass
-
-
-def get_score(user_id=0):
-    # when user_id == 0 return all players' score
-    pass
-
-
-def generate_hint(answer):
-    pass
-
+game = idioms_game()
+game.clean()
 
 def triviabot(j):
     # Ignore messages with no group_id
     # Double check because I'm paranoid
     if 'group_id' not in j:
+        return ''
+
+    if game.require_image and (image_perm['data']['yes'] != True):
         return ''
 
     # Someone wanted a new question
@@ -49,18 +50,56 @@ def triviabot(j):
         # Send a new question if state 0
         # Send old question if else
         if curr[j['group_id']]['state'] == 0:
-            question = random.sample(list(questions), k=1).pop()
-            curr[j['group_id']]['question'] = '请根据音标和含义写出对应英文单词：\n{}\n{}'.format(questions[question][0], questions[question][1])
-            curr[j['group_id']]['answer'] = question
-            curr[j['group_id']]['time'] = time.time()
+            res = game.generate(j['group_id'])
+            curr[j['group_id']]['question'] = res['question']
+            curr[j['group_id']]['answer'] = res['answer']
+            print(f'群{j["group_id"]}答案：{res["answer"]}')
+            curr[j['group_id']]['answer_announce'] = res['answer_announce']
+            curr[j['group_id']]['hint'] = res['hint']
+            curr[j['group_id']]['time'] = datetime.now()
             curr[j['group_id']]['state'] = 1
+            curr[j['group_id']]['job'] = scheduler.add_job(time_up, 'date', run_date=curr[j['group_id']]['time'] + timedelta(seconds=time_limit_seconds), args=[j['group_id'], curr[j['group_id']]['answer']])
+            curr[j['group_id']]['job_hint'] = scheduler.add_job(hint, 'date', run_date=curr[j['group_id']]['time'] + timedelta(seconds=time_limit_seconds/2), args=[j['group_id'], curr[j['group_id']]['hint']])
 
-        return curr[j['group_id']]['question']
+        return f"{curr[j['group_id']]['question']}\n剩余时间：{time_limit_seconds - (datetime.now() - curr[j['group_id']]['time']).total_seconds():.0f}秒"
 
     # If a question stays unanswered
     if j['group_id'] in curr and curr[j['group_id']]['state'] == 1:
         if j['message'].lower().strip() == curr[j['group_id']]['answer'].lower().strip():
             curr[j['group_id']]['state'] = 0
-            return '[CQ:at,qq={}]：\n回答正确！'.format(j['sender']['user_id'])
+            try:
+                curr[j['group_id']]['job'].remove()
+            except:
+                pass
+            try:
+                curr[j['group_id']]['job_hint'].remove()
+            except:
+                pass
+            return f"[CQ:at,qq={j['sender']['user_id']}]{curr[j['group_id']]['answer_announce']}"
 
     return ''
+
+def time_up(group_id, answer):
+    url = f"{getattr(cfg, 'base_url', 'http://127.0.0.1:5700')}/send_group_msg_async"
+    payload = {
+        'group_id': group_id,
+        'message': f'时间到，无人答对，正确答案是：{answer}'
+    }
+    requests.post(url, json=payload)
+    curr[group_id]['state'] = 0
+
+def hint(group_id, hint):
+    if len(hint) > 0:
+        url = f"{getattr(cfg, 'base_url', 'http://127.0.0.1:5700')}/send_group_msg_async"
+        payload = {
+            'group_id': group_id,
+            'message': f'时间过半！\n{hint}'
+        }
+        requests.post(url, json=payload)
+
+def routine_clean():
+    game.clean()
+
+scheduler = BackgroundScheduler()
+scheduler.add_job(routine_clean, 'interval', hours=routine_cleanup_hours)
+scheduler.start()
