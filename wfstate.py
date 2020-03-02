@@ -1004,17 +1004,21 @@ def get_riven_prices(j):
 
     if item_name in data_dict['W']:
         msg += '{}：\n'.format(item_name)
+        unavailable = '无此物品数据，可能DE官方API出现错误'
         if data_dict['W'][item_name] == 'none':
             for d in data:
                 if d['itemType'] == none_cat[item_name] and d['compatibility'] == None:
+                    unavailable = ''
                     msg += '{:.0f}~{:.0f} (平均{:.2f}，中位数{:.1f}，交易热度{:.0f}/100)'.format(d['min'], d['max'], d['avg'], d['median'], d['pop'])
         else:
             for d in data:
                 if str(d['compatibility']).replace(' ', '') == data_dict['W'][item_name].upper():
+                    unavailable = ''
                     if d['rerolled'] == False:
                         msg += '零洗：{:.0f}~{:.0f} (平均{:.2f}，中位数{:.1f}，交易热度{:.0f}/100)\n'.format(d['min'], d['max'], d['avg'], d['median'], d['pop'])
                     else:
                         msg += '多洗：{:.0f}~{:.0f} (平均{:.2f}，中位数{:.1f}，交易热度{:.0f}/100)\n'.format(d['min'], d['max'], d['avg'], d['median'], d['pop'])
+        msg += unavailable
     else:
         msg = '未找到这项物品，你是不是想查询：'
         for item in process.extract(item_name, list(data_dict['W']), limit=5):

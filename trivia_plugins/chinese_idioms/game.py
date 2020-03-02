@@ -1,9 +1,8 @@
 from PIL import Image, ImageDraw, ImageFont
 from random import choice, sample
 from math import floor
-from os import path, mkdir
-from shutil import rmtree
-from datetime import datetime
+from os import walk, remove, path, mkdir
+from datetime import datetime, timedelta
 
 class idioms_game:
     def __init__(self):
@@ -16,7 +15,12 @@ class idioms_game:
 
     def clean(self):
         try:
-            rmtree(path.join(path.dirname(path.realpath(__file__)),'temp'))
+            for dirpath, dirnames, filenames in os.walk(path.join(path.dirname(path.realpath(__file__)),'temp')):
+                for file in filenames:
+                    curpath = path.join(dirpath, file)
+                    file_modified = datetime.fromtimestamp(path.getmtime(curpath))
+                    if datetime.now() - file_modified > timedelta(minutes=5):
+                        remove(curpath)
         except OSError:
             pass
 
