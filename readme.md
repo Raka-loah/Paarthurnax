@@ -30,6 +30,8 @@
 
 为了安全性和性能建议不要直接把Flask用于生产环境（也就是直接运行 `python app.py`）。当然懒得配置的话这样用也一样，你没打算搞个机器人产业出来吧。
 
+如果你配置了C的编译环境，安装 `pip install python-Levenshtein` 可以稍微对模糊查询提速，不强求。
+
 **可用的其他版本：**
 
 `app_twistd.py`：可用于Twisted web服务器的版本，需要自行配置Twisted。
