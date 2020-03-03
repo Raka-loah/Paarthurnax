@@ -4,7 +4,6 @@ import importlib
 import logging
 
 from flask import Flask, jsonify, request
-from flask_restful import Api, Resource, reqparse
 from twisted.internet import reactor
 from twisted.logger import Logger
 from twisted.python import rebuild
@@ -24,77 +23,75 @@ logging.basicConfig(
             'utf-8')])
 
 app = Flask(__name__)
-api = Api(app)
 
 log = Logger()
 
 handler = Message_handler()
 
-class wfst(Resource):
-    def post(self):
-        try:
-            # POSTed data as json
-            j = request.get_json(force=True)
+@app.route('/', methods=['POST'])
+def post():
+    try:
+        # POSTed data as json
+        j = request.get_json(force=True)
 
-            if j['message_type'] == 'group':
-                if 'card' in j['sender'] and j['sender']['card'] != '':
-                    log.info(
-                        '[%s][%s(%s)]:%s' %
-                        (j['group_id'],
-                         j['sender']['card'],
-                            j['sender']['user_id'],
-                            j['message']))
-                    logging.info(
-                        '[%s][%s(%s)]:%s' %
-                        (j['group_id'],
-                         j['sender']['card'],
-                            j['sender']['user_id'],
-                            j['message']))
-                elif 'nickname' in j['sender'] and j['sender']['nickname'] != '':
-                    log.info(
-                        '[%s][%s(%s)]:%s' %
-                        (j['group_id'],
-                         j['sender']['nickname'],
-                            j['sender']['user_id'],
-                            j['message']))
-                    logging.info(
-                        '[%s][%s(%s)]:%s' %
-                        (j['group_id'],
-                         j['sender']['nickname'],
-                            j['sender']['user_id'],
-                            j['message']))
-                else:
-                    log.info(
-                        '[%s][%s]:%s' %
-                        (j['group_id'],
-                         j['sender']['user_id'],
-                            j['message']))
-                    logging.info(
-                        '[%s][%s]:%s' %
-                        (j['group_id'], j['sender']['user_id'], j['message']))
+        if j['message_type'] == 'group':
+            if 'card' in j['sender'] and j['sender']['card'] != '':
+                log.info(
+                    '[%s][%s(%s)]:%s' %
+                    (j['group_id'],
+                        j['sender']['card'],
+                        j['sender']['user_id'],
+                        j['message']))
+                logging.info(
+                    '[%s][%s(%s)]:%s' %
+                    (j['group_id'],
+                        j['sender']['card'],
+                        j['sender']['user_id'],
+                        j['message']))
+            elif 'nickname' in j['sender'] and j['sender']['nickname'] != '':
+                log.info(
+                    '[%s][%s(%s)]:%s' %
+                    (j['group_id'],
+                        j['sender']['nickname'],
+                        j['sender']['user_id'],
+                        j['message']))
+                logging.info(
+                    '[%s][%s(%s)]:%s' %
+                    (j['group_id'],
+                        j['sender']['nickname'],
+                        j['sender']['user_id'],
+                        j['message']))
             else:
-                log.info('[%s]:%s' % (j['sender']['user_id'], j['message']))
-                logging.info('[%s]:%s' %
-                             (j['sender']['user_id'], j['message']))
+                log.info(
+                    '[%s][%s]:%s' %
+                    (j['group_id'],
+                        j['sender']['user_id'],
+                        j['message']))
+                logging.info(
+                    '[%s][%s]:%s' %
+                    (j['group_id'], j['sender']['user_id'], j['message']))
+        else:
+            log.info('[%s]:%s' % (j['sender']['user_id'], j['message']))
+            logging.info('[%s]:%s' %
+                            (j['sender']['user_id'], j['message']))
 
-            return handler.handle(j)
+        return handler.handle(j)
 
-        except Exception as e:
-            log.error(repr(e))
-            return '', 204
+    except Exception as e:
+        log.error(repr(e))
+        return '', 204
 
-    def patch(self):
+@app.route('/', methods=['PATCH'])
+def patch():
+    try:
         try:
-            try:
-                request_token = request.get_json(force=True)['token']
-            except BaseException:
-                request_token = ''
-            handler.reload(request_token)
-        except Exception as e:
-            return print(e), 500
+            request_token = request.get_json(force=True)['token']
+        except BaseException:
+            request_token = ''
+        handler.reload(request_token)
+    except Exception as e:
+        return print(e), 500
 
-
-api.add_resource(wfst, '/')
 
 handler.add_job(wf.get_new_alerts, second='00')
 handler.add_job(wf.get_cetus_transition, second='05')
