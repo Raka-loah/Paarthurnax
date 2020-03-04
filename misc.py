@@ -314,7 +314,8 @@ def music_share(j):
     return msg
 
 
-with open(os.path.dirname(os.path.abspath(__file__)) + '\\data\\tarot.json', 'r', encoding='utf-8') as E:
+#with open(os.path.dirname(os.path.abspath(__file__)) + '\\data\\tarot.json', 'r', encoding='utf-8') as E:
+with open(os.path.join(os.path.dirname(os.path.abspath(__file__)) ,'data' ,'tarot.json') , 'r', encoding='utf-8') as E:
     tarot_deck = json.loads(E.read())
 
 
@@ -457,7 +458,8 @@ def msg_bankrupt(j):
 
 
 data_dict = {}
-with open(os.path.dirname(os.path.abspath(__file__)) + '\\data\\demotivational.json', 'r', encoding='utf-8') as E:
+#with open(os.path.dirname(os.path.abspath(__file__)) + '\\data\\demotivational.json', 'r', encoding='utf-8') as E:
+with open(os.path.join(os.path.dirname(os.path.abspath(__file__)) ,'data' ,'demotivational.json') , 'r', encoding='utf-8') as E: 
     data_dict['d'] = json.loads(E.read())
 
 
@@ -465,7 +467,8 @@ def msg_demotivational(j):
     return random.choice(data_dict['d'])
 
 
-with open(os.path.dirname(os.path.abspath(__file__)) + '\\data\\tackypickuplines.json', 'r', encoding='utf-8') as E:
+#with open(os.path.dirname(os.path.abspath(__file__)) + '\\data\\tackypickuplines.json', 'r', encoding='utf-8') as E:
+with open(os.path.join(os.path.dirname(os.path.abspath(__file__)) ,'data' ,'tackypickuplines.json') , 'r', encoding='utf-8') as E: 
     data_dict['t'] = json.loads(E.read())
 
 

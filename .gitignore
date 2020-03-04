@@ -9,3 +9,4 @@ tools/*
 config.py
 data/lovestories.json
 __pycache__
+.python-version
