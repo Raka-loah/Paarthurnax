@@ -46,7 +46,8 @@ data_files = {
 data_dict = {}
 
 for k in data_files:
-    with open(os.path.dirname(os.path.abspath(__file__)) + '\\data\\' + k, 'r', encoding='utf-8') as E:
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)) ,'data' ,k) , 'r', encoding='utf-8') as E:
+    # with open(os.path.dirname(os.path.abspath(__file__)) + '\\data\\' + k, 'r', encoding='utf-8') as E:
         data_dict[data_files[k]] = json.loads(E.read())
 
 riven_type = {
