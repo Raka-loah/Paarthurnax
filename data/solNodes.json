@@ -1788,5 +1788,10 @@
     "value": "Sortie Boss: Phorid",
     "enemy": "Infested",
     "type": "Assassination"
+  },
+  "SolNode308": {
+    "value": "Apollo (月球)",
+    "enemy": "Corpus",
+    "type": "Disruption"
   }
 }

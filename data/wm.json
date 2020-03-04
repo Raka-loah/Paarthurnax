@@ -5328,5 +5328,21 @@
 	"弓妹p蓝图": "ivara_prime_blueprint",
 	"弓妹p一套": "ivara_prime_set",
 	"弓妹p头部神经光元": "ivara_prime_neuroptics",
-	"弓妹p机体": "ivara_prime_chassis"
+	"弓妹p机体": "ivara_prime_chassis",
+	"步枪活动火": "thermite_rounds",
+	"霰弹枪活动火": "scattering_inferno",
+	"手枪活动火": "scorch",
+	"近战活动火": "volcanic_edge",
+	"步枪活动冰": "rime_rounds",
+	"霰弹枪活动冰": "frigid_blast",
+	"手枪活动冰": "frostbite",
+	"近战活动冰": "vicious_frost",
+	"步枪活动电": "high_voltage",
+	"霰弹枪活动电": "shell_shock",
+	"手枪活动电": "jolt",
+	"近战活动电": "voltaic_strike",
+	"步枪活动毒": "malignant_force",
+	"霰弹枪活动毒": "toxic_barrage",
+	"手枪活动毒": "pistol_pestilence",
+	"近战活动毒": "virulent_scourge"
 }
