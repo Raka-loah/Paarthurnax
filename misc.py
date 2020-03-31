@@ -906,24 +906,25 @@ def msg_exchange_rate_2(j):
 
 def ac_turnip(j):
     msg = ''
-    match = re.match(r'.* (\d+) (\d+)', j['message'])
+    match = re.match(r'.* (\d{1,3}) (\d{1,3})', j['message'])
     if match:
         try:
             if 90 <= int(match.group(1)) <= 110:
                 rate = float(match.group(2)) / float(match.group(1))
+                rate_str = f'比例为{rate * 100:.2f}%（{match.group(2)}/{match.group(1)}）'
                 wave = f'\n【波动型】最大值{int(match.group(1))*0.9:.0f}~{int(match.group(1))*1.4:.0f}。'
                 three = f'\n【3期型】最大值{int(match.group(1))*2.0:.0f}~{int(match.group(1))*6.0:.0f}。'
                 four = f'\n【4期型】最大值{int(match.group(1))*1.4:.0f}~{int(match.group(1))*2.0:.0f}。'
                 if rate >= 0.91:
-                    msg = f'比例为{rate * 100:.2f}%，预测为【波动型】或【4期型】。{wave}{four}'
+                    msg = f'{rate_str}，预测为【波动型】或【4期型】。{wave}{four}'
                 elif rate >= 0.85:
-                    msg = f'比例为{rate * 100:.2f}%，预测为【递减型】或【3期型】或【4期型】。{three}{four}'
+                    msg = f'{rate_str}，预测为【递减型】或【3期型】或【4期型】。{three}{four}'
                 elif rate >= 0.80:
-                    msg = f'比例为{rate * 100:.2f}%，预测为【3期型】或【4期型】。{three}{four}'
+                    msg = f'{rate_str}，预测为【3期型】或【4期型】。{three}{four}'
                 elif rate >= 0.60:
-                    msg = f'比例为{rate * 100:.2f}%，预测为【波动型】或【4期型】。{wave}{four}'
+                    msg = f'{rate_str}，预测为【波动型】或【4期型】。{wave}{four}'
                 else:
-                    msg = f'比例为{rate * 100:.2f}%，预测为【4期型】。{four}'
+                    msg = f'{rate_str}，预测为【4期型】。{four}'
             else:
                 msg = f'错误：购入价格必须位于90~110区间。'
         except:
