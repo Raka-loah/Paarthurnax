@@ -12,16 +12,6 @@ from message_handler import Message_handler
 
 import wfstate as wf
 
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
-    datefmt='%m-%d %H:%M',
-    handlers=[
-        logging.FileHandler(
-            'qqbot.log',
-            'a',
-            'utf-8')])
-
 app = Flask(__name__)
 
 log = Logger()
@@ -34,51 +24,14 @@ def post():
         # POSTed data as json
         j = request.get_json(force=True)
 
-        if j['message_type'] == 'group':
-            if 'card' in j['sender'] and j['sender']['card'] != '':
-                log.info(
-                    '[%s][%s(%s)]:%s' %
-                    (j['group_id'],
-                        j['sender']['card'],
-                        j['sender']['user_id'],
-                        j['message']))
-                logging.info(
-                    '[%s][%s(%s)]:%s' %
-                    (j['group_id'],
-                        j['sender']['card'],
-                        j['sender']['user_id'],
-                        j['message']))
-            elif 'nickname' in j['sender'] and j['sender']['nickname'] != '':
-                log.info(
-                    '[%s][%s(%s)]:%s' %
-                    (j['group_id'],
-                        j['sender']['nickname'],
-                        j['sender']['user_id'],
-                        j['message']))
-                logging.info(
-                    '[%s][%s(%s)]:%s' %
-                    (j['group_id'],
-                        j['sender']['nickname'],
-                        j['sender']['user_id'],
-                        j['message']))
-            else:
-                log.info(
-                    '[%s][%s]:%s' %
-                    (j['group_id'],
-                        j['sender']['user_id'],
-                        j['message']))
-                logging.info(
-                    '[%s][%s]:%s' %
-                    (j['group_id'], j['sender']['user_id'], j['message']))
-        else:
-            log.info('[%s]:%s' % (j['sender']['user_id'], j['message']))
-            logging.info('[%s]:%s' %
-                            (j['sender']['user_id'], j['message']))
+        nickname = j['sender'].get('card', j['sender'].get('nickname', '')) if 'sender' in j else '#NAME?'
+
+        log.info(f"[{j.get('message_type', 'UNKNOWN').upper()}][{j.get('group_id','--')}][{nickname}({j['sender']['user_id']})]:{j['message']}")
 
         return handler.handle(j)
 
     except Exception as e:
-        log.error(repr(e))
+        log.error(e)
         return '', 204
 
 @app.route('/', methods=['PATCH'])
@@ -90,7 +43,8 @@ def patch():
             request_token = ''
         handler.reload(request_token)
     except Exception as e:
-        return print(e), 500
+        log.error(e)
+        return '', 500
 
 
 handler.add_job(wf.get_new_alerts, second='00')

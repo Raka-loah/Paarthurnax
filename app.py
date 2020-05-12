@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import importlib
+import logging
 import requests
 from flask import Flask, jsonify, request
 
@@ -18,9 +19,16 @@ def post():
         # POSTed data as json
         j = request.get_json(force=True)
 
-        return handler.handle(j)
+        nickname = j['sender'].get('card', j['sender'].get('nickname', '')) if 'sender' in j else '#NAME?'
+
+        app.logger.setLevel(logging.INFO)
+        app.logger.info(f"[{j.get('message_type', 'UNKNOWN').upper()}][{j.get('group_id','--')}][{nickname}({j['sender'].get('user_id', '')})]:{j['message']}")
+
+        message, status_code = handler.handle(j)
+
+        return jsonify(message), status_code
     except Exception as e:
-        print(e)
+        app.logger.error(f"[Exception]:{e}")
         return '', 204
 
 @app.route('/', methods=['PATCH'])
@@ -32,7 +40,8 @@ def patch():
             request_token = ''
         handler.reload(request_token)
     except Exception as e:
-        return print(e), 500
+        app.logger.error(f"[Exception]:{e}")
+        return '', 500
 
 if __name__ == '__main__':  
     handler.add_job(wf.get_new_alerts, second='00')

@@ -4,31 +4,9 @@ import importlib
 import logging
 
 from quart import Quart, jsonify, request
-
 from message_handler import Message_handler
 
-from logging.config import dictConfig
-
 import wfstate as wf
-
-dictConfig({
-    'version': 1,
-    'loggers': {
-        'quart.app': {
-            'level': 'INFO',
-        },
-    },
-})
-
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
-    datefmt='%m-%d %H:%M',
-    handlers=[
-        logging.FileHandler(
-            'qqbot.log',
-            'a',
-            'utf-8')])
 
 app = Quart(__name__)
 
@@ -39,23 +17,18 @@ async def post():
     try:
         # POSTed data as json
         j = await request.get_json(force=True)
+
+        nickname = j['sender'].get('card', j['sender'].get('nickname', '')) if 'sender' in j else '#NAME?'
         
-        if j['message_type'] == 'group':
-            if 'card' in j['sender'] and j['sender']['card'] != '':
-                app.logger.info('[%s][%s(%s)]:%s' % (j['group_id'], j['sender']['card'], j['sender']['user_id'], j['message']))
-            elif 'nickname' in j['sender'] and j['sender']['nickname'] != '':
-                app.logger.info('[%s][%s(%s)]:%s' % (j['group_id'], j['sender']['nickname'], j['sender']['user_id'], j['message']))
-            else:
-                app.logger.info('[%s][%s]:%s' % (j['group_id'], j['sender']['user_id'], j['message']))
-        else:
-            app.logger.info('[%s]:%s' % (j['sender']['user_id'], j['message']))
+        app.logger.setLevel(logging.INFO)
+        app.logger.info(f"[{j.get('message_type', 'UNKNOWN').upper()}][{j.get('group_id','--')}][{nickname}({j['sender'].get('user_id', '')})]:{j['message']}")
 
         message, status_code = handler.handle(j)
 
         return jsonify(message), status_code
 
     except Exception as e:
-        print(e)
+        app.logger.error(f"[Exception]:{e}")
         return '', 204
 
 @app.route('/', methods=['PATCH'])
@@ -67,7 +40,8 @@ async def patch():
             request_token = ''
         handler.reload(request_token)
     except Exception as e:
-        return print(e), 500
+        app.logger.warning(f"[Exception]:{e}")
+        return '', 500
 
 handler.add_job(wf.get_new_alerts, second='00')
 handler.add_job(wf.get_cetus_transition, second='05')
