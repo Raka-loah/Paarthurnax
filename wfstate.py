@@ -801,7 +801,7 @@ def get_wmprice(j):
         return msg
 
     if item_name in data_dict['WM']:
-        wmurl = 'https://api.warframe.market/v1/items/{}/orders'.format(data_dict['WM'][item_name])
+        wmurl = f'https://api.warframe.market/v1/items/{data_dict["WM"][item_name]}/orders'
         try:
             wm = requests.get(wmurl, timeout=30)
 
@@ -810,19 +810,17 @@ def get_wmprice(j):
                 sellers = {}
                 for order in converted_data['payload']['orders']:
                     if order['order_type'] == 'sell' and order['user']['status'] == 'ingame':
-                        sellers[order['user']['ingame_name']
-                                ] = order['platinum']
+                        sellers[order['user']['ingame_name']] = [order['platinum'], order['region']]
                 sorted_sellers = sorted(sellers, key=lambda x: (sellers[x], x))
                 plat = 0
                 count = 0
-                msg += '{}({})\n'.format(j['message'].replace(j['keyword'],
-                                                              '').strip(), data_dict['WM'][item_name])
+                msg += '{}({})\n'.format(j['message'].replace(j['keyword'],'').strip(), data_dict['WM'][item_name])
                 for i in range(0, 5):
                     try:
-                        plat += sellers[sorted_sellers[i]]
+                        plat += sellers[sorted_sellers[i]][0]
                         msg += 'ID: ' + \
-                            sorted_sellers[i] + ' 售价: ' + \
-                            str(sellers[sorted_sellers[i]]) + '\n'
+                            sorted_sellers[i] + ' [' + sellers[sorted_sellers[i]][1].upper() + '] 售价: ' + \
+                            str(sellers[sorted_sellers[i]][0]) + '\n'
                         count += 1
                     except BaseException:
                         break

@@ -109,7 +109,7 @@ class Message_handler:
         # Check filter
         if matched_keyword is not None:
             if j['message_type'] == 'group':
-                if bot_command[matched_keyword][1] == C.BLACKLIST:
+                if bot_command[matched_keyword][1] == C.BLOCKLIST:
                     if j['group_id'] in bot_command[matched_keyword][2]:
                         matched_keyword = None
                 else:
@@ -183,10 +183,12 @@ class Message_handler:
 
         # "Execute" person nobody cared about within 120 seconds
         # The Nature of Humanity, will override Execution
-        noh_whitelist = getattr(cfg, 'noh_whitelist', [])
+        # cfg.noh_whitelist is deprecated and this is purely for backwards-compatibility
+        # and will be removed in the near future
+        noh_allowlist = getattr(cfg, 'noh_allowlist', getattr(cfg, 'noh_whitelist', []))
         if j['message_type'] == 'group':
             resp['reply'] = misc.msg_executioner(j) 
-            if resp['reply'] == '' and j['group_id'] in noh_whitelist:
+            if resp['reply'] == '' and j['group_id'] in noh_allowlist:
                 resp['reply'] = misc.msg_nature_of_humanity(j)
 
         if resp['reply'] != '':
