@@ -4,6 +4,13 @@
 ![](https://img.shields.io/github/stars/Raka-loah/qqbot-plugin-warframe.svg)
 [![](https://img.shields.io/github/license/Raka-loah/qqbot-plugin-warframe.svg)](https://github.com/Raka-loah/qqbot-plugin-warframe/blob/master/LICENSE)
 
+**致完全的Python新手**
+------
+
+关于Python环境的安装与配置方法，请参阅Python官方文档：[点击此处](https://docs.python.org/zh-cn/3.8/using/windows.html)。
+
+对于Windows环境安装时建议勾选 `Add Python to PATH` 项目，后期使用较为方便。
+
 **前置条件**
 ------
 

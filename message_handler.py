@@ -6,6 +6,8 @@ import requests
 import time
 import wfstate as wf
 import misc
+import settings
+import os
 from html import unescape
 from misc import msg_log
 
@@ -13,12 +15,18 @@ class Message_handler:
     stats = {}
 
     def __init__(self):
-        try:
-            self.cfg = importlib.import_module('config')
-        except ImportError:
-            self.cfg = importlib.import_module('config-sample')
+        if not os.path.isfile('ignoreconfig'):
+            try:
+                cfg_legacy = importlib.import_module('config')
+            except ImportError:
+                cfg_legacy = importlib.import_module('config-sample')
 
-        if getattr(self.cfg, 'trivia_enable', False):
+            if cfg_legacy:
+                settings.convert_legacy_cfg(cfg_legacy)
+
+        self.cfg = settings.parse_or_load()
+
+        if self.cfg.get('trivia_enable', False):
             self.trivia = importlib.import_module('trivia')
 
         self.schduler = BackgroundScheduler()
@@ -28,7 +36,7 @@ class Message_handler:
         j = message
         C = internal.const
         cfg = self.cfg
-        bot_command = cfg.bot_command
+        bot_command = cfg.get('bot_command')
 
         # Response payload
         resp = {
@@ -36,7 +44,7 @@ class Message_handler:
             'at_sender': False
         }
 
-        suffix = cfg.suffix
+        suffix = cfg.get('suffix')
 
         if 'message' in j:
             j['message'] = unescape(j['message'])
@@ -48,12 +56,12 @@ class Message_handler:
         if j['post_type'] == 'request':
             if (j['request_type'] == 'group' and j['sub_type'] == 'invite') or j['request_type'] == 'friend':
                 resp = {
-                    'approve': cfg.approve
+                    'approve': cfg.get('approve')
                 }
                 return resp, 200
 
         # Logs
-        log_msg = getattr(cfg, 'log_msg', True)
+        log_msg = cfg.get('log_msg', True)
         if log_msg and j['post_type'] == 'message':
             if j['message_type'] == 'group':
                 misc.msg_log(
@@ -70,26 +78,26 @@ class Message_handler:
 
         # All queries from banned senders and bot themselves are directly
         # dropped
-        banned_sender = cfg.banned_sender
+        banned_sender = cfg.get('banned_sender')
         if j['sender']['user_id'] == j['self_id'] or j['sender']['user_id'] in banned_sender:
             return '', 204
 
         # CQ tag for @sender if message type is group
         title = ''
-        if hasattr(cfg, 'custom_title') and j['message_type'] == 'group':
-            if j['sender']['user_id'] in cfg.custom_title:
-                if j['group_id'] in cfg.custom_title[j['sender']['user_id']]:
-                    title = cfg.custom_title[j['sender']['user_id']][j['group_id']]
-                elif 'default' in cfg.custom_title[j['sender']['user_id']]:
-                    title = cfg.custom_title[j['sender']['user_id']]['default']
-            elif 'default' in cfg.custom_title:
-                title = cfg.custom_title['default']
+        if cfg.get('custom_title', None) and j['message_type'] == 'group':
+            if j['sender']['user_id'] in cfg.get('custom_title'):
+                if j['group_id'] in cfg.get('custom_title')[j['sender']['user_id']]:
+                    title = cfg.get('custom_title')[j['sender']['user_id']][j['group_id']]
+                elif 'default' in cfg.get('custom_title')[j['sender']['user_id']]:
+                    title = cfg.get('custom_title')[j['sender']['user_id']]['default']
+            elif 'default' in cfg.get('custom_title'):
+                title = cfg.get('custom_title')['default']
 
         at_sender = f"{title}[CQ:at,qq={j['sender']['user_id']}]：\n" if j['message_type'] == 'group' else ''
 
         # Determine which keyword got called
         matched_keyword = None
-        for keyword, function in self.cfg.bot_command.items():
+        for keyword, function in bot_command.items():
             # Is it a regex?
             if function[5] == C.REGEX:
                 match = re.match(keyword, j['message'])
@@ -156,18 +164,18 @@ class Message_handler:
         # Autoban
         try:
             if j['message_type'] == 'group':
-                ban_word = cfg.ban_word
+                ban_word = cfg.get('ban_word')
                 for word in ban_word:
                     if word in j['message'].replace(' ', ''):
                         resp['ban'] = True
-                        resp['ban_duration'] = cfg.ban_duration
+                        resp['ban_duration'] = cfg.get('ban_duration')
                         return resp, 200
         except BaseException:
             pass
 
         # Trivia
         try:
-            trivia_enable = getattr(cfg, 'trivia_enable', False)
+            trivia_enable = cfg.get('trivia_enable', False)
             if j['message_type'] == 'group' and trivia_enable:
                 resp['reply'] = self.trivia.triviabot(j)
                 if resp['reply'] != '':
@@ -185,7 +193,7 @@ class Message_handler:
         # The Nature of Humanity, will override Execution
         # cfg.noh_whitelist is deprecated and this is purely for backwards-compatibility
         # and will be removed in the near future
-        noh_allowlist = getattr(cfg, 'noh_allowlist', getattr(cfg, 'noh_whitelist', []))
+        noh_allowlist = cfg.get('noh_allowlist', cfg.get('noh_whitelist', []))
         if j['message_type'] == 'group':
             resp['reply'] = misc.msg_executioner(j) 
             if resp['reply'] == '' and j['group_id'] in noh_allowlist:
@@ -197,14 +205,14 @@ class Message_handler:
             return '', 204
 
     def add_job(self, broadcast_func, second='00'):
-        if getattr(self.cfg, 'enable_broadcast', False):
+        if self.cfg.get('enable_broadcast', False):
             self.schduler.add_job(self.send_broadcast, 'cron', second=second, args=[broadcast_func])
 
     def send_broadcast(self, broadcast_func):
         broadcast_group = self.cfg.broadcast_group
         msg = broadcast_func()
         if msg != '':
-            url = f"{getattr(self.cfg, 'base_url', 'http://127.0.0.1:5700')}/send_group_msg_async"
+            url = f"{self.cfg.get('base_url', 'http://127.0.0.1:5700')}/send_group_msg_async"
             for group_id in broadcast_group:
                 payload = {
                     'group_id': group_id,
@@ -213,7 +221,7 @@ class Message_handler:
                 requests.post(url, json=payload)
 
     def reload(self, request_token):
-        access_token = getattr(self.cfg, 'reload_token', '')  # Access Token
+        access_token = self.cfg.get('reload_token', '')  # Access Token
 
         if request_token == access_token and access_token != '':
             importlib.reload(wf)
