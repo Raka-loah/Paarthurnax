@@ -17,6 +17,8 @@ class idioms_game:
         try:
             for dirpath, dirnames, filenames in os.walk(path.join(path.dirname(path.realpath(__file__)),'temp')):
                 for file in filenames:
+                    if not '.png' in file:
+                        continue
                     curpath = path.join(dirpath, file)
                     file_modified = datetime.fromtimestamp(path.getmtime(curpath))
                     if datetime.now() - file_modified > timedelta(minutes=5):
