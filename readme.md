@@ -4,14 +4,10 @@
 ![](https://img.shields.io/github/stars/Raka-loah/qqbot-plugin-warframe.svg)
 [![](https://img.shields.io/github/license/Raka-loah/qqbot-plugin-warframe.svg)](https://github.com/Raka-loah/qqbot-plugin-warframe/blob/master/LICENSE)
 
-**很尴尬的……**
+**决定继续更新**
 ------
 
-🐧全方位打击了所有第三方机器人客户端，所以本插件的开发无限期暂停，因为再更新下去也没什么意义了。
-
-我没想到这事儿来得这么快……
-
-由于WF通报的各种网站、客户端以及Discord机器人等等都已经非常全面了，也不需要拿这个代码做二次开发，所以米娜桑就此沙扬娜拉~
+至少里面的数据拿来转战Discord是没问题的，万一CQHTTP哪天又活了呢。
 
 
 **致完全的Python新手**
