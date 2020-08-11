@@ -12,3 +12,4 @@ __pycache__
 .python-version
 ignoreconfig
 installed
+settings/settings.json
