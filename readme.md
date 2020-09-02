@@ -22,7 +22,7 @@
 **前置条件**
 ------
 
-符合[OneBot标准](https://github.com/howmanybots/onebot/blob/master/ecosystem.md)的任意bot平台。
+符合[OneBot]标准(https://github.com/howmanybots/onebot/blob/master/ecosystem.md)的任意bot平台。
 
 **Python依赖**
 ------
@@ -39,7 +39,7 @@
 1. 把代码Clone到本地；
 2. 把 `config-sample.py` 复制一份，改名 `config.py`，修改里面的设置；
 3. 命令行用 `python app.py` 启动。
-4. 设置酷Q的HTTP API插件POST到 `127.0.0.1:8888` 。
+4. 设置bot平台通过HTTP POST到 `127.0.0.1:8888` 。
 5. 这就可以了。
 
 **建议**
