@@ -22,7 +22,7 @@
 **前置条件**
 ------
 
-符合[OneBot]标准(https://github.com/howmanybots/onebot/blob/master/ecosystem.md)的任意bot平台。
+符合[OneBot](https://github.com/howmanybots/onebot/blob/master/ecosystem.md)标准的任意bot平台。
 
 **Python依赖**
 ------
