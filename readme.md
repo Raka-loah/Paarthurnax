@@ -1,13 +1,15 @@
-# 适用于酷Q机器人的Warframe世界状态插件
+# 🐉Paarthurnax
+
+符合[OneBot](https://github.com/howmanybots/onebot)标准的Warframe世界状态通报~~机器人~~机器龙**插件**，昵称“老帕”
 
 [![](https://img.shields.io/github/issues/Raka-loah/qqbot-plugin-warframe.svg)](https://github.com/Raka-loah/qqbot-plugin-warframe/issues)
 ![](https://img.shields.io/github/stars/Raka-loah/qqbot-plugin-warframe.svg)
 [![](https://img.shields.io/github/license/Raka-loah/qqbot-plugin-warframe.svg)](https://github.com/Raka-loah/qqbot-plugin-warframe/blob/master/LICENSE)
 
-**决定继续更新**
+**关于少量功能差异**
 ------
 
-至少里面的数据拿来转战Discord是没问题的，万一CQHTTP哪天又活了呢。
+真正的老帕由于包含不适合在Github公开的内容以及少量私货，故此部分内容未进行开源。
 
 
 **致完全的Python新手**
@@ -20,7 +22,7 @@
 **前置条件**
 ------
 
-酷Q机器人的[HTTP API插件](https://github.com/richardchien/coolq-http-api)。
+符合[OneBot标准](https://github.com/howmanybots/onebot/blob/master/ecosystem.md)的任意bot平台。
 
 **Python依赖**
 ------
