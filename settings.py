@@ -75,23 +75,23 @@ def parse_or_load(settings=None):
 
     if not settings:
         try:
-            with open(os.path.join(os.path.dirname(os.path.abspath(__file__)) ,'settings' ,'settings.json') , 'w+', encoding='utf-8') as E:
+            with open(os.path.join(os.path.dirname(os.path.abspath(__file__)) ,'settings' ,'settings.json') , 'r', encoding='utf-8') as E:
                 raw_cfg = json.loads(E.read())
-        except Exception:
+        except Exception as e:
             raw_cfg = {}
     else:
         raw_cfg = settings
 
     for config in default_settings.keys():
-        if getattr(raw_cfg, config, None):
-            cfg[config] = getattr(raw_cfg, config, '')
+        if raw_cfg.get(config, None):
+            cfg[config] = raw_cfg.get(config)
         else:
             cfg[config] = default_settings[config]
     
-    raw_command = getattr(raw_cfg, 'bot_command', {})
+    raw_command = raw_cfg.get('bot_command', {})
 
-    for command in internal.bot_command_default.keys():
-        if command in raw_command:
+    for command in raw_command.keys():
+        if command in internal.bot_command_default.keys():
             try:
                 if raw_command[command][0]:
                     try:
@@ -100,10 +100,7 @@ def parse_or_load(settings=None):
                         bot_command[internal.bot_command_default[command][1]] = internal.bot_command_default[command][2:]
             except Exception:
                 pass
-        else:
-            if internal.bot_command_default[command][0]:
-                bot_command[internal.bot_command_default[command][1]] = internal.bot_command_default[command][2:]
-    
+
     cfg['bot_command'] = bot_command
 
     return cfg
