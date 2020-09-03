@@ -43,34 +43,6 @@ def general():
     return food('')
 
 
-def msg_log(message_id, group_id, sender_id, message):
-    try:
-        db = sqlite3.connect('qqbot.sqlite')
-        cursor = db.cursor()
-        cursor.execute(
-            '''CREATE TABLE IF NOT EXISTS messages(id INTEGER, group_id INTEGER, sender_id INTEGER, message TEXT, timestamp REAL)''')
-        db.commit()
-    except BaseException:
-        db.rollback()
-        db.close()
-        return '[ERROR] Database error'
-
-    try:
-        cursor.execute(
-            '''INSERT INTO messages(id, group_id, sender_id, message, timestamp) VALUES(?, ?, ?, ?, ?)''',
-            (message_id,
-             group_id,
-             sender_id,
-             message,
-             time.time()))
-        db.commit()
-    except BaseException:
-        db.rollback()
-    finally:
-        db.close()
-        return '[INFO] Transaction complete'
-
-
 def msg_fetch(group_id, sender_id, lines=5):
     try:
         db = sqlite3.connect('qqbot.sqlite')

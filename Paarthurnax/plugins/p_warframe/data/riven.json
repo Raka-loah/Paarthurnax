@@ -1,0 +1,2833 @@
+{
+    "Melee": {
+        "Rivens": [
+            {
+                "disposition": 0.9, 
+                "name": "ACK & BRUNT", 
+                "texture": "_Lotus_Interface_Icons_Store_RegorAxeShield.png"
+            }, 
+            {
+                "disposition": 1.5, 
+                "name": "AMPHIS", 
+                "texture": "_Lotus_Interface_Icons_Store_HeavyStaff.png"
+            }, 
+            {
+                "disposition": 1.46, 
+                "name": "ANKU", 
+                "texture": "_Lotus_Interface_Icons_Store_ParisScythe.png"
+            }, 
+            {
+                "disposition": 1.45, 
+                "name": "ANKYROS", 
+                "texture": "_Lotus_Interface_Icons_Store_TennoGauntlet.png"
+            }, 
+            {
+                "disposition": 1.45, 
+                "name": "ANKYROS PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_PrimeAnkyros.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "ARCA TITRON", 
+                "texture": "_Lotus_Interface_Icons_Store_CrpHammer.png"
+            }, 
+            {
+                "disposition": 0.5, 
+                "name": "ATTERAX", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerWhip.png"
+            }, 
+            {
+                "disposition": 1.29, 
+                "name": "BO", 
+                "texture": "_Lotus_Interface_Icons_Store_BoStaff.png"
+            }, 
+            {
+                "disposition": 1.29, 
+                "name": "BO PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_PrimeBo.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "BOLTACE", 
+                "texture": "_Lotus_Interface_Icons_Store_Boltonfa.png"
+            }, 
+            {
+                "disposition": 1.19, 
+                "name": "BROKEN SCEPTER", 
+                "texture": "_Lotus_Interface_Icons_Store_GrnQueenSceptre.png"
+            }, 
+            {
+                "disposition": 0.79, 
+                "name": "BROKEN WAR", 
+                "texture": "_Lotus_Interface_Icons_Store_StalkerTwoSword.png"
+            }, 
+            {
+                "disposition": 1.29, 
+                "name": "CADUS", 
+                "texture": "_Lotus_Interface_Icons_Store_CYSingleStaffSkin.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "CASSOWAR", 
+                "texture": "_Lotus_Interface_Icons_Store_TnHalberdPolearmWeapon.png"
+            }, 
+            {
+                "disposition": 1.3, 
+                "name": "CAUSTACYST", 
+                "texture": "_Lotus_Interface_Icons_Store_EmbolistScythe.png"
+            }, 
+            {
+                "disposition": 1.43, 
+                "name": "CERAMIC DAGGER", 
+                "texture": "_Lotus_Interface_Icons_Store_SwordCeramic_d.png"
+            }, 
+            {
+                "disposition": 1.36, 
+                "name": "CERATA", 
+                "texture": "_Lotus_Interface_Icons_Store_PunctureGlaive.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "COBRA & CRANE", 
+                "texture": "_Lotus_Interface_Icons_Store_PacifistShieldSword.png"
+            }, 
+            {
+                "disposition": 1.48, 
+                "name": "CRONUS", 
+                "texture": "_Lotus_Interface_Icons_Store_SwordCeramic_d.png"
+            }, 
+            {
+                "disposition": 1.15, 
+                "name": "DAKRA PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_CronusPrime.png"
+            }, 
+            {
+                "disposition": 0.52, 
+                "name": "DARK DAGGER", 
+                "texture": "_Lotus_Interface_Icons_Store_DarkDagger.png"
+            }, 
+            {
+                "disposition": 1.21, 
+                "name": "DARK SPLIT-SWORD", 
+                "texture": "_Lotus_Interface_Icons_Store_DarkSwordDaggerHybrid.png"
+            }, 
+            {
+                "disposition": 1.48, 
+                "name": "DARK SWORD", 
+                "texture": "_Lotus_Interface_Icons_Store_DarkSword.png"
+            }, 
+            {
+                "disposition": 1.14, 
+                "name": "DESTREZA", 
+                "texture": "_Lotus_Interface_Icons_Store_TnoRapier.png"
+            }, 
+            {
+                "disposition": 1.14, 
+                "name": "DESTREZA PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_Primes_DestrezaPrime.png"
+            }, 
+            {
+                "disposition": 1.15, 
+                "name": "DEX DAKRA", 
+                "texture": "_Lotus_Interface_Icons_Store_DexDakra.png"
+            }, 
+            {
+                "disposition": 1.35, 
+                "name": "DRAGON NIKANA", 
+                "texture": "_Lotus_Interface_Icons_Store_DragonKatana.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "DUAL CLEAVERS", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerDualCleaver.png"
+            }, 
+            {
+                "disposition": 1.45, 
+                "name": "DUAL ETHER", 
+                "texture": "_Lotus_Interface_Icons_Store_EtherSwordAndDagger.png"
+            }, 
+            {
+                "disposition": 1.44, 
+                "name": "DUAL HEAT SWORDS", 
+                "texture": "_Lotus_Interface_Icons_Store_HeatDaggers.png"
+            }, 
+            {
+                "disposition": 1.16, 
+                "name": "DUAL ICHOR", 
+                "texture": "_Lotus_Interface_Icons_Store_DualInfestedAxes.png"
+            }, 
+            {
+                "disposition": 0.81, 
+                "name": "DUAL KAMAS", 
+                "texture": "_Lotus_Interface_Icons_Store_DualKamas.png"
+            }, 
+            {
+                "disposition": 0.81, 
+                "name": "DUAL KAMAS PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_Primes_DualKamasPrime.png"
+            }, 
+            {
+                "disposition": 1.48, 
+                "name": "DUAL KERES", 
+                "texture": "_Lotus_Interface_Icons_Store_QuillDualSwords.png"
+            }, 
+            {
+                "disposition": 1.4, 
+                "name": "DUAL RAZA", 
+                "texture": "_Lotus_Interface_Icons_Store_SomaDualKamas.png"
+            }, 
+            {
+                "disposition": 1.48, 
+                "name": "DUAL SKANA", 
+                "texture": "_Lotus_Interface_Icons_Store_DualSkana.png"
+            }, 
+            {
+                "disposition": 1.44, 
+                "name": "DUAL ZOREN", 
+                "texture": "_Lotus_Interface_Icons_Store_DualAxe.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "ENDURA", 
+                "texture": "_Lotus_Interface_Icons_Store_ThreeLeafRapier.png"
+            }, 
+            {
+                "disposition": 1.49, 
+                "name": "ETHER DAGGERS", 
+                "texture": "_Lotus_Interface_Icons_Store_EtherDaggers.png"
+            }, 
+            {
+                "disposition": 1.45, 
+                "name": "ETHER REAPER", 
+                "texture": "_Lotus_Interface_Icons_Store_EtherScythe.png"
+            }, 
+            {
+                "disposition": 1.44, 
+                "name": "ETHER SWORD", 
+                "texture": "_Lotus_Interface_Icons_Store_EtherBladeSingle.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "FALCOR", 
+                "texture": "_Lotus_Interface_Icons_Store_CrpGlaive.png"
+            }, 
+            {
+                "disposition": 1.36, 
+                "name": "FANG", 
+                "texture": "_Lotus_Interface_Icons_Store_DualDaggers.png"
+            }, 
+            {
+                "disposition": 1.36, 
+                "name": "FANG PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_PrimeFang.png"
+            }, 
+            {
+                "disposition": 0.96, 
+                "name": "FRAGOR", 
+                "texture": "_Lotus_Interface_Icons_Store_Hammer.png"
+            }, 
+            {
+                "disposition": 0.96, 
+                "name": "FRAGOR PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_Primes_FragorPrime.png"
+            }, 
+            {
+                "disposition": 1.38, 
+                "name": "FURAX", 
+                "texture": "_Lotus_Interface_Icons_Store_MeleeGauntlets.png"
+            }, 
+            {
+                "disposition": 1.38, 
+                "name": "FURAX WRAITH", 
+                "texture": "_Lotus_Interface_Icons_Store_WraithFurax.png"
+            }, 
+            {
+                "disposition": 0.5, 
+                "name": "GALATINE", 
+                "texture": "_Lotus_Interface_Icons_Store_TennoGreatSword.png"
+            }, 
+            {
+                "disposition": 0.5, 
+                "name": "GALATINE PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_Primes_PrimeGalatine.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "GALVACORD", 
+                "texture": "_Lotus_Interface_Icons_Store_CrpShockWhip.png"
+            }, 
+            {
+                "disposition": 1.35, 
+                "name": "GAZAL MACHETE", 
+                "texture": "_Lotus_Interface_Icons_Store_DjinnMachete.png"
+            }, 
+            {
+                "disposition": 1.22, 
+                "name": "GLAIVE", 
+                "texture": "_Lotus_Interface_Icons_Store_GlaiveLight.png"
+            }, 
+            {
+                "disposition": 1.22, 
+                "name": "GLAIVE PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_PrimeGlaive.png"
+            }, 
+            {
+                "disposition": 1.44, 
+                "name": "GRAM", 
+                "texture": "_Lotus_Interface_Icons_Store_GreatSword.png"
+            }, 
+            {
+                "disposition": 1.44, 
+                "name": "GRAM PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_Primes_GramPrime.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "GUANDAO", 
+                "texture": "_Lotus_Interface_Icons_Store_TnGuandaoPolearm.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "GUNSEN", 
+                "texture": "_Lotus_Interface_Icons_Store_WarfanWeapon.png"
+            }, 
+            {
+                "disposition": 1.44, 
+                "name": "HALIKAR", 
+                "texture": "_Lotus_Interface_Icons_Store_GrnBoomerang.png"
+            }, 
+            {
+                "disposition": 1.36, 
+                "name": "HATE", 
+                "texture": "_Lotus_Interface_Icons_Store_StalkerScythe.png"
+            }, 
+            {
+                "disposition": 1.44, 
+                "name": "HEAT DAGGER", 
+                "texture": "_Lotus_Interface_Icons_Store_HeatDagger.png"
+            }, 
+            {
+                "disposition": 1.48, 
+                "name": "HEAT SWORD", 
+                "texture": "_Lotus_Interface_Icons_Store_SwordHeat_d.png"
+            }, 
+            {
+                "disposition": 0.94, 
+                "name": "HELIOCOR", 
+                "texture": "_Lotus_Interface_Icons_Store_CephHammer.png"
+            }, 
+            {
+                "disposition": 0.5, 
+                "name": "HIRUDO", 
+                "texture": "_Lotus_Interface_Icons_Store_InfestedKogake.png"
+            }, 
+            {
+                "disposition": 0.75, 
+                "name": "JAT KITTAG", 
+                "texture": "_Lotus_Interface_Icons_Store_GrnJetPwrPolearm.png"
+            }, 
+            {
+                "disposition": 0.81, 
+                "name": "JAT KUSAR", 
+                "texture": "_Lotus_Interface_Icons_Store_GrnKusarigamaWeapon.png"
+            }, 
+            {
+                "disposition": 1.47, 
+                "name": "JAW SWORD", 
+                "texture": "_Lotus_Interface_Icons_Store_SwordJaw_d.png"
+            }, 
+            {
+                "disposition": 1.47, 
+                "name": "KAMA", 
+                "texture": "_Lotus_Interface_Icons_Store_Kama.png"
+            }, 
+            {
+                "disposition": 1.29, 
+                "name": "KARYST", 
+                "texture": "_Lotus_Interface_Icons_Store_KrisDagger.png"
+            }, 
+            {
+                "disposition": 1.24, 
+                "name": "KESHEG", 
+                "texture": "_Lotus_Interface_Icons_Store_GrnHalberd.png"
+            }, 
+            {
+                "disposition": 1.45, 
+                "name": "KESTREL", 
+                "texture": "_Lotus_Interface_Icons_Store_Boomerang.png"
+            }, 
+            {
+                "disposition": 1.46, 
+                "name": "KOGAKE", 
+                "texture": "_Lotus_Interface_Icons_Store_Kogake.png"
+            }, 
+            {
+                "disposition": 1.46, 
+                "name": "KOGAKE PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_Primes_KogakePrime.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "KORRUDO", 
+                "texture": "_Lotus_Interface_Icons_Store_GrnSpiderSparring.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "KRESKA", 
+                "texture": "_Lotus_Interface_Icons_Store_CrpVenusHatchet.png"
+            }, 
+            {
+                "disposition": 1.22, 
+                "name": "KROHKUR", 
+                "texture": "_Lotus_Interface_Icons_Store_GrnEgyptSword.png"
+            }, 
+            {
+                "disposition": 1.43, 
+                "name": "KRONEN", 
+                "texture": "_Lotus_Interface_Icons_Store_TennoTonfa.png"
+            }, 
+            {
+                "disposition": 1.43, 
+                "name": "KRONEN PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_Primes_KronenPrime.png"
+            }, 
+            {
+                "disposition": 1.31, 
+                "name": "LACERA", 
+                "texture": "_Lotus_Interface_Icons_Store_StalkerMios.png"
+            }, 
+            {
+                "disposition": 0.5, 
+                "name": "LECTA", 
+                "texture": "_Lotus_Interface_Icons_Store_CorpusWhip.png"
+            }, 
+            {
+                "disposition": 0.5, 
+                "name": "LESION", 
+                "texture": "_Lotus_Interface_Icons_Store_InfTipedo.png"
+            }, 
+            {
+                "disposition": 1.45, 
+                "name": "MACHETE", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerMachette.png"
+            }, 
+            {
+                "disposition": 1.45, 
+                "name": "MACHETE WRAITH", 
+                "texture": "_Lotus_Interface_Icons_Store_WraithMachete.png"
+            }, 
+            {
+                "disposition": 1.09, 
+                "name": "MAGISTAR", 
+                "texture": "_Lotus_Interface_Icons_Store_PaladinMace.png"
+            }, 
+            {
+                "disposition": 0.95, 
+                "name": "MIOS", 
+                "texture": "_Lotus_Interface_Icons_Store_Mios.png"
+            }, 
+            {
+                "disposition": 1.43, 
+                "name": "MIRE", 
+                "texture": "_Lotus_Interface_Icons_Store_MireInfestedSword.png"
+            }, 
+            {
+                "disposition": 1.29, 
+                "name": "MK1-BO", 
+                "texture": "_Lotus_Interface_Icons_Store_BoStaff.png"
+            }, 
+            {
+                "disposition": 1.38, 
+                "name": "MK1-FURAX", 
+                "texture": "_Lotus_Interface_Icons_Store_MeleeGauntlets.png"
+            }, 
+            {
+                "disposition": 1.175, 
+                "name": "NAMI SKYLA", 
+                "texture": "_Lotus_Interface_Icons_Store_TnoCutlassAndPoignard.png"
+            }, 
+            {
+                "disposition": 1.175, 
+                "name": "NAMI SKYLA PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_Primes_PrimeNamiSkyla.png"
+            }, 
+            {
+                "disposition": 1.43, 
+                "name": "NAMI SOLO", 
+                "texture": "_Lotus_Interface_Icons_Store_NamiSolo.png"
+            }, 
+            {
+                "disposition": 0.5, 
+                "name": "NIKANA", 
+                "texture": "_Lotus_Interface_Icons_Store_Katana.png"
+            }, 
+            {
+                "disposition": 0.5, 
+                "name": "NIKANA PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_PrimeNikana.png"
+            }, 
+            {
+                "disposition": 1.41, 
+                "name": "NINKONDI", 
+                "texture": "_Lotus_Interface_Icons_Store_Nunchaku.png"
+            }, 
+            {
+                "disposition": 1.1, 
+                "name": "OBEX", 
+                "texture": "_Lotus_Interface_Icons_Store_CorpusPunchKickWeapon.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "OHMA", 
+                "texture": "_Lotus_Interface_Icons_Store_CorpusTonfas.png"
+            }, 
+            {
+                "disposition": 1.31, 
+                "name": "OKINA", 
+                "texture": "_Lotus_Interface_Icons_Store_TennoSais.png"
+            }, 
+            {
+                "disposition": 0.5, 
+                "name": "ORTHOS", 
+                "texture": "_Lotus_Interface_Icons_Store_PolearmNaginata.png"
+            }, 
+            {
+                "disposition": 0.5, 
+                "name": "ORTHOS PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_PrimePolearm.png"
+            }, 
+            {
+                "disposition": 1.15, 
+                "name": "ORVIUS", 
+                "texture": "_Lotus_Interface_Icons_Store_TeshinGlaive.png"
+            }, 
+            {
+                "disposition": 1.47, 
+                "name": "PANGOLIN SWORD", 
+                "texture": "_Lotus_Interface_Icons_Store_SwordPangolin_d.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "PARACESIS", 
+                "texture": "_Lotus_Interface_Icons_Store_BallasSword.png"
+            }, 
+            {
+                "disposition": 1.48, 
+                "name": "PLASMA SWORD", 
+                "texture": "_Lotus_Interface_Icons_Store_SwordPlasma_d.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "PRISMA DUAL CLEAVERS", 
+                "texture": "_Lotus_Interface_Icons_Store_PrismaDualCleavers.png"
+            }, 
+            {
+                "disposition": 1.45, 
+                "name": "PRISMA MACHETE", 
+                "texture": "_Lotus_Interface_Icons_Store_PrismaMeleeWeapon.png"
+            }, 
+            {
+                "disposition": 1.1, 
+                "name": "PRISMA OBEX", 
+                "texture": "_Lotus_Interface_Icons_Store_PrismaObex.png"
+            }, 
+            {
+                "disposition": 1.22, 
+                "name": "PRISMA SKANA", 
+                "texture": "_Lotus_Interface_Icons_Store_PrismaSkana.png"
+            }, 
+            {
+                "disposition": 1.29, 
+                "name": "PROVA", 
+                "texture": "_Lotus_Interface_Icons_Store_CorpusElectroProd.png"
+            }, 
+            {
+                "disposition": 1.29, 
+                "name": "PROVA VANDAL", 
+                "texture": "_Lotus_Interface_Icons_Store_VandalElectroProd.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "PUPACYST", 
+                "texture": "_Lotus_Interface_Icons_Store_InfStaff.png"
+            }, 
+            {
+                "disposition": 0.52, 
+                "name": "RAKTA DARK DAGGER", 
+                "texture": "_Lotus_Interface_Icons_Store_RVDarkDagger.png"
+            }, 
+            {
+                "disposition": 1.29, 
+                "name": "REAPER PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_ReaperPrime.png"
+            }, 
+            {
+                "disposition": 1.17, 
+                "name": "REDEEMER", 
+                "texture": "_Lotus_Interface_Icons_Store_TnoGunblade.png"
+            }, 
+            {
+                "disposition": 1.17, 
+                "name": "REDEEMER PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_Primes_RedeemerPrime.png"
+            }, 
+            {
+                "disposition": 1.38, 
+                "name": "RIPKAS", 
+                "texture": "_Lotus_Interface_Icons_Store_GrnClaws.png"
+            }, 
+            {
+                "disposition": 1.09, 
+                "name": "SANCTI MAGISTAR", 
+                "texture": "_Lotus_Interface_Icons_Store_NLMagistar.png"
+            }, 
+            {
+                "disposition": 1.24, 
+                "name": "SARPA", 
+                "texture": "_Lotus_Interface_Icons_Store_TnoGunbladeAuto.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "SCINDO", 
+                "texture": "_Lotus_Interface_Icons_Store_Axe.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "SCINDO PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_PrimeScindo.png"
+            }, 
+            {
+                "disposition": 1.3, 
+                "name": "SCOLIAC", 
+                "texture": "_Lotus_Interface_Icons_Store_InfestedWhip.png"
+            }, 
+            {
+                "disposition": 0.5, 
+                "name": "SECURA LECTA", 
+                "texture": "_Lotus_Interface_Icons_Store_PSLecta.png"
+            }, 
+            {
+                "disposition": 1.38, 
+                "name": "SERRO", 
+                "texture": "_Lotus_Interface_Icons_Store_Corpuspolearm.png"
+            }, 
+            {
+                "disposition": 1.35, 
+                "name": "SHAKU", 
+                "texture": "_Lotus_Interface_Icons_Store_TnoNunchaku.png"
+            }, 
+            {
+                "disposition": 1.25, 
+                "name": "SHEEV", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerCombatKnife.png"
+            }, 
+            {
+                "disposition": 1.35, 
+                "name": "SIBEAR", 
+                "texture": "_Lotus_Interface_Icons_Store_IceHammer.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "SIGMA & OCTANTIS", 
+                "texture": "_Lotus_Interface_Icons_Store_SundialBoardSword.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "SILVA & AEGIS", 
+                "texture": "_Lotus_Interface_Icons_Store_TennoSwordShield.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "SILVA & AEGIS PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_SilvaAegisPrime.png"
+            }, 
+            {
+                "disposition": 1.22, 
+                "name": "SKANA", 
+                "texture": "_Lotus_Interface_Icons_Store_Skana.png"
+            }, 
+            {
+                "disposition": 1.22, 
+                "name": "SKANA PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_SkanaPrime.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "SKIAJATI", 
+                "texture": "_Lotus_Interface_Icons_Store_UmbraKatana.png"
+            }, 
+            {
+                "disposition": 0.84, 
+                "name": "SYDON", 
+                "texture": "_Lotus_Interface_Icons_Store_GrnTridentWeapon.png"
+            }, 
+            {
+                "disposition": 0.94, 
+                "name": "SYNOID HELIOCOR", 
+                "texture": "_Lotus_Interface_Icons_Store_CSHeliocor.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "TATSU", 
+                "texture": "_Lotus_Interface_Icons_Store_TnTwoHandedKatana.png"
+            }, 
+            {
+                "disposition": 1.4, 
+                "name": "TEKKO", 
+                "texture": "_Lotus_Interface_Icons_Store_BrawlerKnuckles.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "TELOS BOLTACE", 
+                "texture": "_Lotus_Interface_Icons_Store_AHBoltace.png"
+            }, 
+            {
+                "disposition": 1.31, 
+                "name": "TIPEDO", 
+                "texture": "_Lotus_Interface_Icons_Store_TnoMonkStaff.png"
+            }, 
+            {
+                "disposition": 1.38, 
+                "name": "TONBO", 
+                "texture": "_Lotus_Interface_Icons_Store_FlowerPowerPolearm.png"
+            }, 
+            {
+                "disposition": 1.18, 
+                "name": "TWIN BASOLK", 
+                "texture": "_Lotus_Interface_Icons_Store_GrnDualFireAxe.png"
+            }, 
+            {
+                "disposition": 1.48, 
+                "name": "TWIN KROHKUR", 
+                "texture": "_Lotus_Interface_Icons_Store_DualGrnEgyptSwords.png"
+            }, 
+            {
+                "disposition": 0.84, 
+                "name": "VAYKOR SYDON", 
+                "texture": "_Lotus_Interface_Icons_Store_SMSydon.png"
+            }, 
+            {
+                "disposition": 0.5, 
+                "name": "VENKA", 
+                "texture": "_Lotus_Interface_Icons_Store_TennoClaws.png"
+            }, 
+            {
+                "disposition": 0.5, 
+                "name": "VENKA PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_VenkaPrime.png"
+            }, 
+            {
+                "disposition": 1.2, 
+                "name": "VOLNUS", 
+                "texture": "_Lotus_Interface_Icons_Store_GlassHammer.png"
+            }, 
+            {
+                "disposition": 0.5, 
+                "name": "WAR", 
+                "texture": "_Lotus_Interface_Icons_Store_StalkerTwoGreatSword.png"
+            }, 
+            {
+                "disposition": 0.96, 
+                "name": "WOLF SLEDGE", 
+                "texture": "_Lotus_Interface_Icons_Store_WolfHammerSkin.png"
+            }, 
+            {
+                "disposition": 0.5, 
+                "name": "ZENISTAR", 
+                "texture": "_Lotus_Interface_Icons_Store_SundialAxe.png"
+            }
+        ],
+		"Buffs": [{
+				"text": "|val|% 近战伤害",
+				"value": 164.7,
+				"prefix": "Visi",
+				"suffix": "Ata"
+			},
+			{
+				"text": "|val|% 冲击伤害",
+				"curse": true,
+				"value": 119.7,
+				"prefix": "Magna",
+				"suffix": "Ton"
+			},
+			{
+				"text": "|val|% 穿刺伤害",
+				"curse": true,
+				"value": 119.7,
+				"prefix": "Insi",
+				"suffix": "Cak"				
+			},
+			{
+				"text": "|val|% 切割伤害",
+				"curse": true,
+				"value": 119.7,
+				"prefix": "Sci",
+				"suffix": "Sus"
+			},
+			{
+				"text": "|val|% 暴击几率",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Crita",
+				"suffix": "Cron"
+			},
+			{
+				"text": "|val|% 暴击伤害",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Acri",
+				"suffix": "Tis"
+			},
+			{
+				"text": "|val|% 火焰伤害",
+				"value": 90.0,
+				"prefix": "Igni",
+				"suffix": "Pha"
+			},
+			{
+				"text": "|val|% 冰冻伤害",
+				"value": 90.0,
+				"prefix": "Geli",
+				"suffix": "Do"
+			},
+			{
+				"text": "|val|% 电击伤害",
+				"value": 90.0,
+				"prefix": "Vexi",
+				"suffix": "Tio"
+			},
+			{
+				"text": "|val|% 毒素伤害",
+				"value": 90.0,
+				"prefix": "Toxi",
+				"suffix": "Tox"
+			},
+			{
+				"text": "|val|% 触发几率",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Hexa",
+				"suffix": "Dex"
+			},
+			{
+				"text": "|val|% 触发时间",
+				"curse": true,
+				"value": 99.99,
+				"prefix": "Deci",
+				"suffix": "Des"
+			},
+			{
+				"text": "|val|% 对Grineer伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Agri",
+				"suffix": "Con"
+			},
+			{
+				"text": "|val|% 对Corpus伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Manti",
+				"suffix": "Tron"
+			},
+			{
+				"text": "|val|% 对Infested伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Pura",
+				"suffix": "Ada"
+			},
+			{
+				"text": "|val|% 攻击速度",
+				"curse": true,
+				"value": 54.9,
+				"prefix": "Croni",
+				"suffix": "Dra"
+			},
+			{
+				"text": "|val|% 导引效率",
+				"value": 90.0,
+				"prefix": "Uti",
+				"suffix": "Tia"
+			},
+			{
+				"text": "|val|% 导引伤害",
+				"value": 150.3,
+				"prefix": "Tori",
+				"suffix": "Bo"
+			},
+			{
+				"text": "|val|% 终结技伤害",
+				"curse": true,
+				"value": 119.7,
+				"prefix": "Exi",
+				"suffix": "Cta"
+			},
+			{
+				"text": "|val|% 范围",
+				"curse": true,
+				"value": 119.7,
+				"prefix": "Locti",
+				"suffix": "Tor"
+			},
+			{
+				"text": "滑行攻击有 |val|% 几率造成暴击",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Pleci",
+				"suffix": "Nent"
+			},
+			{
+				"text": "|val|s 连击时间",
+				"curse": true,
+				"value": 8.1,
+				"prefix": "Tempi",
+				"suffix": "Nem"
+			}
+		]
+	},
+    "Shotgun": {
+        "Rivens": [
+            {
+                "disposition": 0.6, 
+                "name": "ARCA PLASMOR", 
+                "texture": "_Lotus_Interface_Icons_Store_CrpShotgun.png"
+            }, 
+            {
+                "disposition": 1.1, 
+                "name": "ASTILLA", 
+                "texture": "_Lotus_Interface_Icons_Store_GlassShotgun.png"
+            }, 
+            {
+                "disposition": 1.34, 
+                "name": "BOAR", 
+                "texture": "_Lotus_Interface_Icons_Store_TennoFullAutoShotgun.png"
+            }, 
+            {
+                "disposition": 1.34, 
+                "name": "BOAR PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_PrimeBoar.png"
+            }, 
+            {
+                "disposition": 1.46, 
+                "name": "CONVECTRIX", 
+                "texture": "_Lotus_Interface_Icons_Store_CrpSplitRifle.png"
+            }, 
+            {
+                "disposition": 0.95, 
+                "name": "CORINTH", 
+                "texture": "_Lotus_Interface_Icons_Store_TnHeavyShotgun.png"
+            }, 
+            {
+                "disposition": 1.48, 
+                "name": "DRAKGOON", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerFlakCannon.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "EXERGIS", 
+                "texture": "_Lotus_Interface_Icons_Store_CrpShapeBlastShotgun.png"
+            }, 
+            {
+                "disposition": 0.85, 
+                "name": "HEK", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerQuadShotgun.png"
+            }, 
+            {
+                "disposition": 1.4, 
+                "name": "KOHM", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerSparkGun.png"
+            }, 
+            {
+                "disposition": 1.35, 
+                "name": "MK1-STRUN", 
+                "texture": "_Lotus_Interface_Icons_Store_TennoShotgun.png"
+            }, 
+            {
+                "disposition": 1.46, 
+                "name": "PHAGE", 
+                "texture": "_Lotus_Interface_Icons_Store_InfestedLongGunTwo.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "PHANTASMA", 
+                "texture": "_Lotus_Interface_Icons_Store_RevenantShotgun.png"
+            }, 
+            {
+                "disposition": 0.5, 
+                "name": "SANCTI TIGRIS", 
+                "texture": "_Lotus_Interface_Icons_Store_SyndicateNLTigris.png"
+            }, 
+            {
+                "disposition": 1.33, 
+                "name": "SOBEK", 
+                "texture": "_Lotus_Interface_Icons_Store_GrnDBSG.png"
+            }, 
+            {
+                "disposition": 1.35, 
+                "name": "STRUN", 
+                "texture": "_Lotus_Interface_Icons_Store_TennoShotgun.png"
+            }, 
+            {
+                "disposition": 1.35, 
+                "name": "STRUN WRAITH", 
+                "texture": "_Lotus_Interface_Icons_Store_VandalStrun.png"
+            }, 
+            {
+                "disposition": 0.5, 
+                "name": "TIGRIS", 
+                "texture": "_Lotus_Interface_Icons_Store_TennoDoubleBarrelSG.png"
+            }, 
+            {
+                "disposition": 0.5, 
+                "name": "TIGRIS PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_Primes_PrimeTigris.png"
+            }, 
+            {
+                "disposition": 0.85, 
+                "name": "VAYKOR HEK", 
+                "texture": "_Lotus_Interface_Icons_Store_SyndicateSMHek.png"
+            }
+        ], 
+		"Buffs": [{
+				"text": "|val|% 多重射击",
+				"curse": true,
+				"value": 119.7,
+				"prefix": "Sati",
+				"suffix": "Can"
+			},
+			{
+				"text": "|val|% 伤害",
+				"curse": true,
+				"value": 164.7,
+				"prefix": "Visi",
+				"suffix": "Ata"
+			},
+			{
+				"text": "|val|% 冲击伤害",
+				"value": 119.97,
+				"prefix": "Magna",
+				"suffix": "Ton"
+			},
+			{
+				"text": "|val|% 穿刺伤害",
+				"value": 119.97,
+				"prefix": "Insi",
+				"suffix": "Cak"
+			},
+			{
+				"text": "|val|% 切割伤害",
+				"value": 119.97,
+				"prefix": "Sci",
+				"suffix": "Sus"
+			},
+			{
+				"text": "|val|% 暴击几率",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Crita",
+				"suffix": "Cron"
+			},
+			{
+				"text": "|val|% 暴击伤害",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Acri",
+				"suffix": "Tis"
+			},
+			{
+				"text": "|val|% 火焰伤害",
+				"value": 90.0,
+				"prefix": "Igni",
+				"suffix": "Pha"
+			},
+			{
+				"text": "|val|% 冰冻伤害",
+				"value": 90.0,
+				"prefix": "Geli",
+				"suffix": "Do"
+			},
+			{
+				"text": "|val|% 电击伤害",
+				"value": 90.0,
+				"prefix": "Vexi",
+				"suffix": "Tio"
+			},
+			{
+				"text": "|val|% 毒素伤害",
+				"value": 90.0,
+				"prefix": "Toxi",
+				"suffix": "Tox"
+			},
+			{
+				"text": "|val|% 触发几率",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Hexa",
+				"suffix": "Dex"
+			},
+			{
+				"text": "|val|% 触发时间",
+				"curse": true,
+				"value": 99.99,
+				"prefix": "Deci",
+				"suffix": "Des"
+			},
+			{
+				"text": "|val|% 对Grineer伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Agri",
+				"suffix": "Con"
+			},
+			{
+				"text": "|val|% 对Corpus伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Manti",
+				"suffix": "Tron"
+			},
+			{
+				"text": "|val|% 对Infested伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Pura",
+				"suffix": "Ada"
+			},			
+			{
+				"text": "|val|% 射击速度 (弓类武器x2)",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Croni",
+				"suffix": "Dra"
+			},
+			{
+				"text": "|val|% 弹匣容量",
+				"curse": true,
+				"value": 50.0,
+				"prefix": "Arma",
+				"suffix": "Tin"
+			},
+			{
+				"text": "|val|% 备弹",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Ampi",
+				"suffix": "Bin"
+			},
+			{
+				"text": "|val|% 子弹飞行速度",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Conci",
+				"suffix": "Nak"
+			},
+			{
+				"text": "|val|% 装填速度",
+				"curse": true,
+				"value": 50.0,
+				"prefix": "Feva",
+				"suffix": "Tak"
+			},
+			{
+				"text": "|val|% 后坐力",
+				"curse": true,
+				"value": -90.0,
+				"prefix": "Zeti",
+				"suffix": "Mag"
+			},
+			{
+				"text": "|val|m 穿透",
+				"value": 2.7,
+				"prefix": "Lexi",
+				"suffix": "Nok"
+			}
+		]
+	},
+    "Pistol": {
+        "Rivens": [
+            {
+                "disposition": 1.33, 
+                "name": "ACRID", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerAcidBlowDartGun.png"
+            }, 
+            {
+                "disposition": 1.39, 
+                "name": "AFURIS", 
+                "texture": "_Lotus_Interface_Icons_Store_TennoAkimboAutoPistols.png"
+            }, 
+            {
+                "disposition": 0.8, 
+                "name": "AKBOLTO", 
+                "texture": "_Lotus_Interface_Icons_Store_TennoAkimboPistols.png"
+            }, 
+            {
+                "disposition": 0.8, 
+                "name": "AKBOLTO PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_Primes_AkboltoPrime.png"
+            }, 
+            {
+                "disposition": 1.25, 
+                "name": "AKBRONCO", 
+                "texture": "_Lotus_Interface_Icons_Store_DualBroncos.png"
+            }, 
+            {
+                "disposition": 1.25, 
+                "name": "AKBRONCO PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_PrimeDualBroncos.png"
+            }, 
+            {
+                "disposition": 1.25, 
+                "name": "AKJAGARA", 
+                "texture": "_Lotus_Interface_Icons_Store_TnoBladedPistols.png"
+            }, 
+            {
+                "disposition": 1.25, 
+                "name": "AKJAGARA PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_Primes_AkjagaraPrime.png"
+            }, 
+            {
+                "disposition": 1.52, 
+                "name": "AKLATO", 
+                "texture": "_Lotus_Interface_Icons_Store_AklatoPistols.png"
+            }, 
+            {
+                "disposition": 0.85, 
+                "name": "AKLEX", 
+                "texture": "_Lotus_Interface_Icons_Store_Aklex.png"
+            }, 
+            {
+                "disposition": 0.85, 
+                "name": "AKLEX PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_AklexPrime.png"
+            }, 
+            {
+                "disposition": 1.28, 
+                "name": "AKMAGNUS", 
+                "texture": "_Lotus_Interface_Icons_Store_Akmagnus.png"
+            }, 
+            {
+                "disposition": 1.2, 
+                "name": "AKSOMATI", 
+                "texture": "_Lotus_Interface_Icons_Store_AkimboSomaPistols.png"
+            }, 
+            {
+                "disposition": 0.5, 
+                "name": "AKSTILETTO", 
+                "texture": "_Lotus_Interface_Icons_Store_TennoUzi.png"
+            }, 
+            {
+                "disposition": 0.5, 
+                "name": "AKSTILETTO PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_Primes_AkstilettoPrime.png"
+            }, 
+            {
+                "disposition": 1.2, 
+                "name": "AKVASTO", 
+                "texture": "_Lotus_Interface_Icons_Store_DualVasto.png"
+            }, 
+            {
+                "disposition": 1.2, 
+                "name": "AKVASTO PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_Primes_AkvastoPrime.png"
+            }, 
+            {
+                "disposition": 1.52, 
+                "name": "AKZANI", 
+                "texture": "_Lotus_Interface_Icons_Store_HarlequinPistols.png"
+            }, 
+            {
+                "disposition": 1.3, 
+                "name": "ANGSTRUM", 
+                "texture": "_Lotus_Interface_Icons_Store_CorpusHandRocket.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "ARCA SCISCO", 
+                "texture": "_Lotus_Interface_Icons_Store_CrpScopePistol.png"
+            }, 
+            {
+                "disposition": 0.8, 
+                "name": "ATOMOS", 
+                "texture": "_Lotus_Interface_Icons_Store_GrnHeatGun.png"
+            }, 
+            {
+                "disposition": 1.25, 
+                "name": "AZIMA", 
+                "texture": "_Lotus_Interface_Icons_Store_SundialPistol.png"
+            }, 
+            {
+                "disposition": 1.05, 
+                "name": "BALLISTICA", 
+                "texture": "_Lotus_Interface_Icons_Store_TennoAutoCrossbow.png"
+            }, 
+            {
+                "disposition": 1.05, 
+                "name": "BALLISTICA PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_Primes_PrimeBallistica.png"
+            }, 
+            {
+                "disposition": 1.51, 
+                "name": "BOLTO", 
+                "texture": "_Lotus_Interface_Icons_Store_Lex.png"
+            }, 
+            {
+                "disposition": 1.1, 
+                "name": "BRAKK", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerHandShotgun.png"
+            }, 
+            {
+                "disposition": 1.35, 
+                "name": "BRONCO", 
+                "texture": "_Lotus_Interface_Icons_Store_HandCannon.png"
+            }, 
+            {
+                "disposition": 1.35, 
+                "name": "BRONCO PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_PrimeBronco.png"
+            }, 
+            {
+                "disposition": 1.35, 
+                "name": "CASTANAS", 
+                "texture": "_Lotus_Interface_Icons_Store_TaserStar.png"
+            }, 
+            {
+                "disposition": 1.52, 
+                "name": "CESTRA", 
+                "texture": "_Lotus_Interface_Icons_Store_CorpusMinigun.png"
+            }, 
+            {
+                "disposition": 1.1, 
+                "name": "CYCRON", 
+                "texture": "_Lotus_Interface_Icons_Store_CrpChargeGun.png"
+            }, 
+            {
+                "disposition": 1.3, 
+                "name": "DESPAIR", 
+                "texture": "_Lotus_Interface_Icons_Store_StalkerKunai.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "DETRON", 
+                "texture": "_Lotus_Interface_Icons_Store_CorpusHandCannon.png"
+            }, 
+            {
+                "disposition": 1.39, 
+                "name": "DEX FURIS", 
+                "texture": "_Lotus_Interface_Icons_Store_DexFuris.png"
+            }, 
+            {
+                "disposition": 1.3, 
+                "name": "DUAL CESTRA", 
+                "texture": "_Lotus_Interface_Icons_Store_DualCorpusMinigun.png"
+            }, 
+            {
+                "disposition": 1.3, 
+                "name": "DUAL TOXOCYST", 
+                "texture": "_Lotus_Interface_Icons_Store_InfVomitGun.png"
+            }, 
+            {
+                "disposition": 1.45, 
+                "name": "EMBOLIST", 
+                "texture": "_Lotus_Interface_Icons_Store_InfestedPistol.png"
+            }, 
+            {
+                "disposition": 0.7, 
+                "name": "EUPHONA PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_Primes_EuphoraPrime.png"
+            }, 
+            {
+                "disposition": 1.35, 
+                "name": "FURIS", 
+                "texture": "_Lotus_Interface_Icons_Store_Furis.png"
+            }, 
+            {
+                "disposition": 1.3, 
+                "name": "FUSILAI", 
+                "texture": "_Lotus_Interface_Icons_Store_GlassKunai.png"
+            }, 
+            {
+                "disposition": 0.8, 
+                "name": "GAMMACOR", 
+                "texture": "_Lotus_Interface_Icons_Store_Gammacor.png"
+            }, 
+            {
+                "disposition": 0.95, 
+                "name": "HIKOU", 
+                "texture": "_Lotus_Interface_Icons_Store_ThrowingStar.png"
+            }, 
+            {
+                "disposition": 0.95, 
+                "name": "HIKOU PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_PrimeHikou.png"
+            }, 
+            {
+                "disposition": 1.1, 
+                "name": "HYSTRIX", 
+                "texture": "_Lotus_Interface_Icons_Store_QuillDartGun.png"
+            }, 
+            {
+                "disposition": 1.15, 
+                "name": "KNELL", 
+                "texture": "_Lotus_Interface_Icons_Store_PriestPistol.png"
+            }, 
+            {
+                "disposition": 1.35, 
+                "name": "KOHMAK", 
+                "texture": "_Lotus_Interface_Icons_Store_GrnWindUpPistol.png"
+            }, 
+            {
+                "disposition": 1.53, 
+                "name": "KRAKEN", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerHeavyPistol.png"
+            }, 
+            {
+                "disposition": 1.25, 
+                "name": "KULSTAR", 
+                "texture": "_Lotus_Interface_Icons_Store_GrnTorpedoPistol.png"
+            }, 
+            {
+                "disposition": 1.51, 
+                "name": "KUNAI", 
+                "texture": "_Lotus_Interface_Icons_Store_KunaiThrowingKnives.png"
+            }, 
+            {
+                "disposition": 1.35, 
+                "name": "LATO", 
+                "texture": "_Lotus_Interface_Icons_Store_Pistol.png"
+            }, 
+            {
+                "disposition": 1.35, 
+                "name": "LATO PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_LatoPrime.png"
+            }, 
+            {
+                "disposition": 1.35, 
+                "name": "LATO VANDAL", 
+                "texture": "_Lotus_Interface_Icons_Store_LatoVandal.png"
+            }, 
+            {
+                "disposition": 0.7, 
+                "name": "LEX", 
+                "texture": "_Lotus_Interface_Icons_Store_Bolto.png"
+            }, 
+            {
+                "disposition": 0.7, 
+                "name": "LEX PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_PrimeLex.png"
+            }, 
+            {
+                "disposition": 1.53, 
+                "name": "MAGNUS", 
+                "texture": "_Lotus_Interface_Icons_Store_TennoMagnum.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "MARA DETRON", 
+                "texture": "_Lotus_Interface_Icons_Store_VTDetron.png"
+            }, 
+            {
+                "disposition": 0.8, 
+                "name": "MARELOK", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerLeverActionPistol.png"
+            }, 
+            {
+                "disposition": 1.35, 
+                "name": "MK1-FURIS", 
+                "texture": "_Lotus_Interface_Icons_Store_Furis.png"
+            }, 
+            {
+                "disposition": 1.51, 
+                "name": "MK1-KUNAI", 
+                "texture": "_Lotus_Interface_Icons_Store_KunaiThrowingKnives.png"
+            }, 
+            {
+                "disposition": 1.45, 
+                "name": "NUKOR", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerMicrowaveGun.png"
+            }, 
+            {
+                "disposition": 1.1, 
+                "name": "OCUCOR", 
+                "texture": "_Lotus_Interface_Icons_Store_CrpSentExperimentPistol.png"
+            }, 
+            {
+                "disposition": 0.95, 
+                "name": "PANDERO", 
+                "texture": "_Lotus_Interface_Icons_Store_TnBardPistol.png"
+            }, 
+            {
+                "disposition": 1.1, 
+                "name": "PLINX", 
+                "texture": "_Lotus_Interface_Icons_Store_CrpBlastorWeapon.png"
+            }, 
+            {
+                "disposition": 1.05, 
+                "name": "POX", 
+                "texture": "_Lotus_Interface_Icons_Store_InfProximityStars.png"
+            }, 
+            {
+                "disposition": 1.3, 
+                "name": "PRISMA TWIN GREMLINS", 
+                "texture": "_Lotus_Interface_Icons_Store_PrismaTwinGremlins.png"
+            }, 
+            {
+                "disposition": 0.8, 
+                "name": "PYRANA", 
+                "texture": "_Lotus_Interface_Icons_Store_SawnOffShotgun.png"
+            }, 
+            {
+                "disposition": 0.8, 
+                "name": "PYRANA PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_Primes_PyranaPrime.png"
+            }, 
+            {
+                "disposition": 1.05, 
+                "name": "RAKTA BALLISTICA", 
+                "texture": "_Lotus_Interface_Icons_Store_RVBallistica.png"
+            }, 
+            {
+                "disposition": 1.35, 
+                "name": "SANCTI CASTANAS", 
+                "texture": "_Lotus_Interface_Icons_Store_NLCastanas.png"
+            }, 
+            {
+                "disposition": 1.3, 
+                "name": "SECURA DUAL CESTRA", 
+                "texture": "_Lotus_Interface_Icons_Store_PSDualCestra.png"
+            }, 
+            {
+                "disposition": 1.5, 
+                "name": "SEER", 
+                "texture": "_Lotus_Interface_Icons_Store_CaptainVorPistol.png"
+            }, 
+            {
+                "disposition": 1.15, 
+                "name": "SICARUS", 
+                "texture": "_Lotus_Interface_Icons_Store_TennoBurstPistol.png"
+            }, 
+            {
+                "disposition": 1.15, 
+                "name": "SICARUS PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_PrimeSicarus.png"
+            }, 
+            {
+                "disposition": 0.8, 
+                "name": "SONICOR", 
+                "texture": "_Lotus_Interface_Icons_Store_CrpAirPistolArray.png"
+            }, 
+            {
+                "disposition": 1.49, 
+                "name": "SPECTRA", 
+                "texture": "_Lotus_Interface_Icons_Store_CorpusModularPistol.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "SPIRA", 
+                "texture": "_Lotus_Interface_Icons_Store_LiDagger.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "SPIRA PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_Primes_PrimeLiDagger.png"
+            }, 
+            {
+                "disposition": 0.53, 
+                "name": "STATICOR", 
+                "texture": "_Lotus_Interface_Icons_Store_CrpElectroMag.png"
+            }, 
+            {
+                "disposition": 1.3, 
+                "name": "STUBBA", 
+                "texture": "_Lotus_Interface_Icons_Store_GrnUziWeapon.png"
+            }, 
+            {
+                "disposition": 1.48, 
+                "name": "STUG", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerCrossbowGooGun.png"
+            }, 
+            {
+                "disposition": 0.8, 
+                "name": "SYNOID GAMMACOR", 
+                "texture": "_Lotus_Interface_Icons_Store_SynoidGammacor.png"
+            }, 
+            {
+                "disposition": 1.44, 
+                "name": "TALONS", 
+                "texture": "_Lotus_Interface_Icons_Store_U18throwingknives.png"
+            }, 
+            {
+                "disposition": 0.8, 
+                "name": "TELOS AKBOLTO", 
+                "texture": "_Lotus_Interface_Icons_Store_AHAkbolto.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "TWIN GRAKATAS", 
+                "texture": "_Lotus_Interface_Icons_Store_Akgrakata.png"
+            }, 
+            {
+                "disposition": 1.3, 
+                "name": "TWIN GREMLINS", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerBulbousSmg.png"
+            }, 
+            {
+                "disposition": 1.25, 
+                "name": "TWIN KOHMAK", 
+                "texture": "_Lotus_Interface_Icons_Store_DualKohmak.png"
+            }, 
+            {
+                "disposition": 1.2, 
+                "name": "TWIN ROGGA", 
+                "texture": "_Lotus_Interface_Icons_Store_GrnQueenGuardDualPistols.png"
+            }, 
+            {
+                "disposition": 1.41, 
+                "name": "TWIN VIPERS", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerLightPistolAkimbo.png"
+            }, 
+            {
+                "disposition": 1.41, 
+                "name": "TWIN VIPERS WRAITH", 
+                "texture": "_Lotus_Interface_Icons_Store_WraithTwinVipers.png"
+            }, 
+            {
+                "disposition": 1.51, 
+                "name": "TYSIS", 
+                "texture": "_Lotus_Interface_Icons_Store_InfestedDartPistol.png"
+            }, 
+            {
+                "disposition": 1.35, 
+                "name": "VASTO", 
+                "texture": "_Lotus_Interface_Icons_Store_TennoHandCannon.png"
+            }, 
+            {
+                "disposition": 1.35, 
+                "name": "VASTO PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_PrimeVasto.png"
+            }, 
+            {
+                "disposition": 0.8, 
+                "name": "VAYKOR MARELOK", 
+                "texture": "_Lotus_Interface_Icons_Store_SMMarelok.png"
+            }, 
+            {
+                "disposition": 1.45, 
+                "name": "VIPER", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerLightPistol.png"
+            }, 
+            {
+                "disposition": 1.45, 
+                "name": "VIPER WRAITH", 
+                "texture": "_Lotus_Interface_Icons_Store_WraithGrineerLightPistol.png"
+            }, 
+            {
+                "disposition": 1.2, 
+                "name": "ZAKTI", 
+                "texture": "_Lotus_Interface_Icons_Store_TnGuandaoPistol.png"
+            }, 
+            {
+                "disposition": 1.15, 
+                "name": "ZYLOK", 
+                "texture": "_Lotus_Interface_Icons_Store_ConclaveLeverPistol.png"
+            }
+        ], 
+		"Buffs": [{
+				"text": "|val|% 多重射击",
+				"curse": true,
+				"value": 119.7,
+				"prefix": "Sati",
+				"suffix": "Can"
+			},
+			{
+				"text": "|val|% 伤害",
+				"curse": true,
+				"value": 219.6,
+				"prefix": "Visi",
+				"suffix": "Ata"
+			},
+			{
+				"text": "|val|% 冲击伤害",
+				"curse": true,
+				"value": 119.97,
+				"prefix": "Magna",
+				"suffix": "Ton"
+			},
+			{
+				"text": "|val|% 穿刺伤害",
+				"curse": true,
+				"value": 119.97,
+				"prefix": "Insi",
+				"suffix": "Cak"
+			},
+			{
+				"text": "|val|% 切割伤害",
+				"curse": true,
+				"value": 119.97,
+				"prefix": "Sci",
+				"suffix": "Sus"
+			},
+			{
+				"text": "|val|% 暴击几率",
+				"curse": true,
+				"value": 149.99,
+				"prefix": "Crita",
+				"suffix": "Cron"
+			},
+			{
+				"text": "|val|% 暴击伤害",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Acri",
+				"suffix": "Tis"
+			},
+			{
+				"text": "|val|% 火焰伤害",
+				"value": 90.0,
+				"prefix": "Igni",
+				"suffix": "Pha"
+			},
+			{
+				"text": "|val|% 冰冻伤害",
+				"value": 90.0,
+				"prefix": "Geli",
+				"suffix": "Do"
+			},
+			{
+				"text": "|val|% 电击伤害",
+				"value": 90.0,
+				"prefix": "Vexi",
+				"suffix": "Tio"
+			},
+			{
+				"text": "|val|% 毒素伤害",
+				"value": 90.0,
+				"prefix": "Toxi",
+				"suffix": "Tox"
+			},
+			{
+				"text": "|val|% 触发几率",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Hexa",
+				"suffix": "Dex"
+			},
+			{
+				"text": "|val|% 触发时间",
+				"curse": true,
+				"value": 99.99,
+				"prefix": "Deci",
+				"suffix": "Des"
+			},
+			{
+				"text": "|val|% 对Grineer伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Agri",
+				"suffix": "Con"
+			},
+			{
+				"text": "|val|% 对Corpus伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Manti",
+				"suffix": "Tron"
+			},
+			{
+				"text": "|val|% 对Infested伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Pura",
+				"suffix": "Ada"
+			},
+			{
+				"text": "|val|% 射击速度",
+				"curse": true,
+				"value": 74.7,
+				"prefix": "Croni",
+				"suffix": "Dra"
+			},
+			{
+				"text": "|val|% 弹匣容量",
+				"curse": true,
+				"value": 50.0,
+				"prefix": "Arma",
+				"suffix": "Tin"
+			},
+			{
+				"text": "|val|% 备弹",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Ampi",
+				"suffix": "Bin"
+			},
+			{
+				"text": "|val|% 子弹飞行速度",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Conci",
+				"suffix": "Nak"
+			},
+			{
+				"text": "|val|% 装填速度",
+				"curse": true,
+				"value": 50.0,
+				"prefix": "Feva",
+				"suffix": "Tak"
+			},
+			{
+				"text": "|val|% 后坐力",
+				"curse": true,
+				"value": -90.0,
+				"prefix": "Zeti",
+				"suffix": "Mag"
+			},
+			{
+				"text": "|val|% 变焦",
+				"curse": true,
+				"value": 80.1,
+				"prefix": "Hera",
+				"suffix": "Lis"
+			},
+			{
+				"text": "|val|m 穿透",
+				"value": 2.7,
+				"prefix": "Lexi",
+				"suffix": "Nok"
+			}
+		]
+	},
+    "Rifle": {
+        "Rivens": [
+            {
+                "disposition": 0.7, 
+                "name": "AMPREX", 
+                "texture": "_Lotus_Interface_Icons_Store_ChainLightningGun.png"
+            }, 
+            {
+                "disposition": 1.2, 
+                "name": "ARGONAK", 
+                "texture": "_Lotus_Interface_Icons_Store_LaserAimRifle.png"
+            }, 
+            {
+                "disposition": 1.415, 
+                "name": "ATTICA", 
+                "texture": "_Lotus_Interface_Icons_Store_TnoPrmryXbow.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "BATTACOR", 
+                "texture": "_Lotus_Interface_Icons_Store_CrpSentExperimentRifle.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "BAZA", 
+                "texture": "_Lotus_Interface_Icons_Store_TnSMGWeapon.png"
+            }, 
+            {
+                "disposition": 0.95, 
+                "name": "BOLTOR", 
+                "texture": "_Lotus_Interface_Icons_Store_Boltor.png"
+            }, 
+            {
+                "disposition": 0.95, 
+                "name": "BOLTOR PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_PrimeBoltor.png"
+            }, 
+            {
+                "disposition": 1.1, 
+                "name": "BRATON", 
+                "texture": "_Lotus_Interface_Icons_Store_CorpusAutoRifle.png"
+            }, 
+            {
+                "disposition": 1.1, 
+                "name": "BRATON PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_PrimeBraton.png"
+            }, 
+            {
+                "disposition": 1.1, 
+                "name": "BRATON VANDAL", 
+                "texture": "_Lotus_Interface_Icons_Store_VIPWeapon.png"
+            }, 
+            {
+                "disposition": 1.3, 
+                "name": "BURSTON", 
+                "texture": "_Lotus_Interface_Icons_Store_Burston.png"
+            }, 
+            {
+                "disposition": 1.3, 
+                "name": "BURSTON PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_PrimeBurston.png"
+            }, 
+            {
+                "disposition": 1.45, 
+                "name": "BUZLOK", 
+                "texture": "_Lotus_Interface_Icons_Store_GrnGorgSniperRifle.png"
+            }, 
+            {
+                "disposition": 1.3, 
+                "name": "CARMINE PENTA", 
+                "texture": "_Lotus_Interface_Icons_Store_PentaLoginRewardSkin.png"
+            }, 
+            {
+                "disposition": 1.1, 
+                "name": "CERNOS", 
+                "texture": "_Lotus_Interface_Icons_Store_AntlerBow.png"
+            }, 
+            {
+                "disposition": 1.1, 
+                "name": "CERNOS PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_CernosPrime.png"
+            }, 
+            {
+                "disposition": 1.3, 
+                "name": "DAIKYU", 
+                "texture": "_Lotus_Interface_Icons_Store_AsymmetricBow.png"
+            }, 
+            {
+                "disposition": 1.3, 
+                "name": "DERA", 
+                "texture": "_Lotus_Interface_Icons_Store_CorpusEnergyRifle.png"
+            }, 
+            {
+                "disposition": 1.3, 
+                "name": "DERA VANDAL", 
+                "texture": "_Lotus_Interface_Icons_Store_DeraVandal.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "DEX SYBARIS", 
+                "texture": "_Lotus_Interface_Icons_Store_DexTheThird.png"
+            }, 
+            {
+                "disposition": 1.1, 
+                "name": "DREAD", 
+                "texture": "_Lotus_Interface_Icons_Store_StalkerBow.png"
+            }, 
+            {
+                "disposition": 1.15, 
+                "name": "FERROX", 
+                "texture": "_Lotus_Interface_Icons_Store_CorpusSpearGun.png"
+            }, 
+            {
+                "disposition": 1.55, 
+                "name": "FLUX RIFLE", 
+                "texture": "_Lotus_Interface_Icons_Store_CorpusLaserRifle.png"
+            }, 
+            {
+                "disposition": 1.35, 
+                "name": "GLAXION", 
+                "texture": "_Lotus_Interface_Icons_Store_CrpFreezeRayRifle.png"
+            }, 
+            {
+                "disposition": 1.4, 
+                "name": "GORGON", 
+                "texture": "_Lotus_Interface_Icons_Store_Gorgon.png"
+            }, 
+            {
+                "disposition": 1.4, 
+                "name": "GORGON WRAITH", 
+                "texture": "_Lotus_Interface_Icons_Store_WraithGorgon.png"
+            }, 
+            {
+                "disposition": 1.2, 
+                "name": "GRAKATA", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerAssaultRifle.png"
+            }, 
+            {
+                "disposition": 1.245, 
+                "name": "GRINLOK", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerLeverActionRifle.png"
+            }, 
+            {
+                "disposition": 1.55, 
+                "name": "HARPAK", 
+                "texture": "_Lotus_Interface_Icons_Store_GrnHarpoonGun.png"
+            }, 
+            {
+                "disposition": 1.2, 
+                "name": "HEMA", 
+                "texture": "_Lotus_Interface_Icons_Store_InfestedBurstRifle.png"
+            }, 
+            {
+                "disposition": 1.42, 
+                "name": "HIND", 
+                "texture": "_Lotus_Interface_Icons_Store_GrnBurstIcon.png"
+            }, 
+            {
+                "disposition": 0.55, 
+                "name": "IGNIS", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerFlameThrower.png"
+            }, 
+            {
+                "disposition": 0.55, 
+                "name": "IGNIS WRAITH", 
+                "texture": "_Lotus_Interface_Icons_Store_IgnisWraith.png"
+            }, 
+            {
+                "disposition": 1.2, 
+                "name": "JAVLOK", 
+                "texture": "_Lotus_Interface_Icons_Store_GrnFlameSpear.png"
+            }, 
+            {
+                "disposition": 1.28, 
+                "name": "KARAK", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerM16Rifle.png"
+            }, 
+            {
+                "disposition": 1.28, 
+                "name": "KARAK WRAITH", 
+                "texture": "_Lotus_Interface_Icons_Store_KarakWraith.png"
+            }, 
+            {
+                "disposition": 0.85, 
+                "name": "LANKA", 
+                "texture": "_Lotus_Interface_Icons_Store_CorpusSniperRifle.png"
+            }, 
+            {
+                "disposition": 1.25, 
+                "name": "LATRON", 
+                "texture": "_Lotus_Interface_Icons_Store_TennoSemiAutoRifle.png"
+            }, 
+            {
+                "disposition": 1.25, 
+                "name": "LATRON PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_LatronPrime.png"
+            }, 
+            {
+                "disposition": 1.25, 
+                "name": "LATRON WRAITH", 
+                "texture": "_Lotus_Interface_Icons_Store_WraithLatron.png"
+            }, 
+            {
+                "disposition": 0.9, 
+                "name": "LENZ", 
+                "texture": "_Lotus_Interface_Icons_Store_CrpBow.png"
+            }, 
+            {
+                "disposition": 1.55, 
+                "name": "MITER", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerSawbladeWeapon.png"
+            }, 
+            {
+                "disposition": 1.1, 
+                "name": "MK1-BRATON", 
+                "texture": "_Lotus_Interface_Icons_Store_CorpusAutoRifle.png"
+            }, 
+            {
+                "disposition": 1.2, 
+                "name": "MK1-PARIS", 
+                "texture": "_Lotus_Interface_Icons_Store_HuntingBow.png"
+            }, 
+            {
+                "disposition": 1.35, 
+                "name": "MUTALIST CERNOS", 
+                "texture": "_Lotus_Interface_Icons_Store_InfCernos.png"
+            }, 
+            {
+                "disposition": 1.55, 
+                "name": "MUTALIST QUANTA", 
+                "texture": "_Lotus_Interface_Icons_Store_InfCrpShockSwarm.png"
+            }, 
+            {
+                "disposition": 1.05, 
+                "name": "NAGANTAKA", 
+                "texture": "_Lotus_Interface_Icons_Store_GarudaCrossbow.png"
+            }, 
+            {
+                "disposition": 1.3, 
+                "name": "OGRIS", 
+                "texture": "_Lotus_Interface_Icons_Store_Ogris.png"
+            }, 
+            {
+                "disposition": 1.15, 
+                "name": "OPTICOR", 
+                "texture": "_Lotus_Interface_Icons_Store_CrpBFG.png"
+            }, 
+            {
+                "disposition": 1.15, 
+                "name": "OPTICOR VANDAL", 
+                "texture": "_Lotus_Interface_Icons_Store_OpticorVandal.png"
+            }, 
+            {
+                "disposition": 1.4, 
+                "name": "PANTHERA", 
+                "texture": "_Lotus_Interface_Icons_Store_TennoMiter.png"
+            }, 
+            {
+                "disposition": 1.315, 
+                "name": "PARACYST", 
+                "texture": "_Lotus_Interface_Icons_Store_InfQuantaRifle.png"
+            }, 
+            {
+                "disposition": 1.2, 
+                "name": "PARIS", 
+                "texture": "_Lotus_Interface_Icons_Store_HuntingBow.png"
+            }, 
+            {
+                "disposition": 1.2, 
+                "name": "PARIS PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_PrimeBowM.png"
+            }, 
+            {
+                "disposition": 1.3, 
+                "name": "PENTA", 
+                "texture": "_Lotus_Interface_Icons_Store_CorpusGrenadeLauncher.png"
+            }, 
+            {
+                "disposition": 1.4, 
+                "name": "PRISMA GORGON", 
+                "texture": "_Lotus_Interface_Icons_Store_PrismaGorgon.png"
+            }, 
+            {
+                "disposition": 1.2, 
+                "name": "PRISMA GRAKATA", 
+                "texture": "_Lotus_Interface_Icons_Store_PrismaGrakata.png"
+            }, 
+            {
+                "disposition": 1.245, 
+                "name": "PRISMA GRINLOK", 
+                "texture": "_Lotus_Interface_Icons_Store_PrismaGrinlok.png"
+            }, 
+            {
+                "disposition": 1.5, 
+                "name": "PRISMA TETRA", 
+                "texture": "_Lotus_Interface_Icons_Store_PrismaTetra.png"
+            }, 
+            {
+                "disposition": 1.1, 
+                "name": "QUANTA", 
+                "texture": "_Lotus_Interface_Icons_Store_CrpShockRifle.png"
+            }, 
+            {
+                "disposition": 1.1, 
+                "name": "QUANTA VANDAL", 
+                "texture": "_Lotus_Interface_Icons_Store_QuantaVandal.png"
+            }, 
+            {
+                "disposition": 1.25, 
+                "name": "QUARTAKK", 
+                "texture": "_Lotus_Interface_Icons_Store_GrnFourBarrelRifleWeapon.png"
+            }, 
+            {
+                "disposition": 1.1, 
+                "name": "RAKTA CERNOS", 
+                "texture": "_Lotus_Interface_Icons_Store_SyndicateRVCernos.png"
+            }, 
+            {
+                "disposition": 0.8, 
+                "name": "RUBICO", 
+                "texture": "_Lotus_Interface_Icons_Store_FiveShotSniper.png"
+            }, 
+            {
+                "disposition": 0.8, 
+                "name": "RUBICO PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_Primes_RubicoPrime.png"
+            }, 
+            {
+                "disposition": 1.15, 
+                "name": "SCOURGE", 
+                "texture": "_Lotus_Interface_Icons_Store_PriestSpearGun.png"
+            }, 
+            {
+                "disposition": 1.3, 
+                "name": "SECURA PENTA", 
+                "texture": "_Lotus_Interface_Icons_Store_SyndicatePSPenta.png"
+            }, 
+            {
+                "disposition": 0.85, 
+                "name": "SIMULOR", 
+                "texture": "_Lotus_Interface_Icons_Store_CephPrimary.png"
+            }, 
+            {
+                "disposition": 1.25, 
+                "name": "SNIPETRON", 
+                "texture": "_Lotus_Interface_Icons_Store_CorpusSniperRifle.png"
+            }, 
+            {
+                "disposition": 1.25, 
+                "name": "SNIPETRON VANDAL", 
+                "texture": "_Lotus_Interface_Icons_Store_SnipertronVandal.png"
+            }, 
+            {
+                "disposition": 0.75, 
+                "name": "SOMA", 
+                "texture": "_Lotus_Interface_Icons_Store_U10DesignCouncilTennoAR.png"
+            }, 
+            {
+                "disposition": 0.75, 
+                "name": "SOMA PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_PrimeSoma.png"
+            }, 
+            {
+                "disposition": 1.15, 
+                "name": "STRADAVAR", 
+                "texture": "_Lotus_Interface_Icons_Store_TennoTommyGun.png"
+            }, 
+            {
+                "disposition": 0.85, 
+                "name": "SUPRA", 
+                "texture": "_Lotus_Interface_Icons_Store_CorpusMachineGun.png"
+            }, 
+            {
+                "disposition": 0.85, 
+                "name": "SUPRA VANDAL", 
+                "texture": "_Lotus_Interface_Icons_Store_SupraVandal.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "SYBARIS", 
+                "texture": "_Lotus_Interface_Icons_Store_TnoLeverActionRifle.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "SYBARIS PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_SybarisPrime.png"
+            }, 
+            {
+                "disposition": 1.315, 
+                "name": "SYNAPSE", 
+                "texture": "_Lotus_Interface_Icons_Store_U10InfPrimary.png"
+            }, 
+            {
+                "disposition": 0.85, 
+                "name": "SYNOID SIMULOR", 
+                "texture": "_Lotus_Interface_Icons_Store_SyndicateCSSimulor.png"
+            }, 
+            {
+                "disposition": 0.95, 
+                "name": "TELOS BOLTOR", 
+                "texture": "_Lotus_Interface_Icons_Store_SyndicateAHBoltor.png"
+            }, 
+            {
+                "disposition": 1.05, 
+                "name": "TENORA", 
+                "texture": "_Lotus_Interface_Icons_Store_TnBardRifle.png"
+            }, 
+            {
+                "disposition": 1.5, 
+                "name": "TETRA", 
+                "texture": "_Lotus_Interface_Icons_Store_CorpusUMP.png"
+            }, 
+            {
+                "disposition": 1.1, 
+                "name": "TIBERON", 
+                "texture": "_Lotus_Interface_Icons_Store_DrakeRifle.png"
+            }, 
+            {
+                "disposition": 1.1, 
+                "name": "TIBERON PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_Primes_TiberonPrime.png"
+            }, 
+            {
+                "disposition": 0.95, 
+                "name": "TONKOR", 
+                "texture": "_Lotus_Interface_Icons_Store_GrnGrenadeLauncher.png"
+            }, 
+            {
+                "disposition": 1.3, 
+                "name": "TORID", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerGrenadeLauncher.png"
+            }, 
+            {
+                "disposition": 0.85, 
+                "name": "VECTIS", 
+                "texture": "_Lotus_Interface_Icons_Store_TennoSniperRifle.png"
+            }, 
+            {
+                "disposition": 0.85, 
+                "name": "VECTIS PRIME", 
+                "texture": "_Lotus_Interface_Icons_Store_VectisPrime.png"
+            }, 
+            {
+                "disposition": 1.2, 
+                "name": "VELDT", 
+                "texture": "_Lotus_Interface_Icons_Store_TnRevolverRifle.png"
+            }, 
+            {
+                "disposition": 1.4, 
+                "name": "VULKAR", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerSniperRifle.png"
+            }, 
+            {
+                "disposition": 1.4, 
+                "name": "VULKAR WRAITH", 
+                "texture": "_Lotus_Interface_Icons_Store_VulkarWraith.png"
+            }, 
+            {
+                "disposition": 1.15, 
+                "name": "ZARR", 
+                "texture": "_Lotus_Interface_Icons_Store_GrineerCannon.png"
+            }, 
+            {
+                "disposition": 1.1, 
+                "name": "ZENITH", 
+                "texture": "_Lotus_Interface_Icons_Store_SundialRifle.png"
+            }, 
+            {
+                "disposition": 1.25, 
+                "name": "ZHUGE", 
+                "texture": "_Lotus_Interface_Icons_Store_RepeatingCrossbow.png"
+            }
+        ], 
+		"Buffs": [{
+				"text": "|val|% 多重射击",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Sati",
+				"suffix": "Can"
+			},
+			{
+				"text": "|val|% 伤害",
+				"curse": true,
+				"value": 165.0,
+				"prefix": "Visi",
+				"suffix": "Ata"
+			},
+			{
+				"text": "|val|% 冲击伤害",
+				"curse": true,
+				"value": 119.97,
+				"prefix": "Magna",
+				"suffix": "Ton"
+			},
+			{
+				"text": "|val|% 穿刺伤害",
+				"curse": true,
+				"value": 119.97,
+				"prefix": "Insi",
+				"suffix": "Cak"
+			},
+			{
+				"text": "|val|% 切割伤害",
+				"curse": true,
+				"value": 119.97,
+				"prefix": "Sci",
+				"suffix": "Sus"
+			},
+			{
+				"text": "|val|% 暴击几率",
+				"curse": true,
+				"value": 149.99,
+				"prefix": "Crita",
+				"suffix": "Cron"
+			},
+			{
+				"text": "|val|% 暴击伤害",
+				"curse": true,
+				"value": 120.0,
+				"prefix": "Acri",
+				"suffix": "Tis"
+			},
+			{
+				"text": "|val|% 火焰伤害",
+				"value": 90.0,
+				"prefix": "Igni",
+				"suffix": "Pha"
+			},
+			{
+				"text": "|val|% 冰冻伤害",
+				"value": 90.0,
+				"prefix": "Geli",
+				"suffix": "Do"
+			},
+			{
+				"text": "|val|% 电击伤害",
+				"value": 90.0,
+				"prefix": "Vexi",
+				"suffix": "Tio"
+			},
+			{
+				"text": "|val|% 毒素伤害",
+				"value": 90.0,
+				"prefix": "Toxi",
+				"suffix": "Tox"
+			},
+			{
+				"text": "|val|% 触发几率",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Hexa",
+				"suffix": "Dex"
+			},
+			{
+				"text": "|val|% 触发时间",
+				"curse": true,
+				"value": 99.99,
+				"prefix": "Deci",
+				"suffix": "Des"
+			},
+			{
+				"text": "|val|% 对Grineer伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Agri",
+				"suffix": "Con"
+			},
+			{
+				"text": "|val|% 对Corpus伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Manti",
+				"suffix": "Tron"
+			},
+			{
+				"text": "|val|% 对Infested伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Pura",
+				"suffix": "Ada"
+			},
+			{
+				"text": "|val|% 射击速度 (弓类武器x2)",
+				"curse": true,
+				"value": 60.03,
+				"prefix": "Croni",
+				"suffix": "Dra"
+			},
+			{
+				"text": "|val|% 弹匣容量",
+				"curse": true,
+				"value": 50.0,
+				"prefix": "Arma",
+				"suffix": "Tin"
+			},
+			{
+				"text": "|val|% 备弹",
+				"curse": true,
+				"value": 49.95,
+				"prefix": "Ampi",
+				"suffix": "Bin"
+			},
+			{
+				"text": "|val|% 子弹飞行速度",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Conci",
+				"suffix": "Nak"
+			},
+			{
+				"text": "|val|% 装填速度",
+				"curse": true,
+				"value": 50.0,
+				"prefix": "Feva",
+				"suffix": "Tak"
+			},
+			{
+				"text": "|val|% 后坐力",
+				"curse": true,
+				"value": -90.0,
+				"prefix": "Zeti",
+				"suffix": "Mag"
+			},
+			{
+				"text": "|val|% 变焦",
+				"curse": true,
+				"value": 59.99,
+				"prefix": "Hera",
+				"suffix": "Lis"
+			},
+			{
+				"text": "|val|m 穿透",
+				"value": 2.7,
+				"prefix": "Lexi",
+				"suffix": "Nok"
+			}
+		]
+	},
+	"Zaw": {
+		"Rivens": [
+            {
+                "disposition": 1.0, 
+                "name": "BALLA", 
+                "texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipOne.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "CYATH", 
+                "texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipFour.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "DEHTAT", 
+                "texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipFive.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "DOKRAHM", 
+                "texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipEleven.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "KRONSH", 
+                "texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipSix.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "MEWAN", 
+                "texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipThree.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "OOLTHA", 
+                "texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipTwo.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "PLAGUE KEEWAR", 
+                "texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeInfestedTipTwo.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "PLAGUE KRIPATH", 
+                "texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeInfestedTipOne.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "RABVEE", 
+                "texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipTen.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "SEPFAHN", 
+                "texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_ModularMeleeTipNine.png"
+			}
+		],
+		"Buffs": [{
+				"text": "|val|% 近战伤害",
+				"value": 164.7,
+				"prefix": "Visi",
+				"suffix": "Ata"
+			},
+			{
+				"text": "|val|% 冲击伤害",
+				"curse": true,
+				"value": 119.7,
+				"prefix": "Magna",
+				"suffix": "Ton"
+			},
+			{
+				"text": "|val|% 穿刺伤害",
+				"curse": true,
+				"value": 119.7,
+				"prefix": "Insi",
+				"suffix": "Cak"				
+			},
+			{
+				"text": "|val|% 切割伤害",
+				"curse": true,
+				"value": 119.7,
+				"prefix": "Sci",
+				"suffix": "Sus"
+			},
+			{
+				"text": "|val|% 暴击几率",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Crita",
+				"suffix": "Cron"
+			},
+			{
+				"text": "|val|% 暴击伤害",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Acri",
+				"suffix": "Tis"
+			},
+			{
+				"text": "|val|% 火焰伤害",
+				"value": 90.0,
+				"prefix": "Igni",
+				"suffix": "Pha"
+			},
+			{
+				"text": "|val|% 冰冻伤害",
+				"value": 90.0,
+				"prefix": "Geli",
+				"suffix": "Do"
+			},
+			{
+				"text": "|val|% 电击伤害",
+				"value": 90.0,
+				"prefix": "Vexi",
+				"suffix": "Tio"
+			},
+			{
+				"text": "|val|% 毒素伤害",
+				"value": 90.0,
+				"prefix": "Toxi",
+				"suffix": "Tox"
+			},
+			{
+				"text": "|val|% 触发几率",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Hexa",
+				"suffix": "Dex"
+			},
+			{
+				"text": "|val|% 触发时间",
+				"curse": true,
+				"value": 99.99,
+				"prefix": "Deci",
+				"suffix": "Des"
+			},
+			{
+				"text": "|val|% 对Grineer伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Agri",
+				"suffix": "Con"
+			},
+			{
+				"text": "|val|% 对Corpus伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Manti",
+				"suffix": "Tron"
+			},
+			{
+				"text": "|val|% 对Infested伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Pura",
+				"suffix": "Ada"
+			},
+			{
+				"text": "|val|% 攻击速度",
+				"curse": true,
+				"value": 54.9,
+				"prefix": "Croni",
+				"suffix": "Dra"
+			},
+			{
+				"text": "|val|% 导引效率",
+				"value": 90.0,
+				"prefix": "Uti",
+				"suffix": "Tia"
+			},
+			{
+				"text": "|val|% 导引伤害",
+				"value": 150.3,
+				"prefix": "Tori",
+				"suffix": "Bo"
+			},
+			{
+				"text": "|val|% 终结技伤害",
+				"curse": true,
+				"value": 119.7,
+				"prefix": "Exi",
+				"suffix": "Cta"
+			},
+			{
+				"text": "|val|% 范围",
+				"curse": true,
+				"value": 119.7,
+				"prefix": "Locti",
+				"suffix": "Tor"
+			},
+			{
+				"text": "滑行攻击有 |val|% 几率造成暴击",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Pleci",
+				"suffix": "Nent"
+			},
+			{
+				"text": "|val|s 连击时间",
+				"curse": true,
+				"value": 8.1,
+				"prefix": "Tempi",
+				"suffix": "Nem"
+			}
+		]
+	},
+    "Kitgun": {
+        "Rivens": [
+            {
+                "disposition": 0.8, 
+                "name": "CATCHMOON", 
+                "texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_SUModularSecondary_SUModularSecondaryBarrelAPart.png"
+            }, 
+            {
+                "disposition": 1.0, 
+                "name": "GAZE", 
+                "texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_SUModularSecondary_SUModularSecondaryBarrelDPart.png"
+            }, 
+            {
+                "disposition": 0.9, 
+                "name": "RATTLEGUTS", 
+                "texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_SUModularSecondary_SUModularSecondaryBarrelCPart.png"
+            }, 
+            {
+                "disposition": 0.85, 
+                "name": "TOMBFINGER", 
+                "texture": "_Lotus_Interface_Icons_Store_Weapons_Modular_SUModularSecondary_SUModularSecondaryBarrelBPart.png"
+            }
+        ], 
+		"Buffs": [{
+				"text": "|val|% 多重射击",
+				"curse": true,
+				"value": 119.7,
+				"prefix": "Sati",
+				"suffix": "Can"
+			},
+			{
+				"text": "|val|% 伤害",
+				"curse": true,
+				"value": 219.6,
+				"prefix": "Visi",
+				"suffix": "Ata"
+			},
+			{
+				"text": "|val|% 冲击伤害",
+				"curse": true,
+				"value": 119.97,
+				"prefix": "Magna",
+				"suffix": "Ton"
+			},
+			{
+				"text": "|val|% 穿刺伤害",
+				"curse": true,
+				"value": 119.97,
+				"prefix": "Insi",
+				"suffix": "Cak"
+			},
+			{
+				"text": "|val|% 切割伤害",
+				"curse": true,
+				"value": 119.97,
+				"prefix": "Sci",
+				"suffix": "Sus"
+			},
+			{
+				"text": "|val|% 暴击几率",
+				"curse": true,
+				"value": 149.99,
+				"prefix": "Crita",
+				"suffix": "Cron"
+			},
+			{
+				"text": "|val|% 暴击伤害",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Acri",
+				"suffix": "Tis"
+			},
+			{
+				"text": "|val|% 火焰伤害",
+				"value": 90.0,
+				"prefix": "Igni",
+				"suffix": "Pha"
+			},
+			{
+				"text": "|val|% 冰冻伤害",
+				"value": 90.0,
+				"prefix": "Geli",
+				"suffix": "Do"
+			},
+			{
+				"text": "|val|% 电击伤害",
+				"value": 90.0,
+				"prefix": "Vexi",
+				"suffix": "Tio"
+			},
+			{
+				"text": "|val|% 毒素伤害",
+				"value": 90.0,
+				"prefix": "Toxi",
+				"suffix": "Tox"
+			},
+			{
+				"text": "|val|% 触发几率",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Hexa",
+				"suffix": "Dex"
+			},
+			{
+				"text": "|val|% 触发时间",
+				"curse": true,
+				"value": 99.99,
+				"prefix": "Deci",
+				"suffix": "Des"
+			},
+			{
+				"text": "|val|% 对Grineer伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Agri",
+				"suffix": "Con"
+			},
+			{
+				"text": "|val|% 对Corpus伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Manti",
+				"suffix": "Tron"
+			},
+			{
+				"text": "|val|% 对Infested伤害",
+				"curse": true,
+				"value": 45.0,
+				"prefix": "Pura",
+				"suffix": "Ada"
+			},
+			{
+				"text": "|val|% 射击速度",
+				"curse": true,
+				"value": 74.7,
+				"prefix": "Croni",
+				"suffix": "Dra"
+			},
+			{
+				"text": "|val|% 弹匣容量",
+				"curse": true,
+				"value": 50.0,
+				"prefix": "Arma",
+				"suffix": "Tin"
+			},
+			{
+				"text": "|val|% 备弹",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Ampi",
+				"suffix": "Bin"
+			},
+			{
+				"text": "|val|% 子弹飞行速度",
+				"curse": true,
+				"value": 90.0,
+				"prefix": "Conci",
+				"suffix": "Nak"
+			},
+			{
+				"text": "|val|% 装填速度",
+				"curse": true,
+				"value": 50.0,
+				"prefix": "Feva",
+				"suffix": "Tak"
+			},
+			{
+				"text": "|val|% 后坐力",
+				"curse": true,
+				"value": -90.0,
+				"prefix": "Zeti",
+				"suffix": "Mag"
+			},
+			{
+				"text": "|val|% 变焦",
+				"curse": true,
+				"value": 80.1,
+				"prefix": "Hera",
+				"suffix": "Lis"
+			},
+			{
+				"text": "|val|m 穿透",
+				"value": 2.7,
+				"prefix": "Lexi",
+				"suffix": "Nok"
+			}
+		]
+	}
+}

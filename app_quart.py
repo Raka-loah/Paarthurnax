@@ -25,7 +25,7 @@ async def post():
 
         message, status_code = handler.handle(j)
 
-        return jsonify(message), status_code
+        return jsonify(message) if message != '' else '', status_code
 
     except Exception as e:
         app.logger.error(f"[Exception]:{e}")

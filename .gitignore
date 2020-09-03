@@ -5,11 +5,11 @@ ws.json
 *.pyc
 test.py
 *.log
-tools/*
-config.py
+tools
 data/lovestories.json
 __pycache__
 .python-version
 ignoreconfig
 installed
-settings/settings.json
+settings.json
+config.py

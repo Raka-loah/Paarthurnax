@@ -1,0 +1,98 @@
+{
+	"/lotus/types/game/missiondecks/eidolonjobmissionrewards/ghoulbountytablearewards": {
+		"value": "古纪B3遗物, 古纪P1遗物, 猎人肾上腺素, 猎人战备, 史度巴蓝图, 猎人追踪"
+	},
+	"/lotus/types/game/missiondecks/eidolonjobmissionrewards/ghoulbountytablebrewards": {
+		"value": "中纪L1遗物, 中纪V7遗物, 猎人复元, 猎人协力, 夸塔克蓝图, 猎人命令"
+	},
+	"/lotus/types/game/missiondecks/eidolonjobmissionrewards/tieratablearewards": {
+		"value": "蓄能重划, Gara机体蓝图, 抵近射击, 简化"
+	},
+	"/lotus/types/game/missiondecks/eidolonjobmissionrewards/tieratablebrewards": {
+		"value": "压迫点, Gara机体蓝图, 黄蜂蛰刺, 延伸"
+	},
+	"/lotus/types/game/missiondecks/eidolonjobmissionrewards/tieratablecrewards": {
+		"value": "生命力, Gara机体蓝图, 抵近射击, 聚精会神"
+	},
+	"/lotus/types/game/missiondecks/eidolonjobmissionrewards/tierbtablearewards": {
+		"value": "钢铁纤维, 古纪B3遗物, Gara系统蓝图, 蓄力装填, 炙热黄蜂"
+	},
+	"/lotus/types/game/missiondecks/eidolonjobmissionrewards/tierbtablebrewards": {
+		"value": "能量转化, 古纪V5遗物, Gara系统蓝图, 灵敏扳机, 收割螺旋"
+	},
+	"/lotus/types/game/missiondecks/eidolonjobmissionrewards/tierbtablecrewards": {
+		"value": "致命一击, 古纪T2遗物, Gara系统蓝图, 耐久强化, 冷面狂怒"
+	},
+	"/lotus/types/game/missiondecks/eidolonjobmissionrewards/tierctablearewards": {
+		"value": "角斗士圣盾, Madurai晶体, 前纪D2遗物, Gara神经光元蓝图, 预言协约, 飞光荒疫, 私法补给"
+	},
+	"/lotus/types/game/missiondecks/eidolonjobmissionrewards/tierctablebrewards": {
+		"value": "私法军备, Vazarin晶体, Unairu晶体, 前纪Z1遗物, Gara神经光元蓝图, 角斗士威猛, 破碎之风, 预言探求"
+	},
+	"/lotus/types/game/missiondecks/eidolonjobmissionrewards/tierctablecrewards": {
+		"value": "预言契约, Naramon晶体, Zenurik晶体, 前纪B2遗物, Gara神经光元蓝图, 私法热诚, 旋风虎击, 角斗士钳制"
+	},
+	"/lotus/types/game/missiondecks/eidolonjobmissionrewards/tierdtablearewards": {
+		"value": "角斗士猛突, Unairu晶体, Madurai晶体, 中纪L1遗物, 预言通灵, 终焉风暴, 私法侵犯"
+	},
+	"/lotus/types/game/missiondecks/eidolonjobmissionrewards/tierdtablebrewards": {
+		"value": "私法活力, Zenurik晶体, Vazarin晶体, 中纪N8遗物, 角斗士决心, 纵横双子, 预言神密"
+	},
+	"/lotus/types/game/missiondecks/eidolonjobmissionrewards/tierdtablecrewards": {
+		"value": "预言启示, Naramon晶体, 中纪V7遗物, 私法追踪, 沉没之爪, 角斗士灵巧"
+	},
+	"/lotus/types/game/missiondecks/eidolonjobmissionrewards/tieretablearewards": {
+		"value": "后纪K3遗物, 弗拉克斯亡魂左拳刃, 雕斩螳螂, 夜灵晶体蓝图"
+	},
+	"/lotus/types/game/missiondecks/eidolonjobmissionrewards/tieretablebrewards": {
+		"value": "后纪O3遗物, 弗拉克斯亡魂右拳刃, 猎鹰俯击, 夜灵晶体蓝图"
+	},
+	"/lotus/types/game/missiondecks/eidolonjobmissionrewards/tieretablecrewards": {
+		"value": "后纪L2遗物, 弗拉克斯亡魂蓝图, 回转尖峰, 夜灵晶体蓝图"
+	},
+	"/lotus/types/game/missiondecks/venusjobmissionrewards/venustieratablearewards": {
+		"value": "培训债务债券, Garuda机体蓝图, 古纪A2遗物"
+	},
+	"/lotus/types/game/missiondecks/venusjobmissionrewards/venustieratablebrewards": {
+		"value": "培训债务债券, Garuda机体蓝图, 古纪A2遗物"
+	},
+	"/lotus/types/game/missiondecks/venusjobmissionrewards/venustieratablecrewards": {
+		"value": "培训债务债券, Garuda机体蓝图, 古纪A2遗物"
+	},
+	"/lotus/types/game/missiondecks/venusjobmissionrewards/venustierbtablearewards": {
+		"value": "庇护债务债券, Garuda系统蓝图, 古纪B5遗物, 合成充能"
+	},
+	"/lotus/types/game/missiondecks/venusjobmissionrewards/venustierbtablebrewards": {
+		"value": "庇护债务债券, Garuda系统蓝图, 古纪B5遗物, 机甲超载"
+	},
+	"/lotus/types/game/missiondecks/venusjobmissionrewards/venustierbtablecrewards": {
+		"value": "庇护债务债券, Garuda系统蓝图, 古纪B5遗物, 技法猛袭"
+	},
+	"/lotus/types/game/missiondecks/venusjobmissionrewards/venustierctablearewards": {
+		"value": "医疗债务债券, Madurai晶体, Garuda神经光元蓝图, 前纪S8遗物, 合成解构"
+	},
+	"/lotus/types/game/missiondecks/venusjobmissionrewards/venustierctablebrewards": {
+		"value": "医疗债务债券, Unairu晶体, Garuda神经光元蓝图, 前纪S8遗物, 机甲充能"
+	},
+	"/lotus/types/game/missiondecks/venusjobmissionrewards/venustierctablecrewards": {
+		"value": "医疗债务债券, Naramon晶体, Garuda神经光元蓝图, 前纪S8遗物, 技法强化"
+	},
+	"/lotus/types/game/missiondecks/venusjobmissionrewards/venustierdtablearewards": {
+		"value": "预支债务债券, Vazarin晶体, 中纪K2遗物, 合成纤维"
+	},
+	"/lotus/types/game/missiondecks/venusjobmissionrewards/venustierdtablebrewards": {
+		"value": "预支债务债券, Zenurik晶体, 中纪G1遗物, 机甲强化"
+	},
+	"/lotus/types/game/missiondecks/venusjobmissionrewards/venustierdtablecrewards": {
+		"value": "预支债务债券, 中纪A2遗物, 技法引力"
+	},
+	"/lotus/types/game/missiondecks/venusjobmissionrewards/venustieretablearewards": {
+		"value": "家族债务债券, 后纪C3遗物, 合成反射"
+	},
+	"/lotus/types/game/missiondecks/venusjobmissionrewards/venustieretablebrewards": {
+		"value": "家族债务债券, 后纪K4遗物, 机甲脉冲"
+	},
+	"/lotus/types/game/missiondecks/venusjobmissionrewards/venustieretablecrewards": {
+		"value": "家族债务债券, 后纪L2遗物, 技法连带"
+	}
+}
