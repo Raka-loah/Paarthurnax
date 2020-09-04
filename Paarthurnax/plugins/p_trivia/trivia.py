@@ -4,7 +4,7 @@ import os
 import random
 import requests
 from datetime import datetime, timedelta
-from plugins.p_trivia.trivia_plugins.chinese_idioms.game import idioms_game
+from Paarthurnax.plugins.p_trivia.trivia_plugins.chinese_idioms.game import idioms_game
 from apscheduler.schedulers.background import BackgroundScheduler
 
 new_question_keyword = '/出题'
@@ -69,7 +69,8 @@ def triviabot(j, resp):
                 curr[j['group_id']]['job_hint'].remove()
             except:
                 pass
-            return f"[CQ:at,qq={j['sender']['user_id']}]{curr[j['group_id']]['answer_announce']}"
+            resp['reply'] = f"[CQ:at,qq={j['sender']['user_id']}]{curr[j['group_id']]['answer_announce']}"
+            return resp, 200
 
     return '', 204
 

@@ -10,7 +10,7 @@
 #   is keyword regex, 
 #   is suffix suppressed],
 
-import plugins.p_trivia.trivia as trivia
+import Paarthurnax.plugins.p_trivia.trivia as trivia
 
 Metadata = {
     'alert_functions': {

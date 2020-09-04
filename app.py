@@ -7,11 +7,9 @@ from flask import Flask, jsonify, request
 
 from Paarthurnax.core import Talking_Dragon
 
-import Paarthurnax.plugins.p_warframe.wfstate as wf
-
 app = Flask(__name__)
 
-handler = Talking_Dragon()
+dragon = Talking_Dragon()
 
 @app.route('/', methods=['POST'])
 def post():
@@ -24,7 +22,7 @@ def post():
         app.logger.setLevel(logging.INFO)
         app.logger.info(f"[{j.get('message_type', 'UNKNOWN').upper()}][{j.get('group_id','--')}][{nickname}({j['sender'].get('user_id', '')})]:{j['message']}")
 
-        message, status_code = handler.hear(j)
+        message, status_code = dragon.hear(j)
 
         return jsonify(message) if message != '' else '', status_code
     except Exception as e:
@@ -38,7 +36,7 @@ def patch():
             request_token = request.get_json(force=True)['token']
         except:
             request_token = ''
-        handler.reload(request_token)
+        dragon.reload(request_token)
     except Exception as e:
         app.logger.error(f"[Exception]:{e}")
         return '', 500

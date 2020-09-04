@@ -10,7 +10,7 @@
 #   is keyword regex, 
 #   is suffix suppressed],
 
-import plugins.p_warframe.wfstate as wf
+import Paarthurnax.plugins.p_warframe.wfstate as wf
 
 Metadata = {
     'alert_functions': {

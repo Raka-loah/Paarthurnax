@@ -1,12 +1,13 @@
 from apscheduler.schedulers.background import BackgroundScheduler
 import importlib
-import consts as internal
+import Paarthurnax.consts as internal
 import re
 import requests
 import time
 import os
 import json
 from html import unescape
+import sqlite3
 
 class Talking_Dragon:
     """
@@ -17,11 +18,11 @@ class Talking_Dragon:
 
     def __init__(self):
         try:
-            cfg = importlib.import_module('config')
+            cfg = importlib.import_module('Paarthurnax.config')
             self.__cfg = cfg
         except:
             try:
-                cfg = importlib.import_module('config-sample')
+                cfg = importlib.import_module('Paarthurnax.config-sample')
                 self.__cfg = cfg
             except:
                 raise ValueError('[Crush landing] Can not read config.py!')
@@ -36,7 +37,7 @@ class Talking_Dragon:
 
         for plugin in plugins:
             try:
-                module = importlib.import_module(f'plugins.{plugin}')
+                module = importlib.import_module(f'Paarthurnax.plugins.{plugin}')
                 metadata = module.Metadata
                 if 'alert_functions' in metadata:
                     self.__alerts.update(metadata['alert_functions'])
@@ -102,18 +103,14 @@ class Talking_Dragon:
 
     def hear(self, message):
         j = message
-        C = internal.const
         cfg = self.__cfg
-        bot_command = cfg.get('bot_command')
+        bot_command = self.__botcommand
 
         # Initialize Response payload
         resp = {
             'reply': '',
             'at_sender': False
         }
-
-        # Help text
-        suffix = cfg.get('suffix')
 
         # Unescape message
         if 'message' in j:
@@ -127,31 +124,20 @@ class Talking_Dragon:
         if j['post_type'] == 'request':
             if (j['request_type'] == 'group' and j['sub_type'] == 'invite') or j['request_type'] == 'friend':
                 resp = {
-                    'approve': cfg.get('approve')
+                    'approve': getattr(cfg, 'approve', False)
                 }
                 return resp, 200
 
         # Do not process self-sent messages
-        banned_sender = cfg.get('banned_sender')
+        banned_sender = getattr(cfg, 'banned_sender', [])
         if j['sender']['user_id'] == j['self_id'] or j['sender']['user_id'] in banned_sender:
             return '', 204
 
-        # CQ tag for @sender if message type is group
-        # title = ''
-        # if cfg.get('custom_title', None) and j['message_type'] == 'group':
-        #     if j['sender']['user_id'] in cfg.get('custom_title'):
-        #         if j['group_id'] in cfg.get('custom_title')[j['sender']['user_id']]:
-        #             title = cfg.get('custom_title')[j['sender']['user_id']][j['group_id']]
-        #         elif 'default' in cfg.get('custom_title')[j['sender']['user_id']]:
-        #             title = cfg.get('custom_title')[j['sender']['user_id']]['default']
-        #     elif 'default' in cfg.get('custom_title'):
-        #         title = cfg.get('custom_title')['default']
-
         j['at_sender'] = f"[CQ:at,qq={j['sender']['user_id']}]：\n" if j['message_type'] == 'group' else ''
 
-        j['base_url'] = cfg.get('base_url', 'http://127.0.0.1:5700')
+        j['base_url'] = getattr(cfg, 'base_url', 'http://127.0.0.1:5700')
 
-        j['suffix'] = cfg.get('suffix', '')
+        j['suffix'] = getattr(cfg, 'suffix', '')
 
         # Preprocessors
         for func in self.__preprocessors:
@@ -164,7 +150,7 @@ class Talking_Dragon:
                 return '', 204
 
         # Logs
-        log_msg = cfg.get('log_msg', True)
+        log_msg = getattr(cfg, 'log_msg', True)
         if log_msg and j['post_type'] == 'message':
             if j['message_type'] == 'group':
                 self.__log(
@@ -187,13 +173,13 @@ class Talking_Dragon:
         matched_keyword = None
         for keyword, function in bot_command.items():
             # Is it a regex?
-            if function[5] == C.REGEX:
+            if function[5] == True:
                 match = re.match(keyword, j['message'])
                 if match:
                     matched_keyword = keyword
                     break
             # Is it a full match?
-            elif function[4] == C.NO_MSG:
+            elif function[4] == False:
                 if j['message'] == keyword:
                     matched_keyword = keyword
                     break
@@ -205,7 +191,7 @@ class Talking_Dragon:
         # Check filter
         if matched_keyword is not None:
             if j['message_type'] == 'group':
-                if bot_command[matched_keyword][1] == C.BLOCKLIST:
+                if bot_command[matched_keyword][1] == 0:
                     if j['group_id'] in bot_command[matched_keyword][2]:
                         matched_keyword = None
                 else:
@@ -227,7 +213,7 @@ class Talking_Dragon:
             # Handle command
             j['keyword'] = matched_keyword
             try:
-                if bot_command[matched_keyword][4] == C.NO_MSG:
+                if bot_command[matched_keyword][4] == False:
                     msg = bot_command[matched_keyword][0]()
                 else:
                     msg = bot_command[matched_keyword][0](j)
@@ -236,18 +222,13 @@ class Talking_Dragon:
 
             if msg != '':
                 # Is keyword suppressed?
-                if bot_command[matched_keyword][6] == C.SUPPRESSED:
+                if bot_command[matched_keyword][6] == True:
                     resp['reply'] = msg
-                elif bot_command[matched_keyword][4] == C.NO_MSG:
+                elif bot_command[matched_keyword][4] == False:
                     resp['reply'] = msg + j['suffix']
                 else:
                     resp['reply'] = j['at_sender'] + msg
                 return resp, 200
-
-        # # Custom replies
-        # if j['message'].lower().replace(' ', '') in wf.data_dict['CR']:
-        #     resp['reply'] = wf.data_dict['CR'][j['message'].lower().replace(' ', '')]
-        #     return resp, 200
 
         # Postprocessors
         status_code = 204
@@ -256,21 +237,11 @@ class Talking_Dragon:
                 continue
             elif func[1] == 1 and j['group_id'] not in func[2]:
                 continue
-            resp_temp, status_code = func(j, resp)
+            resp_temp, status_code = func[0](j, resp)
             if resp_temp != '':
                 resp = resp_temp
             if status_code == 200:
                 break
-
-        # # "Execute" person nobody cared about within 120 seconds
-        # # The Nature of Humanity, will override Execution
-        # # cfg.noh_whitelist is deprecated and this is purely for backwards-compatibility
-        # # and will be removed in the near future
-        # noh_allowlist = cfg.get('noh_allowlist', cfg.get('noh_whitelist', []))
-        # if j['message_type'] == 'group':
-        #     resp['reply'] = misc.msg_executioner(j) 
-        #     if resp['reply'] == '' and j['group_id'] in noh_allowlist:
-        #         resp['reply'] = misc.msg_nature_of_humanity(j)
 
         if resp['reply'] != '':
             return resp, status_code
@@ -285,7 +256,7 @@ class Talking_Dragon:
         broadcast_group = self.__cfg.broadcast_group
         msg = broadcast_func()
         if msg != '':
-            url = f"{self.__cfg.get('base_url', 'http://127.0.0.1:5700')}/send_group_msg_async"
+            url = f"{self.__getattr(cfg, 'base_url', 'http://127.0.0.1:5700')}/send_group_msg_async"
             for group_id in broadcast_group:
                 payload = {
                     'group_id': group_id,
@@ -294,7 +265,7 @@ class Talking_Dragon:
                 requests.post(url, json=payload)
 
     def reload(self, request_token):
-        access_token = self.__cfg.get('reload_token', '')  # Access Token
+        access_token = self.__getattr(cfg, 'reload_token', '')  # Access Token
 
         if request_token == access_token and access_token != '':
             importlib.reload(wf)

@@ -43,30 +43,29 @@ def general():
     return food('')
 
 
-def msg_fetch(group_id, sender_id, lines=5):
-    try:
-        db = sqlite3.connect('qqbot.sqlite')
-        cursor = db.cursor()
-        cursor.execute(
-            '''SELECT message FROM messages WHERE group_id = ? AND sender_id = ? ORDER BY timestamp DESC LIMIT ?''',
-            (group_id,
-             sender_id,
-             lines))
-        rows = cursor.fetchall()
-        msg = '以下为[CQ:at,qq=%s]发送的最后%s条记录（如果有）：' % (sender_id, lines)
-        for row in rows:
-            msg += '\n%s' % (row[0])
-        return msg
-    except BaseException:
-        db.close()
-        return '[ERROR] Database error'
+# def msg_fetch(group_id, sender_id, lines=5):
+#     try:
+#         db = sqlite3.connect('qqbot.sqlite')
+#         cursor = db.cursor()
+#         cursor.execute(
+#             '''SELECT message FROM messages WHERE group_id = ? AND sender_id = ? ORDER BY timestamp DESC LIMIT ?''',
+#             (group_id,
+#              sender_id,
+#              lines))
+#         rows = cursor.fetchall()
+#         msg = '以下为[CQ:at,qq=%s]发送的最后%s条记录（如果有）：' % (sender_id, lines)
+#         for row in rows:
+#             msg += '\n%s' % (row[0])
+#         return msg
+#     except BaseException:
+#         db.close()
+#         return '[ERROR] Database error'
 
 
 def msg_stalker(self_id, group_id, sender_id, lines=5):
     try:
         # It's already cached in CQP client, caching again is redundant
-        raw_memberlist = requests.get(
-            'http://127.0.0.1:5700/get_group_member_list?group_id={}'.format(group_id)).json()
+        raw_memberlist = requests.get('http://127.0.0.1:5700/get_group_member_list?group_id={}'.format(group_id)).json()
         memberlist = []
         if raw_memberlist['data']:
             for member in raw_memberlist['data']:
@@ -98,28 +97,27 @@ def msg_stalker(self_id, group_id, sender_id, lines=5):
         return '[ERROR] 目标群号错误或系统故障'
 
 
-def msg_ar_wrapper(j):
-    if j['message'].startswith('/echo'):
-        query_id = re.match(r'.*\[CQ:at,qq=(.*)\].*', j['message'])
-        if query_id and j['message_type'] == 'group':
-            # return msg_fetch(j['group_id'], query_id.group(1))
-            return '请私聊机器人 /stalk {} {} 5'.format(
-                j['group_id'], query_id.group(1))
+def msg_ar_wrapper(j, resp):
+    # if j['message'].startswith('/echo'):
+    #     query_id = re.match(r'.*\[CQ:at,qq=(.*)\].*', j['message'])
+    #     if query_id and j['message_type'] == 'group':
+    #         # return msg_fetch(j['group_id'], query_id.group(1))
+    #         return '请私聊机器人 /stalk {} {} 5'.format(
+    #             j['group_id'], query_id.group(1))
 
     if j['post_type'] == 'message' and j['message_type'] == 'private':
-        if j['message'].startswith('/stalk'):
-            query_id = re.match(r'.* (\d+) (\d+) (\d+)', j['message'])
-            if query_id:
-                return msg_stalker(
-                    j['sender']['user_id'],
-                    query_id.group(1),
-                    query_id.group(2),
-                    query_id.group(3))
+        query_id = re.match(r'.* (\d+) (\d+) (\d+)', j['message'])
+        if query_id:
+            resp['reply'] = msg_stalker(
+                j['sender']['user_id'],
+                query_id.group(1),
+                query_id.group(2),
+                query_id.group(3))
+            return resp, 200
+    return '', 204
 
-    return ''
 
-
-def msg_executioner(j):
+def msg_executioner(j, resp):
     if j['message_type'] == 'group':
         try:
             db = sqlite3.connect('qqbot.sqlite')
@@ -129,20 +127,18 @@ def msg_executioner(j):
                 (j['group_id'],
                  ))
             rows = cursor.fetchall()
-            msg = ''
             if len(rows) == 2:
                 timespan = float(rows[0][0]) - float(rows[1][0])
-                if timespan > 180 and rows[0][1] == rows[1][1] and random.randint(
-                        1, 10) == 1:
-                    msg = random.choice(['哦', '这样', '真的吗', '挽尊', '然后呢', '嗯嗯'])
-            return msg
+                if timespan > 180 and rows[0][1] == rows[1][1] and random.randint(1, 10) == 1:
+                    resp['reply'] = random.choice(['哦', '这样', '真的吗', '挽尊', '然后呢', '嗯嗯'])
+            return resp, 200
         except BaseException:
             db.close()
-            return ''
-    return ''
+            return '', 204
+    return '', 204
 
 
-def msg_nature_of_humanity(j):
+def msg_nature_of_humanity(j, resp):
     if j['message_type'] == 'group':
         try:
             db = sqlite3.connect('qqbot.sqlite')
@@ -159,12 +155,12 @@ def msg_nature_of_humanity(j):
                 messages = [rows[0][0], rows[1][0], rows[2][0]]
                 senders = [rows[0][1], rows[1][1], rows[2][1]]
                 if messages[0] == messages[1] and messages[1] != messages[2] and senders[0] != senders[1]:
-                    msg = rows[0][0]
-                    return msg
+                    resp['reply'] = rows[0][0]
+                    return resp, 200
         except BaseException:
             db.close()
-            return ''
-    return ''
+            return '', 204
+    return '', 204
 
 
 def let_me_baidu_that_for_you(j):
@@ -197,7 +193,6 @@ def music_share(j):
     return msg
 
 
-#with open(os.path.dirname(os.path.abspath(__file__)) + '\\data\\tarot.json', 'r', encoding='utf-8') as E:
 with open(os.path.join(os.path.dirname(os.path.abspath(__file__)) ,'data' ,'tarot.json') , 'r', encoding='utf-8') as E:
     tarot_deck = json.loads(E.read())
 
@@ -388,7 +383,7 @@ def russian_roulette(j):
                     rr_banned[j['sender']['user_id']] = {}
                 rr_banned[j['sender']['user_id']][j['group_id']] = time.time()
                 requests.post(
-                    'http://127.0.0.1:5700/set_group_ban',
+                    f'{j["base_url"]}/set_group_ban',
                     json=payload)
             except BaseException:
                 return ''
@@ -408,7 +403,7 @@ def russian_roulette(j):
                     try:
                         del rr_banned[j['sender']['user_id']][group_id]
                         requests.post(
-                            'http://127.0.0.1:5700/set_group_ban', json=payload)
+                            f'{j["base_url"]}/set_group_ban', json=payload)
                     except BaseException:
                         return ''
                 return '由/rr产生的禁言已解除。'
