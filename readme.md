@@ -73,8 +73,9 @@
 ------
 - [X] 删除源代码冗余内容与功能（如Twisted支持）
 - [X] 重构老帕架构，将实际业务与机器人本身剥离：消息推送→老帕听到消息（`Talking_Dragon.hear`）→`Preprocessors`→`Plugins`→`Postprocessors`→返回回复内容
-- [ ] 改写原Warframe通报与其他功能为独立插件
-- [ ] 建立Preprocessor和Postprocessor机制，方便二次开发
+- [X] 改写原Warframe通报与其他功能为独立插件
+- [X] 建立Preprocessor和Postprocessor机制，方便二次开发
+- [ ] 所有processor和命令的优先级设定
 - [ ] 建立网页版设置项，因为做UI什么的都比不上做网页跨平台
 - [ ] 撰写插件标准文档
 - [ ] [NEXT]版本上线，并不兼容之前版本
