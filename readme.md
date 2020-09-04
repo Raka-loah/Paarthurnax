@@ -2,7 +2,7 @@
 
 符合[OneBot](https://github.com/howmanybots/onebot)标准的Warframe世界状态通报~~机器人~~机器龙**插件**，昵称“老帕”
 
-[NEXT] 指威力增强进化版，目前正在缓慢开发中。
+[NEXT] 指威力增强进化版，目前正在缓慢开发中，目前已基本实现之前实现过的通报功能。**请移步v1分支获取之前的可用版本**
 
 [![](https://img.shields.io/github/issues/Raka-loah/qqbot-plugin-warframe.svg)](https://github.com/Raka-loah/qqbot-plugin-warframe/issues)
 ![](https://img.shields.io/github/stars/Raka-loah/qqbot-plugin-warframe.svg)
@@ -45,7 +45,7 @@
 3. 命令行用 `python app.py` 启动。
 4. 设置bot平台通过HTTP POST到 `127.0.0.1:8888` 。
 5. 这就可以了。
-6. 启动后可以访问 `http://127.0.0.1:8888/admin` 对设置进行微调，保存后需重启机器人。
+6. [当前不可用] 启动后可以访问 `http://127.0.0.1:8888/admin` 对设置进行微调，保存后需重启机器人。
 
 **本插件的插件安装方法**
 ------
