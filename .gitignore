@@ -1,5 +1,6 @@
 
 .vscode/settings.json
+.vscode/launch.json
 ws.json
 *.sqlite
 *.pyc
