@@ -4,13 +4,11 @@ import importlib
 import logging
 
 from quart import Quart, jsonify, request
-from message_handler import Message_handler
-
-import wfstate as wf
+from Paarthurnax.core import Talking_Dragon
 
 app = Quart(__name__)
 
-handler = Message_handler()
+dragon = Talking_Dragon()
 
 @app.route('/', methods=['POST'])
 async def post():
@@ -23,9 +21,9 @@ async def post():
         app.logger.setLevel(logging.INFO)
         app.logger.info(f"[{j.get('message_type', 'UNKNOWN').upper()}][{j.get('group_id','--')}][{nickname}({j['sender'].get('user_id', '')})]:{j['message']}")
 
-        message, status_code = handler.handle(j)
+        message, status_code = dragon.hear(j)
 
-        return jsonify(message), status_code
+        return jsonify(message) if message != '' else '', status_code
 
     except Exception as e:
         app.logger.error(f"[Exception]:{e}")
@@ -43,9 +41,6 @@ async def patch():
         app.logger.warning(f"[Exception]:{e}")
         return '', 500
 
-handler.add_job(wf.get_new_alerts, second='00')
-handler.add_job(wf.get_cetus_transition, second='05')
-handler.add_job(wf.get_new_acolyte, second='00')
 
 if __name__ == '__main__':
     app.run(debug=False, port=8888)

@@ -1,6 +1,8 @@
-# 🐉Paarthurnax
+# 🐉Paarthurnax [NEXT]
 
 符合[OneBot](https://github.com/howmanybots/onebot)标准的Warframe世界状态通报~~机器人~~机器龙**插件**，昵称“老帕”
+
+[NEXT] 指威力增强进化版，目前正在缓慢开发中。
 
 [![](https://img.shields.io/github/issues/Raka-loah/qqbot-plugin-warframe.svg)](https://github.com/Raka-loah/qqbot-plugin-warframe/issues)
 ![](https://img.shields.io/github/stars/Raka-loah/qqbot-plugin-warframe.svg)
@@ -36,11 +38,25 @@
 **使用方法**
 ------
 
+永远不要将服务器直接开放到公网（因为我真的懒得写鉴权），如果真的需要，请通过Apache/Nginx进行反代，且禁止外界对 `reload` 和 `admin` 子路径的访问。
+
 1. 把代码Clone到本地；
-2. 把 `config-sample.py` 复制一份，改名 `config.py`，修改里面的设置；
+2. 把 `Paarthurnax/config-sample.py` 复制一份，改名 `config.py`，修改里面的设置；
 3. 命令行用 `python app.py` 启动。
 4. 设置bot平台通过HTTP POST到 `127.0.0.1:8888` 。
 5. 这就可以了。
+6. 启动后可以访问 `http://127.0.0.1:8888/admin` 对设置进行微调，保存后需重启机器人。
+
+**本插件的插件安装方法**
+------
+
+没错，老帕[NEXT]版本将几乎所有功能剥离成统一的插件形式，这有助于今后对于本机器人插件的插件的开发。~~套娃什么的最有爱了~~
+
+请不要随意安装不明来源的插件。
+
+1. 插件统一保存在 `Paarthurnax/plugins` ，其中 `p_` 开头的为官方插件。~~你当然可以删除这些插件，但是人不能，至少不应该……~~
+2. 将你下载到插件复制到这个文件夹后，重启机器人。
+3. 理论上这时候插件就已经加载成功了。
 
 **建议**
 ------
@@ -51,23 +67,15 @@
 
 **可用的其他版本：**
 
-`app_twistd.py`：可用于Twisted web服务器的版本，需要自行配置Twisted。
-
-`app_quart.py`：据说性能更为强大的基于Quart框架的版本，需要 `pip install quart` ，之后用 `hypercorn app_quart:app -b 127.0.0.1:8888 --access-log -` 启动。
-
-
-**开发**
-------
-
-如果其它平台的机器人也能用HTTP API，你可以适当修改 `app.py` 内的回复payload格式，从而实现其他平台使用。
+`app_quart.py`：据说性能更为强大的基于Quart框架的版本，需要 `pip install quart` ，之后用 `hypercorn app_quart:app -b 127.0.0.1:8888 --access-log -` 启动。根据老帕之前的压力测试，大概还没到必须要用quart的地步。
 
 **进度：**
 ------
-- [x] 关键词通报（警报、入侵、裂缝、突击、奸商、日常、周常、小小黑、每日特惠等）
-- [x] 平原时间（希图斯、福尔图娜）
-- [x] 平原赏金（希图斯、福尔图娜）
-- [x] 机器人自定义回复
-- [x] 实时状态通报（新出现警报、希图斯夜晚、新出现小小黑）
-- [x] Roll/魔力8号球
-- [x] 模拟开紫卡
-- [x] 需要你自行挖掘的隐藏功能
+- [X] 删除源代码冗余内容与功能（如Twisted支持）
+- [X] 重构老帕架构，将实际业务与机器人本身剥离：消息推送→老帕听到消息（`Talking_Dragon.hear`）→`Preprocessors`→`Plugins`→`Postprocessors`→返回回复内容
+- [X] 改写原Warframe通报与其他功能为独立插件
+- [X] 建立Preprocessor和Postprocessor机制，方便二次开发
+- [ ] 所有processor和命令的优先级设定
+- [ ] 建立网页版设置项，因为做UI什么的都比不上做网页跨平台
+- [ ] 撰写插件标准文档
+- [ ] [NEXT]版本上线，并不兼容之前版本

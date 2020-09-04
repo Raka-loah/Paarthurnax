@@ -1,14 +1,17 @@
 
 .vscode/settings.json
+.vscode/launch.json
 ws.json
 *.sqlite
 *.pyc
 test.py
 *.log
-tools/*
-config.py
+tools
 data/lovestories.json
 __pycache__
 .python-version
 ignoreconfig
 installed
+settings.json
+config.py
+temp
