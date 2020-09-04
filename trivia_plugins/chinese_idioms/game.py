@@ -15,7 +15,7 @@ class idioms_game:
 
     def clean(self):
         try:
-            for dirpath, dirnames, filenames in os.walk(path.join(path.dirname(path.realpath(__file__)),'temp')):
+            for dirpath, dirnames, filenames in walk(path.join(path.dirname(path.realpath(__file__)),'temp')):
                 for file in filenames:
                     if not '.png' in file:
                         continue
