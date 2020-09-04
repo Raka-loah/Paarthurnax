@@ -47,7 +47,7 @@ class Talking_Dragon:
                 if 'postprocessors' in metadata:
                     self.__postprocessors.extend(metadata['postprocessors']) 
             except Exception as e:
-                print(f'Module {plugin} has no metadata, skipped.')
+                print(f'Module {plugin}: {e}.')
 
         try:
             with open(os.path.join(os.path.dirname(os.path.abspath(__file__)) ,'settings', 'settings.json'), 'r', encoding='utf-8') as f:
@@ -136,6 +136,33 @@ class Talking_Dragon:
         if j['sender']['user_id'] == j['self_id'] or j['sender']['user_id'] in banned_sender:
             return '', 204
 
+        # CQ tag for @sender if message type is group
+        # title = ''
+        # if cfg.get('custom_title', None) and j['message_type'] == 'group':
+        #     if j['sender']['user_id'] in cfg.get('custom_title'):
+        #         if j['group_id'] in cfg.get('custom_title')[j['sender']['user_id']]:
+        #             title = cfg.get('custom_title')[j['sender']['user_id']][j['group_id']]
+        #         elif 'default' in cfg.get('custom_title')[j['sender']['user_id']]:
+        #             title = cfg.get('custom_title')[j['sender']['user_id']]['default']
+        #     elif 'default' in cfg.get('custom_title'):
+        #         title = cfg.get('custom_title')['default']
+
+        j['at_sender'] = f"[CQ:at,qq={j['sender']['user_id']}]：\n" if j['message_type'] == 'group' else ''
+
+        j['base_url'] = cfg.get('base_url', 'http://127.0.0.1:5700')
+
+        j['suffix'] = cfg.get('suffix', '')
+
+        # Preprocessors
+        for func in self.__preprocessors:
+            if func[1] == 0 and j['group_id'] in func[2]:
+                continue
+            elif func[1] == 1 and j['group_id'] not in func[2]:
+                continue
+            j, halt = func[0](j)
+            if halt:
+                return '', 204
+
         # Logs
         log_msg = cfg.get('log_msg', True)
         if log_msg and j['post_type'] == 'message':
@@ -151,23 +178,6 @@ class Talking_Dragon:
                     '0',
                     j['sender']['user_id'],
                     j['message'])
-
-        # CQ tag for @sender if message type is group
-        title = ''
-        if cfg.get('custom_title', None) and j['message_type'] == 'group':
-            if j['sender']['user_id'] in cfg.get('custom_title'):
-                if j['group_id'] in cfg.get('custom_title')[j['sender']['user_id']]:
-                    title = cfg.get('custom_title')[j['sender']['user_id']][j['group_id']]
-                elif 'default' in cfg.get('custom_title')[j['sender']['user_id']]:
-                    title = cfg.get('custom_title')[j['sender']['user_id']]['default']
-            elif 'default' in cfg.get('custom_title'):
-                title = cfg.get('custom_title')['default']
-
-        at_sender = f"{title}[CQ:at,qq={j['sender']['user_id']}]：\n" if j['message_type'] == 'group' else ''
-
-        # Preprocessors
-        for func in self.__preprocessors:
-            j = func(j)
 
         # If some preprocessor went wrong
         if 'message' not in j:
@@ -207,7 +217,7 @@ class Talking_Dragon:
             # Check cooldown
             if matched_keyword in self.__stats:
                 if time.time() - self.__stats[matched_keyword] < bot_command[matched_keyword][3]:
-                    resp['reply'] = at_sender + internal.cooldown()
+                    resp['reply'] = j['at_sender'] + internal.cooldown()
                     return resp, 200
                 else:
                     self.__stats[matched_keyword] = time.time()
@@ -229,9 +239,9 @@ class Talking_Dragon:
                 if bot_command[matched_keyword][6] == C.SUPPRESSED:
                     resp['reply'] = msg
                 elif bot_command[matched_keyword][4] == C.NO_MSG:
-                    resp['reply'] = msg + suffix
+                    resp['reply'] = msg + j['suffix']
                 else:
-                    resp['reply'] = at_sender + msg
+                    resp['reply'] = j['at_sender'] + msg
                 return resp, 200
 
         # # Custom replies
@@ -242,35 +252,15 @@ class Talking_Dragon:
         # Postprocessors
         status_code = 204
         for func in self.__postprocessors:
-            resp, status_code = func(j, resp, status_code)
-
-        # # Autoban
-        # try:
-        #     if j['message_type'] == 'group':
-        #         ban_word = cfg.get('ban_word')
-        #         for word in ban_word:
-        #             if word in j['message'].replace(' ', ''):
-        #                 resp['ban'] = True
-        #                 resp['ban_duration'] = cfg.get('ban_duration')
-        #                 return resp, 200
-        # except BaseException:
-        #     pass
-
-        # # Trivia
-        # try:
-        #     trivia_enable = cfg.get('trivia_enable', False)
-        #     if j['message_type'] == 'group' and trivia_enable:
-        #         resp['reply'] = self.trivia.triviabot(j)
-        #         if resp['reply'] != '':
-        #             return resp, 200
-        # except BaseException:
-        #     pass
-
-        # try:
-        #     if j['message'].lower().strip() == trivia.curr[j['group_id']]['answer'].lower().strip():
-        #         return '', 204
-        # except BaseException:
-        #     pass
+            if func[1] == 0 and j['group_id'] in func[2]:
+                continue
+            elif func[1] == 1 and j['group_id'] not in func[2]:
+                continue
+            resp_temp, status_code = func(j, resp)
+            if resp_temp != '':
+                resp = resp_temp
+            if status_code == 200:
+                break
 
         # # "Execute" person nobody cared about within 120 seconds
         # # The Nature of Humanity, will override Execution
