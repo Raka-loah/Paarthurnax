@@ -3,11 +3,11 @@
 import importlib
 import logging
 import requests
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 
 from Paarthurnax.core import Talking_Dragon
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='', static_folder='Paarthurnax/admin', template_folder='Paarthurnax/admin')
 
 dragon = Talking_Dragon()
 
@@ -29,17 +29,17 @@ def post():
         app.logger.error(f"[Exception]:{e}")
         return '', 204
 
-@app.route('/', methods=['PATCH'])
-def patch():
-    try:
-        try:
-            request_token = request.get_json(force=True)['token']
-        except:
-            request_token = ''
-        dragon.reload(request_token)
-    except Exception as e:
-        app.logger.error(f"[Exception]:{e}")
-        return '', 500
+@app.route('/admin/settings', methods=['GET', 'POST'])
+def admin_settings():
+    if request.method == 'GET':
+        return jsonify(dragon.tell()), 200
+    elif request.method == 'POST':
+        return dragon.take(request.get_json(force=True))
+    return '', 204
+
+@app.route('/admin', methods=['GET'])
+def admin():
+    return render_template('index.htm')
 
 if __name__ == '__main__':  
-    app.run(debug=False, port=8888)
+    app.run(debug=True, port=8888)

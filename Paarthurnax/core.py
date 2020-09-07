@@ -55,7 +55,8 @@ class Talking_Dragon:
         self.__schduler = BackgroundScheduler()
         self.__schduler.start()
         for func in self.__alerts.keys():
-            self.__add_job(func, self.__alerts[func])
+            if self.__alerts[func][1]:
+                self.__add_job(func, self.__alerts[func][0])
 
     def __log(self, message_id, group_id, sender_id, message):
         try:
@@ -160,6 +161,9 @@ class Talking_Dragon:
         # Determine which keyword got called
         matched_keyword = None
         for keyword, function in bot_command.items():
+            # Is this function Enabled?
+            if not function[7]:
+                break
             # Is it a regex?
             if function[5] == True:
                 match = re.match(keyword, j['message'])
@@ -256,14 +260,14 @@ class Talking_Dragon:
         """
         The dragon tells you about what he can do.
 
-        Translate: Return a json of current bot commands.
+        Translate: Return a dictionary of current bot commands.
         """
         # Example:
         # {
-        #     "Plugin module name": [
-        #         "function name", "docstring", "keyword", block/allowlist, ["group_id1", "group_id2"], 
-        #         cooldown, is message body required, is keyword regex, is suffix suppressed, is enabled, priority
-        #     ]
+        #     "Plugin module name": {
+        #         "module.function": ["docstring", "keyword", block/allowlist, ["group_id1", "group_id2"], 
+        #         cooldown, is message body required, is keyword regex, is suffix suppressed, is enabled, priority]
+        #     }
         # }
         alert_functions = {}
         bot_commands = {}
@@ -272,12 +276,34 @@ class Talking_Dragon:
 
         for command in self.__botcommand.keys():
             module_name = self.__botcommand[command][0].__module__
-            if module_name in bot_commands:
-                command_conf = [self.__botcommand[command][0].__name__, self.__botcommand[command][0].__doc__, command]
-                command_conf.extend(self.__botcommand[command][1:])
-                bot_commands[module_name].append(command_conf)
-            else:
-                bot_commands[module_name] = []
+            if module_name not in bot_commands:
+                bot_commands[module_name] = {}
+            command_conf = [self.__botcommand[command][0].__doc__, command]
+            command_conf.extend(self.__botcommand[command][1:])
+            bot_commands[module_name][f'{module_name}.{self.__botcommand[command][0].__name__}'] = command_conf
+
+        for command in self.__alerts.keys():
+            module_name = command.__module__
+            if module_name not in alert_functions:
+                alert_functions[module_name] = {}
+            command_conf = [command.__doc__, self.__alerts[command]]
+            alert_functions[module_name][f'{module_name}.{command.__name__}'] = command_conf
+
+        for command in self.__preprocessors:
+            module_name = command[0].__module__
+            if module_name not in preprocessors:
+                preprocessors[module_name] = {}
+            command_conf = [command[0].__doc__]
+            command_conf.extend(command[1:])
+            preprocessors[module_name][f'{module_name}.{command[0].__name__}'] = command_conf
+
+        for command in self.__postprocessors:
+            module_name = command[0].__module__
+            if module_name not in postprocessors:
+                postprocessors[module_name] = {}
+            command_conf = [command[0].__doc__]
+            command_conf.extend(command[1:])
+            postprocessors[module_name][f'{module_name}.{command[0].__name__}'] = command_conf
 
         conf = {
             'alert_functions': alert_functions,
@@ -286,7 +312,7 @@ class Talking_Dragon:
             'postprocessors': postprocessors
         }
 
-        return json.dumps(conf, ensure_ascii=False)
+        return conf
 
 
     def study(self):
@@ -299,32 +325,71 @@ class Talking_Dragon:
             with open(os.path.join(os.path.dirname(os.path.abspath(__file__)) ,'settings', 'settings.json'), 'r', encoding='utf-8') as f:
                 settings = json.load(f)
         except Exception as e:
-            settings = {}
+            settings = {
+                'alert_functions': {},
+                'bot_commands': {},
+                'preprocessors': {},
+                'postprocessors': {}
+            }
+
+        new_alerts = {}
+        for command in self.__alerts.keys():
+            func_name = f'{command.__module__}.{command.__name__}'
+            if func_name in settings['alert_functions']:
+                new_alerts[command] = settings['alert_functions'][func_name][1:]
+            else:
+                new_alerts[command] = [self.__alerts[command], True]
+        self.__alerts = new_alerts
+
         new_command = {}
         for command in self.__botcommand.keys():
             func_name = f'{self.__botcommand[command][0].__module__}.{self.__botcommand[command][0].__name__}'
-            if func_name in settings:
+            if func_name in settings['bot_commands']:
                 func = self.__botcommand[command][0]
-                new_command[settings[func_name][0]] = [func] + settings[func_name][1:]
+                new_command[settings['bot_commands'][func_name][0]] = [func] + settings['bot_commands'][func_name][1:]
             else:
                 new_command[command] = self.__botcommand[command] + [True, 0]
-        self.__botcommand = new_command
+        self.__botcommand = {k: v for k, v in sorted(new_command.items(), key=lambda item: item[1][-1], reverse=True)}
 
-    def take(self, config_json, request_token):
+        new_preprocessors = []
+        for command in self.__preprocessors:
+            func_name = f'{command[0].__module__}.{command[0].__name__}'
+            if func_name in settings['preprocessors']:
+                new_preprocessors.append([command[0]] + settings['preprocessors'][func_name][1:])
+            else:
+                new_preprocessors.append([command[0]] + [True, 0])
+        self.__preprocessors = sorted(new_preprocessors, key=lambda item: item[-1], reverse=True)
+
+        new_postprocessors = []
+        for command in self.__postprocessors:
+            func_name = f'{command[0].__module__}.{command[0].__name__}'
+            if func_name in settings['postprocessors']:
+                new_postprocessors.append([command[0]] + settings['postprocessors'][func_name][1:])
+            else:
+                new_postprocessors.append([command[0]] + [True, 0])
+        self.__postprocessors = sorted(new_postprocessors, key=lambda item: item[-1], reverse=True)
+
+    def take(self, config_json):
         """
         The dragon takes the configuration sheet from your hands and studies it.
 
         Translate: Save config to `Paarthurnax/settings/settings.json` and refresh the current configurations.
         """
-        access_token = self.__getattr(cfg, 'reload_token', '')  # Access Token
-
-        if request_token == access_token and access_token != '':
-
-            return 'I heed you loud and clear, traveller.', 200
-        else:
-            return 'Return to where you belong, traveller. You are not allowed to step in this sacred place.', 403
-        pass
-
+        try:
+            with open(os.path.join(os.path.dirname(os.path.abspath(__file__)) ,'settings', 'settings.json'), 'w+', encoding='utf-8') as f:
+                f.write(json.dumps(config_json, ensure_ascii=False))
+        except Exception as e:
+            return 'Something went wrong.', 500
+        try:
+            self.study()
+            for job in self.__schduler.get_jobs():
+                job.remove()
+            for func in self.__alerts.keys():
+                if self.__alerts[func][1]:
+                    self.__add_job(func, self.__alerts[func][0])
+        except Exception as e:
+            return 'That page is corrupted and you have to discard it.', 500
+        return 'I heed you loud and clear, traveller.', 200
 
     def check(self, group_id=0):
         """

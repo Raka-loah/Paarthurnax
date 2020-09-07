@@ -3,10 +3,10 @@
 import importlib
 import logging
 
-from quart import Quart, jsonify, request
+from quart import Quart, jsonify, request, render_template
 from Paarthurnax.core import Talking_Dragon
 
-app = Quart(__name__)
+app = Quart(__name__, static_url_path='', static_folder='Paarthurnax/admin', template_folder='Paarthurnax/admin')
 
 dragon = Talking_Dragon()
 
@@ -29,24 +29,17 @@ async def post():
         app.logger.error(f"[Exception]:{e}")
         return '', 204
 
-@app.route('/', methods=['PATCH'])
-async def patch():
-    try:
-        try:
-            request_token = await request.get_json(force=True)['token']
-        except BaseException:
-            request_token = ''
-        handler.reload(request_token)
-    except Exception as e:
-        app.logger.warning(f"[Exception]:{e}")
-        return '', 500
-
-@app.route('/admin', methods=['GET', 'POST'])
-async def admin():
+@app.route('/admin/settings', methods=['GET', 'POST'])
+async def admin_settings():
     if request.method == 'GET':
-        return dragon.tell(), 200
+        return jsonify(dragon.tell()), 200
     elif request.method == 'POST':
         return dragon.take(request.get_json(force=True))
+    return '', 204
+
+@app.route('/admin', methods=['GET'])
+async def admin():
+    return render_template('index.htm')
 
 if __name__ == '__main__':
     app.run(debug=False, port=8888)
