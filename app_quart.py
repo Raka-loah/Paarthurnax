@@ -41,6 +41,12 @@ async def patch():
         app.logger.warning(f"[Exception]:{e}")
         return '', 500
 
+@app.route('/admin', methods=['GET', 'POST'])
+async def admin():
+    if request.method == 'GET':
+        return dragon.tell(), 200
+    elif request.method == 'POST':
+        return dragon.take(request.get_json(force=True))
 
 if __name__ == '__main__':
     app.run(debug=False, port=8888)
