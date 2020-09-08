@@ -30,7 +30,6 @@ Metadata = {
         '入侵': [wf.get_invasions, 0, [], 0, False, False, False],
         '突击': [wf.get_sorties, 0, [], 0, False, False, False],
         '奸商': [wf.get_voidtrader, 0, [], 0, False, False, False],
-        '虚空商人': [wf.get_voidtrader, 0, [], 0, False, False, False],
         '帮助': [wf.get_some_help, 0, [], 0, False, False, True],
         '地球赏金': [wf.get_bounties_cetus, 0, [], 0, False, False, False],
         '金星赏金': [wf.get_bounties_solaris, 0, [], 0, False, False, False],

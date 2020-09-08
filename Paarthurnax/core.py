@@ -91,7 +91,7 @@ class Talking_Dragon:
 
         Translate: Process Onebot message json, then return reply and status_code.
         """
-        j = message
+        j = Onebot_message_json
         cfg = self.__cfg
         bot_command = self.__botcommand
 
@@ -209,7 +209,8 @@ class Talking_Dragon:
                     msg = bot_command[matched_keyword][0]()
                 else:
                     msg = bot_command[matched_keyword][0](j)
-            except BaseException:
+            except Exception as e:
+                print(e)
                 msg = ''
 
             if msg != '':
@@ -286,7 +287,8 @@ class Talking_Dragon:
             module_name = command.__module__
             if module_name not in alert_functions:
                 alert_functions[module_name] = {}
-            command_conf = [command.__doc__, self.__alerts[command]]
+            command_conf = [command.__doc__]
+            command_conf.extend(self.__alerts[command])
             alert_functions[module_name][f'{module_name}.{command.__name__}'] = command_conf
 
         for command in self.__preprocessors:
@@ -333,41 +335,61 @@ class Talking_Dragon:
             }
 
         new_alerts = {}
-        for command in self.__alerts.keys():
-            func_name = f'{command.__module__}.{command.__name__}'
-            if func_name in settings['alert_functions']:
-                new_alerts[command] = settings['alert_functions'][func_name][1:]
-            else:
-                new_alerts[command] = [self.__alerts[command], True]
-        self.__alerts = new_alerts
+        try:
+            for command in self.__alerts.keys():
+                func_name = f'{command.__module__}.{command.__name__}'
+                if command.__module__ in settings['alert_functions']:
+                    if func_name in settings['alert_functions'][command.__module__]:
+                        new_alerts[command] = settings['alert_functions'][command.__module__][func_name]
+                else:
+                    new_alerts[command] = [self.__alerts[command], True]
+            self.__alerts = new_alerts
+        except Exception as e:
+            print(e)
+            self.__alerts = {}
 
         new_command = {}
-        for command in self.__botcommand.keys():
-            func_name = f'{self.__botcommand[command][0].__module__}.{self.__botcommand[command][0].__name__}'
-            if func_name in settings['bot_commands']:
-                func = self.__botcommand[command][0]
-                new_command[settings['bot_commands'][func_name][0]] = [func] + settings['bot_commands'][func_name][1:]
-            else:
-                new_command[command] = self.__botcommand[command] + [True, 0]
-        self.__botcommand = {k: v for k, v in sorted(new_command.items(), key=lambda item: item[1][-1], reverse=True)}
+        try:
+            for command in self.__botcommand.keys():
+                func_name = f'{self.__botcommand[command][0].__module__}.{self.__botcommand[command][0].__name__}'
+                if self.__botcommand[command][0].__module__ in settings['bot_commands']:
+                    if func_name in settings['bot_commands'][self.__botcommand[command][0].__module__]:
+                        func = self.__botcommand[command][0]
+                        new_command[settings['bot_commands'][self.__botcommand[command][0].__module__][func_name][0]] = [func] + settings['bot_commands'][self.__botcommand[command][0].__module__][func_name][1:]
+                else:
+                    new_command[command] = self.__botcommand[command] + [True, 0]
+            self.__botcommand = {k: v for k, v in sorted(new_command.items(), key=lambda item: item[1][-1], reverse=True)}
+        except Exception as e:
+            print(e)
+            self.__botcommand = {}
 
         new_preprocessors = []
-        for command in self.__preprocessors:
-            func_name = f'{command[0].__module__}.{command[0].__name__}'
-            if func_name in settings['preprocessors']:
-                new_preprocessors.append([command[0]] + settings['preprocessors'][func_name][1:])
-            else:
-                new_preprocessors.append([command[0]] + [True, 0])
-        self.__preprocessors = sorted(new_preprocessors, key=lambda item: item[-1], reverse=True)
+        try:
+            for command in self.__preprocessors:
+                func_name = f'{command[0].__module__}.{command[0].__name__}'
+                if command[0].__module__ in settings['preprocessors']:
+                    if func_name in settings['preprocessors'][command[0].__module__]:
+                        new_preprocessors.append([command[0]] + settings['preprocessors'][command[0].__module__][func_name])
+                else:
+                    new_preprocessors.append(command + [True, 0])
+            self.__preprocessors = sorted(new_preprocessors, key=lambda item: item[-1], reverse=True)
+        except Exception as e:
+            print(e)
+            self.__preprocessors = {}
 
         new_postprocessors = []
-        for command in self.__postprocessors:
-            func_name = f'{command[0].__module__}.{command[0].__name__}'
-            if func_name in settings['postprocessors']:
-                new_postprocessors.append([command[0]] + settings['postprocessors'][func_name][1:])
-            else:
-                new_postprocessors.append([command[0]] + [True, 0])
-        self.__postprocessors = sorted(new_postprocessors, key=lambda item: item[-1], reverse=True)
+        try:
+            for command in self.__postprocessors:
+                func_name = f'{command[0].__module__}.{command[0].__name__}'
+                if command[0].__module__ in settings['postprocessors']:
+                    if func_name in settings['postprocessors'][command[0].__module__]:
+                        new_postprocessors.append([command[0]] + settings['postprocessors'][command[0].__module__][func_name])
+                else:
+                    new_postprocessors.append(command + [True, 0])
+            self.__postprocessors = sorted(new_postprocessors, key=lambda item: item[-1], reverse=True)
+        except Exception as e:
+            print(e)
+            self.__postprocessors = {}
 
     def take(self, config_json):
         """
@@ -388,7 +410,15 @@ class Talking_Dragon:
                 if self.__alerts[func][1]:
                     self.__add_job(func, self.__alerts[func][0])
         except Exception as e:
-            return 'That page is corrupted and you have to discard it.', 500
+            settings = {
+                'alert_functions': {},
+                'bot_commands': {},
+                'preprocessors': {},
+                'postprocessors': {}
+            }
+            with open(os.path.join(os.path.dirname(os.path.abspath(__file__)) ,'settings', 'settings.json'), 'w+', encoding='utf-8') as f:
+                f.write(json.dumps(settings, ensure_ascii=False))
+            return 'That page is corrupted and I have burned it to ashes.', 500
         return 'I heed you loud and clear, traveller.', 200
 
     def check(self, group_id=0):
