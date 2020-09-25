@@ -8,14 +8,14 @@ $(document).ready(function(){
         $.each(v, function(k, v){
           row = $(`<tr data-plugin="${plugin}"  id="${k}">
             <td title="${v[0]}"><input type="text" class="form-control" value="${v[1]}"></td>
-            <td><div class="form-check form-check-inline"><input class="form-check-input check" type="checkbox" value="${v[2]}" ${v[2]?'checked':''}></div></td>
-            <td><input type="text" class="form-control" value="${v[3].join(' ')}"></td>
-            <td><input type="number" class="form-control" min="0" value="${v[4]}"></td>
-            <td><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="${v[5]}" ${v[5]?'checked':''}></div></td>
-            <td><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="${v[6]}" ${v[6]?'checked':''}></div></td>
-            <td><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="${v[7]}" ${v[7]?'checked':''}></div></td>
-            <td><div class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="${v[8]}" ${v[8]?'checked':''}></div></td>
-            <td><input type="number" class="form-control" min="0" value="${v[9]}"></td>
+            <td><div title="白名单" class="form-check form-check-inline"><input class="form-check-input check" type="checkbox" value="${v[2]}" ${v[2]?'checked':''}></div></td>
+            <td><input title="群号" type="text" class="form-control" value="${v[3].join(' ')}"></td>
+            <td><input title="CD" type="number" class="form-control" min="0" value="${v[4]}"></td>
+            <td><div title="用户输入" class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="${v[5]}" ${v[5]?'checked':''}></div></td>
+            <td><div title="正则" class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="${v[6]}" ${v[6]?'checked':''}></div></td>
+            <td><div title="附加" class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="${v[7]}" ${v[7]?'checked':''}></div></td>
+            <td><div title="启用" class="form-check form-check-inline"><input class="form-check-input" type="checkbox" value="${v[8]}" ${v[8]?'checked':''}></div></td>
+            <td><input title="优先级" type="number" class="form-control" min="0" value="${v[9]}"></td>
             </tr>`);
           $("#bot-command").append(row);
         });
