@@ -3,3 +3,5 @@
 *.css linguist-detectable=false
 *.js linguist-detectable=false
 Paarthurnax/admin/* linguist-vendored
+Paarthurnax/admin/js/main.js linguist-vendored=false
+Paarthurnax/admin/index.htm linguist-vendored=false
