@@ -2,3 +2,4 @@
 * text=auto
 *.css linguist-detectable=false
 *.js linguist-detectable=false
+Paarthurnax/admin/* linguist-vendored
