@@ -13,7 +13,7 @@ class Talking_Dragon:
     """
     Spawn a new instance of Paarthurnax.
 
-    Let him hear what you say.
+    It can hear, study, take and check.
     """
 
     def __init__(self):
@@ -50,29 +50,13 @@ class Talking_Dragon:
             except Exception as e:
                 print(f'Module {plugin}: {e}.')
 
-        try:
-            with open(os.path.join(os.path.dirname(os.path.abspath(__file__)) ,'settings', 'settings.json'), 'r', encoding='utf-8') as f:
-                settings = json.load(f)
-            new_command = {}
-            for command in self.__botcommand.keys():
-                func_name = f'{self.__botcommand[command][0].__module__}.{self.__botcommand[command][0].__name__}'
-                if func_name in settings:
-                    func = self.__botcommand[command][0]
-                    new_command[settings[func_name][0]] = [func] + settings[func_name][1:]
-                else:
-                    new_command[command] = self.__botcommand[command]
-            self.__botcommand = new_command
-        except Exception as e:
-            with open(os.path.join(os.path.dirname(os.path.abspath(__file__)) ,'settings', 'settings.json'), 'w+', encoding='utf-8') as f:
-                settings = {}
-                for command in self.__botcommand.keys():
-                    settings[f'{self.__botcommand[command][0].__module__}.{self.__botcommand[command][0].__name__}'] = [command] + self.__botcommand[command][1:]
-                f.write(json.dumps(settings, ensure_ascii=False))
+        self.study()
 
         self.__schduler = BackgroundScheduler()
         self.__schduler.start()
         for func in self.__alerts.keys():
-            self.__add_job(func, self.__alerts[func])
+            if self.__alerts[func][1]:
+                self.__add_job(func, self.__alerts[func][0])
 
     def __log(self, message_id, group_id, sender_id, message):
         try:
@@ -101,8 +85,13 @@ class Talking_Dragon:
             db.close()
             return '[INFO] Transaction complete'
 
-    def hear(self, message):
-        j = message
+    def hear(self, Onebot_message_json):
+        """
+        The dragon will now heed those mere mortals and speak its wisdom when necessary.
+
+        Translate: Process Onebot message json, then return reply and status_code.
+        """
+        j = Onebot_message_json
         cfg = self.__cfg
         bot_command = self.__botcommand
 
@@ -141,9 +130,9 @@ class Talking_Dragon:
 
         # Preprocessors
         for func in self.__preprocessors:
-            if func[1] == 0 and j['group_id'] in func[2]:
+            if func[1] == 0 and j['group_id'] in [int(x) for x in func[2] if x != '']:
                 continue
-            elif func[1] == 1 and j['group_id'] not in func[2]:
+            elif func[1] == 1 and j['group_id'] not in [int(x) for x in func[2] if x != '']:
                 continue
             j, halt = func[0](j)
             if halt:
@@ -172,6 +161,9 @@ class Talking_Dragon:
         # Determine which keyword got called
         matched_keyword = None
         for keyword, function in bot_command.items():
+            # Is this function Enabled?
+            if not function[7]:
+                break
             # Is it a regex?
             if function[5] == True:
                 match = re.match(keyword, j['message'])
@@ -192,10 +184,10 @@ class Talking_Dragon:
         if matched_keyword is not None:
             if j['message_type'] == 'group':
                 if bot_command[matched_keyword][1] == 0:
-                    if j['group_id'] in bot_command[matched_keyword][2]:
+                    if j['group_id'] in [int(x) for x in bot_command[matched_keyword][2] if x != '']:
                         matched_keyword = None
                 else:
-                    if j['group_id'] not in bot_command[matched_keyword][2]:
+                    if j['group_id'] not in [int(x) for x in bot_command[matched_keyword][2] if x != '']:
                         matched_keyword = None
 
         # If we got a keyword
@@ -217,7 +209,8 @@ class Talking_Dragon:
                     msg = bot_command[matched_keyword][0]()
                 else:
                     msg = bot_command[matched_keyword][0](j)
-            except BaseException:
+            except Exception as e:
+                print(e)
                 msg = ''
 
             if msg != '':
@@ -233,14 +226,14 @@ class Talking_Dragon:
         # Postprocessors
         status_code = 204
         for func in self.__postprocessors:
-            if func[1] == 0 and j['group_id'] in func[2]:
+            if func[1] == 0 and j['group_id'] in [int(x) for x in func[2] if x != '']:
                 continue
-            elif func[1] == 1 and j['group_id'] not in func[2]:
+            elif func[1] == 1 and j['group_id'] not in [int(x) for x in func[2] if x != '']:
                 continue
             resp_temp, status_code = func[0](j, resp)
             if resp_temp != '':
                 resp = resp_temp
-            if status_code == 200:
+            if status_code != 204:
                 break
 
         if resp['reply'] != '':
@@ -259,18 +252,182 @@ class Talking_Dragon:
             url = f"{self.__getattr(cfg, 'base_url', 'http://127.0.0.1:5700')}/send_group_msg_async"
             for group_id in broadcast_group:
                 payload = {
-                    'group_id': group_id,
+                    'group_id': int(group_id),
                     'message': msg
                 }
                 requests.post(url, json=payload)
 
-    def reload(self, request_token):
-        access_token = self.__getattr(cfg, 'reload_token', '')  # Access Token
+    def tell(self):
+        """
+        The dragon tells you about what he can do.
 
-        if request_token == access_token and access_token != '':
-            importlib.reload(wf)
-            importlib.reload(misc)
-            return 'Successfully reloaded modules.', 200
-        else:
-            return 'Access Denied.', 403
+        Translate: Return a dictionary of current bot commands.
+        """
+        # Example:
+        # {
+        #     "Plugin module name": {
+        #         "module.function": ["docstring", "keyword", block/allowlist, ["group_id1", "group_id2"], 
+        #         cooldown, is message body required, is keyword regex, is suffix suppressed, is enabled, priority]
+        #     }
+        # }
+        alert_functions = {}
+        bot_commands = {}
+        preprocessors = {}
+        postprocessors = {}
+
+        for command in self.__botcommand.keys():
+            module_name = self.__botcommand[command][0].__module__
+            if module_name not in bot_commands:
+                bot_commands[module_name] = {}
+            command_conf = [self.__botcommand[command][0].__doc__, command]
+            command_conf.extend(self.__botcommand[command][1:])
+            bot_commands[module_name][f'{module_name}.{self.__botcommand[command][0].__name__}'] = command_conf
+
+        for command in self.__alerts.keys():
+            module_name = command.__module__
+            if module_name not in alert_functions:
+                alert_functions[module_name] = {}
+            command_conf = [command.__doc__]
+            command_conf.extend(self.__alerts[command])
+            alert_functions[module_name][f'{module_name}.{command.__name__}'] = command_conf
+
+        for command in self.__preprocessors:
+            module_name = command[0].__module__
+            if module_name not in preprocessors:
+                preprocessors[module_name] = {}
+            command_conf = [command[0].__doc__]
+            command_conf.extend(command[1:])
+            preprocessors[module_name][f'{module_name}.{command[0].__name__}'] = command_conf
+
+        for command in self.__postprocessors:
+            module_name = command[0].__module__
+            if module_name not in postprocessors:
+                postprocessors[module_name] = {}
+            command_conf = [command[0].__doc__]
+            command_conf.extend(command[1:])
+            postprocessors[module_name][f'{module_name}.{command[0].__name__}'] = command_conf
+
+        conf = {
+            'alert_functions': alert_functions,
+            'bot_commands': bot_commands,
+            'preprocessors': preprocessors,
+            'postprocessors': postprocessors
+        }
+
+        return conf
+
+
+    def study(self):
+        """
+        The dragon will study the configurations for each command.
+
+        Translate: Load configurations for each bot_command from `Paarthurnax/settings/settings.json` .
+        """
+        try:
+            with open(os.path.join(os.path.dirname(os.path.abspath(__file__)) ,'settings', 'settings.json'), 'r', encoding='utf-8') as f:
+                settings = json.load(f)
+        except Exception as e:
+            settings = {
+                'alert_functions': {},
+                'bot_commands': {},
+                'preprocessors': {},
+                'postprocessors': {}
+            }
+
+        new_alerts = {}
+        try:
+            for command in self.__alerts.keys():
+                func_name = f'{command.__module__}.{command.__name__}'
+                if command.__module__ in settings['alert_functions']:
+                    if func_name in settings['alert_functions'][command.__module__]:
+                        new_alerts[command] = settings['alert_functions'][command.__module__][func_name]
+                else:
+                    new_alerts[command] = [self.__alerts[command], True]
+            self.__alerts = new_alerts
+        except Exception as e:
+            print(e)
+            self.__alerts = {}
+
+        new_command = {}
+        try:
+            for command in self.__botcommand.keys():
+                func_name = f'{self.__botcommand[command][0].__module__}.{self.__botcommand[command][0].__name__}'
+                if self.__botcommand[command][0].__module__ in settings['bot_commands']:
+                    if func_name in settings['bot_commands'][self.__botcommand[command][0].__module__]:
+                        func = self.__botcommand[command][0]
+                        new_command[settings['bot_commands'][self.__botcommand[command][0].__module__][func_name][0]] = [func] + settings['bot_commands'][self.__botcommand[command][0].__module__][func_name][1:]
+                else:
+                    new_command[command] = self.__botcommand[command] + [True, 0]
+            self.__botcommand = {k: v for k, v in sorted(new_command.items(), key=lambda item: item[1][-1], reverse=True)}
+        except Exception as e:
+            print(e)
+            self.__botcommand = {}
+
+        new_preprocessors = []
+        try:
+            for command in self.__preprocessors:
+                func_name = f'{command[0].__module__}.{command[0].__name__}'
+                if command[0].__module__ in settings['preprocessors']:
+                    if func_name in settings['preprocessors'][command[0].__module__]:
+                        new_preprocessors.append([command[0]] + settings['preprocessors'][command[0].__module__][func_name])
+                else:
+                    new_preprocessors.append(command + [True, 0])
+            self.__preprocessors = sorted(new_preprocessors, key=lambda item: item[-1], reverse=True)
+        except Exception as e:
+            print(e)
+            self.__preprocessors = {}
+
+        new_postprocessors = []
+        try:
+            for command in self.__postprocessors:
+                func_name = f'{command[0].__module__}.{command[0].__name__}'
+                if command[0].__module__ in settings['postprocessors']:
+                    if func_name in settings['postprocessors'][command[0].__module__]:
+                        new_postprocessors.append([command[0]] + settings['postprocessors'][command[0].__module__][func_name])
+                else:
+                    new_postprocessors.append(command + [True, 0])
+            self.__postprocessors = sorted(new_postprocessors, key=lambda item: item[-1], reverse=True)
+        except Exception as e:
+            print(e)
+            self.__postprocessors = {}
+
+    def take(self, config_json):
+        """
+        The dragon takes the configuration sheet from your hands and studies it.
+
+        Translate: Save config to `Paarthurnax/settings/settings.json` and refresh the current configurations.
+        """
+        try:
+            with open(os.path.join(os.path.dirname(os.path.abspath(__file__)) ,'settings', 'settings.json'), 'w+', encoding='utf-8') as f:
+                f.write(json.dumps(config_json, ensure_ascii=False))
+        except Exception as e:
+            return 'Something went wrong.', 500
+        try:
+            self.study()
+            for job in self.__schduler.get_jobs():
+                job.remove()
+            for func in self.__alerts.keys():
+                if self.__alerts[func][1]:
+                    self.__add_job(func, self.__alerts[func][0])
+        except Exception as e:
+            settings = {
+                'alert_functions': {},
+                'bot_commands': {},
+                'preprocessors': {},
+                'postprocessors': {}
+            }
+            with open(os.path.join(os.path.dirname(os.path.abspath(__file__)) ,'settings', 'settings.json'), 'w+', encoding='utf-8') as f:
+                f.write(json.dumps(settings, ensure_ascii=False))
+            return 'That page is corrupted and I have burned it to ashes.', 500
+        return 'I heed you loud and clear, traveller.', 200
+
+    def check(self, group_id=0):
+        """
+        The dragon will check its abilities.
+
+        Translate: Check platform capablities(e.g. can it send voice records) and group privileges.
+        If group_id == 0, check platform capablities.
+        Else, check bot group role(owner/admin/member) for group_id.
+        """
+        pass
 
