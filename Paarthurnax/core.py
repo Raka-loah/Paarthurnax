@@ -130,9 +130,9 @@ class Talking_Dragon:
 
         # Preprocessors
         for func in self.__preprocessors:
-            if func[1] == 0 and j['group_id'] in func[2]:
+            if func[1] == 0 and j['group_id'] in [int(x) for x in func[2] if x != '']:
                 continue
-            elif func[1] == 1 and j['group_id'] not in func[2]:
+            elif func[1] == 1 and j['group_id'] not in [int(x) for x in func[2] if x != '']:
                 continue
             j, halt = func[0](j)
             if halt:
@@ -184,10 +184,10 @@ class Talking_Dragon:
         if matched_keyword is not None:
             if j['message_type'] == 'group':
                 if bot_command[matched_keyword][1] == 0:
-                    if j['group_id'] in bot_command[matched_keyword][2]:
+                    if j['group_id'] in [int(x) for x in bot_command[matched_keyword][2] if x != '']:
                         matched_keyword = None
                 else:
-                    if j['group_id'] not in bot_command[matched_keyword][2]:
+                    if j['group_id'] not in [int(x) for x in bot_command[matched_keyword][2] if x != '']:
                         matched_keyword = None
 
         # If we got a keyword
@@ -226,9 +226,9 @@ class Talking_Dragon:
         # Postprocessors
         status_code = 204
         for func in self.__postprocessors:
-            if func[1] == 0 and j['group_id'] in func[2]:
+            if func[1] == 0 and j['group_id'] in [int(x) for x in func[2] if x != '']:
                 continue
-            elif func[1] == 1 and j['group_id'] not in func[2]:
+            elif func[1] == 1 and j['group_id'] not in [int(x) for x in func[2] if x != '']:
                 continue
             resp_temp, status_code = func[0](j, resp)
             if resp_temp != '':
@@ -252,7 +252,7 @@ class Talking_Dragon:
             url = f"{self.__getattr(cfg, 'base_url', 'http://127.0.0.1:5700')}/send_group_msg_async"
             for group_id in broadcast_group:
                 payload = {
-                    'group_id': group_id,
+                    'group_id': int(group_id),
                     'message': msg
                 }
                 requests.post(url, json=payload)

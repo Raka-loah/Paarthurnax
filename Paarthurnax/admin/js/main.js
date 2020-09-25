@@ -181,8 +181,17 @@ $(document).ready(function(){
       $.ajax({method: "POST", url: "admin/settings", data: JSON.stringify(settings)})
       .done(function(result){
         console.log(result);
+        message = "<p>设置修改成功，返回信息：</p><p>" + result + "</p>"
+        $("#modal-message").html(message);
+        $("#modal").modal('show');
+      })
+      .fail(function(result){
+        console.log(result);
+        message = "<p>设置修改失败，返回信息：</p><p>" + result + "</p>"
+        $("#modal-message").html(message);
+        $("#modal").modal('show');
       });
       
     });
-      
+
 });
