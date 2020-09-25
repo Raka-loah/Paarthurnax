@@ -1066,3 +1066,9 @@ def get_prime_part_drop_from(j):
             msg += '\n{}'.format(item[0])
 
     return msg.strip()
+
+def wf_custom_replies(j, resp):
+    if j['message'].lower().replace(' ', '') in data_dict['CR']:
+        resp['reply'] = data_dict['CR'][j['message'].lower().replace(' ', '')]
+        return resp, 200
+    return '', 204

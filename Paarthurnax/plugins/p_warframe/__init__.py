@@ -43,11 +43,11 @@ Metadata = {
         '出处': [wf.get_prime_part_drop_from, 0, [], 0, True, False, False],
     },
 
-    'preprocessors': {
+    'preprocessors': [
 
-    },
+    ],
 
-    'postprocessors': {
-
-    },
+    'postprocessors': [
+        [wf.wf_custom_replies, 0, []],
+    ],
 }
