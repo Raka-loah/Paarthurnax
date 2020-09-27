@@ -118,49 +118,41 @@ def msg_ar_wrapper(j, resp):
 
 
 def msg_executioner(j, resp):
+    status_code = 204
     if j['message_type'] == 'group':
         try:
-            db = sqlite3.connect('qqbot.sqlite')
-            cursor = db.cursor()
-            cursor.execute(
-                '''SELECT timestamp, sender_id FROM messages WHERE group_id = ? ORDER BY timestamp DESC LIMIT 2''',
-                (j['group_id'],
-                 ))
-            rows = cursor.fetchall()
+            rows = j['query'](group_id=j['group_id'], limit=2)
             if len(rows) == 2:
-                timespan = float(rows[0][0]) - float(rows[1][0])
-                if timespan > 180 and rows[0][1] == rows[1][1] and random.randint(1, 10) == 1:
-                    resp['reply'] = random.choice(['哦', '这样', '真的吗', '挽尊', '然后呢', '嗯嗯'])
-            return resp, 200
-        except BaseException:
-            db.close()
-            return '', 204
-    return '', 204
+                timespan = float(rows[0][4]) - float(rows[1][4])
+                if timespan > 180 and rows[0][2] == rows[1][2] and random.random() > 0.1:
+                    resp['reply'] = random.choice(['哦', '这样', '真的吗', '挽尊', '然后呢', '嗯嗯', '呐'])
+                    status_code = 200
+        except Exception as e:
+            print(e)
+            resp = ''
+            status_code = 204
+    return resp, status_code
 
 
 def msg_nature_of_humanity(j, resp):
+    status_code = 204
     if j['message_type'] == 'group':
         try:
-            db = sqlite3.connect('qqbot.sqlite')
-            cursor = db.cursor()
-            cursor.execute(
-                '''SELECT message, sender_id FROM messages WHERE group_id = ? ORDER BY timestamp DESC LIMIT 3''',
-                (j['group_id'],
-                 ))
-            rows = cursor.fetchall()
+            rows = j['query'](group_id=j['group_id'], limit=3)
             msg = ''
             # Exactly 3 messages, last two messages are identical, last third is not.
             # Repeat the last message, and ensure repeating only once.
             if len(rows) == 3:
-                messages = [rows[0][0], rows[1][0], rows[2][0]]
-                senders = [rows[0][1], rows[1][1], rows[2][1]]
+                messages = [rows[0][3], rows[1][3], rows[2][3]]
+                senders = [rows[0][2], rows[1][2], rows[2][2]]
                 if messages[0] == messages[1] and messages[1] != messages[2] and senders[0] != senders[1]:
-                    resp['reply'] = rows[0][0]
-                    return resp, 200
+                    resp['reply'] = messages[0]
+                    status_code = 200
         except BaseException:
-            db.close()
-            return '', 204
-    return '', 204
+            print(e)
+            resp = ''
+            status_code = 204
+    return resp, status_code
 
 
 def let_me_baidu_that_for_you(j):

@@ -41,6 +41,7 @@ Metadata = {
         'wiki来': [wf.get_wiki_link, 0, [], 10, True, False, True],
         '遗物': [wf.get_relic_rewards, 0, [], 0, True, False, False],
         '出处': [wf.get_prime_part_drop_from, 0, [], 0, True, False, False],
+        '紫卡': [wf.get_riven_prices, 0, [], 10, True, False, False],
     },
 
     'preprocessors': [
