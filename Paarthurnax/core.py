@@ -128,6 +128,10 @@ class Talking_Dragon:
 
         j['suffix'] = getattr(cfg, 'suffix', '')
 
+        j['query'] = self.query
+
+        j['api'] = self.api
+
         # Preprocessors
         for func in self.__preprocessors:
             if func[1] == 0 and j['group_id'] in [int(x) for x in func[2] if x != '']:
@@ -341,8 +345,8 @@ class Talking_Dragon:
                 if command.__module__ in settings['alert_functions']:
                     if func_name in settings['alert_functions'][command.__module__]:
                         new_alerts[command] = settings['alert_functions'][command.__module__][func_name]
-                else:
-                    new_alerts[command] = [self.__alerts[command], True]
+                    else:
+                        new_alerts[command] = [self.__alerts[command], True]
             self.__alerts = new_alerts
         except Exception as e:
             print(e)
@@ -356,8 +360,8 @@ class Talking_Dragon:
                     if func_name in settings['bot_commands'][self.__botcommand[command][0].__module__]:
                         func = self.__botcommand[command][0]
                         new_command[settings['bot_commands'][self.__botcommand[command][0].__module__][func_name][0]] = [func] + settings['bot_commands'][self.__botcommand[command][0].__module__][func_name][1:]
-                else:
-                    new_command[command] = self.__botcommand[command] + [True, 0]
+                    else:
+                        new_command[command] = self.__botcommand[command] + [True, 0]
             self.__botcommand = {k: v for k, v in sorted(new_command.items(), key=lambda item: item[1][-1], reverse=True)}
         except Exception as e:
             print(e)
@@ -370,8 +374,8 @@ class Talking_Dragon:
                 if command[0].__module__ in settings['preprocessors']:
                     if func_name in settings['preprocessors'][command[0].__module__]:
                         new_preprocessors.append([command[0]] + settings['preprocessors'][command[0].__module__][func_name])
-                else:
-                    new_preprocessors.append(command + [True, 0])
+                    else:
+                        new_preprocessors.append(command + [True, 0])
             self.__preprocessors = sorted(new_preprocessors, key=lambda item: item[-1], reverse=True)
         except Exception as e:
             print(e)
@@ -384,8 +388,8 @@ class Talking_Dragon:
                 if command[0].__module__ in settings['postprocessors']:
                     if func_name in settings['postprocessors'][command[0].__module__]:
                         new_postprocessors.append([command[0]] + settings['postprocessors'][command[0].__module__][func_name])
-                else:
-                    new_postprocessors.append(command + [True, 0])
+                    else:
+                        new_postprocessors.append(command + [True, 0])
             self.__postprocessors = sorted(new_postprocessors, key=lambda item: item[-1], reverse=True)
         except Exception as e:
             print(e)
@@ -421,13 +425,81 @@ class Talking_Dragon:
             return 'That page is corrupted and I have burned it to ashes.', 500
         return 'I heed you loud and clear, traveller.', 200
 
-    def check(self, group_id=0):
+    def query(self, id='', group_id='', sender_id='', message='', timestamp_eq='', timestamp_lt='', timestamp_gt='', order_by='timestamp', desc=True, limit=10):
         """
-        The dragon will check its abilities.
+        The dragon recites things he heard in the past. He has eidetic memory.
 
-        Translate: Check platform capablities(e.g. can it send voice records) and group privileges.
-        If group_id == 0, check platform capablities.
-        Else, check bot group role(owner/admin/member) for group_id.
+        Translate: Query message log using SQL parameters.
         """
-        pass
+        query_string = f'''SELECT id, group_id, sender_id, message, timestamp FROM messages WHERE 1=1 
+            {" AND id = ? " if id != "" else ""}
+            {" AND group_id = ? " if group_id != "" else ""}
+            {" AND sender_id = ? " if sender_id != "" else ""}
+            {" AND message = ? " if message != "" else ""}
+            {" AND timestamp = ? " if timestamp_eq != "" else ""}
+            {" AND timestamp < ? " if timestamp_lt != "" else ""}
+            {" AND timestamp > ? " if timestamp_gt != "" else ""}
+            {" ORDER BY " + order_by if order_by in ["id", "group_id", "sender_id", "message", "timestamp"] else ""}{" DESC " if desc else " ASC "}{"LIMIT " + str(min(limit,100)) if limit > 0 else ""}'''
 
+        query_params = () + ((id,) if id != "" else ()) + ((group_id,) if group_id != "" else ()) + ((sender_id,) if sender_id != "" else ()) + \
+            ((message,) if message != "" else ()) + ((timestamp_eq,) if timestamp_eq != "" else ()) + ((timestamp_lt,) if timestamp_lt != "" else ()) + \
+            ((timestamp_gt,) if timestamp_gt != "" else ())
+
+        try:
+            db = sqlite3.connect('qqbot.sqlite')
+            cursor = db.cursor()
+            cursor.execute(query_string, query_params)
+            rows = cursor.fetchall()
+        except Exception as e:
+            print(e)
+            rows = []
+        finally:
+            db.close()
+        
+        return rows
+
+    def api(self, endpoint, payload={}):
+        """
+        The dragon tries to do some trivial stuff you tell him to.
+
+        Translate: Access OneBot public API endpoints.
+        """
+        available_endpoints = [
+            'send_private_msg',
+            'send_group_msg',
+            'send_msg',
+            'delete_msg',
+            'get_msg',
+            'get_forward_msg',
+            'send_like',
+            'set_group_kick',
+            'set_group_ban',
+            'set_group_anonymous_ban',
+            'set_group_whole_ban',
+            'set_group_admin',
+            'set_group_anonymous',
+            'set_group_card',
+            'set_group_name',
+            'set_group_leave',
+            'set_group_special_title',
+            'set_friend_add_request',
+            'set_group_add_request',
+            'get_login_info',
+            'get_stranger_info',
+            'get_friend_list',
+            'get_group_info',
+            'get_group_list',
+            'get_group_member_info',
+            'get_group_member_list',
+            'get_group_honor_info',
+            'get_record',
+            'get_image',
+            'can_send_image',
+            'can_send_record'
+        ]
+
+        if endpoint in available_endpoints:
+            if endpoint in ['send_private_msg', 'send_group_msg', 'send_msg']:
+                endpoint += '_rate_limited'
+            r = requests.post(url=f"{getattr(self.__cfg, 'base_url', 'http://127.0.0.1:5700')}/{endpoint}", json=payload)
+            return r.text, r.status_code

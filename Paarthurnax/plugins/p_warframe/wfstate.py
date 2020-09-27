@@ -13,8 +13,8 @@ import requests_cache
 from bs4 import BeautifulSoup
 from fuzzywuzzy import fuzz, process
 
-requests_cache.install_cache('worldstate_cache', expire_after=60)
-
+requests_cache.install_cache(os.path.join(os.path.dirname(os.path.abspath(__file__)) ,'worldstate_cache'), expire_after=60)
+requests_cache.remove_expired_responses()
 
 def get_worldstate():
     """Get world state json.
@@ -841,7 +841,7 @@ def get_wmprice(j):
 
 
 def get_wiki_text(j):
-    s = requests_cache.CachedSession(backend='sqlite', cache_name='wiki_cache')
+    s = requests_cache.CachedSession(backend='sqlite', cache_name=os.path.join(os.path.dirname(os.path.abspath(__file__)) ,'wiki_cache'))
     mod_name = j['message'].replace(j['keyword'], '').strip()
     msg = ''
     if mod_name.lower().replace(' ', '') in data_dict['ML']:
@@ -975,7 +975,7 @@ def get_riven_pricedata():
 
     Return a very complicated nested array
     """
-    s = requests_cache.CachedSession(backend='sqlite', cache_name='riven_cache', expire_after=86400)
+    s = requests_cache.CachedSession(backend='sqlite', cache_name=os.path.join(os.path.dirname(os.path.abspath(__file__)) ,'riven_cache'), expire_after=86400)
     url = 'http://n9e5v4d8.ssl.hwcdn.net/repos/weeklyRivensPC.json'
     data = s.get(url, timeout=30).json()
     return data
