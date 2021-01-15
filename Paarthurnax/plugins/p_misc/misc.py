@@ -767,7 +767,7 @@ def msg_exchange_rate_2(j):
                 return '按……等一下你是认真的吗？ {} {} = {} {}（确信）'.format(match.group(1), match.group(2),match.group(1), match.group(2))
             else:
                 if match.group(2).upper() == 'CNY':
-                    return '按当前汇率：{} CNY = {:.4f} {} ({:.4f})'.format(match.group(1),float(match.group(1)) / (float(er_processed[match.group(3).upper()]) / 100),match.group(3), float(er_processed[match.group(3).upper()]) / 100)
+                    return '按当前汇率：{} CNY = {:.4f} {} ({:.4f})'.format(match.group(1),float(match.group(1)) / (float(er_processed[match.group(3).upper()]) / 100),match.group(3), 1 / (float(er_processed[match.group(3).upper()]) / 100))
                 elif match.group(3).upper() == 'CNY':
                     return '按当前汇率：{} {} = {:.4f} CNY ({:.4f})'.format(match.group(1), match.group(2).upper(), float(match.group(1)) * float(er_processed[match.group(2).upper()]) / 100, float(er_processed[match.group(2).upper()]) / 100)
                 return '目前尚未有货币{} -> {} 的汇率。'.format(match.group(2).upper(),match.group(3).upper())
