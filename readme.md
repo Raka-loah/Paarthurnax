@@ -17,6 +17,8 @@
 **致完全的Python新手**
 ------
 
+**仅支持Python 3.6及以上版本，因为f-string太香了**
+
 关于Python环境的安装与配置方法，请参阅Python官方文档：[点击此处](https://docs.python.org/zh-cn/3.8/using/windows.html)。
 
 对于Windows环境安装时建议勾选 `Add Python to PATH` 项目，后期使用较为方便。
