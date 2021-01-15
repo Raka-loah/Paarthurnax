@@ -760,28 +760,27 @@ def msg_exchange_rate_2(j):
         er_processed = {}
         for currency in er['result'][0]:
             if currency in code:
-                er_processed[code[currency]] = er['result'][0][currency]['bankConversionPri']
-        match = re.match(r'.*?(\d+\.*\d*).*?([A-Za-z]{3}).*?([A-Za-z]{3})', j['message'])
+                er_processed[code[currency]] = float(er['result'][0][currency]['bankConversionPri']) / 100
+        er_processed['CNY'] = 1.0
+        match = re.match(r'.*?(\d+\.*\d*).*?([A-Za-z]{3})(.*?([A-Za-z]{3}))?', j['message'])
         if match:
-            if match.group(3).upper() == match.group(2).upper():
-                return '按……等一下你是认真的吗？ {} {} = {} {}（确信）'.format(match.group(1), match.group(2),match.group(1), match.group(2))
+            currency_amount = float(match.group(1))
+            currency_from = match.group(2).upper()
+            try:
+                currency_to = match.group(4).upper()
+            except:
+                currency_to = 'CNY'
+
+            if currency_from == currency_to:
+                return f'按……等一下你是认真的吗？ {currency_amount} {currency_from} = {currency_amount} {currency_to}（确信）'
             else:
-                if match.group(2).upper() == 'CNY':
-                    return '按当前汇率：{} CNY = {:.4f} {} ({:.4f})'.format(match.group(1),float(match.group(1)) / (float(er_processed[match.group(3).upper()]) / 100),match.group(3), 1 / (float(er_processed[match.group(3).upper()]) / 100))
-                elif match.group(3).upper() == 'CNY':
-                    return '按当前汇率：{} {} = {:.4f} CNY ({:.4f})'.format(match.group(1), match.group(2).upper(), float(match.group(1)) * float(er_processed[match.group(2).upper()]) / 100, float(er_processed[match.group(2).upper()]) / 100)
-                return '目前尚未有货币{} -> {} 的汇率。'.format(match.group(2).upper(),match.group(3).upper())
-        
+                try:
+                    exc_rate = er_processed[currency_from] / er_processed[currency_to]
+                    msg = f'按当前汇率：{currency_amount} {currency_from} = {currency_amount * exc_rate:.4f} {currency_to} ({exc_rate:.4f})'
+                except:
+                    msg = f'目前尚未有货币 {currency_from} -> {currency_to} 的汇率。'
         else:
-            match = re.match(r'.*?(\d+\.*\d*).*?([A-Za-z]{3})', j['message'])
-        if match:
-            if match.group(2).upper() == 'CNY':
-                return '按……等一下你是认真的吗？ {} CNY = {} CNY（确信）'.format(match.group(1), match.group(1))
-            if match.group(2).upper() in er_processed:
-                return '按当前汇率：{} {} = {:.4f} CNY ({:.4f})'.format(match.group(1), match.group(2).upper(), float(match.group(1)) * float(er_processed[match.group(2).upper()]) / 100, float(er_processed[match.group(2).upper()]) / 100)
-            else:
-                return '目前尚未有货币{}的汇率。'.format(match.group(2).upper())
-        msg = '命令格式：\n/汇率 数字 源货币种类 目标货币种类，源货币种类->目标货币种类。仅支持至少有一项为CNY。\n/汇率 数字 货币种类，CNY->货币种类\n支持小数点，货币种类如USD EUR HKD等。'
+            msg = '命令格式：\n/汇率 数字 源货币种类 [目标货币种类]，省略目标货币种类时默认为CNY。\n支持小数点，货币种类仅支持英文缩写如USD EUR HKD等。'
         return msg
     except BaseException:
         return ''
