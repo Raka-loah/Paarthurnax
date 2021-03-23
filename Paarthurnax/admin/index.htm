@@ -6,154 +6,158 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Paarthurnax设置</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico">
 
   </head>
   <body>
-<main role="main" class="container mt-4 mb-4">
+    <main role="main" class="container mt-4 mb-4">
 
-  <div class="starter-template">
-    <div class="card">
-      <div class="card-body">
-        <h1>Paarthurnax · 设置页面</h1>
-        <p class="lead">可以在这里微调Paarthurnax的各项设置。</p>
-        <hr />
-        <!-- Bot commands -->
+      <div class="starter-template">
         <div class="card">
-          <h5 class="card-header">
-            Bot命令设置
-          </h5>
           <div class="card-body">
-            <table class="table">
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col" style="width:15%" title="当用户发出关键词时触发功能">关键词</th>
-                  <th scope="col" style="width:10%" title="不勾选为黑名单">白名单</th>
-                  <th scope="col" style="width:15%" title="空格分隔">群号</th>
-                  <th scope="col" style="width:10%" title="冷却时间（秒）">CD</th>
-                  <th scope="col" style="width:10%" title="需要判断用户输入内容，即部分匹配关键词">用户输入</th>
-                  <th scope="col" style="width:10%" title="关键词是正则表达式">正则</th>
-                  <th scope="col" style="width:10%" title="是否在每条消息后附加帮助信息">附加</th>
-                  <th scope="col" style="width:10%" title="是否启用命令">启用</th>
-                  <th scope="col" title="整数，越大优先级越高">优先级</th>
-                </tr>
-              </thead>
-              <tbody id="bot-command">
-                <tr>
-                  <td>当前暂无命令</td>
-                </tr>
-              </tbody>
-            </table>
+            <h1>Paarthurnax · 设置页面</h1>
+            <p class="lead">可以在这里微调Paarthurnax的各项设置。</p>
+            <hr />
+            <!-- Bot commands -->
+            <div class="card">
+              <h5 class="card-header">
+                Bot命令设置
+              </h5>
+              <div class="card-body">
+                <table class="table">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col" style="width:15%" title="当用户发出关键词时触发功能">关键词</th>
+                      <th scope="col" style="width:10%" title="不勾选为黑名单">白名单</th>
+                      <th scope="col" style="width:15%" title="空格分隔">群号</th>
+                      <th scope="col" style="width:10%" title="冷却时间（秒）">CD</th>
+                      <th scope="col" style="width:10%" title="需要判断用户输入内容，即部分匹配关键词">用户输入</th>
+                      <th scope="col" style="width:10%" title="关键词是正则表达式">正则</th>
+                      <th scope="col" style="width:10%" title="是否在每条消息后附加帮助信息">附加</th>
+                      <th scope="col" style="width:10%" title="是否启用命令">启用</th>
+                      <th scope="col" title="整数，越大优先级越高">优先级</th>
+                    </tr>
+                  </thead>
+                  <tbody id="bot-command">
+                    <tr>
+                      <td>当前暂无命令</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Alerts -->
+            <div class="card mt-4">
+              <h5 class="card-header">
+                警报
+              </h5>
+              <div class="card-body" >
+                <table class="table">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">函数名</th>
+                      <th scope="col" title="指每分钟的第几秒触发一次">触发秒数</th>
+                      <th scope="col" title="空格分隔">启用</th>
+                    </tr>
+                  </thead>
+                  <tbody id="alert-functions">
+                    <tr>
+                      <td>当前暂无命令</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Preprocessors -->
+            <div class="card mt-4">
+              <h5 class="card-header">
+                预处理
+              </h5>
+              <div class="card-body">
+                <table class="table">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col" width="30%">函数名</th>
+                      <th scope="col" style="width:10%" title="不勾选为黑名单">白名单</th>
+                      <th scope="col" style="width:15%" title="空格分隔">群号</th>
+                      <th scope="col" width="10%">启用</th>
+                      <th scope="col" title="整数，越大优先级越高">优先级</th>
+                    </tr>
+                  </thead>
+                  <tbody id="preprocessors">
+                    <tr>
+                      <td>当前暂无命令</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Postprocessors -->
+            <div class="card mt-4">
+              <h5 class="card-header">
+                后处理
+              </h5>
+              <div class="card-body">
+                <table class="table">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col" width="30%">函数名</th>
+                      <th scope="col" style="width:10%" title="不勾选为黑名单">白名单</th>
+                      <th scope="col" style="width:15%" title="空格分隔">群号</th>
+                      <th scope="col" width="10%">启用</th>
+                      <th scope="col" title="整数，越大优先级越高">优先级</th>
+                    </tr>
+                  </thead>
+                  <tbody id="postprocessors">
+                    <tr>
+                      <td>当前暂无命令</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <hr />
+
+            <a href="#" id="save" class="btn btn-primary btn-block">保存设置</a>
+
+          </div>
+          <div class="card-footer text-center text-muted">
+            🐉 Paarthurnax [NEXT] by <a href="https://github.com/Raka-loah/Paarthurnax" target="_blank">Raka-loah</a> - 请使用1024*768及以上分辨率
           </div>
         </div>
-
-        <!-- Alerts -->
-        <div class="card mt-4">
-          <h5 class="card-header">
-            警报
-          </h5>
-          <div class="card-body" >
-            <table class="table">
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col">函数名</th>
-                  <th scope="col" title="指每分钟的第几秒触发一次">触发秒数</th>
-                  <th scope="col" title="空格分隔">启用</th>
-                </tr>
-              </thead>
-              <tbody id="alert-functions">
-                <tr>
-                  <td>当前暂无命令</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Preprocessors -->
-        <div class="card mt-4">
-          <h5 class="card-header">
-            预处理
-          </h5>
-          <div class="card-body">
-            <table class="table">
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col" width="30%">函数名</th>
-                  <th scope="col" style="width:10%" title="不勾选为黑名单">白名单</th>
-                  <th scope="col" style="width:15%" title="空格分隔">群号</th>
-                  <th scope="col" width="10%">启用</th>
-                  <th scope="col" title="整数，越大优先级越高">优先级</th>
-                </tr>
-              </thead>
-              <tbody id="preprocessors">
-                <tr>
-                  <td>当前暂无命令</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Postprocessors -->
-        <div class="card mt-4">
-          <h5 class="card-header">
-            后处理
-          </h5>
-          <div class="card-body">
-            <table class="table">
-              <thead class="thead-light">
-                <tr>
-                  <th scope="col" width="30%">函数名</th>
-                  <th scope="col" style="width:10%" title="不勾选为黑名单">白名单</th>
-                  <th scope="col" style="width:15%" title="空格分隔">群号</th>
-                  <th scope="col" width="10%">启用</th>
-                  <th scope="col" title="整数，越大优先级越高">优先级</th>
-                </tr>
-              </thead>
-              <tbody id="postprocessors">
-                <tr>
-                  <td>当前暂无命令</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <hr />
-
-        <a href="#" id="save" class="btn btn-primary btn-block">保存设置</a>
-
       </div>
-      <div class="card-footer text-center text-muted">
-        🐉 Paarthurnax [NEXT] by <a href="https://github.com/Raka-loah/Paarthurnax" target="_blank">Raka-loah</a> - 请使用1024*768及以上分辨率
+
+      <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">执行结果</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div id="modal-message" class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">知道了</button>
+            </div>
+          </div>
+        </div>
       </div>
+    </main>
+    <div id="app">
+      <button-counter></button-counter>
     </div>
-  </div>
-
-  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">执行结果</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div id="modal-message" class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">知道了</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</main>
-<script src="js/jquery-3.5.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/main.js"></script>
-</body>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
