@@ -15,3 +15,5 @@ installed
 settings.json
 config.py
 temp
+
+.devcontainer
