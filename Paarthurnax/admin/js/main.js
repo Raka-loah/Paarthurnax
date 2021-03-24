@@ -1,3 +1,221 @@
+/* API */
+const Enum = {
+  postType: {
+    "MESSAGE": 'message',
+    "NOTICE": 'notice',
+    "REQUEST": 'request',
+    "META": 'meta_event',
+    "ERROR": 'error',
+  },
+  messageType: {
+    "PRIVATE":'private',
+    "GROUP":'group'
+  },
+  sex: {
+    "MALE": 'male',
+    "FEMALE": 'female',
+    "UNKNOWN": 'unknown',
+  },
+  privateSubType: {
+    "FRIEND": 'friend',
+    "GROUP":'group',
+    "OTHER":'other',
+  },
+  groupSubType: {
+    "NORMAL":'normal',
+    "ANONYMOUS":'anonymous',
+    "NOTICE":'notice',
+  }
+}
+class commonEvent {
+  constructor (msg){
+    this.time = msg.time || Date.now();
+    this.self_id = msg.self_id;
+    this.post_type = msg.post_type;
+  }
+}
+
+class ErrorEvent extends commonEvent{
+  constructor(msg){
+    super(msg);
+    this.time = msg.time || Date.now();
+    this.post_type = Enum.postType.ERROR;
+    this.self_id = 0;
+    this.error_type = msg.error_type;
+    this.errorMsg = msg.errorMsg;
+  }
+}
+class Sender {
+  constructor(msg){
+    this.user_id = msg.user_id;
+    this.nickname = msg.nickname;
+    this.sex = msg.sex || "";
+    this.age = msg.age || "";
+    this.card = msg.card || "";
+    this.area= msg.area || ""
+    this.level=msg.level || "";
+    this.role=msg.role || "";
+    this.title=msg.title || "";
+  }
+}
+
+class commonMessage extends commonEvent {
+  constructor (msg){
+    super(msg);
+    this.post_type = Enum.postType.MESSAGE;
+    this.message_type = msg.message_type;
+    this.sub_type=msg.sub_type
+    this.message_id=msg.message_id
+    this.user_id=msg.user_id
+    this.message=msg.message
+    this.raw_message=msg.raw_message
+    this.font=msg.font
+    this.sender=new Sender(msg.sender);
+  }
+}
+
+class PrivateMessage extends commonMessage {
+  constructor(msg){
+    super(msg);
+    this.message_type = Enum.messageType.PRIVATE;
+  }
+}
+class GroupMessage extends commonMessage {
+  constructor(msg){
+    super(msg);
+    this.message_type = Enum.messageType.GROUP;
+    this.group_id = msg.group_id;
+    this.anonymous = msg.anonymous;
+    this.sub_type = msg.sub_type;
+  }
+}
+
+
+const Api = {
+  whisper : (richMessage) => 
+    axios.post('/whisper',richMessage)
+}
+
+
+
+/*VUE CODE*/
+const app = Vue.createApp({});
+const { ref, reactive }  = Vue; 
+app.component('message-box', {
+  setup(){
+    const {messageType} = Enum
+    const messageId = ref(0)
+    const messageQueue = reactive([]);
+    const message = reactive({
+      time: '',
+      self_id: 10001,
+      message_type: messageType.GROUP,
+      sub_type: '',
+      message_id: messageId.value,
+      user_id: 10002,
+      message: '',
+      raw_message: '',
+      font: '',
+      nickname: '',
+      group_id: '',
+      anonymous:'',
+    }) 
+    const sendMessage = () => {
+      messageQueue.push({
+        sender_id: message.user_id,
+        sender_name: message.nickname,
+        message: message.message
+      })
+      const PostMessage = message.message_type === messageType.GROUP ?  new GroupMessage({
+        ...message,
+        sender:{
+          user_id: message.user_id,
+          nickname: message.nickname
+        }}) : new PrivateMessage({
+        ...message,
+        sender:{
+          user_id: message.user_id,
+          nickname: message.nickname
+        }
+      })
+      Api.whisper(PostMessage).then(res=>{
+        console.log(res)
+      }) 
+    }
+    const onChange = ({field, value}) => {
+      message[field] = value ;
+    }
+    return {
+      message,
+      sendMessage,
+      onChange
+    }
+  },
+
+  template: `
+    <div>
+      <message-window/>
+      <message-input
+        @update="onChange($event)"
+        @send="sendMessage()"
+      />
+    </div>
+    `
+})
+
+app.component('message-window', {
+  setup() {
+    return {
+      sender: 0,
+      content: 0
+    }
+  },
+  template: `
+    <div>
+      <message
+        :sender="sender"
+        :content="content"
+      />
+    </div>
+    `
+})
+
+
+app.component('message', {
+  props: ["sender" ,"content"],
+  template: `
+    <div>
+      {{sender}}
+      {{content}}
+    </div>
+    `
+})
+
+app.component('message-input', {
+  setup(props, {emit}){
+    const update = (field, value) => {
+      emit('update', {
+        field,
+        value,
+      })
+    }
+    const send = () => {
+      emit('send')
+    }
+    return {
+      update,
+      send
+    }
+  },
+  template: `
+    <div>
+      <input @input="update('message',$event.target.value)" />
+      <button @click="send()" >SEND</button>
+    </div>
+    `
+})
+
+
 $(document).ready(function(){
 
     $.ajax({url:"admin/settings", cache: false})
@@ -194,19 +412,6 @@ $(document).ready(function(){
       
     });
 
-    /* VUE CODE */
-    const app = Vue.createApp({})
-    app.component('button-counter', {
-      data() {
-        return {
-          count: 0
-        }
-      },
-      template: `
-        <button @click="count++">
-          You clicked me {{ count }} times.
-        </button>`
-    })
-
+    /* VUE MOUNT */
     app.mount('#app')
 });
