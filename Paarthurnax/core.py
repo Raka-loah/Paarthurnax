@@ -345,8 +345,8 @@ class Talking_Dragon:
                 if command.__module__ in settings['alert_functions']:
                     if func_name in settings['alert_functions'][command.__module__]:
                         new_alerts[command] = settings['alert_functions'][command.__module__][func_name]
-                    else:
-                        new_alerts[command] = [self.__alerts[command], True]
+                else:
+                    new_alerts[command] = [self.__alerts[command], True]
             self.__alerts = new_alerts
         except Exception as e:
             print(e)
@@ -360,8 +360,8 @@ class Talking_Dragon:
                     if func_name in settings['bot_commands'][self.__botcommand[command][0].__module__]:
                         func = self.__botcommand[command][0]
                         new_command[settings['bot_commands'][self.__botcommand[command][0].__module__][func_name][0]] = [func] + settings['bot_commands'][self.__botcommand[command][0].__module__][func_name][1:]
-                    else:
-                        new_command[command] = self.__botcommand[command] + [True, 0]
+                else:
+                    new_command[command] = self.__botcommand[command] + [True, 0]
             self.__botcommand = {k: v for k, v in sorted(new_command.items(), key=lambda item: item[1][-1], reverse=True)}
         except Exception as e:
             print(e)
@@ -374,8 +374,8 @@ class Talking_Dragon:
                 if command[0].__module__ in settings['preprocessors']:
                     if func_name in settings['preprocessors'][command[0].__module__]:
                         new_preprocessors.append([command[0]] + settings['preprocessors'][command[0].__module__][func_name])
-                    else:
-                        new_preprocessors.append(command + [True, 0])
+                else:
+                    new_preprocessors.append(command + [True, 0])
             self.__preprocessors = sorted(new_preprocessors, key=lambda item: item[-1], reverse=True)
         except Exception as e:
             print(e)
@@ -388,8 +388,8 @@ class Talking_Dragon:
                 if command[0].__module__ in settings['postprocessors']:
                     if func_name in settings['postprocessors'][command[0].__module__]:
                         new_postprocessors.append([command[0]] + settings['postprocessors'][command[0].__module__][func_name])
-                    else:
-                        new_postprocessors.append(command + [True, 0])
+                else:
+                    new_postprocessors.append(command + [True, 0])
             self.__postprocessors = sorted(new_postprocessors, key=lambda item: item[-1], reverse=True)
         except Exception as e:
             print(e)
