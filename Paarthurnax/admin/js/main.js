@@ -90,13 +90,45 @@ class GroupMessage extends commonMessage {
   }
 }
 
-
 const Api = {
   whisper : (richMessage) => 
     axios.post('/whisper',richMessage)
 }
 
-
+/*UILTS*/
+const uilts = {
+  cqBlockParser : (cqString) => {
+    //CQType
+    const typeReg = /\[CQ:(.+?),/.exec(cqString);
+    const cqType = typeReg && typeReg[1];
+    // propetys
+    const propetyRegs = [...cqString.matchAll(/([a-zA-Z]+)=(.+?)[\]\,]/g)];
+    const propetys = propetyRegs.map(([raw, key, value])=> ({key, value})).reduce((acc, {key, value})=>{
+      acc[key] = value;
+      return acc;
+    }, {})
+    
+    return {
+      cqType, ...propetys
+    }
+  },
+  cqParser : (cqString) => {
+    return cqString.replace(/\[CQ:.+?\]/, (match)=>{
+      const cq = uilts.cqBlockParser(match);
+      const { cqType } = cq;
+      switch( cqType ){
+        case 'music':
+          return `MUSIC:${cq.type}${cq.id}`
+        case 'at':
+          return `@${cq.qq}`
+        case 'image': 
+          return `IMGAE:${cq.file}`
+        default:
+          return match
+      }
+    })
+  }
+}
 
 /*VUE CODE*/
 const app = Vue.createApp({});
@@ -109,6 +141,7 @@ app.component('message-box', {
     const message = reactive({
       time: '',
       self_id: 10001,
+      self_name: "老帕",
       message_type: messageType.GROUP,
       sub_type: '',
       message_id: messageId.value,
@@ -116,11 +149,13 @@ app.component('message-box', {
       message: '',
       raw_message: '',
       font: '',
-      nickname: '',
+      nickname: 'ShirleyM',
       group_id: '',
       anonymous:'',
     }) 
-    const sendMessage = () => {
+    const sendMessage = (messageContent) => {
+      message.message = messageContent;
+
       messageQueue.push({
         sender_id: message.user_id,
         sender_name: message.nickname,
@@ -138,43 +173,45 @@ app.component('message-box', {
           nickname: message.nickname
         }
       })
-      Api.whisper(PostMessage).then(res=>{
-        console.log(res)
+      Api.whisper(PostMessage).then(({status, data})=>{
+        if(status === 200) {
+          const { reply, at_sender } = data;
+          messageQueue.push({
+            sender_id: message.self_id,
+            sender_name: message.self_name,
+            message: uilts.cqParser(reply), // Need to parser cqCode.
+          })
+        } 
       }) 
-    }
-    const onChange = ({field, value}) => {
-      message[field] = value ;
     }
     return {
       message,
       sendMessage,
-      onChange
+      messageQueue,
     }
   },
 
   template: `
     <div>
-      <message-window/>
+      <message-window
+        :messages="messageQueue"
+      />
       <message-input
-        @update="onChange($event)"
-        @send="sendMessage()"
+        @send="sendMessage($event)"
       />
     </div>
     `
 })
 
 app.component('message-window', {
-  setup() {
-    return {
-      sender: 0,
-      content: 0
-    }
-  },
+  props: ["messages"],
   template: `
     <div>
       <message
-        :sender="sender"
-        :content="content"
+        v-for="(message, index) in messages"
+        :key="index"
+        :sender="message.sender_name"
+        :content="message.message"
       />
     </div>
     `
@@ -185,7 +222,7 @@ app.component('message', {
   props: ["sender" ,"content"],
   template: `
     <div>
-      {{sender}}
+      {{sender}}:
       {{content}}
     </div>
     `
@@ -193,23 +230,18 @@ app.component('message', {
 
 app.component('message-input', {
   setup(props, {emit}){
-    const update = (field, value) => {
-      emit('update', {
-        field,
-        value,
-      })
-    }
+    const message = ref('');
     const send = () => {
-      emit('send')
+      emit('send', message.value)
     }
     return {
-      update,
+      message,
       send
     }
   },
   template: `
     <div>
-      <input @input="update('message',$event.target.value)" />
+      <textarea v-model="message"/>
       <button @click="send()" >SEND</button>
     </div>
     `
