@@ -1,7 +1,7 @@
 {
 	"女朋友": ["在您能接受的价位内搜寻不到出售单", "按照您的个人条件搜寻不到出售单", "按照您的颜值搜寻不到出售单"],
 	"女朋友prime": ["您必须先拥有普通版", "很抱歉，Prime版本尚未发行", "请在2035年后使用此功能"],
-	"djprime一套": ["Hey Siri，播放Despacito", "Ok Google, play Despacito", "你好小娜，播放Despacito"],
-	"djprimeset": ["Hey Siri，播放Despacito", "Ok Google, play Despacito", "你好小娜，播放Despacito"],
+	"大蜥蜴": ["保护动物暂无法上架出售", "我拒绝查询此商品", "你可以出5P面议"],
+	"大蜥蜴prime": ["金边大蜥蜴仅在农历新年期间自行刷新", "请等待此物品出库", "你可以出10P面议"],
 	"tg_cat": ["ID:陪我一起数星星可好 售价：面议\n平均：/"]
 }
