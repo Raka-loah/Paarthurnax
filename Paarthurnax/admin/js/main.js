@@ -132,6 +132,7 @@ const uilts = {
 
 /*VUE CODE*/
 const app = Vue.createApp({});
+app.directive('ripple', primevue.ripple);// custom directive for ripper
 const { ref, reactive }  = Vue; 
 app.component('message-box', {
   setup(){
@@ -153,6 +154,8 @@ app.component('message-box', {
       group_id: '',
       anonymous:'',
     }) 
+
+
     const sendMessage = (messageContent) => {
       message.message = messageContent;
 
@@ -184,6 +187,8 @@ app.component('message-box', {
         } 
       }) 
     }
+
+
     return {
       message,
       sendMessage,
@@ -220,9 +225,16 @@ app.component('message-window', {
 
 app.component('message', {
   props: ["sender" ,"content"],
+  components: {
+    'p-avatar': primevue.avatar,
+    
+  },
   template: `
     <div>
-      {{sender}}:
+      <p-avatar 
+        size="large"
+        :label="sender[0]"
+      />
       {{content}}
     </div>
     `
@@ -239,12 +251,23 @@ app.component('message-input', {
       send
     }
   },
+  components: {
+    'p-inputtext': primevue.inputtext,
+    'p-button': primevue.button
+  },
   template: `
     <div>
-      <textarea v-model="message"/>
-      <button @click="send()" >SEND</button>
+      <p-inputtext v-model="message"/>
+      <p-button @click="send()"  label="SEND"/>
     </div>
     `
+})
+
+app.component('message-config', {
+  template:`
+    <div>
+    </div>
+  `
 })
 
 
