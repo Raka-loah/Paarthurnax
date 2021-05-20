@@ -127,42 +127,51 @@ const uilts = {
           return match
       }
     })
+  },
+  randString : (targetLenght = 32) => {
+    const stringCollection =  "ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz123456780-";
+    const stringLength = stringCollection.length;
+    return Array(targetLenght).fill(1).reduce((acc)=>{
+      return acc+= stringCollection.charAt(Math.floor(Math.random() * stringLength))
+    },'')
   }
 }
 
 /*VUE CODE*/
 const app = Vue.createApp({});
 app.directive('ripple', primevue.ripple);// custom directive for ripper
-const { ref, reactive }  = Vue; 
+const { ref, reactive, watch, onMounted, nextTick }  = Vue; 
 app.component('message-box', {
   setup(){
     const {messageType} = Enum
-    const messageId = ref(0)
     const messageQueue = reactive([]);
+    const visibleLeft = ref(true);
+    const visibleConfig = ref(false);
     const message = reactive({
       time: '',
       self_id: 10001,
       self_name: "老帕",
       message_type: messageType.GROUP,
       sub_type: '',
-      message_id: messageId.value,
-      user_id: 10002,
+      message_id: '12345',
+      user_id: 0,
       message: '',
       raw_message: '',
       font: '',
-      nickname: 'ShirleyM',
-      group_id: '',
+      nickname: 'TestAccount',
+      group_id: 12312,
       anonymous:'',
     }) 
 
 
     const sendMessage = (messageContent) => {
       message.message = messageContent;
-
+      message.time = Date.now();
+      message.message_id = uilts.randString(16);
       messageQueue.push({
         sender_id: message.user_id,
         sender_name: message.nickname,
-        message: message.message
+        message: message.message,
       })
       const PostMessage = message.message_type === messageType.GROUP ?  new GroupMessage({
         ...message,
@@ -188,34 +197,83 @@ app.component('message-box', {
       }) 
     }
 
-
+    const updateUser = ({id, name}) => {
+      message.user_id = id;
+      message.nickname = name;
+    }
+    // true for group, false for private
+    const updateMode = (modeBool) => {
+      const { GROUP, PRIVATE } = messageType;
+      message.message_type = modeBool ? GROUP : PRIVATE
+    } 
+    const updateGroup = ({id, anonymous}) => {
+      message.group_id = id;
+      message.anonymous = anonymous;
+    }
+    const openConfig = () => {
+      visibleConfig.value = !visibleConfig.value;
+    }
     return {
       message,
       sendMessage,
+      updateUser,
+      updateMode,
+      updateGroup,
       messageQueue,
+      visibleLeft,
+      visibleConfig,
+      openConfig,
     }
   },
 
   template: `
-    <div>
-      <message-window
-        :messages="messageQueue"
-      />
-      <message-input
-        @send="sendMessage($event)"
-      />
+    <div class="messageContainer">
+        <message-window
+          :messages="messageQueue"
+          :type="message.message_type"
+          :group="message.group_id"
+          :nickname="message.nickname"
+        />
+        <message-input
+          @open="openConfig($event)"
+          @send="sendMessage($event)"
+        />
+        <div :class="{messageConfig: true, configHide: !visibleConfig}"> 
+          <message-config
+            @update:user="updateUser($event)"
+            @update:mode="updateMode($event)"
+            @update:group="updateGroup($event)"
+          />
+        </div>
     </div>
     `
 })
 
 app.component('message-window', {
-  props: ["messages"],
+  props: ["messages", "group", "nickname", "type"],
+  setup(props) {
+    const { messages } = props
+    const messageWindowRef = ref(null)
+
+    onMounted(() => {
+      watch(messages, async ()=>{
+        await nextTick();
+        messageWindowRef.value.scrollTo(0, messageWindowRef.value.scrollHeight);
+      })
+    })
+
+    return {
+      messageWindowRef
+    }
+  },
   template: `
-    <div>
+    <div ref="messageWindowRef" class="messageWindow">
+      <div style="font-size: 24px; font-weight: 600; margin-bottom: 24px">Group:{{group}} | NickName:{{nickname}}</div>
       <message
         v-for="(message, index) in messages"
         :key="index"
         :sender="message.sender_name"
+        :senderId="message.sender_id"
         :content="message.message"
       />
     </div>
@@ -224,18 +282,30 @@ app.component('message-window', {
 
 
 app.component('message', {
-  props: ["sender" ,"content"],
+  props: ["sender","content", "senderId"],
   components: {
     'p-avatar': primevue.avatar,
-    
+  },
+  setup(props) {
+    const now = () => {
+      return dayjs().format("HH:MM:ss")
+    }
+    return {
+      now
+    }
   },
   template: `
-    <div>
-      <p-avatar 
-        size="large"
-        :label="sender[0]"
-      />
-      {{content}}
+    <div class="messageContent">
+      <div class="messageContentUser">
+        <p-avatar 
+          size="large"
+          shape="circle"
+          :label="sender[0]"
+        />
+        <div class="messageContentName">{{sender}}</div>
+        <div class="messageContentTime">{{now()}}</div>
+      </div>
+      <pre class="messageContentInfo">{{content}}</pre>
     </div>
     `
 })
@@ -246,9 +316,13 @@ app.component('message-input', {
     const send = () => {
       emit('send', message.value)
     }
+    const openConfig = () => {
+      emit('open')
+    }
     return {
       message,
-      send
+      send,
+      openConfig
     }
   },
   components: {
@@ -256,16 +330,118 @@ app.component('message-input', {
     'p-button': primevue.button
   },
   template: `
-    <div>
-      <p-inputtext v-model="message"/>
-      <p-button @click="send()"  label="SEND"/>
+    <div class="messageInput">
+      <p-inputtext v-model="message" class="messageInputer"/>
+      <div class="messageSend"><p-button @click="send()"  label="SEND"/></div>
+      <div class="messageSend"><p-button @click="openConfig()" icon="pi pi-plus" class="p-button-rounded"/></div>
     </div>
     `
 })
 
 app.component('message-config', {
+  components: {
+    'p-inputtext': primevue.inputtext,
+    'p-button': primevue.button,
+    'p-togglebutton': primevue.togglebutton,
+    'p-inputswitch': primevue.inputswitch, 
+    'p-avatar': primevue.avatar,
+  },
+  setup(props, {emit}) {
+    const userList = reactive([{
+      id: '12345',
+      name: 'TestAccount',
+      hash: '$fadf'
+    }]);
+    const isGroupMode = ref(true);
+    const selectedUserHash = ref("$fadf");
+    const groupConfig = reactive({
+      id: '12312',
+      anonymous: false,
+    })
+    const inputUser = reactive({
+      id: '',
+      name: '',
+    })
+
+    watch(isGroupMode, ()=>{
+      emit('update:mode', isGroupMode.value)
+      groupConfig.id = '';
+      groupConfig.anonymous = '';
+    })
+
+    watch(groupConfig, ()=> {
+      emit('update:group', groupConfig)
+    })
+
+    const addUser = () => {
+      userList.push({...inputUser, hash: uilts.randString(16)});
+    }
+    const setUser = (id, name, hash) => {
+      selectedUserHash.value = hash;
+      emit('update:user', {id, name})
+    }
+    const removeUser = (hash,ev) => {
+      userList.splice(0 , +Infinity, ...userList.filter(e=>e.hash !== hash))
+      ev.preventDefault()
+    }
+    return {
+      userList,
+      inputUser,
+      isGroupMode,
+      groupConfig,
+      addUser,
+      setUser,
+      selectedUserHash,
+      removeUser
+    }
+  },
+
   template:`
     <div>
+      <div class="messageConfigTitle">Message Type</div>
+      <div class="messageGroupConfig">
+        <p-togglebutton v-model="isGroupMode" onLabel="Group" offLabel="Private"/>
+        <div class="messageGroupInline">
+          <div class="messageGroupConfigWarp">
+            <div class="messageGroupConfigLabel">Group Id</div>
+            <p-inputtext :disabled="!isGroupMode" v-model="groupConfig.id" />
+          </div>
+          <div class="messageGroupConfigWarp" style="margin-left: 8px">
+            <div class="messageGroupConfigLabel">Anonymous</div>
+            <p-inputswitch :disabled="!isGroupMode" v-model="groupConfig.anonymous"/>
+          </div>
+        </div>
+      </div>
+      <div class="messageConfigTitle">User Config</div>
+      <div class="messageConfigUserWarp">
+        <div v-for="user in userList" @click="setUser(user.id, user.name, user.hash)" :class="{messageConfigUserBlock: true, messageConfigUserBlockActive: user.hash === selectedUserHash}">
+          <p-avatar 
+            size="large"
+            shape="circle"
+            :label="user.name[0]"
+            class="messageConfigUserAvatar"  
+          />
+          <div style="font-size: 16px;align-self: end;">{{user.name}}</div>
+          <div style="font-size: 12px; color: #9c9c9c;align-self: start">{{user.id}}</div>
+          <div class="messageConfigUserHander">
+            <p-button icon="pi pi-times" class="p-button-rounded p-button-danger p-button-sm" @click="removeUser(user.hash, $event)"/>
+          </div>
+        </div>
+      <div class="messageConfigUserBlock">
+          <p-avatar 
+            size="large"
+            shape="circle"
+            :label="inputUser.name? inputUser.name[0] : ''"
+            class="messageConfigUserAvatar"  
+          />
+        <p-inputtext class="p-inputtext-sm messageConfigUserInput" v-model="inputUser.name"/>
+        <div class="messageConfigUserHander">
+          <p-button @click="addUser()" icon="pi pi-plus" class="p-button-rounded p-button-sm"/>
+        </div>
+        <p-inputtext class="p-inputtext-sm messageConfigUserInput" v-model="inputUser.id"/>
+      </div>
+      </div>
+      
     </div>
   `
 })
@@ -468,5 +644,10 @@ $(document).ready(function(){
     });
 
     /* VUE MOUNT */
-    app.mount('#app')
+    app.mount('#app');
+
+    /* Togger */
+    $(".openChat").click(()=>{
+      $(".chat").toggleClass("hide")
+    })
 });

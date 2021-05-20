@@ -8,13 +8,12 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico">
-    <link href="https://unpkg.com/primevue/resources/themes/md-light-indigo/theme.css" rel="stylesheet">
+    <link href="https://unpkg.com/primevue/resources/themes/bootstrap4-light-blue/theme.css" rel="stylesheet">
     <link href="https://unpkg.com/primevue/resources/primevue.min.css" rel="stylesheet">
     <link href="https://unpkg.com/primeicons/primeicons.css" rel="stylesheet">
   </head>
-  <body>
-    <main role="main" class="container mt-4 mb-4">
-
+  <body class="flexbox">
+    <main role="main" class="container mt-4 mb-4 setting">
       <div class="starter-template">
         <div class="card">
           <div class="card-body">
@@ -153,16 +152,23 @@
         </div>
       </div>
     </main>
-    <div id="app">
-      <message-box/>
+    <div class="openChat">Chat</div>
+    <div class="chat hide">
+      <div id="app" >
+        <message-box/>
+      </div>
     </div>
+    
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/vue@3.0.8"></script>
     <script src="https://unpkg.com/axios@0.21.1"></script>
+    <script src="https://unpkg.com/dayjs@1.10.4/dayjs.min.js"></script>
     <!-- PrimeVue Compontent -->
     <script src="https://unpkg.com/primevue@3.3.5/inputtext/inputtext.min.js"></script>
+    <script src="https://unpkg.com/primevue@3.3.5/togglebutton/togglebutton.min.js"></script>
+    <script src="https://unpkg.com/primevue@3.3.5/inputswitch/inputswitch.min.js"></script>
     <script src="https://unpkg.com/primevue@3.3.5/button/button.min.js"></script>
     <script src="https://unpkg.com/primevue@3.3.5/ripple/ripple.min.js"></script>
     <script src="https://unpkg.com/primevue@3.3.5/avatar/avatar.min.js"></script>
