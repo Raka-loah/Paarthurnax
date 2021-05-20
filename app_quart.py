@@ -41,5 +41,16 @@ async def admin_settings():
 async def admin():
     return render_template('index.htm')
 
+@app.route('/whisper', methods=['POST'])
+async def whisper(): 
+    try:
+        # POSTed data as json
+        j = request.get_json(force=True)
+        message, status_code = dragon.hear(j)
+        return jsonify(message) if message != '' else '', status_code
+    except Exception as e:
+        app.logger.error(f"[Exception]:{e}")
+        return '', 204
+
 if __name__ == '__main__':
     app.run(debug=False, port=8888)
