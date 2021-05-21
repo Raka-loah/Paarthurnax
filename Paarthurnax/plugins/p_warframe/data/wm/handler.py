@@ -21,7 +21,7 @@ def convertToRegobj (rules) :
 
 def writeFile (datas, path):
   with open(os.path.join(os.pardir, path), 'w') as ot:
-    ot.write(mergeJSONItems(datas))
+    ot.write(mergeJSONItems(datas).replace(' ', ''))
 
 def output (): 
   wmCantRaw = readFile('wmCant.json')
@@ -32,3 +32,5 @@ def output ():
   wmen = reduce(mergeToJSONFormat, map(toListItem , wmEnRaw["items"]))
   wcant =reduce(mergeToJSONFormat, map(lambda regObj : reduce(mergeToJSONFormat,map(lambda item: item.replace(regObj['reg'], regObj['rep']),filterItems( regObj['reg'], map(toListItem , wmCnRaw["items"])))), regObj))
   writeFile([wmcn, wmen, wcant],'wmNew.json')
+
+output()
