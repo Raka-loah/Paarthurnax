@@ -1,4 +1,147 @@
-{
-  "Mesa Prime": "女枪p",
-  "Rhino Prime": "牛p"
-}
+[
+  {
+    "reg": "Mesa Prime",
+    "rep": "女枪p"
+  },{
+    "reg": "Rhino Prime",
+    "rep": "牛p"
+  },{
+    "reg": "Rhino Prime",
+    "rep": "犀牛p"
+  },{
+    "reg": "Ash Prime",
+    "rep": "阿什p"
+  },{
+    "reg": "Ash Prime",
+    "rep": "轮椅p"
+  },{
+    "reg": "Atlas Prime",
+    "rep": "土甲p"
+  },{
+    "reg": "Atlas Prime",
+    "rep": "土p"
+  },{
+    "reg": "Banshee Prime",
+    "rep": "音妈p"
+  },{
+    "reg": "Chroma Prime",
+    "rep": "龙p"
+  },{
+    "reg": "Chroma Prime",
+    "rep": "龙甲p"
+  },{
+    "reg": "Ember Prime",
+    "rep": "火鸡p"
+  },{
+    "reg": "Equinox Prime",
+    "rep": "阴阳p"
+  },{
+    "reg": "Equinox Prime",
+    "rep": "futap"
+  },{
+    "reg": "Equinox Prime",
+    "rep": "扶她p"
+  },{
+    "reg": "Frost Prime",
+    "rep": "冰p"
+  },{
+    "reg": "Frost Prime",
+    "rep": "冰男p"
+  },{
+    "reg": "Frost Prime",
+    "rep": "冰甲p"
+  },{
+    "reg": "Frost Prime",
+    "rep": "冰队p"
+  },{
+    "reg": "Hydroid Prime",
+    "rep": "水男p"
+  },{
+    "reg": "Inaros Prime",
+    "rep": "沙甲p"
+  },{
+    "reg": "Ivara Prime",
+    "rep": "弓妹p"
+  },{
+    "reg": "Limbo Prime",
+    "rep": "李明博p"
+  },{
+    "reg": "Limbo Prime",
+    "rep": "小明p"
+  },{
+    "reg": "Loki Prime",
+    "rep": "洛基p"
+  },{
+    "reg": "Mag Prime",
+    "rep": "磁力p"
+  },{
+    "reg": "Mag Prime",
+    "rep": "磁妹p"
+  },{
+    "reg": "Mirage Prime",
+    "rep": "小丑p"
+  },{
+    "reg": "Nekros Prime",
+    "rep": "摸尸p"
+  },{
+    "reg": "Nekros Prime",
+    "rep": "摸p"
+  },{
+    "reg": "Nezha Prime",
+    "rep": "哪吒p"
+  },{
+    "reg": "Nova Prime",
+    "rep": "加速p"
+  },{
+    "reg": "Nova Prime",
+    "rep": "诺娃p"
+  },{
+    "reg": "Nyx Prime",
+    "rep": "脑溢血p"
+  },{
+    "reg": "Oberon Prime",
+    "rep": "奶爸p"
+  },{
+    "reg": "Octavia Prime",
+    "rep": "djp"
+  },{
+    "reg": "Saryn Prime",
+    "rep": "毒妈p"
+  },{
+    "reg": "Titania Prime",
+    "rep": "蝶妹p"
+  },{
+    "reg": "Titania Prime",
+    "rep": "蝶甲p"
+  },{
+    "reg": "Titania Prime",
+    "rep": "蝶p"
+  },{
+    "reg": "Trinity Prime",
+    "rep": "奶妈p"
+  },{
+    "reg": "Valkyr Prime",
+    "rep": "瓦喵p"
+  },{
+    "reg": "Vauban Prime",
+    "rep": "工程p"
+  },{
+    "reg": "Volt Prime",
+    "rep": "电男p"
+  },{
+    "reg": "Wukong Prime",
+    "rep": "悟空p"
+  },{
+    "reg": "Wukong Prime",
+    "rep": "猴子p"
+  },{
+    "reg": "Wukong Prime",
+    "rep": "猴p"
+  },{
+    "reg": "Zephyr Prime",
+    "rep": "鸟姐p"
+  },{
+    "reg": "Zephyr Prime",
+    "rep": "鸟p"
+  }
+]

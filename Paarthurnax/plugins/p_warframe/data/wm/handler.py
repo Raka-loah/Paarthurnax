@@ -15,13 +15,13 @@ filterItems =lambda reg ,arr: filter((lambda item: re.search(reg, item) != None)
 
 def convertToRegobj (rules) : 
   regObj = []
-  for (key,value) in rules.items():
-    regObj.append({'reg': key, 'rep': value})
+  for rule in rules:
+    regObj.append({'reg': rule["reg"], 'rep': rule["rep"]})
   return regObj
 
 def writeFile (datas, path):
   with open(os.path.join(os.pardir, path), 'w') as ot:
-    ot.write(mergeJSONItems(datas).replace(' ', ''))
+    ot.write(mergeJSONItems(datas).replace(' ', '').capitalize())
 
 def output (): 
   wmCantRaw = readFile('wmCant.json')
