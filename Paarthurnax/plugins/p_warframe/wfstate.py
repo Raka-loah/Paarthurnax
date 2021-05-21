@@ -8,6 +8,9 @@ import re
 import time
 import urllib.parse
 
+
+#from .data.wm.handler import output
+
 import requests
 import requests_cache
 from bs4 import BeautifulSoup
@@ -34,7 +37,7 @@ data_files = {
     'sortieModifier.json': 'SM',
     'riven.json': 'R',
     'customReplies.json': 'CR',
-    'wm.json': 'WM',
+    'wmNew.json': 'WM',
     'wm-parody.json': 'WP',
     'jobs.json': 'J',
     'modlist.json': 'ML',
