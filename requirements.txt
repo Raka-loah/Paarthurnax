@@ -27,6 +27,6 @@ soupsieve==2.2
 toml==0.10.2
 typing-extensions==3.7.4.3
 tzlocal==2.1
-urllib3==1.26.5
+urllib3==1.26.18
 Werkzeug==2.3.8
 wsproto==1.0.0
